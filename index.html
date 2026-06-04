@@ -1144,7 +1144,7 @@ body {
 .hero-overview {
   margin-top: 88px !important;
   padding-top: 0 !important;
-  box-shadow: var(--minimal-shadow-medium) !important;
+  box-shadow: none !important;
 }
 
 .hero-overview-copy {
@@ -1191,19 +1191,10 @@ body {
 .signal-item {
   padding: 0 !important;
   border-top: 0 !important;
-  isolation: isolate;
 }
 
 .signal-item::before {
-  content: "";
-  position: absolute;
-  inset: -16px -18px;
-  z-index: -1;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.66);
-  box-shadow: var(--minimal-shadow-block);
-  opacity: 0.58;
-  pointer-events: none;
+  display: none !important;
 }
 
 .signal-item strong {
