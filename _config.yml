@@ -1,0 +1,15 @@
+title: "AI × 質的研究"
+description: "AI時代の質的研究を、人とAIの協働から考え直すためのプラットフォーム"
+lang: ja
+timezone: Asia/Tokyo
+url: "https://xuehaisheng.github.io"
+baseurl: "/ai-qualitative-research"
+markdown: kramdown
+permalink: pretty
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post

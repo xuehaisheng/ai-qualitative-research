@@ -1,0 +1,39 @@
+---
+title: "研究ノート"
+seo_title_ja: "研究ノート | AI × 質的研究"
+seo_title_en: "Notes | AI × Qualitative Research"
+seo_description_ja: "研究ノートや短い記事の一覧"
+seo_description_en: "A list of research notes and short articles"
+body_class: "articles-page"
+permalink: /articles/
+---
+
+<main class="page-main">
+  <section class="page-hero">
+    <div class="container">
+      <div class="section-panel glass-panel page-heading">
+        <div class="eyebrow" data-bilingual data-ja="Article Archive" data-en="Article Archive">Article Archive</div>
+        <h1 data-bilingual data-ja="研究ノート一覧" data-en="Research Notes">研究ノート一覧</h1>
+        <p data-bilingual data-ja="Markdown で追加した記事がここに並ぶ。研究ノート、短いエッセイ、方法論メモなどを少しずつ増やしていくための一覧である。" data-en="Posts added in Markdown appear here. You can gradually grow this space with research notes, short essays, and methodological memos.">Markdown で追加した記事がここに並ぶ。研究ノート、短いエッセイ、方法論メモなどを少しずつ増やしていくための一覧である。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+      <div class="card-grid card-grid-3">
+        {% for post in site.posts %}
+          {% assign post_summary_ja = post.summary_ja | default: post.excerpt | strip_html | strip_newlines %}
+          {% assign post_summary_en = post.summary_en | default: post_summary_ja %}
+          {% assign post_title_en = post.title_en | default: post.title %}
+          <article class="card glass-card note-card">
+            <div class="card-meta">{{ post.date | date: "%Y.%m.%d" }}</div>
+            <h2 data-bilingual data-ja="{{ post.title | escape }}" data-en="{{ post_title_en | escape }}">{{ post.title }}</h2>
+            <p data-bilingual data-ja="{{ post_summary_ja | escape }}" data-en="{{ post_summary_en | escape }}">{{ post_summary_ja }}</p>
+            <a class="text-link" href="{{ post.url | relative_url }}" data-bilingual data-ja="記事を読む" data-en="Read article">記事を読む</a>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</main>
