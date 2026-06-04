@@ -1,0 +1,210 @@
+---
+title: "AI × 質的研究"
+seo_title_ja: "AI × 質的研究"
+seo_title_en: "AI × Qualitative Research"
+seo_description_ja: "AI時代の質的研究を、人とAIの協働から考え直すためのプラットフォーム"
+seo_description_en: "A platform for rethinking qualitative research in the age of AI through human-AI collaboration"
+body_class: "home-page"
+---
+
+{% assign site_data = site.data.site %}
+{% assign about = site_data.sections.about %}
+{% assign literacy = site_data.sections.literacy %}
+{% assign events_section = site_data.sections.events %}
+{% assign notes = site_data.sections.notes %}
+{% assign members_section = site_data.sections.members %}
+{% assign contact = site_data.sections.contact %}
+
+<main id="home">
+  <section class="hero">
+    <div class="container">
+      <div class="hero-shell glass-panel">
+        <div class="hero-main">
+          <h1 data-bilingual data-ja="{{ site_data.hero.title.ja | escape }}" data-en="{{ site_data.hero.title.en | escape }}">{{ site_data.hero.title.ja }}</h1>
+          <p class="tagline" data-typing data-ja="{{ site_data.hero.tagline.ja | escape }}" data-en="{{ site_data.hero.tagline.en | escape }}">
+            <span class="typing-target">{{ site_data.hero.tagline.ja }}</span>
+            <span class="cursor" aria-hidden="true"></span>
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="{{ site_data.hero.primary_button.href | relative_url }}" data-bilingual data-ja="{{ site_data.hero.primary_button.label.ja | escape }}" data-en="{{ site_data.hero.primary_button.label.en | escape }}">{{ site_data.hero.primary_button.label.ja }}</a>
+            <a class="btn btn-secondary" href="{{ site_data.hero.secondary_button.href | relative_url }}" data-bilingual data-ja="{{ site_data.hero.secondary_button.label.ja | escape }}" data-en="{{ site_data.hero.secondary_button.label.en | escape }}">{{ site_data.hero.secondary_button.label.ja }}</a>
+          </div>
+        </div>
+
+        <div class="hero-overview">
+          <div class="hero-overview-copy">
+            <div class="side-label" data-bilingual data-ja="{{ site_data.hero.overview.label.ja | escape }}" data-en="{{ site_data.hero.overview.label.en | escape }}">{{ site_data.hero.overview.label.ja }}</div>
+            <h2 data-bilingual data-ja="{{ site_data.hero.overview.title.ja | escape }}" data-en="{{ site_data.hero.overview.title.en | escape }}">{{ site_data.hero.overview.title.ja }}</h2>
+            <p data-bilingual data-ja="{{ site_data.hero.overview.text.ja | escape }}" data-en="{{ site_data.hero.overview.text.en | escape }}">{{ site_data.hero.overview.text.ja }}</p>
+          </div>
+          <div class="signal-list">
+            {% for signal in site_data.hero.overview.signals %}
+              <div class="signal-item">
+                <strong data-bilingual data-ja="{{ signal.title.ja | escape }}" data-en="{{ signal.title.en | escape }}">{{ signal.title.ja }}</strong>
+                <span data-bilingual data-ja="{{ signal.text.ja | escape }}" data-en="{{ signal.text.en | escape }}">{{ signal.text.ja }}</span>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+      <div id="about" class="section-panel">
+        <div class="section-heading">
+          <h2 data-bilingual data-ja="{{ about.title.ja | escape }}" data-en="{{ about.title.en | escape }}">{{ about.title.ja }}</h2>
+          <p data-bilingual data-ja="{{ about.text.ja | escape }}" data-en="{{ about.text.en | escape }}">{{ about.text.ja }}</p>
+        </div>
+        <div class="card-grid card-grid-3">
+          {% for card in about.cards %}
+            <article class="card glass-card">
+              <div class="card-meta" data-bilingual data-ja="{{ card.meta.ja | escape }}" data-en="{{ card.meta.en | escape }}">{{ card.meta.ja }}</div>
+              <h3 data-bilingual data-ja="{{ card.title.ja | escape }}" data-en="{{ card.title.en | escape }}">{{ card.title.ja }}</h3>
+              <p data-bilingual data-ja="{{ card.text.ja | escape }}" data-en="{{ card.text.en | escape }}">{{ card.text.ja }}</p>
+            </article>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+      <div id="literacy" class="section-panel">
+        <div class="section-heading">
+          <h2 data-bilingual data-ja="{{ literacy.title.ja | escape }}" data-en="{{ literacy.title.en | escape }}">{{ literacy.title.ja }}</h2>
+          <p data-bilingual data-ja="{{ literacy.text.ja | escape }}" data-en="{{ literacy.text.en | escape }}">{{ literacy.text.ja }}</p>
+        </div>
+        <div class="card-grid card-grid-2">
+          {% for card in literacy.cards %}
+            <article class="card glass-card">
+              <div class="card-meta" data-bilingual data-ja="{{ card.meta.ja | escape }}" data-en="{{ card.meta.en | escape }}">{{ card.meta.ja }}</div>
+              <h3 data-bilingual data-ja="{{ card.title.ja | escape }}" data-en="{{ card.title.en | escape }}">{{ card.title.ja }}</h3>
+              <p data-bilingual data-ja="{{ card.text.ja | escape }}" data-en="{{ card.text.en | escape }}">{{ card.text.ja }}</p>
+            </article>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+      <div id="events" class="section-panel">
+        <div class="section-heading">
+          <h2 data-bilingual data-ja="{{ events_section.title.ja | escape }}" data-en="{{ events_section.title.en | escape }}">{{ events_section.title.ja }}</h2>
+          <p data-bilingual data-ja="{{ events_section.text.ja | escape }}" data-en="{{ events_section.text.en | escape }}">{{ events_section.text.ja }}</p>
+        </div>
+        <div class="split-grid">
+          <div class="list-shell glass-card">
+            <h3 data-bilingual data-ja="{{ events_section.upcoming_label.ja | escape }}" data-en="{{ events_section.upcoming_label.en | escape }}">{{ events_section.upcoming_label.ja }}</h3>
+            <div class="entry-list">
+              {% for event in site.data.events.upcoming %}
+                <article class="entry-item">
+                  <div class="entry-date">{{ event.date }}</div>
+                  <h4 data-bilingual data-ja="{{ event.title.ja | escape }}" data-en="{{ event.title.en | escape }}">{{ event.title.ja }}</h4>
+                  <div class="entry-place" data-bilingual data-ja="{{ event.place.ja | escape }}" data-en="{{ event.place.en | escape }}">{{ event.place.ja }}</div>
+                  <p data-bilingual data-ja="{{ event.summary.ja | escape }}" data-en="{{ event.summary.en | escape }}">{{ event.summary.ja }}</p>
+                  <a class="text-link" href="{{ event.link_url }}" data-bilingual data-ja="{{ event.link_label.ja | escape }}" data-en="{{ event.link_label.en | escape }}">{{ event.link_label.ja }}</a>
+                </article>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="list-shell glass-card">
+            <h3 data-bilingual data-ja="{{ events_section.archive_label.ja | escape }}" data-en="{{ events_section.archive_label.en | escape }}">{{ events_section.archive_label.ja }}</h3>
+            <div class="entry-list">
+              {% for event in site.data.events.archive %}
+                <article class="entry-item">
+                  <div class="entry-date">{{ event.date }}</div>
+                  <h4 data-bilingual data-ja="{{ event.title.ja | escape }}" data-en="{{ event.title.en | escape }}">{{ event.title.ja }}</h4>
+                  <div class="entry-place" data-bilingual data-ja="{{ event.place.ja | escape }}" data-en="{{ event.place.en | escape }}">{{ event.place.ja }}</div>
+                  <p data-bilingual data-ja="{{ event.summary.ja | escape }}" data-en="{{ event.summary.en | escape }}">{{ event.summary.ja }}</p>
+                </article>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+      <div id="notes" class="section-panel">
+        <div class="section-heading with-action">
+          <div>
+            <h2 data-bilingual data-ja="{{ notes.title.ja | escape }}" data-en="{{ notes.title.en | escape }}">{{ notes.title.ja }}</h2>
+            <p data-bilingual data-ja="{{ notes.text.ja | escape }}" data-en="{{ notes.text.en | escape }}">{{ notes.text.ja }}</p>
+          </div>
+          <a class="btn btn-secondary" href="{{ notes.cta.href | relative_url }}" data-bilingual data-ja="{{ notes.cta.label.ja | escape }}" data-en="{{ notes.cta.label.en | escape }}">{{ notes.cta.label.ja }}</a>
+        </div>
+        <div class="card-grid card-grid-3">
+          {% for post in site.posts limit: 3 %}
+            {% assign post_summary_ja = post.summary_ja | default: post.excerpt | strip_html | strip_newlines %}
+            {% assign post_summary_en = post.summary_en | default: post_summary_ja %}
+            {% assign post_title_en = post.title_en | default: post.title %}
+            <article class="card glass-card note-card">
+              <div class="card-meta">{{ post.date | date: "%Y.%m.%d" }}</div>
+              <h3 data-bilingual data-ja="{{ post.title | escape }}" data-en="{{ post_title_en | escape }}">{{ post.title }}</h3>
+              <p data-bilingual data-ja="{{ post_summary_ja | escape }}" data-en="{{ post_summary_en | escape }}">{{ post_summary_ja }}</p>
+              <a class="text-link" href="{{ post.url | relative_url }}" data-bilingual data-ja="記事を読む" data-en="Read article">記事を読む</a>
+            </article>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+      <div id="members" class="section-panel">
+        <div class="section-heading">
+          <h2 data-bilingual data-ja="{{ members_section.title.ja | escape }}" data-en="{{ members_section.title.en | escape }}">{{ members_section.title.ja }}</h2>
+          <p data-bilingual data-ja="{{ members_section.text.ja | escape }}" data-en="{{ members_section.text.en | escape }}">{{ members_section.text.ja }}</p>
+        </div>
+        <div class="card-grid card-grid-3">
+          {% for member in site.data.members %}
+            <article class="card glass-card member-card">
+              <div class="card-meta" data-bilingual data-ja="{{ member.role.ja | escape }}" data-en="{{ member.role.en | escape }}">{{ member.role.ja }}</div>
+              <h3 data-bilingual data-ja="{{ member.name.ja | escape }}" data-en="{{ member.name.en | escape }}">{{ member.name.ja }}</h3>
+              <div class="member-affiliation" data-bilingual data-ja="{{ member.affiliation.ja | escape }}" data-en="{{ member.affiliation.en | escape }}">{{ member.affiliation.ja }}</div>
+              <p data-bilingual data-ja="{{ member.bio.ja | escape }}" data-en="{{ member.bio.en | escape }}">{{ member.bio.ja }}</p>
+              <a class="text-link" href="{{ member.profile_url }}" data-bilingual data-ja="詳細を追加" data-en="Add details">詳細を追加</a>
+            </article>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+      <div id="contact" class="section-panel">
+        <div class="section-heading">
+          <h2 data-bilingual data-ja="{{ contact.title.ja | escape }}" data-en="{{ contact.title.en | escape }}">{{ contact.title.ja }}</h2>
+          <p data-bilingual data-ja="{{ contact.text.ja | escape }}" data-en="{{ contact.text.en | escape }}">{{ contact.text.ja }}</p>
+        </div>
+        <div class="split-grid">
+          <div class="list-shell glass-card">
+            <h3 data-bilingual data-ja="{{ contact.info_title.ja | escape }}" data-en="{{ contact.info_title.en | escape }}">{{ contact.info_title.ja }}</h3>
+            <p data-bilingual data-ja="{{ contact.info_text.ja | escape }}" data-en="{{ contact.info_text.en | escape }}">{{ contact.info_text.ja }}</p>
+          </div>
+          <div class="list-shell glass-card">
+            <h3 data-bilingual data-ja="{{ contact.links_title.ja | escape }}" data-en="{{ contact.links_title.en | escape }}">{{ contact.links_title.ja }}</h3>
+            <ul class="contact-list">
+              {% for link in contact.links %}
+                <li>
+                  <span class="contact-label" data-bilingual data-ja="{{ link.label.ja | escape }}" data-en="{{ link.label.en | escape }}">{{ link.label.ja }}</span>
+                  <a href="{{ link.href }}">{{ link.value }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
