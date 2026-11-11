@@ -1559,4 +1559,80 @@ body {
   .page-main .page-hero { padding-top: 40px !important; }
   .post-page .page-section { padding: 24px 0 56px !important; }
 }
+/* Research notes: figures, tables, embeds */
+.post-body figure { margin: 32px 0; }
+.post-body figure img { display: block; width: 100%; height: auto; border: 1px solid var(--minimal-line); border-radius: 10px; background: #ffffff; }
+.post-body figcaption { margin-top: 10px; color: var(--minimal-muted); font-size: 0.86rem; line-height: 1.7; }
+.post-body table { width: 100%; margin: 24px 0; border-collapse: collapse; font-size: 0.9rem; line-height: 1.7; display: block; overflow-x: auto; }
+.post-body th, .post-body td { padding: 10px 12px; border-bottom: 1px solid var(--minimal-line); text-align: left; vertical-align: top; }
+.post-body th { border-bottom: 2px solid #cccccc; font-weight: 600; white-space: nowrap; }
+.post-body blockquote { margin: 24px 0; padding: 4px 0 4px 18px; }
+.post-body h3 { margin-top: 28px !important; font-size: 1.02rem !important; }
+.embed-frame { position: relative; width: 100%; margin: 28px 0 8px; border: 1px solid var(--minimal-line); border-radius: 10px; overflow: hidden; background: #ffffff; }
+.embed-frame iframe { display: block; width: 100%; height: 600px; border: 0; }
+.post-body .embed-credit { margin: 0 0 28px; color: var(--minimal-muted); font-size: 0.86rem; line-height: 1.7; }
+.series-box .series-links a { margin-right: 14px; }
+/* AI literacy page */
+.literacy-page .page-section { padding: 64px 0 !important; }
+.lit-card h3 { margin-top: 6px !important; }
+.lit-research { margin-top: 14px; padding: 12px 14px; border-left: 3px solid var(--accent-3); background: rgba(198, 164, 106, 0.08); }
+.lit-research strong { display: block; margin-bottom: 4px; color: #8a6d3b; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; }
+.lit-card .lit-research p { margin: 0 !important; font-size: 0.9rem !important; line-height: 1.85 !important; }
+.lit-card .lit-src { margin: 12px 0 0 !important; color: var(--minimal-muted) !important; font-size: 0.78rem !important; line-height: 1.7 !important; }
+.lit-card .lit-src a { color: var(--minimal-muted); }
+.lit-card[id] { scroll-margin-top: calc(var(--header-height) + 32px); }
+.lit-foot { max-width: 760px; color: var(--minimal-muted); font-size: 0.9rem; line-height: 1.85; }
+@media (max-width: 720px) {
+  .embed-frame iframe { height: 560px; }
+  .literacy-page .page-section { padding: 44px 0 !important; }
+}
+/* Slides as figures */
+.post-body .slide-fig img { border-radius: 8px; }
+/* Wiki pages */
+.wiki-page .page-heading h1 { font-size: clamp(2rem, 3.6vw, 2.9rem) !important; line-height: 1.3 !important; letter-spacing: -0.02em !important; max-width: 26ch; }
+.wiki-page .page-hero { padding-bottom: 0 !important; }
+.wiki-page .page-section { padding: 40px 0 80px !important; }
+.wiki-crumb a { color: inherit; text-decoration: none; }
+.wiki-crumb a:hover { text-decoration: underline; }
+.wiki-en { margin: 6px 0 0 !important; color: var(--minimal-muted) !important; font-size: 0.95rem !important; }
+.wiki-grid { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 56px; align-items: start; }
+.wiki-grid .post-shell { max-width: 760px; padding: 0 !important; }
+.wiki-lead { padding: 14px 18px; border-left: 3px solid var(--accent-3); background: rgba(198, 164, 106, 0.09); font-size: 1rem !important; }
+.wiki-side { position: sticky; top: calc(var(--header-height) + 24px); display: grid; gap: 18px; }
+.wiki-box { padding: 16px 18px; border: 1px solid var(--minimal-line); border-radius: 12px; background: #fafaf8; }
+.wiki-box h2 { margin: 0 0 8px !important; font-size: 0.85rem !important; color: var(--minimal-muted) !important; letter-spacing: 0.06em; }
+.wiki-box ul { margin: 0; padding-left: 1.1em; font-size: 0.92rem; line-height: 1.9; }
+.wiki-box a, .wiki-back a { color: var(--minimal-text); }
+.wiki-back { margin: 0; font-size: 0.88rem; }
+.wiki-sources { font-size: 0.86rem !important; line-height: 1.8 !important; color: var(--minimal-muted) !important; word-break: break-word; }
+.wiki-search { width: min(100%, 520px); margin-top: 24px; padding: 12px 16px; border: 1px solid #d6d6d6; border-radius: 999px; font-size: 0.95rem; font-family: inherit; background: #ffffff; }
+.wiki-index { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.wiki-item { display: flex; flex-direction: column; gap: 4px; padding: 16px 18px; border: 1px solid var(--minimal-line); border-radius: 12px; background: #ffffff; color: var(--minimal-text); text-decoration: none; box-shadow: var(--minimal-shadow-button); transition: box-shadow 0.2s ease, transform 0.2s ease; }
+.wiki-item:hover, .wiki-item:focus-visible { transform: translateY(-1px); box-shadow: var(--minimal-shadow-button-hover); }
+.wiki-item strong { font-size: 1.02rem; }
+.wiki-item-en { color: #999999; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.wiki-item-sum { color: var(--minimal-muted); font-size: 0.85rem; line-height: 1.7; }
+.post-terms { max-width: 760px; margin-top: 48px; }
+.post-terms h2, .series-box h2 { margin: 0 0 10px !important; font-size: 0.9rem !important; color: var(--minimal-muted) !important; letter-spacing: 0.06em; }
+.post-terms p { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; }
+.post-terms a { padding: 5px 12px; border: 1px solid #dddddd; border-radius: 999px; color: var(--minimal-text); font-size: 0.85rem; text-decoration: none; background: #ffffff; }
+.series-box ul { margin: 0; padding-left: 1.2em; font-size: 0.92rem; line-height: 1.9; }
+.series-links a { margin-right: 16px; }
+/* Literature list */
+.paper-tools { margin-top: 8px; }
+.paper-list { display: grid; gap: 18px; max-width: 920px; }
+.paper-item { padding: 20px 22px; border: 1px solid var(--minimal-line); border-radius: 12px; background: #ffffff; scroll-margin-top: calc(var(--header-height) + 24px); }
+.paper-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; }
+.paper-head h3 { margin: 0 !important; font-size: 1.08rem !important; }
+.paper-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { padding: 2px 9px; border: 1px solid #e2e2e2; border-radius: 999px; color: var(--minimal-muted); font-size: 0.74rem; }
+.tag-meta { border-color: var(--accent-3); color: #8a6d3b; background: rgba(198, 164, 106, 0.1); }
+.paper-summary { margin: 10px 0 0 !important; font-size: 0.93rem !important; line-height: 1.9 !important; color: var(--minimal-text) !important; }
+.paper-ref { margin: 10px 0 0 !important; font-size: 0.8rem !important; line-height: 1.7 !important; color: var(--minimal-muted) !important; word-break: break-word; }
+.paper-ref a { color: var(--minimal-muted); }
+.papers-page .page-section { padding: 56px 0 !important; }
+@media (max-width: 960px) {
+  .wiki-grid { grid-template-columns: 1fr; gap: 32px; }
+  .wiki-side { position: static; }
+}
 </style>
