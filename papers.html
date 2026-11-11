@@ -1,0 +1,88 @@
+---
+layout: default
+title: "AI×質的研究の文献"
+seo_title_ja: "AI×質的研究の文献 | AI × 質的研究"
+seo_title_en: "Literature on AI and Qualitative Research | AI × Qualitative Research"
+seo_description_ja: "生成AIと質的研究をめぐる論考と比較研究の文献一覧。各文献の概要と書誌情報"
+seo_description_en: "Annotated bibliography on generative AI and qualitative research"
+body_class: "papers-page"
+permalink: /papers/
+---
+{%- assign papers = site.data.papers | sort: "id" -%}
+{%- assign essays = papers | where: "group", "essays" -%}
+{%- assign comparisons = papers | where: "group", "comparison" -%}
+{%- assign others = papers | where: "group", "other" -%}
+<main class="page-main">
+  <section class="page-hero">
+    <div class="container">
+      <div class="section-panel glass-panel page-heading">
+        <div class="eyebrow">Literature</div>
+        <h1 data-bilingual data-ja="AI×質的研究の文献" data-en="AI × Qualitative Research: Literature">AI×質的研究の文献</h1>
+        <p data-bilingual data-ja="生成AIと質的研究をめぐる論考と、AIと人間の分析を比べた研究を集めた。方法論的な論考28篇は、薛・梶原・豐田（2026）の質的メタ統合で分析対象にしたものである。各文献に、日本語の概要と書誌情報をつけている。" data-en="Methodological essays on generative AI and qualitative research, and studies comparing AI and human analysis. The 28 essays were analysed in Xue, Kajiwara, & Toyoda's (2026) qualitative meta-synthesis. Summaries are in Japanese.">生成AIと質的研究をめぐる論考と、AIと人間の分析を比べた研究を集めた。方法論的な論考28篇は、薛・梶原・豐田（2026）の質的メタ統合で分析対象にしたものである。各文献に、日本語の概要と書誌情報をつけている。</p>
+        <div class="paper-tools">
+          <input type="search" class="wiki-search" id="paper-search" placeholder="著者名・キーワードで絞り込む" aria-label="文献を絞り込む">
+          <nav class="topic-nav" aria-label="Groups">
+            <a href="#essays">方法論的な論考<span>{{ essays.size }}</span></a>
+            <a href="#comparison">AIと人間の分析の比較<span>{{ comparisons.size }}</span></a>
+            <a href="#other">そのほかの論考・指針<span>{{ others.size }}</span></a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- assign groups = "essays|comparison|other" | split: "|" -%}
+  {%- for gid in groups %}
+  {%- if gid == "essays" %}{% assign gtitle = "方法論的な論考" %}{% assign gdesc = "生成AIを質的研究に使うことの是非や条件を論じた論考。すべて、薛・梶原・豐田（2026）の質的メタ統合の分析対象である。" %}{% assign items = essays %}
+  {%- elsif gid == "comparison" %}{% assign gtitle = "AIと人間の分析の比較" %}{% assign gdesc = "同じデータをAIと人間で分析し、結果を比べた実証研究。" %}{% assign items = comparisons %}
+  {%- else %}{% assign gtitle = "そのほかの論考・指針" %}{% assign gdesc = "雑誌の方針や、分析ツールとしてのAIを検討した論考。" %}{% assign items = others %}{% endif %}
+  <section class="page-section topic-section paper-group" id="{{ gid }}">
+    <div class="container">
+      <div class="section-heading">
+        <h2>{{ gtitle }}</h2>
+        <p>{{ gdesc }}</p>
+      </div>
+      <div class="paper-list">
+        {%- for x in items %}
+        <article class="paper-item" id="{{ x.id }}" data-search="{{ x.apa | downcase | escape }} {{ x.summary | escape }} {{ x.tags | join: ' ' | escape }}">
+          <div class="paper-head">
+            <h3>{{ x.cite }}</h3>
+            <div class="paper-tags">
+              {%- if x.meta %}<span class="tag tag-meta">メタ統合の分析対象</span>{% endif %}
+              {%- for t in x.tags %}<span class="tag">{{ t }}</span>{% endfor %}
+            </div>
+          </div>
+          <p class="paper-summary">{{ x.summary }}</p>
+          <p class="paper-ref">{{ x.apa }}{% if x.doi != "" %} <a href="{{ x.doi }}" target="_blank" rel="noopener">{{ x.doi }}</a>{% endif %}</p>
+        </article>
+        {%- endfor %}
+      </div>
+    </div>
+  </section>
+  {%- endfor %}
+
+  <section class="page-section">
+    <div class="container">
+      <p class="lit-foot">メタ統合の結果と、この研究をAIとどう進めたかは、研究ノート「<a href="{{ '/articles/qualitative-reactions/' | relative_url }}">質的研究者は、AIにどう反応したか</a>」と「<a href="{{ '/articles/meta-synthesis-with-ai/' | relative_url }}">AIと一緒に、メタ統合をやってみた</a>」に書いた。</p>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  var input = document.getElementById("paper-search");
+  if (!input) return;
+  var items = Array.prototype.slice.call(document.querySelectorAll(".paper-item"));
+  var groups = Array.prototype.slice.call(document.querySelectorAll(".paper-group"));
+  input.addEventListener("input", function () {
+    var q = input.value.trim().toLowerCase();
+    items.forEach(function (el) {
+      el.hidden = q !== "" && el.getAttribute("data-search").indexOf(q) === -1;
+    });
+    groups.forEach(function (g) {
+      var visible = g.querySelectorAll(".paper-item:not([hidden])").length;
+      g.hidden = visible === 0;
+    });
+  });
+})();
+</script>
