@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 300" width="860" height="300" role="img" aria-label="教師あり学習では人が正解をつけ、自己教師あり学習では文章そのものが正解になる" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">
+<title>教師あり学習では人が正解をつけ、自己教師あり学習では文章そのものが正解になる</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666666"/></marker></defs>
+<rect width="860" height="300" fill="#ffffff"/>
+<rect x="30" y="20" width="380" height="260" rx="6" fill="#f4f2ee" stroke="#d9d9d9" stroke-width="1" />
+<text x="50" y="56" font-size="18" fill="#1a1a1a" text-anchor="start" font-weight="700" >以前：人が正解をつける</text>
+<text x="50" y="82" font-size="14" fill="#666666" text-anchor="start" font-weight="700" >教師あり学習</text>
+<rect x="50" y="104" width="340" height="48" rx="6" fill="#ffffff" stroke="#d9d9d9" stroke-width="1" />
+<text x="220" y="134" font-size="17" fill="#1a1a1a" text-anchor="middle" font-weight="400" >「この映画、最高だった」</text>
+<line x1="220" y1="158" x2="220" y2="186" stroke="#666666" stroke-width="1.5" stroke-linecap="round" marker-end="url(#ah)"/>
+<rect x="50" y="192" width="340" height="40" rx="6" fill="#ffffff" stroke="#666666" stroke-width="1.5" />
+<text x="220" y="218" font-size="15" fill="#1a1a1a" text-anchor="middle" font-weight="400" >肯定（人がラベルをつける）</text>
+<text x="50" y="260" font-size="14" fill="#666666" text-anchor="start" font-weight="400" >人手がかかるので、集められるデータの量に限りがある。</text>
+<rect x="450" y="20" width="380" height="260" rx="6" fill="#eef2fa" stroke="#d9d9d9" stroke-width="1" />
+<text x="470" y="56" font-size="18" fill="#1a1a1a" text-anchor="start" font-weight="700" >以後：文章そのものが先生になる</text>
+<text x="470" y="82" font-size="14" fill="#2f5fb3" text-anchor="start" font-weight="700" >自己教師あり学習</text>
+<rect x="470" y="104" width="340" height="48" rx="6" fill="#ffffff" stroke="#d9d9d9" stroke-width="1" />
+<text x="640" y="134" font-size="17" fill="#1a1a1a" text-anchor="middle" font-weight="400" >今日、本を一冊［ ？ ］。</text>
+<line x1="640" y1="158" x2="640" y2="186" stroke="#666666" stroke-width="1.5" stroke-linecap="round" marker-end="url(#ah)"/>
+<rect x="470" y="192" width="340" height="40" rx="6" fill="#ffffff" stroke="#2f5fb3" stroke-width="1.5" />
+<text x="640" y="218" font-size="15" fill="#1a1a1a" text-anchor="middle" font-weight="400" >答え「買った」は文章の中にある</text>
+<text x="470" y="260" font-size="14" fill="#666666" text-anchor="start" font-weight="400" >ネット上の膨大な文章を、そのまま教材にできる。</text>
+</svg>

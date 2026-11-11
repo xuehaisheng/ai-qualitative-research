@@ -1,0 +1,92 @@
+---
+layout: default
+title: "AIリテラシー"
+seo_title_ja: "AIリテラシー | AI × 質的研究"
+seo_title_en: "AI Literacy | AI × Qualitative Research"
+seo_description_ja: "質的研究者がAIについて判断するための、基本の用語と、その背後にある研究のまとめ"
+seo_description_en: "Key AI concepts and the research behind them, for qualitative researchers"
+body_class: "literacy-page"
+permalink: /literacy/
+---
+{%- assign lit = site.data.literacy -%}
+{%- assign total = 0 -%}
+{%- for g in lit.groups -%}{%- assign total = total | plus: g.items.size -%}{%- endfor -%}
+
+<main class="page-main">
+  <section class="page-hero">
+    <div class="container">
+      <div class="section-panel glass-panel page-heading">
+        <div class="eyebrow">AI Literacy</div>
+        <h1 data-bilingual data-ja="AIリテラシー" data-en="AI Literacy">AIリテラシー</h1>
+        <p data-bilingual data-ja="AIを使うか、使わないか。その判断の材料になる基本の用語を、背後にある研究とあわせてまとめた。一つの項目だけを読んでも分かるように書いている。" data-en="Key concepts for deciding whether and how to use AI, each with the research behind it. Entries are written in Japanese.">AIを使うか、使わないか。その判断の材料になる基本の用語を、背後にある研究とあわせてまとめた。一つの項目だけを読んでも分かるように書いている。</p>
+        <nav class="topic-nav" aria-label="Groups">
+          <a href="#why">なぜAIリテラシーか</a>
+          {%- for g in lit.groups %}
+          <a href="#{{ g.id }}">{{ g.title }}<span>{{ g.items.size }}</span></a>
+          {%- endfor %}
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section topic-section" id="why">
+    <div class="container">
+      <div class="section-heading">
+        <h2>なぜAIリテラシーか</h2>
+        <p>立場はどれでもよい。批判でも、推進でも、中立でも構わない。ただ、知った上で判断したい。</p>
+      </div>
+      <div class="card-grid card-grid-3">
+        <article class="card glass-card lit-card">
+          <h3>知識の解像度</h3>
+          <p>「生成AIは次の言葉を予測する」「質的研究では言葉を分析する」。どちらも間違いではない。けれども少し詳しい人なら、「次のトークンを予測する」「質的データを分析する」と言うはずである。質的研究の側に現象学、GTA、テーマ分析、KJ法などの奥行きがあるように、AIの側にもTransformer、事前学習、エージェントといった奥行きがある。</p>
+        </article>
+        <article class="card glass-card lit-card">
+          <h3>AIは拡声器になる</h3>
+          <p>「AIを学びたいなら、AIに聞けばいい」という助言は、あまり役に立たない。何がよいものかを判断できる人が使えば、AIはもともとの力を何倍にもする拡声器になりうる。判断できない人が使うと、平板で平均的なものが出やすい。その行き着く先が<a href="#slop">AIスロップ</a>である。</p>
+        </article>
+        <article class="card glass-card lit-card">
+          <h3>「できる」と「確かめられる」は別</h3>
+          <p>AIは統計のコードを書けるし、数学の証明もできる。けれども、Rを知らない人はそのコードが正しいかを確かめられない。証明の一行一行をコンピュータが確かめる言語Leanを読めない人は、AIの証明を自分では確かめられない。質的研究でも、何がよい分析かを知らなければ、AIが出した「それらしい」テーマ分析を評価できない。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  {%- for g in lit.groups %}
+  <section class="page-section topic-section" id="{{ g.id }}">
+    <div class="container">
+      <div class="section-heading">
+        <h2>{{ g.title }}</h2>
+        <p>{{ g.desc }}</p>
+      </div>
+      <div class="card-grid card-grid-3">
+        {%- for it in g.items %}
+        <article class="card glass-card lit-card" id="{{ it.id }}">
+          <div class="card-meta">{{ it.en }}</div>
+          <h3>{{ it.term }}</h3>
+          <p>{{ it.plain }}</p>
+          {%- if it.research %}
+          <div class="lit-research"><strong>背景の研究と出来事</strong><p>{{ it.research }}</p></div>
+          {%- endif %}
+          {%- if it.source %}
+          <p class="lit-src">出典：{% if it.url %}<a href="{{ it.url }}" target="_blank" rel="noopener">{{ it.source }}</a>{% else %}{{ it.source }}{% endif %}</p>
+          {%- elsif it.url %}
+          <p class="lit-src"><a href="{{ it.url }}" target="_blank" rel="noopener">出典</a></p>
+          {%- endif %}
+          {%- if it.note %}
+          {%- assign note_url = '/articles/' | append: it.note | append: '/' %}
+          <a class="text-link" href="{{ note_url | relative_url }}">研究ノートで詳しく読む</a>
+          {%- endif %}
+        </article>
+        {%- endfor %}
+      </div>
+    </div>
+  </section>
+  {%- endfor %}
+
+  <section class="page-section">
+    <div class="container">
+      <p class="lit-foot">ここに挙げた用語は、2026年10月30日の講習会「質的研究者のためのAIリテラシー」で扱った内容をもとにしている。数字や出来事は講習会の時点のものである。講習会の内容を話題ごとに書き直した記事は、<a href="{{ '/articles/' | relative_url }}#ai-literacy-2026">研究ノート</a>にある。</p>
+    </div>
+  </section>
+</main>

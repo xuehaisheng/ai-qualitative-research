@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 230" width="860" height="230" role="img" aria-label="質的研究者の仕事のうち、AIに任せやすそうな作業と人に残りそうな作業の候補" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">
+<title>質的研究者の仕事のうち、AIに任せやすそうな作業と人に残りそうな作業の候補</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666666"/></marker></defs>
+<rect width="860" height="230" fill="#ffffff"/>
+<text x="30" y="34" font-size="16" fill="#2f5fb3" text-anchor="start" font-weight="700" >AIに任せやすそうな作業（候補）</text>
+<text x="450" y="34" font-size="16" fill="#b8612a" text-anchor="start" font-weight="700" >人に残りそうな作業（候補）</text>
+<rect x="30" y="52" width="103" height="42" rx="6" fill="#e9eef8" stroke="#2f5fb3" stroke-width="1" />
+<text x="81.5" y="79" font-size="15" fill="#1a1a1a" text-anchor="middle" font-weight="400" >文字起こし</text>
+<rect x="141" y="52" width="58" height="42" rx="6" fill="#e9eef8" stroke="#2f5fb3" stroke-width="1" />
+<text x="170.0" y="79" font-size="15" fill="#1a1a1a" text-anchor="middle" font-weight="400" >翻訳</text>
+<rect x="207" y="52" width="103" height="42" rx="6" fill="#e9eef8" stroke="#2f5fb3" stroke-width="1" />
+<text x="258.5" y="79" font-size="15" fill="#1a1a1a" text-anchor="middle" font-weight="400" >文献の要約</text>
+<rect x="30" y="106" width="178" height="42" rx="6" fill="#e9eef8" stroke="#2f5fb3" stroke-width="1" />
+<text x="119.0" y="133" font-size="15" fill="#1a1a1a" text-anchor="middle" font-weight="400" >コーディングの下書き</text>
+<rect x="216" y="106" width="103" height="42" rx="6" fill="#e9eef8" stroke="#2f5fb3" stroke-width="1" />
+<text x="267.5" y="133" font-size="15" fill="#1a1a1a" text-anchor="middle" font-weight="400" >文章の推敲</text>
+<rect x="450" y="52" width="180" height="42" rx="6" fill="#f8ece4" stroke="#b8612a" stroke-width="1" />
+<text x="540" y="79" font-size="15" fill="#1a1a1a" text-anchor="middle" font-weight="400" >フィールドに入る</text>
+<rect x="640" y="52" width="180" height="42" rx="6" fill="#f8ece4" stroke="#b8612a" stroke-width="1" />
+<text x="730" y="79" font-size="15" fill="#1a1a1a" text-anchor="middle" font-weight="400" >関係を築く</text>
+<rect x="450" y="106" width="180" height="42" rx="6" fill="#f8ece4" stroke="#b8612a" stroke-width="1" />
+<text x="540" y="133" font-size="15" fill="#1a1a1a" text-anchor="middle" font-weight="400" >解釈する</text>
+<rect x="640" y="106" width="180" height="42" rx="6" fill="#f8ece4" stroke="#b8612a" stroke-width="1" />
+<text x="730" y="133" font-size="15" fill="#1a1a1a" text-anchor="middle" font-weight="400" >倫理的に判断する</text>
+<text x="30" y="190" font-size="14" fill="#666666" text-anchor="start" font-weight="400" >答えではなく、話し合いのきっかけ。「コーディングはどちらに入るか」「解釈は本当にAIにできないのか」。</text>
+<text x="30" y="214" font-size="13" fill="#666666" text-anchor="start" font-weight="400" >左右の分け方は講習会での問いかけ。Anthropic（2026年3月）の指標そのものではない。</text>
+</svg>

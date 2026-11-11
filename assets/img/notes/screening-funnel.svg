@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 170" width="860" height="170" role="img" aria-label="文献の選別：522件から140篇、32篇、29篇、28篇へ" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">
+<title>文献の選別：522件から140篇、32篇、29篇、28篇へ</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666666"/></marker></defs>
+<rect width="860" height="170" fill="#ffffff"/>
+<rect x="20" y="20.0" width="140" height="120.0" rx="6" fill="#a7bae0" stroke="none" stroke-width="1" />
+<text x="90" y="86" font-size="20" fill="#ffffff" text-anchor="middle" font-weight="700" >522件</text>
+<text x="90" y="150" font-size="14" fill="#666666" text-anchor="middle" font-weight="400" >重複除去後</text>
+<line x1="164" y1="80" x2="184" y2="80" stroke="#666666" stroke-width="1.5" stroke-linecap="round" marker-end="url(#ah)"/>
+<rect x="188" y="41.69542001503005" width="140" height="76.6091599699399" rx="6" fill="#a7bae0" stroke="none" stroke-width="1" />
+<text x="258" y="86" font-size="20" fill="#1a1a1a" text-anchor="middle" font-weight="700" >140篇</text>
+<text x="258" y="150" font-size="14" fill="#666666" text-anchor="middle" font-weight="400" >題目・抄録で</text>
+<line x1="332" y1="80" x2="352" y2="80" stroke="#666666" stroke-width="1.5" stroke-linecap="round" marker-end="url(#ah)"/>
+<rect x="356" y="53.85827970937689" width="140" height="52.283440581246225" rx="6" fill="#a7bae0" stroke="none" stroke-width="1" />
+<text x="426" y="86" font-size="20" fill="#1a1a1a" text-anchor="middle" font-weight="700" >32篇</text>
+<text x="426" y="150" font-size="14" fill="#666666" text-anchor="middle" font-weight="400" >論考に限定</text>
+<line x1="500" y1="80" x2="520" y2="80" stroke="#666666" stroke-width="1.5" stroke-linecap="round" marker-end="url(#ah)"/>
+<rect x="524" y="54.39339828220179" width="140" height="51.21320343559643" rx="6" fill="#a7bae0" stroke="none" stroke-width="1" />
+<text x="594" y="86" font-size="20" fill="#1a1a1a" text-anchor="middle" font-weight="700" >29篇</text>
+<text x="594" y="150" font-size="14" fill="#666666" text-anchor="middle" font-weight="400" >全文を入手</text>
+<line x1="668" y1="80" x2="688" y2="80" stroke="#666666" stroke-width="1.5" stroke-linecap="round" marker-end="url(#ah)"/>
+<rect x="692" y="54.57787499330523" width="140" height="50.84425001338954" rx="6" fill="#2f5fb3" stroke="none" stroke-width="1" />
+<text x="762" y="86" font-size="20" fill="#ffffff" text-anchor="middle" font-weight="700" >28篇</text>
+<text x="762" y="150" font-size="14" fill="#666666" text-anchor="middle" font-weight="400" >分析対象</text>
+</svg>
