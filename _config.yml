@@ -13,3 +13,5 @@ defaults:
       type: "posts"
     values:
       layout: post
+      permalink: /articles/:title/
+      body_class: post-page

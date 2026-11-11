@@ -1,0 +1,59 @@
+---
+layout: default
+body_class: post-page
+---
+{%- assign series = site.data.series[page.series] -%}
+{%- assign topic = nil -%}
+{%- if series -%}{%- assign topic = series.topics | where: "key", page.topic | first -%}{%- endif -%}
+<main class="page-main">
+  <section class="page-hero">
+    <div class="container">
+      <div class="section-panel page-heading">
+        <div class="eyebrow">{% if series %}{{ series.title }}{% if topic %} ／ {{ topic.name }}{% endif %}{% else %}Article{% endif %}</div>
+        <h1>{{ page.title }}</h1>
+        <p class="post-byline">{{ page.date | date: "%Y.%m.%d" }}{% if page.author %}　{{ page.author }}{% endif %}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+      <article class="post-shell">
+        <div class="post-body">
+{{ content }}
+        </div>
+      </article>
+{%- if series %}
+{%- assign series_posts = site.posts | where: "series", page.series | sort: "order" -%}
+{%- assign current = 0 -%}
+{%- for p in series_posts -%}{%- if p.url == page.url -%}{%- assign current = forloop.index0 -%}{%- endif -%}{%- endfor -%}
+{%- assign prev_i = current | minus: 1 -%}
+{%- assign next_i = current | plus: 1 -%}
+{%- assign topic_posts = series_posts | where: "topic", page.topic %}
+
+      <nav class="post-nav" aria-label="Series navigation">
+        {%- if current > 0 -%}{%- assign prev = series_posts[prev_i] %}
+        <a class="prev" href="{{ prev.url | relative_url }}"><span>前の記事</span>{{ prev.title }}</a>
+        {%- endif -%}
+        {%- if next_i < series_posts.size -%}{%- assign next = series_posts[next_i] %}
+        <a class="next" href="{{ next.url | relative_url }}"><span>次の記事</span>{{ next.title }}</a>
+        {%- endif %}
+      </nav>
+
+      <aside class="series-box">
+        <div class="eyebrow">Series</div>
+        <p>{{ series.note }}</p>
+        {%- if topic %}
+        <p>「{{ topic.name }}」の記事</p>
+        <ol>
+          {%- for p in topic_posts %}
+          <li{% if p.url == page.url %} class="is-current"{% endif %}><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+          {%- endfor %}
+        </ol>
+        {%- endif %}
+        <p style="margin-top:16px"><a href="{{ '/articles/' | relative_url }}#{{ page.series }}">シリーズの全記事（{{ series_posts.size }}本）を見る</a></p>
+      </aside>
+{%- endif %}
+    </div>
+  </section>
+</main>
