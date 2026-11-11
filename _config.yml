@@ -7,6 +7,11 @@ baseurl: "/ai-qualitative-research"
 markdown: kramdown
 permalink: pretty
 
+collections:
+  wiki:
+    output: true
+    permalink: /literacy/:name/
+
 defaults:
   - scope:
       path: ""
@@ -15,3 +20,9 @@ defaults:
       layout: post
       permalink: /articles/:title/
       body_class: post-page
+  - scope:
+      path: ""
+      type: "wiki"
+    values:
+      layout: wiki
+      body_class: wiki-page

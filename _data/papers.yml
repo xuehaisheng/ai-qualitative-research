@@ -1,0 +1,344 @@
+# AI×質的研究の文献。group: essays（方法論的な論考）/ comparison（AIと人間の分析の比較研究）/ other（その他の論考・指針）
+# meta: true は 薛・梶原・豐田（2026）の質的メタ統合の分析対象28篇
+- id: atmawijaya2026
+  group: "essays"
+  cite: "Atmawijaya (2026)"
+  year: 2026
+  apa: "Atmawijaya, T. D. (2026). Between code and context: Empowering qualitative researchers to leverage AI with rigor and responsibility [Review of the book AI for qualitative research: A hands-on guide for management scholars, by D. Garcia Quevedo & J. Kuri]. The Qualitative Report, 31(5), 5920–5929."
+  doi: "https://doi.org/10.46743/1052-0147.8934"
+  summary: "経営学の研究者向けに、LLMを質的分析に使うための入門書（Garcia Quevedo & Kuri, 2026）を紹介する書評。理論と実践の二部構成の本で、解釈の深みを保ちながら大量のテキストに取り組む方法を変えうると評価している。"
+  tags: ["書評", "経営学", "実践"]
+  meta: true
+- id: autenrieth2026
+  group: "essays"
+  cite: "Autenrieth et al. (2026)"
+  year: 2026
+  apa: "Autenrieth, D., Autenrieth, N., & Farsani, D. (2026). From metrics to meaning: Large language models and the computational turn in embodied educational research. Frontiers in Language Sciences, 5, Article 1753250."
+  doi: "https://doi.org/10.3389/flang.2026.1753250"
+  summary: "教育研究では、量的指標は規模があるが深みに欠け、質的探究は深いが広げにくい。著者らは身体化認知の立場から「計算論的解釈学」を提案し、LLMとマルチモーダルAIで、解釈の深さを保ったまま大規模な分析を行う三つの方法を示す。「機械は信号を見つけるが、意味を与えるのは人である」。"
+  tags: ["教育", "方法論", "推進"]
+  meta: true
+- id: baez2026
+  group: "essays"
+  cite: "Báez et al. (2026)"
+  year: 2026
+  apa: "Báez, J. C., Salvo, J., & Lester, J. N. (2026). Addressing the special issue: Intersections (existing, emerging, and imagined) between artificial intelligence and qualitative health research. Qualitative Health Research, 36(2–3), 140–144."
+  doi: "https://doi.org/10.1177/10497323261417532a"
+  summary: "Qualitative Health Research誌のAI特集号の序文。AIを採用か拒否かの二択で扱わず、認識論・方法論・倫理の問いを立てる批判的探究の対象として位置づける。対立しがちな多様な立場を「大きなテント」に集めたと述べる。"
+  tags: ["特集序文", "健康研究", "倫理"]
+  meta: true
+- id: bergman2024
+  group: "essays"
+  cite: "Bergman et al. (2024)"
+  year: 2024
+  apa: "Bergman, A. J., McNabb, K. C., Relf, M. V., & Dredze, M. H. (2024). “Where no one has gone before”: Questions to ensure the ethical, rigorous, and thoughtful application of artificial intelligence in the analysis of HIV research. Journal of the Association of Nurses in AIDS Care, 35(5), 450–455."
+  doi: "https://doi.org/10.1097/jnc.0000000000000483"
+  summary: "HIV研究の質的分析でAIによるコーディングを使うことの賛否を検討した論考。研究課題と認識論に照らして、AIをどこまで使うかを判断するための問いのリストを示す。AIコーディングが適切な場面もあるが、研究の目的と認識論に合っていることが条件だとする。"
+  tags: ["健康研究", "倫理", "指針"]
+  meta: true
+- id: christou2026
+  group: "essays"
+  cite: "Christou (2026)"
+  year: 2026
+  apa: "Christou, P. A. (2026). Reconfiguring reflexivity in the era of AI: From “turning back” to “looking forward” through constructivist and posthumanist lenses. Qualitative Inquiry."
+  doi: "https://doi.org/10.1177/10778004261445052"
+  summary: "生成AIは反省性（リフレクシビティ）を揺るがし、組み替える。構成主義から見れば、認知の外部化やスピード重視の文化で反省性を損ないうる。ポストヒューマニズムから見れば、AIは関係的な反省性の対話者にもなる。質的研究の成果が将来のAIの学習データになる以上、反省性は「ふり返る」だけでなく「先を見る」ものになる必要があると論じる。"
+  tags: ["反省性", "理論"]
+  meta: true
+- id: dahal2024
+  group: "essays"
+  cite: "Dahal (2024)"
+  year: 2024
+  apa: "Dahal, N. (2024). How can generative AI (GenAI) enhance or hinder qualitative studies? A critical appraisal from South Asia, Nepal. The Qualitative Report, 29(3), 722–733."
+  doi: "https://doi.org/10.46743/2160-3715/2024.6637"
+  summary: "南アジア・ネパールの立場から、質的研究での生成AIの利用状況、長所、限界、倫理的ジレンマを検討したコメンタリー。共著者、対話の場、研究助手としてのAIが研究を助けもし妨げもすることを論じ、AIの使用を謝辞でどう明示するかも扱う。"
+  tags: ["倫理", "グローバル・サウス"]
+  meta: true
+- id: dahal2025
+  group: "essays"
+  cite: "Dahal et al. (2025)"
+  year: 2025
+  apa: "Dahal, N., Hasan, M. K., Ounissi, A., Haque, M. N., & Kapar, H. (2025). Navigating the meta-crisis of generativity: Adapting qualitative research quality criteria in the era of generative AI. Frontiers in Research Metrics and Analytics, 10, Article 1685968."
+  doi: "https://doi.org/10.3389/frma.2025.1685968"
+  summary: "デンジンとリンカンの三つの危機（表象・正当化・実践）が生成AIで重なり合う状況を「生成性のメタクライシス」と呼ぶ。立ち位置の保持、アルゴリズムの監査、参加の透明性などを提案し、信用性や反省性といった質の基準を、アルゴリズムの説明責任を含む形に広げる。"
+  tags: ["質の基準", "方法論"]
+  meta: true
+- id: davison2024
+  group: "essays"
+  cite: "Davison et al. (2024)"
+  year: 2024
+  apa: "Davison, R. M., Chughtai, H., Nielsen, P., Marabelli, M., Iannacci, F., van Offenbeek, M., Tarafdar, M., Trenz, M., Techatassanasoontorn, A. A., Díaz Andrade, A., & Panteli, N. (2024). The ethics of using generative AI for qualitative data analysis. Information Systems Journal, 34(5), 1433–1439."
+  doi: "https://doi.org/10.1111/isj.12504"
+  summary: "情報システム分野の編集者・研究者11名による論説。生成AIを質的データ分析に使うことの倫理を論じている。"
+  tags: ["倫理", "情報システム"]
+  meta: true
+- id: depaoli2026a
+  group: "essays"
+  cite: "De Paoli (2026a)"
+  year: 2026
+  apa: "De Paoli, S. (2026a). Can machines perform a qualitative data analysis? Reading the debate with Alan Turing. Social Science Computer Review."
+  doi: "https://doi.org/10.1177/08944393261451707"
+  summary: "LLMを質的分析に使うことを否定する議論は、問いの立て方を誤っていると論じる。チューリングの「計算機械と知能」にならい、「機械に原理的に分析ができるか」ではなく、「人とLLMが協働して、人間の分析者に匹敵する分析ができるか」を実証で問うべきだとする。反対論には、チューリングと同じ文体で一つずつ答えている。"
+  tags: ["反論", "実証"]
+  meta: true
+- id: depaoli2026b
+  group: "essays"
+  cite: "De Paoli (2026b)"
+  year: 2026
+  apa: "De Paoli, S. (2026b). Why we should reject to reject the use of generative artificial intelligence in qualitative analysis: A response to Jowsey, Braun, Clarke, Lupton, and Fine (2025). Qualitative Inquiry."
+  doi: "https://doi.org/10.1177/10778004261425137"
+  summary: "ジョウジーらの拒否声明への応答。声明の懸念は方法論の形をとっているが、実は哲学的な前提に依拠しており、教条になりかねないと批判する。形而上学的な根拠で生成AIを禁じることは、質的分析の議論と革新を妨げると主張する。"
+  tags: ["反論", "拒否声明への応答"]
+  meta: true
+- id: duke2026
+  group: "essays"
+  cite: "Duke (2026)"
+  year: 2026
+  apa: "Duke, M. R. (2026). Artificial intelligence and the end(s) of qualitative data analysis. Human Organization, 85(1), 8–10."
+  doi: "https://doi.org/10.1080/00187259.2025.2546439"
+  summary: "AIの分析ツールに頼りすぎると、「薄い記述」が「十分に良い」成果として当たり前になる。語りをどう扱うかについての研究者と参加者の約束も迂回され、分析の技能が失われ、その作業をする人が疎外される。無批判な使用は、質的研究の存在論と認識論の土台そのものを問い直すことになる。"
+  tags: ["慎重", "人類学"]
+  meta: true
+- id: friese2026
+  group: "essays"
+  cite: "Friese et al. (2026)"
+  year: 2026
+  apa: "Friese, S., Nguyen-Trung, K., Powell, S., & Morgan, D. L. (2026). Beyond binary positions: Making space for critical and reflexive GenAI integration in qualitative research. Qualitative Inquiry."
+  doi: "https://doi.org/10.1177/10778004261429393"
+  summary: "拒否声明への応答。技術を全面的に拒否することは、方法の発展を閉ざし、質的研究を広い認識論的発展から孤立させる。批判的関与、方法論的リテラシー、倫理的責任にもとづく立場を提唱し、研究者が主導・管理するかぎり、生成AIはCAQDASと同じく正当な分析支援になりうるとする。"
+  tags: ["反論", "拒否声明への応答", "CAQDAS"]
+  meta: true
+- id: goretzki2026
+  group: "essays"
+  cite: "Goretzki & Mahlendorf (2026)"
+  year: 2026
+  apa: "Goretzki, L., & Mahlendorf, M. D. (2026). GenAI for qualitative management accounting research: A commentary. Management Accounting Research, 68, Article 100962."
+  doi: "https://doi.org/10.1016/j.mar.2026.100962"
+  summary: "管理会計の質的研究で生成AIが使える場面（インタビューの拡張、AIによるビネットの作成、新しい解釈への反論役など）を検討する。一方で、統計的な規則性にもとづく出力は分析を表面的なパターンに向かわせうること、解釈や執筆をAIに委ねると、洞察が生まれる「苦闘」を手放すことになりうることを指摘する。"
+  tags: ["経営学", "慎重"]
+  meta: true
+- id: hitch2024
+  group: "essays"
+  cite: "Hitch (2024)"
+  year: 2024
+  apa: "Hitch, D. (2024). Artificial intelligence augmented qualitative analysis: The way of the future? Qualitative Health Research, 34(7), 595–606."
+  doi: "https://doi.org/10.1177/10497323231217392"
+  summary: "NLPにもとづくAIを説明し、健康研究の再帰的テーマ分析にとっての利点と限界を論じる。ChatGPTで再帰的テーマ分析を補う実例を示し、AIを使い始めたい研究者向けの実践的な手引きを提供する。"
+  tags: ["健康研究", "実践", "推進"]
+  meta: true
+- id: ibrahim2026
+  group: "essays"
+  cite: "Ibrahim et al. (2026)"
+  year: 2026
+  apa: "Ibrahim, E. I., Nelson, L. K., & Voyer, A. (2026). Should generative AI be used in reflexive qualitative research? Qualitative Inquiry."
+  doi: "https://doi.org/10.1177/10778004261456208"
+  summary: "生成AIは単一の手法ではなく、多くがオープンで設定可能なTransformer系モデルの集まりだと指摘する。LLMを計算論的テキスト分析の長い系譜に置き、文脈と全体性への注意は質的な認識論と合うとする。判断を代替せずに再帰的分析を支える使い方を示し、「技術的リフレクシビティ」を提案する。"
+  tags: ["反論", "反省性"]
+  meta: true
+- id: jones2025
+  group: "essays"
+  cite: "Jones (2025)"
+  year: 2025
+  apa: "Jones, K. M. L. (2025). Generative AI in qualitative research and related transparency problems: A novel heuristic for disclosing uses of AI. International Journal of Qualitative Methods, 24."
+  doi: "https://doi.org/10.1177/16094069251404329"
+  summary: "生成AIの不透明さは、質的研究の方法の透明性を損なう。既存の報告ガイドラインはAIの開示を想定していない。研究チーム、参加者とのやりとり、研究デザイン、データの扱い、データ分析の五つの領域にわたる20の問いと開示の方法を、新しいヒューリスティックとして提示する。"
+  tags: ["透明性", "指針"]
+  meta: true
+- id: jowsey2025reject
+  group: "essays"
+  cite: "Jowsey et al. (2025)"
+  year: 2025
+  apa: "Jowsey, T., Braun, V., Clarke, V., Lupton, D., & Fine, M. (2025). We reject the use of generative artificial intelligence for reflexive qualitative research. Qualitative Inquiry."
+  doi: "https://doi.org/10.1177/10778004251401851"
+  summary: "32か国419名の質的研究者による拒否声明。再帰的テーマ分析などは、主観をもち、位置づけられた、再帰的な研究者を必要とする人間の研究実践であり、生成AIの使用は方法論的に一致しないとする。さらに社会正義と環境正義の観点からも拒否する。"
+  tags: ["拒否", "拒否声明"]
+  meta: true
+- id: kempny2026
+  group: "essays"
+  cite: "Kempny et al. (2026)"
+  year: 2026
+  apa: "Kempny, C., Yilmaz-Aslan, Y., & Brzoska, P. (2026). Potenziale und Risiken beim Einsatz von KI in der qualitativen Forschung [Potentials and risks of using AI in qualitative research]. Zeitschrift für Evidenz, Fortbildung und Qualität im Gesundheitswesen, 200, 76–82."
+  doi: "https://doi.org/10.1016/j.zefq.2025.10.004"
+  summary: "カテゴリーの作成、コーディング、解釈といった研究の段階ごとに、AIの可能性と限界を検討するドイツ語の論考。AIは別の視点を出す「二人目・三人目の意見」として、省察のための補助に使えるが、質的研究の中核の原則は自動化できないとする。"
+  tags: ["健康研究", "慎重", "ドイツ語"]
+  meta: true
+- id: lee2024
+  group: "essays"
+  cite: "Lee et al. (2024)"
+  year: 2024
+  apa: "Lee, V. V., van der Lubbe, S. C. C., Goh, L. H., & Valderas, J. M. (2024). Harnessing ChatGPT for thematic analysis: Are we ready? Journal of Medical Internet Research, 26, Article e54974."
+  doi: "https://doi.org/10.2196/54974"
+  summary: "医学研究のテーマ分析の三つの段階（トランスクリプトの直接のコーディング、コードリストからのテーマ生成、論文用の引用の前処理）でのChatGPTの使用を検討する見解論文。訓練用のインタビュー記録の生成にも触れる。ChatGPTは参加者の文脈を完全には捉えられないが、分析チームの一員として三角測量に貢献できるとする。"
+  tags: ["健康研究", "推進", "実践"]
+  meta: true
+- id: mendoza2026
+  group: "essays"
+  cite: "Mendoza & Quilantang (2026)"
+  year: 2026
+  apa: "Mendoza, K. P. R., & Quilantang, R. F. (2026). In relation, not replacement: A reflexive case for generative AI in qualitative research. Qualitative Research Journal."
+  doi: "https://doi.org/10.1108/QRJ-11-2025-0428"
+  summary: "技術による媒介が意味の生成を損なう、という前提に異議を唱え、媒介こそが反省性の条件だとする。関係的実践、部分的修復、再帰的多元主義という三つの概念を示し、AIとの「生産的な摩擦」が判断を鋭くすると論じる。グローバル・サウスや神経多様性のある研究者など、構造的な制約の下で働く研究者への公正にも触れる。"
+  tags: ["反論", "反省性", "公正"]
+  meta: true
+- id: nguyen2026bas
+  group: "essays"
+  cite: "Nguyen & Welch (2026)"
+  year: 2026
+  apa: "Nguyen, D. C., & Welch, C. (2026). Engaged and responsible scholarship: Why qualitative researchers should not embrace GenAI. Business & Society, 65(7), 1787–1792."
+  doi: "https://doi.org/10.1177/00076503251386539"
+  summary: "生成AIを質的研究者と研究対象のあいだに置くことは、意味があり認識論的に健全な知が生まれる条件を根本的に置き換え、歪めると論じる。そうした媒介は、責任ある研究の原則とも相容れないとする。分析は「自動化すべき隘路ではなく、研究の場への欠かせない没入」である。"
+  tags: ["拒否に近い", "経営学"]
+  meta: true
+- id: nolan2025
+  group: "essays"
+  cite: "Nolan (2025)"
+  year: 2025
+  apa: "Nolan, R. (2025). “Can’t help myself”: On generative AI, the performance of qualitative research and slow scholarship. Qualitative Research, 25(6), 1473–1479."
+  doi: "https://doi.org/10.1177/14687941241308696"
+  summary: "孫原と彭禹のアート作品「Can't Help Myself」をメタファーに、生成AI、学術界の高まる要求、スロー・スカラシップの交わるところを論じる。AIに圧倒される恐れから離れ、深みと熟考を可能にする形でAIを取り入れることを提案する。"
+  tags: ["スロー・スカラシップ", "エッセイ"]
+  meta: true
+- id: pillai2025
+  group: "essays"
+  cite: "Pillai & Matus (2025)"
+  year: 2025
+  apa: "Pillai, V. S., & Matus, K. (2025). Regulatory solutions to alleviate the risks of generative AI models in qualitative research. Journal of Asian Public Policy, 18(2), 482–505."
+  doi: "https://doi.org/10.1080/17516234.2024.2399098"
+  summary: "査読者、研究者、研究対象者（3R）に及ぶ生成AIのリスクを、文献調査、質的研究者とのリスク・ワークショップ、インタビューから整理する。EU、シンガポール、米国、英国、中国のAI政策と比べて規制の空白を特定し、ソフトローからハードローまでの連続体の上に、必要な規制介入を示す。"
+  tags: ["規制", "公共政策"]
+  meta: true
+- id: pink2025
+  group: "essays"
+  cite: "Pink (2025)"
+  year: 2025
+  apa: "Pink, S. (2025). Artificial intelligence and the futures turn: An anticipatory infrastructure for qualitative methods. Qualitative Research in Psychology."
+  doi: "https://doi.org/10.1080/14780887.2025.2570167"
+  summary: "AIによる予測が「未来の知識」の市場を占めつつある状況で、社会科学の未来研究の中にAIを位置づける。質的な未来志向のチーム研究でAIを使うことの「副作用」を再帰的に考察し、生成AIを、未来を想像するための予見的インフラとして捉える。"
+  tags: ["未来研究", "理論"]
+  meta: true
+- id: prahl2026
+  group: "essays"
+  cite: "Prahl (2026)"
+  year: 2026
+  apa: "Prahl, A. (2026). The AI-Reflexivity Checklist (ARC): A pre-analysis pause for LLM-assisted coding. Qualitative Health Research, 36(2–3), 181–190."
+  doi: "https://doi.org/10.1177/10497323251401503"
+  summary: "LLMを使ったコーディングの前に立ち止まるためのチェックリスト（ARC）を提案する。記述の範囲、文脈による意味の変動、経験の深さ、倫理的な曝露、出力の可逆性の五つの領域を順に確かめ、自動化してよいか、支援にとどめるか、人間主導にするかを決める。「認識できることは、責任を負うことではない」。"
+  tags: ["指針", "反省性", "健康研究"]
+  meta: true
+- id: quinn2026
+  group: "essays"
+  cite: "Quinn et al. (2026)"
+  year: 2026
+  apa: "Quinn, S., Richards, N., Williams, J., Mogan, C., Myall, M., Lloyd-Williams, M., & Calman, L. (2026). Navigating the rise of artificial intelligence and imposter participants in qualitative health research. International Journal of Qualitative Methods, 25."
+  doi: "https://doi.org/10.1177/16094069261431990"
+  summary: "英国のオンライン・インタビュー研究で、LLMで生成された、あるいは支援された偽の応募が数百件届いた経験を報告する。定型的な表現、病気の曖昧な説明、郵便番号の異常などの兆候と、デジタル排除に配慮しながら「なりすまし参加者」を見分ける手順を示す。警戒と信頼のあいだの倫理的な緊張も論じる。"
+  tags: ["健康研究", "データ収集", "倫理"]
+  meta: true
+- id: roberts2024
+  group: "essays"
+  cite: "Roberts et al. (2024)"
+  year: 2024
+  apa: "Roberts, J., Baker, M., & Andrew, J. (2024). Artificial intelligence and qualitative research: The promise and perils of large language model (LLM) “assistance.” Critical Perspectives on Accounting, 99, Article 102722."
+  doi: "https://doi.org/10.1016/j.cpa.2024.102722"
+  summary: "LLMの一見人間らしい性質は、人間がコミュニケーションの意図を、模倣にすぎない能力に投影した結果だと論じる。確信に満ちた口調、幻覚と迎合の傾向、倫理感覚と責任能力の欠如が、その人間らしさを欺瞞的にする。最後に、質的研究者として人間にしかできないことを考察している。"
+  tags: ["慎重", "会計学"]
+  meta: true
+- id: sibeoni2026
+  group: "essays"
+  cite: "Sibeoni et al. (2026)"
+  year: 2026
+  apa: "Sibeoni, J., Verneuil, L., Manolios, E., Meunier, J.-P., Ponsard, C., Mathé, J., & Revah-Lévy, A. (2026). AI and qualitative health research: Working through a necessary grieving process. Qualitative Health Research."
+  doi: "https://doi.org/10.1177/10497323261417237"
+  summary: "キューブラー＝ロスの悲嘆の五段階（否認・怒り・取引・抑うつ・受容）を使って、AIをめぐる分野の緊張を描く。問われているのは効率ではなく、質的研究者としてのアイデンティティそのものだとする。集合的なプロンプト作成、出力を批判的に点検する「コーディング・リトリート」、明示的な開示などの実践を提案する。AIは「ある種の計算上の鏡として働きうる」。"
+  tags: ["反論", "健康研究", "アイデンティティ"]
+  meta: true
+- id: prescott2024
+  group: "comparison"
+  cite: "Prescott et al. (2024)"
+  year: 2024
+  apa: "Prescott, et al. (2024). Comparing the efficacy and efficiency of human and generative AI: Qualitative thematic analyses. JMIR AI, 3, e54482."
+  doi: "https://doi.org/10.2196/54482"
+  summary: "HIV支援のSMS文40件を、ChatGPT・Bardと人間で分析して比べた。帰納的テーマの71%が一致し、コード単位の一致は37〜47%。所要時間は約20分と約570分だった。"
+  tags: ["比較研究", "健康研究"]
+  meta: false
+- id: sakaguchi2025
+  group: "comparison"
+  cite: "Sakaguchi et al. (2025)"
+  year: 2025
+  apa: "Sakaguchi, K., Sakama, R., & Watari, T. (2025). Evaluating ChatGPT in qualitative thematic analysis with human researchers in the Japanese clinical context and its cultural interpretation challenges: Comparative qualitative study. Journal of Medical Internet Research, 27, e71521."
+  doi: "https://doi.org/10.2196/71521"
+  summary: "日本の病院での面接30件を、ChatGPT-4と人間の研究者で分析して比べた。記述的なテーマは80%以上一致したが、文化や感情の解釈が要るテーマの一致は約30%にとどまった。"
+  tags: ["比較研究", "日本"]
+  meta: false
+- id: mizumoto2025
+  group: "comparison"
+  cite: "Mizumoto & Teng (2025)"
+  year: 2025
+  apa: "Mizumoto, A., & Teng, M. F. (2025). Large language models fall short in classifying learners' open-ended responses. Research Methods in Applied Linguistics, 4(2), 100210."
+  doi: "https://doi.org/10.1016/j.rmal.2025.100210"
+  summary: "日本の大学生143名の自由記述を、複数のLLMで分類した。最も良いモデルでも一致度はκ=0.68で、強い一致の基準（0.8）には届かなかった。"
+  tags: ["比較研究", "日本", "教育"]
+  meta: false
+- id: bennis2025
+  group: "comparison"
+  cite: "Bennis & Mouwafaq (2025)"
+  year: 2025
+  apa: "Bennis, I., & Mouwafaq, S. (2025). Advancing AI-driven thematic analysis in qualitative research: A comparative study of nine generative models on cutaneous leishmaniasis data. BMC Medical Informatics and Decision Making."
+  doi: "https://doi.org/10.1186/s12911-025-02961-5"
+  summary: "皮膚リーシュマニア症の傷あとの心理社会的影響についての回答448件を、9つの生成AIで分析して比べた。一部のモデルは、専門家の分析と完全に一致した（Jaccard係数1.00）。"
+  tags: ["比較研究", "健康研究"]
+  meta: false
+- id: lockwood2026
+  group: "comparison"
+  cite: "Lockwood et al. (2026)"
+  year: 2026
+  apa: "Lockwood, et al. (2026). Human versus machine: A comparative analysis of qualitative coding by humans and ChatGPT-4. School Psychology, 41(2), 161–172."
+  doi: "https://doi.org/10.1037/spq0000715"
+  summary: "学校心理学の教員60名の自由記述を、ChatGPT-4と初心者の人間でコーディングして比べた。結果はおおむね似ていて、AIはずっと速かったが、過程が見えず、一部のコードが不明瞭だった。"
+  tags: ["比較研究", "教育"]
+  meta: false
+- id: jowsey2025frank
+  group: "comparison"
+  cite: "Jowsey et al. (2025)"
+  year: 2025
+  apa: "Jowsey, T., et al. (2025). Frankenstein, thematic analysis and generative artificial intelligence. PLOS ONE, 20(9), e0330217."
+  doi: ""
+  summary: "分析データを公開している健康研究5本について、Microsoft Copilotに同じデータを各3回分析させ、元の論文の人間の分析と比べた。Copilotの引用の平均58%はデータに存在しない捏造で、人間の引用は平均79%が正確だった。Copilotの引用はデータの最初の2〜3ページに偏っていた。"
+  tags: ["比較研究", "健康研究", "拒否"]
+  meta: false
+- id: hill2026
+  group: "comparison"
+  cite: "Hill et al. (2026)"
+  year: 2026
+  apa: "Hill, C., Dahil, A., Simpson, G., Hardisty, D., Keast, J., Pinn, C. K., & Dambha-Miller, H. (2026). Large language models for thematic analysis in healthcare research: A blinded mixed-methods comparison with human analysts. PLOS Digital Health, 5(4), Article e0001189."
+  doi: "https://doi.org/10.1371/journal.pdig.0001189"
+  summary: "フォーカスグループ1回分（7名、約1.2万語）を、ChatGPT-5、Claude 4 Sonnet、QualiGPTと、盲検化された人間の分析者2名で分析した。演繹的コーディングの一致率はAIが93.5%、人間が92.7%で、AIは人間に劣らなかった。帰納的分析で劣らなかったのはChatGPT-5だけで、結論は「代わりではなく、補助として」。"
+  tags: ["比較研究", "健康研究"]
+  meta: false
+- id: levitt2026
+  group: "other"
+  cite: "Levitt (2026)"
+  year: 2026
+  apa: "Levitt, H. M. (2026). A consideration of the ethics and methodological integrity of generative artificial intelligence in qualitative research: Guidelines for Qualitative Psychology. Qualitative Psychology."
+  doi: "https://doi.org/10.1037/qup0000353"
+  summary: "Qualitative Psychology誌の生成AI方針を示した編集論文。倫理、科学性、方法論的整合性、社会的公正、環境の観点から問題を整理し、データの収集・分析、解釈、引用探索などで、AIを一次的または未検証の情報源として使うことを禁じる。翻訳やAI生成内容の引用には限定的な指針を示す。"
+  tags: ["指針", "雑誌の方針"]
+  meta: false
+- id: nguyen2026orm
+  group: "other"
+  cite: "Nguyen & Welch (2026)"
+  year: 2026
+  apa: "Nguyen, D. C., & Welch, C. (2026). Generative artificial intelligence in qualitative data analysis: Analyzing—or just chatting? Organizational Research Methods."
+  doi: "https://doi.org/10.1177/10944281251377154"
+  summary: "生成AIが質的データ分析の「分析ツール」と言えるかを、技術と方法論の両面から検討した。自らの分析、既存研究との比較、質的分析ソフトのAI機能の検証から、LLMのチャットボットは検索、コーディング、意味の解釈、理論的抽象化を安定して担えず、もっともらしい応答が分析に見えること自体が認識論的なリスクを生むと論じる。"
+  tags: ["慎重", "経営学", "実証"]
+  meta: false
+- id: brailas2025
+  group: "other"
+  cite: "Brailas (2025)"
+  year: 2025
+  apa: "Brailas, A. (2025). Artificial intelligence in qualitative research: Beyond outsourcing data analysis to the machine."
+  doi: "https://www.mdpi.com/2813-9844/7/3/78"
+  summary: "AI支援の質的心理学研究の可能性とリスクを、関係論的・社会構成主義的な認識論から検討した。AIを中立で客観的な分析機械とみなす発想を批判し、研究者の解釈、文脈への感受性、反省性、インフォームド・コンセントを保ちながら、AIを発見的な対話相手として慎重に位置づける枠組みを提案する。"
+  tags: ["反省性", "理論", "心理学"]
+  meta: false
