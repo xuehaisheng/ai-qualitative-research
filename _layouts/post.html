@@ -3,13 +3,11 @@ layout: default
 body_class: post-page
 ---
 {%- assign series = site.data.series[page.series] -%}
-{%- assign topic = nil -%}
-{%- if series -%}{%- assign topic = series.topics | where: "key", page.topic | first -%}{%- endif -%}
 <main class="page-main">
   <section class="page-hero">
     <div class="container">
       <div class="section-panel page-heading">
-        <div class="eyebrow">{% if series %}{{ series.title }}{% if topic %} ／ {{ topic.name }}{% endif %}{% else %}Article{% endif %}</div>
+        <div class="eyebrow">{% if series %}{{ series.title }}{% if page.order %} ／ {{ page.order }}{% endif %}{% else %}Research Note{% endif %}</div>
         <h1>{{ page.title }}</h1>
         <p class="post-byline">{{ page.date | date: "%Y.%m.%d" }}{% if page.author %}　{{ page.author }}{% endif %}</p>
       </div>
@@ -28,8 +26,7 @@ body_class: post-page
 {%- assign current = 0 -%}
 {%- for p in series_posts -%}{%- if p.url == page.url -%}{%- assign current = forloop.index0 -%}{%- endif -%}{%- endfor -%}
 {%- assign prev_i = current | minus: 1 -%}
-{%- assign next_i = current | plus: 1 -%}
-{%- assign topic_posts = series_posts | where: "topic", page.topic %}
+{%- assign next_i = current | plus: 1 %}
 
       <nav class="post-nav" aria-label="Series navigation">
         {%- if current > 0 -%}{%- assign prev = series_posts[prev_i] %}
@@ -43,15 +40,12 @@ body_class: post-page
       <aside class="series-box">
         <div class="eyebrow">Series</div>
         <p>{{ series.note }}</p>
-        {%- if topic %}
-        <p>「{{ topic.name }}」の記事</p>
         <ol>
-          {%- for p in topic_posts %}
+          {%- for p in series_posts %}
           <li{% if p.url == page.url %} class="is-current"{% endif %}><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
           {%- endfor %}
         </ol>
-        {%- endif %}
-        <p style="margin-top:16px"><a href="{{ '/articles/' | relative_url }}#{{ page.series }}">シリーズの全記事（{{ series_posts.size }}本）を見る</a></p>
+        <p class="series-links"><a href="{{ '/literacy/' | relative_url }}">AIリテラシーの用語集</a>　<a href="{{ '/' | relative_url }}#events">講習会のスライド（PDF）</a></p>
       </aside>
 {%- endif %}
     </div>

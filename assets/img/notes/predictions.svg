@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 300" width="880" height="300" role="img" aria-label="AIをめぐる二つの予言と、その後に分かったこと" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">
+<title>AIをめぐる二つの予言と、その後に分かったこと</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666666"/></marker></defs>
+<rect width="880" height="300" fill="#ffffff"/>
+<text x="40" y="36" font-size="15" fill="#666666" text-anchor="start" font-weight="700" >予言</text>
+<text x="470" y="36" font-size="15" fill="#666666" text-anchor="start" font-weight="700" >その後</text>
+<rect x="30" y="56" width="400" height="100" rx="8" fill="#f4f2ee" stroke="none" stroke-width="1" />
+<text x="46" y="86" font-size="15" fill="#1a1a1a" text-anchor="start" font-weight="700" >2016年　ヒントン</text>
+<text x="46" y="114" font-size="15" fill="#1a1a1a" text-anchor="start" font-weight="400" >「今すぐ、放射線科医を育てるのを</text>
+<text x="46" y="136" font-size="15" fill="#1a1a1a" text-anchor="start" font-weight="400" >やめるべきだ」</text>
+<line x1="436" y1="106" x2="456" y2="106" stroke="#666666" stroke-width="1.5" stroke-linecap="round" marker-end="url(#ah)"/>
+<rect x="460" y="56" width="390" height="100" rx="8" fill="#eef2fa" stroke="none" stroke-width="1" />
+<text x="476" y="86" font-size="14" fill="#1a1a1a" text-anchor="start" font-weight="400" >メイヨー・クリニックの放射線科医は2016年から</text>
+<text x="476" y="108" font-size="14" fill="#1a1a1a" text-anchor="start" font-weight="400" >55%増え、約400人に。2025年には本人も</text>
+<text x="476" y="130" font-size="14" fill="#1a1a1a" text-anchor="start" font-weight="400" >「言い過ぎた」と認めた</text>
+<rect x="30" y="176" width="400" height="100" rx="8" fill="#f4f2ee" stroke="none" stroke-width="1" />
+<text x="46" y="206" font-size="15" fill="#1a1a1a" text-anchor="start" font-weight="700" >2025年5月　アモデイ</text>
+<text x="46" y="234" font-size="15" fill="#1a1a1a" text-anchor="start" font-weight="400" >「1〜5年で新人ホワイトカラーの仕事の</text>
+<text x="46" y="256" font-size="15" fill="#1a1a1a" text-anchor="start" font-weight="400" >半分が消え、失業率は10〜20%に」</text>
+<line x1="436" y1="226" x2="456" y2="226" stroke="#666666" stroke-width="1.5" stroke-linecap="round" marker-end="url(#ah)"/>
+<rect x="460" y="176" width="390" height="100" rx="8" fill="#eef2fa" stroke="none" stroke-width="1" />
+<text x="476" y="206" font-size="14" fill="#1a1a1a" text-anchor="start" font-weight="400" >2026年3月のAnthropic自身の報告：AIの影響を</text>
+<text x="476" y="228" font-size="14" fill="#1a1a1a" text-anchor="start" font-weight="400" >強く受ける職業でも、失業率の系統的な上昇は</text>
+<text x="476" y="250" font-size="14" fill="#1a1a1a" text-anchor="start" font-weight="400" >まだ見られない</text>
+<text x="30" y="290" font-size="13" fill="#666666" text-anchor="start" font-weight="400" >数字は講習会時点（2026年10月）の報道と各社の発表による。</text>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 330" width="900" height="330" role="img" aria-label="質的メタ統合の五段階で、AIに任せたことと自分で決めたこと" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">
+<title>質的メタ統合の五段階で、AIに任せたことと自分で決めたこと</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666666"/></marker></defs>
+<rect width="900" height="330" fill="#ffffff"/>
+<text x="20" y="96" font-size="16" fill="#2f5fb3" text-anchor="start" font-weight="700" >AI</text>
+<text x="20" y="216" font-size="16" fill="#b8612a" text-anchor="start" font-weight="700" >人</text>
+<text x="136" y="32" font-size="17" fill="#1a1a1a" text-anchor="middle" font-weight="700" >① 検索</text>
+<rect x="60" y="48" width="152" height="96" rx="6" fill="#e9eef8" stroke="none" stroke-width="1" />
+<rect x="60" y="168" width="152" height="96" rx="6" fill="#f8ece4" stroke="none" stroke-width="1" />
+<text x="136" y="88" font-size="12.5" fill="#1a1a1a" text-anchor="middle" font-weight="400" >検索式の案を8通り作り、</text>
+<text x="136" y="109" font-size="12.5" fill="#1a1a1a" text-anchor="middle" font-weight="400" >試して精度を測る</text>
+<text x="136" y="208" font-size="12.5" fill="#1a1a1a" text-anchor="middle" font-weight="400" >何を探すかを決め、</text>
+<text x="136" y="229" font-size="12.5" fill="#1a1a1a" text-anchor="middle" font-weight="400" >最終の検索式を選ぶ</text>
+<text x="304" y="32" font-size="17" fill="#1a1a1a" text-anchor="middle" font-weight="700" >② 選別</text>
+<rect x="228" y="48" width="152" height="96" rx="6" fill="#e9eef8" stroke="none" stroke-width="1" />
+<rect x="228" y="168" width="152" height="96" rx="6" fill="#f8ece4" stroke="none" stroke-width="1" />
+<text x="304" y="88" font-size="12.5" fill="#1a1a1a" text-anchor="middle" font-weight="400" >記録を表にし、題目と</text>
+<text x="304" y="109" font-size="12.5" fill="#1a1a1a" text-anchor="middle" font-weight="400" >抄録を翻訳。PDFも集める</text>
+<text x="304" y="208" font-size="12.5" fill="#1a1a1a" text-anchor="middle" font-weight="400" >3回のふるい分けの</text>
+<text x="304" y="229" font-size="12.5" fill="#1a1a1a" text-anchor="middle" font-weight="400" >判定はすべて自分で</text>
+<text x="472" y="32" font-size="17" fill="#1a1a1a" text-anchor="middle" font-weight="700" >③ 分析</text>
+<rect x="396" y="48" width="152" height="96" rx="6" fill="#e9eef8" stroke="none" stroke-width="1" />
+<rect x="396" y="168" width="152" height="96" rx="6" fill="#f8ece4" stroke="none" stroke-width="1" />
+<text x="472" y="88" font-size="12.5" fill="#1a1a1a" text-anchor="middle" font-weight="400" >複数のエージェントが</text>
+<text x="472" y="109" font-size="12.5" fill="#1a1a1a" text-anchor="middle" font-weight="400" >論文ごとに分析する</text>
+<text x="472" y="208" font-size="12.5" fill="#1a1a1a" text-anchor="middle" font-weight="400" >原文を読み、全ユニット</text>
+<text x="472" y="229" font-size="12.5" fill="#1a1a1a" text-anchor="middle" font-weight="400" >を確認・修正する</text>
+<text x="640" y="32" font-size="17" fill="#1a1a1a" text-anchor="middle" font-weight="700" >④ 統合</text>
+<rect x="564" y="48" width="152" height="96" rx="6" fill="#e9eef8" stroke="none" stroke-width="1" />
+<rect x="564" y="168" width="152" height="96" rx="6" fill="#f8ece4" stroke="none" stroke-width="1" />
+<text x="640" y="88" font-size="12.5" fill="#1a1a1a" text-anchor="middle" font-weight="400" >ベクトル化など、</text>
+<text x="640" y="109" font-size="12.5" fill="#1a1a1a" text-anchor="middle" font-weight="400" >まとめ方の参考を出す</text>
+<text x="640" y="208" font-size="12.5" fill="#1a1a1a" text-anchor="middle" font-weight="400" >四つのメタファーと</text>
+<text x="640" y="229" font-size="12.5" fill="#1a1a1a" text-anchor="middle" font-weight="400" >「〜論」の構成を考える</text>
+<text x="808" y="32" font-size="17" fill="#1a1a1a" text-anchor="middle" font-weight="700" >⑤ 発表</text>
+<rect x="732" y="48" width="152" height="96" rx="6" fill="#e9eef8" stroke="none" stroke-width="1" />
+<rect x="732" y="168" width="152" height="96" rx="6" fill="#f8ece4" stroke="none" stroke-width="1" />
+<text x="808" y="88" font-size="12.5" fill="#1a1a1a" text-anchor="middle" font-weight="400" >ポスターのレイアウト</text>
+<text x="808" y="109" font-size="12.5" fill="#1a1a1a" text-anchor="middle" font-weight="400" >と余白の調整</text>
+<text x="808" y="208" font-size="12.5" fill="#1a1a1a" text-anchor="middle" font-weight="400" >内容に集中する</text>
+<text x="20" y="310" font-size="15" fill="#1a1a1a" text-anchor="start" font-weight="700" >AIが速くしたのは「作業」。何を問い、何を選び、どうまとめるかは、研究者が決めた。</text>
+</svg>

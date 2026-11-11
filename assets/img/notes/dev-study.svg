@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 250" width="860" height="250" role="img" aria-label="熟練の開発者はAIで20%速くなったと感じたが、実際には19%遅くなった" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">
+<title>熟練の開発者はAIで20%速くなったと感じたが、実際には19%遅くなった</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666666"/></marker></defs>
+<rect width="860" height="250" fill="#ffffff"/>
+<text x="30" y="30" font-size="15" fill="#1a1a1a" text-anchor="start" font-weight="700" >AIを使ったときの作業の速さ（METR, 2025。熟練のオープンソース開発者16名）</text>
+<rect x="430" y="70" width="160" height="40" rx="4" fill="#2f5fb3" stroke="none" stroke-width="1" />
+<text x="600" y="97" font-size="15" fill="#1a1a1a" text-anchor="start" font-weight="700" >+20%　速くなった</text>
+<text x="420" y="97" font-size="14" fill="#666666" text-anchor="end" font-weight="400" >開発者自身の感じ方</text>
+<rect x="278" y="140" width="152" height="40" rx="4" fill="#b8612a" stroke="none" stroke-width="1" />
+<text x="268" y="167" font-size="15" fill="#1a1a1a" text-anchor="end" font-weight="700" >−19%　遅くなった</text>
+<text x="440" y="167" font-size="14" fill="#666666" text-anchor="start" font-weight="400" >実際にかかった時間</text>
+<line x1="430" y1="55" x2="430" y2="195" stroke="#1a1a1a" stroke-width="1.2" stroke-linecap="round" />
+<text x="430" y="215" font-size="13" fill="#666666" text-anchor="middle" font-weight="400" >0（AIなしと同じ）</text>
+<text x="30" y="242" font-size="13" fill="#666666" text-anchor="start" font-weight="400" >自分の大きなプロジェクトの実際の課題246件に、AIあり・なしをランダムに割り当てた実験（2025年初め）。</text>
+</svg>

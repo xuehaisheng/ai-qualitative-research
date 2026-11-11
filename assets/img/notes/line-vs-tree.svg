@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" width="900" height="360" role="img" aria-label="一列に並べた図は一本の進歩に見え、枝分かれの図は違いを見せる" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">
+<title>一列に並べた図は一本の進歩に見え、枝分かれの図は違いを見せる</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666666"/></marker></defs>
+<rect width="900" height="360" fill="#ffffff"/>
+<text x="30" y="36" font-size="18" fill="#1a1a1a" text-anchor="start" font-weight="700" >一列に並べると……</text>
+<rect x="30" y="240" width="72" height="60" rx="4" fill="#cfd9ef" stroke="none" stroke-width="1" />
+<text x="66" y="322" font-size="14" fill="#1a1a1a" text-anchor="middle" font-weight="400" >GPT-3.5</text>
+<line x1="106" y1="250.0" x2="126" y2="230.0" stroke="#666666" stroke-width="1.5" stroke-linecap="round" marker-end="url(#ah)"/>
+<rect x="130" y="200" width="72" height="100" rx="4" fill="#cfd9ef" stroke="none" stroke-width="1" />
+<text x="166" y="322" font-size="14" fill="#1a1a1a" text-anchor="middle" font-weight="400" >GPT-4</text>
+<line x1="206" y1="230.0" x2="226" y2="210.0" stroke="#666666" stroke-width="1.5" stroke-linecap="round" marker-end="url(#ah)"/>
+<rect x="230" y="160" width="72" height="140" rx="4" fill="#cfd9ef" stroke="none" stroke-width="1" />
+<text x="266" y="322" font-size="14" fill="#1a1a1a" text-anchor="middle" font-weight="400" >GPT-4o</text>
+<line x1="306" y1="210.0" x2="326" y2="190.0" stroke="#666666" stroke-width="1.5" stroke-linecap="round" marker-end="url(#ah)"/>
+<rect x="330" y="120" width="72" height="180" rx="4" fill="#2f5fb3" stroke="none" stroke-width="1" />
+<text x="366" y="322" font-size="14" fill="#1a1a1a" text-anchor="middle" font-weight="400" >GPT-5</text>
+<text x="30" y="70" font-size="14" fill="#666666" text-anchor="start" font-weight="400" >数字が大きくなるほど能力も上がる、</text>
+<text x="30" y="90" font-size="14" fill="#666666" text-anchor="start" font-weight="400" >一本の道に見える</text>
+<line x1="455" y1="30" x2="455" y2="340" stroke="#d9d9d9" stroke-width="1" stroke-linecap="round" />
+<text x="480" y="36" font-size="18" fill="#1a1a1a" text-anchor="start" font-weight="700" >枝分かれとして見ると……</text>
+<line x1="600" y1="300" x2="600" y2="240" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" />
+<line x1="600" y1="240" x2="530" y2="160" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" />
+<circle cx="530" cy="160" r="5" fill="#b8612a"/>
+<text x="530" y="146" font-size="14" fill="#1a1a1a" text-anchor="middle" font-weight="400" >話し方の温かさ</text>
+<line x1="600" y1="240" x2="660" y2="190" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" />
+<line x1="660" y1="190" x2="630" y2="110" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" />
+<circle cx="630" cy="110" r="5" fill="#b8612a"/>
+<text x="630" y="96" font-size="14" fill="#1a1a1a" text-anchor="middle" font-weight="400" >推論の強さ</text>
+<line x1="660" y1="190" x2="730" y2="150" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" />
+<line x1="730" y1="150" x2="720" y2="75" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" />
+<circle cx="720" cy="75" r="5" fill="#b8612a"/>
+<text x="720" y="61" font-size="14" fill="#1a1a1a" text-anchor="middle" font-weight="400" >慎重さ</text>
+<line x1="730" y1="150" x2="800" y2="120" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" />
+<circle cx="800" cy="120" r="5" fill="#b8612a"/>
+<text x="800" y="106" font-size="14" fill="#1a1a1a" text-anchor="middle" font-weight="400" >得意な仕事</text>
+<text x="480" y="334" font-size="14" fill="#666666" text-anchor="start" font-weight="400" >それぞれ違う方向に伸びる。</text>
+<text x="480" y="354" font-size="14" fill="#666666" text-anchor="start" font-weight="400" >どれが「上」かは、何を測るかで変わる（概念図）</text>
+</svg>

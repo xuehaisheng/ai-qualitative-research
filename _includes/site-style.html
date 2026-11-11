@@ -1559,4 +1559,31 @@ body {
   .page-main .page-hero { padding-top: 40px !important; }
   .post-page .page-section { padding: 24px 0 56px !important; }
 }
+/* Research notes: figures, tables, embeds */
+.post-body figure { margin: 32px 0; }
+.post-body figure img { display: block; width: 100%; height: auto; border: 1px solid var(--minimal-line); border-radius: 10px; background: #ffffff; }
+.post-body figcaption { margin-top: 10px; color: var(--minimal-muted); font-size: 0.86rem; line-height: 1.7; }
+.post-body table { width: 100%; margin: 24px 0; border-collapse: collapse; font-size: 0.9rem; line-height: 1.7; display: block; overflow-x: auto; }
+.post-body th, .post-body td { padding: 10px 12px; border-bottom: 1px solid var(--minimal-line); text-align: left; vertical-align: top; }
+.post-body th { border-bottom: 2px solid #cccccc; font-weight: 600; white-space: nowrap; }
+.post-body blockquote { margin: 24px 0; padding: 4px 0 4px 18px; }
+.post-body h3 { margin-top: 28px !important; font-size: 1.02rem !important; }
+.embed-frame { position: relative; width: 100%; margin: 28px 0 8px; border: 1px solid var(--minimal-line); border-radius: 10px; overflow: hidden; background: #ffffff; }
+.embed-frame iframe { display: block; width: 100%; height: 600px; border: 0; }
+.post-body .embed-credit { margin: 0 0 28px; color: var(--minimal-muted); font-size: 0.86rem; line-height: 1.7; }
+.series-box .series-links a { margin-right: 14px; }
+/* AI literacy page */
+.literacy-page .page-section { padding: 64px 0 !important; }
+.lit-card h3 { margin-top: 6px !important; }
+.lit-research { margin-top: 14px; padding: 12px 14px; border-left: 3px solid var(--accent-3); background: rgba(198, 164, 106, 0.08); }
+.lit-research strong { display: block; margin-bottom: 4px; color: #8a6d3b; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; }
+.lit-card .lit-research p { margin: 0 !important; font-size: 0.9rem !important; line-height: 1.85 !important; }
+.lit-card .lit-src { margin: 12px 0 0 !important; color: var(--minimal-muted) !important; font-size: 0.78rem !important; line-height: 1.7 !important; }
+.lit-card .lit-src a { color: var(--minimal-muted); }
+.lit-card[id] { scroll-margin-top: calc(var(--header-height) + 32px); }
+.lit-foot { max-width: 760px; color: var(--minimal-muted); font-size: 0.9rem; line-height: 1.85; }
+@media (max-width: 720px) {
+  .embed-frame iframe { height: 560px; }
+  .literacy-page .page-section { padding: 44px 0 !important; }
+}
 </style>
