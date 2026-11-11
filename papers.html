@@ -9,38 +9,36 @@ body_class: "papers-page"
 permalink: /papers/
 ---
 {%- assign papers = site.data.papers | sort: "id" -%}
-{%- assign essays = papers | where: "group", "essays" -%}
-{%- assign comparisons = papers | where: "group", "comparison" -%}
-{%- assign others = papers | where: "group", "other" -%}
+{%- assign stances = "optimistic|support|cautious|against|comparison" | split: "|" -%}
 <main class="page-main">
   <section class="page-hero">
     <div class="container">
       <div class="section-panel glass-panel page-heading">
         <div class="eyebrow">Literature</div>
         <h1 data-bilingual data-ja="AI×質的研究の文献" data-en="AI × Qualitative Research: Literature">AI×質的研究の文献</h1>
-        <p data-bilingual data-ja="生成AIと質的研究をめぐる論考と、AIと人間の分析を比べた研究を集めた。方法論的な論考28篇は、薛・梶原・豐田（2026）の質的メタ統合で分析対象にしたものである。各文献に、日本語の概要と書誌情報をつけている。" data-en="Methodological essays on generative AI and qualitative research, and studies comparing AI and human analysis. The 28 essays were analysed in Xue, Kajiwara, & Toyoda's (2026) qualitative meta-synthesis. Summaries are in Japanese.">生成AIと質的研究をめぐる論考と、AIと人間の分析を比べた研究を集めた。方法論的な論考28篇は、薛・梶原・豐田（2026）の質的メタ統合で分析対象にしたものである。各文献に、日本語の概要と書誌情報をつけている。</p>
+        <p data-bilingual data-ja="生成AIを質的研究に使うことをめぐる論考と、AIと人間の分析を比べた研究を集めた。論考は、著者の立場によって、楽観・支持・慎重・反対の四つに大まかに分けている。一つの論文に複数の面があることも多いので、分け方は目安として見てほしい。各文献に、日本語の概要と書誌情報をつけた。" data-en="Essays on using generative AI in qualitative research, grouped roughly by stance (optimistic, supportive, cautious, against), and studies comparing AI and human analysis. Summaries are in Japanese.">生成AIを質的研究に使うことをめぐる論考と、AIと人間の分析を比べた研究を集めた。論考は、著者の立場によって、楽観・支持・慎重・反対の四つに大まかに分けている。一つの論文に複数の面があることも多いので、分け方は目安として見てほしい。各文献に、日本語の概要と書誌情報をつけた。</p>
         <div class="paper-tools">
           <input type="search" class="wiki-search" id="paper-search" placeholder="著者名・キーワードで絞り込む" aria-label="文献を絞り込む">
           <nav class="topic-nav" aria-label="Groups">
-            <a href="#essays">方法論的な論考<span>{{ essays.size }}</span></a>
-            <a href="#comparison">AIと人間の分析の比較<span>{{ comparisons.size }}</span></a>
-            <a href="#other">そのほかの論考・指針<span>{{ others.size }}</span></a>
+            {%- for s in stances %}
+            {%- assign n = papers | where: "stance", s %}
+            {%- assign info = site.data.paper_stances | where: "id", s | first %}
+            <a href="#{{ s }}">{{ info.title }}<span>{{ n.size }}</span></a>
+            {%- endfor %}
           </nav>
         </div>
       </div>
     </div>
   </section>
 
-  {%- assign groups = "essays|comparison|other" | split: "|" -%}
-  {%- for gid in groups %}
-  {%- if gid == "essays" %}{% assign gtitle = "方法論的な論考" %}{% assign gdesc = "生成AIを質的研究に使うことの是非や条件を論じた論考。すべて、薛・梶原・豐田（2026）の質的メタ統合の分析対象である。" %}{% assign items = essays %}
-  {%- elsif gid == "comparison" %}{% assign gtitle = "AIと人間の分析の比較" %}{% assign gdesc = "同じデータをAIと人間で分析し、結果を比べた実証研究。" %}{% assign items = comparisons %}
-  {%- else %}{% assign gtitle = "そのほかの論考・指針" %}{% assign gdesc = "雑誌の方針や、分析ツールとしてのAIを検討した論考。" %}{% assign items = others %}{% endif %}
-  <section class="page-section topic-section paper-group" id="{{ gid }}">
+  {%- for s in stances %}
+  {%- assign items = papers | where: "stance", s %}
+  {%- assign info = site.data.paper_stances | where: "id", s | first %}
+  <section class="page-section topic-section paper-group" id="{{ s }}">
     <div class="container">
       <div class="section-heading">
-        <h2>{{ gtitle }}</h2>
-        <p>{{ gdesc }}</p>
+        <h2>{{ info.title }}</h2>
+        <p>{{ info.desc }}</p>
       </div>
       <div class="paper-list">
         {%- for x in items %}
@@ -48,8 +46,7 @@ permalink: /papers/
           <div class="paper-head">
             <h3>{{ x.cite }}</h3>
             <div class="paper-tags">
-              {%- if x.meta %}<span class="tag tag-meta">メタ統合の分析対象</span>{% endif %}
-              {%- for t in x.tags %}<span class="tag">{{ t }}</span>{% endfor %}
+              {%- for tg in x.tags %}<span class="tag">{{ tg }}</span>{% endfor %}
             </div>
           </div>
           <p class="paper-summary">{{ x.summary }}</p>
@@ -63,7 +60,7 @@ permalink: /papers/
 
   <section class="page-section">
     <div class="container">
-      <p class="lit-foot">メタ統合の結果と、この研究をAIとどう進めたかは、研究ノート「<a href="{{ '/articles/qualitative-reactions/' | relative_url }}">質的研究者は、AIにどう反応したか</a>」と「<a href="{{ '/articles/meta-synthesis-with-ai/' | relative_url }}">AIと一緒に、メタ統合をやってみた</a>」に書いた。</p>
+      <p class="lit-foot">質的研究者の反応がどう移り変わってきたかは、研究ノート「<a href="{{ '/articles/qualitative-reactions/' | relative_url }}">質的研究者は、AIにどう反応したか</a>」にまとめている。</p>
     </div>
   </section>
 </main>

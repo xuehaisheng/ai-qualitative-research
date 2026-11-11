@@ -15,8 +15,6 @@ sources:
 
 Transformerは、[Attention]({{ '/literacy/attention/' | relative_url }})を中心にしたAIのモデルの設計である。Googleのヴァスワニら8名が、2017年の論文「Attention Is All You Need」で提案した。2026年までに被引用数は25万回を超え、21世紀で最も引用された論文の一つになっている。いわば、いまの生成AIの「諸悪の根源」である。
 
-{% include slide.html src="s11.jpg" cap="「諸悪の根源」は、この論文である。" %}
-
 Transformerが画期的だった理由は二つある。一つは、[RNN]({{ '/literacy/rnn/' | relative_url }})のように一語ずつ読む必要がなく、計算を並列に進められること。もう一つは、それによって[自己教師あり学習]({{ '/literacy/self-supervised/' | relative_url }})を桁違いの規模で行えるようになったことである。論文の基本モデルは、GPU8枚で12時間学習しただけで、当時最高の翻訳モデルを上回った。
 
 名前は、著者の一人ウスコライトがつけた。情報を「変換する」仕組みだからである。[GPT]({{ '/literacy/gpt/' | relative_url }})の「T」は、このTransformerのTである。

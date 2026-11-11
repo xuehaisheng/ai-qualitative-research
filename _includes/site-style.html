@@ -1560,12 +1560,14 @@ body {
   .post-page .page-section { padding: 24px 0 56px !important; }
 }
 /* Research notes: figures, tables, embeds */
+.post-body li, .post-body p { overflow-wrap: anywhere; }
 .post-body figure { margin: 32px 0; }
 .post-body figure img { display: block; width: 100%; height: auto; border: 1px solid var(--minimal-line); border-radius: 10px; background: #ffffff; }
 .post-body figcaption { margin-top: 10px; color: var(--minimal-muted); font-size: 0.86rem; line-height: 1.7; }
 .post-body table { width: 100%; margin: 24px 0; border-collapse: collapse; font-size: 0.9rem; line-height: 1.7; display: block; overflow-x: auto; }
 .post-body th, .post-body td { padding: 10px 12px; border-bottom: 1px solid var(--minimal-line); text-align: left; vertical-align: top; }
 .post-body th { border-bottom: 2px solid #cccccc; font-weight: 600; white-space: nowrap; }
+.post-body td:first-child { white-space: nowrap; }
 .post-body blockquote { margin: 24px 0; padding: 4px 0 4px 18px; }
 .post-body h3 { margin-top: 28px !important; font-size: 1.02rem !important; }
 .embed-frame { position: relative; width: 100%; margin: 28px 0 8px; border: 1px solid var(--minimal-line); border-radius: 10px; overflow: hidden; background: #ffffff; }
@@ -1632,7 +1634,7 @@ body {
 .paper-ref a { color: var(--minimal-muted); }
 .papers-page .page-section { padding: 56px 0 !important; }
 @media (max-width: 960px) {
-  .wiki-grid { grid-template-columns: 1fr; gap: 32px; }
+  .wiki-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
   .wiki-side { position: static; }
 }
 </style>
