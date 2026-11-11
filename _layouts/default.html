@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{%- if page.seo_title_ja -%}
+  {%- assign title_ja = page.seo_title_ja -%}
+{%- elsif page.title -%}
+  {%- assign title_ja = page.title | append: " | " | append: site.title -%}
+{%- else -%}
+  {%- assign title_ja = site.title -%}
+{%- endif -%}
+{%- assign title_en = page.seo_title_en | default: title_ja -%}
+{%- assign excerpt_text = page.excerpt | strip_html | strip_newlines | strip | truncate: 120 -%}
+{%- assign desc_ja = page.seo_description_ja | default: page.summary_ja | default: excerpt_text | default: site.description -%}
+{%- assign desc_en = page.seo_description_en | default: desc_ja %}
+  <meta name="description" content="{{ desc_ja | escape }}">
+  <title>{{ title_ja | escape }}</title>
+{% include site-style.html %}
+</head>
+<body
+  class="{{ page.body_class | default: layout.body_class | default: 'inner-page' }}"
+  data-page-title-ja="{{ title_ja | escape }}"
+  data-page-title-en="{{ title_en | escape }}"
+  data-page-description-ja="{{ desc_ja | escape }}"
+  data-page-description-en="{{ desc_en | escape }}"
+>
+  <div class="page-orb orb-left" aria-hidden="true"></div>
+  <div class="page-orb orb-right" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="header-shell glass-panel">
+        <a class="brand" href="{{ '/' | relative_url }}">
+          <span class="brand-mark">AI</span>
+          <span class="brand-copy">
+            <strong data-bilingual data-ja="AI × 質的研究" data-en="AI × Qualitative Research">AI × 質的研究</strong>
+            <span data-bilingual data-ja="AI時代の質的研究を、人とAIの協働から考え直す" data-en="Rethinking qualitative research through human-AI collaboration">AI時代の質的研究を、人とAIの協働から考え直す</span>
+          </span>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Primary navigation">
+          <a class="nav-link" href="{{ '/' | relative_url }}#about\" data-bilingual data-ja="趣旨" data-en="About">趣旨</a>
+          <a class="nav-link" href="{{ '/' | relative_url }}#literacy\" data-bilingual data-ja="AIリテラシー" data-en="AI Literacy">AIリテラシー</a>
+          <a class="nav-link" href="{{ '/' | relative_url }}#events\" data-bilingual data-ja="活動" data-en="Events">活動</a>
+          <a class="nav-link" href="{{ '/' | relative_url }}#notes\" data-bilingual data-ja="研究ノート" data-en="Notes">研究ノート</a>
+          <a class="nav-link" href="{{ '/' | relative_url }}#members\" data-bilingual data-ja="メンバー" data-en="Members">メンバー</a>
+          <a class="nav-link" href="{{ '/' | relative_url }}#contact\" data-bilingual data-ja="お問い合わせ" data-en="Contact">お問い合わせ</a>
+        </nav>
+
+        <div class="header-tools">
+          <div class="lang-switch" aria-label="Language switch">
+            <button class="lang-btn active" type="button" data-lang="ja">JA</button>
+            <button class="lang-btn" type="button" data-lang="en">EN</button>
+          </div>
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-panel">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="mobile-panel glass-panel" id="mobile-panel" hidden>
+        <div class="mobile-panel-inner">
+          <div class="lang-switch mobile-lang" aria-label="Language switch">
+            <button class="lang-btn active" type="button" data-lang="ja">JA</button>
+            <button class="lang-btn" type="button" data-lang="en">EN</button>
+          </div>
+          <nav class="mobile-nav" aria-label="Mobile navigation">
+            <a href="{{ '/' | relative_url }}#about\" data-bilingual data-ja="趣旨" data-en="About">趣旨</a>
+            <a href="{{ '/' | relative_url }}#literacy\" data-bilingual data-ja="AIリテラシー" data-en="AI Literacy">AIリテラシー</a>
+            <a href="{{ '/' | relative_url }}#events\" data-bilingual data-ja="活動" data-en="Events">活動</a>
+            <a href="{{ '/' | relative_url }}#notes\" data-bilingual data-ja="研究ノート" data-en="Notes">研究ノート</a>
+            <a href="{{ '/' | relative_url }}#members\" data-bilingual data-ja="メンバー" data-en="Members">メンバー</a>
+            <a href="{{ '/' | relative_url }}#contact\" data-bilingual data-ja="お問い合わせ" data-en="Contact">お問い合わせ</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+{{ content }}
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-shell glass-panel">
+        <div class="footer-block">
+          <strong data-bilingual data-ja="AI × 質的研究" data-en="AI × Qualitative Research">AI × 質的研究</strong>
+          <span data-bilingual data-ja="AI時代の質的研究を、人とAIの協働から考え直す" data-en="Rethinking qualitative research through human-AI collaboration">AI時代の質的研究を、人とAIの協働から考え直す</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+(function () {
+  const storageKey = "site-lang";
+  const bilingualNodes = Array.from(document.querySelectorAll("[data-bilingual]"));
+  const typingNode = document.querySelector("[data-typing]");
+  const typingTarget = typingNode ? typingNode.querySelector(".typing-target") : null;
+  const langButtons = Array.from(document.querySelectorAll(".lang-btn"));
+  const menuToggle = document.querySelector(".menu-toggle");
+  const mobilePanel = document.getElementById("mobile-panel");
+  const mobileLinks = mobilePanel ? Array.from(mobilePanel.querySelectorAll("a")) : [];
+  const descriptionTag = document.querySelector('meta[name="description"]');
+  let typingTimer = null;
+
+  function getPreferredLanguage() {
+    const saved = window.localStorage.getItem(storageKey);
+
+    if (saved === "ja" || saved === "en") {
+      return saved;
+    }
+
+    const browserLang = (navigator.language || "").toLowerCase();
+    return browserLang.startsWith("ja") ? "ja" : "en";
+  }
+
+  function setNodeText(node, lang) {
+    const value = node.dataset[lang];
+
+    if (!value) {
+      return;
+    }
+
+    node.textContent = value;
+  }
+
+  function typeText(text, lang) {
+    if (!typingTarget) {
+      return;
+    }
+
+    window.clearTimeout(typingTimer);
+    typingTarget.textContent = text;
+  }
+
+  function updateMeta(lang) {
+    const body = document.body;
+    const title = lang === "ja" ? body.dataset.pageTitleJa : body.dataset.pageTitleEn;
+    const description = lang === "ja" ? body.dataset.pageDescriptionJa : body.dataset.pageDescriptionEn;
+
+    if (title) {
+      document.title = title;
+    }
+
+    if (descriptionTag && description) {
+      descriptionTag.setAttribute("content", description);
+    }
+  }
+
+  function applyLanguage(lang) {
+    document.documentElement.lang = lang;
+    window.localStorage.setItem(storageKey, lang);
+
+    bilingualNodes.forEach((node) => setNodeText(node, lang));
+    langButtons.forEach((button) => {
+      button.classList.toggle("active", button.dataset.lang === lang);
+    });
+
+    if (typingNode) {
+      const text = typingNode.dataset[lang] || "";
+      typeText(text, lang);
+    }
+
+    updateMeta(lang);
+  }
+
+  function closeMenu() {
+    if (!menuToggle || !mobilePanel) {
+      return;
+    }
+
+    menuToggle.setAttribute("aria-expanded", "false");
+    mobilePanel.hidden = true;
+  }
+
+  function toggleMenu() {
+    if (!menuToggle || !mobilePanel) {
+      return;
+    }
+
+    const open = menuToggle.getAttribute("aria-expanded") === "true";
+    menuToggle.setAttribute("aria-expanded", String(!open));
+    mobilePanel.hidden = open;
+  }
+
+  langButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      applyLanguage(button.dataset.lang);
+    });
+  });
+
+  if (menuToggle && mobilePanel) {
+    menuToggle.addEventListener("click", toggleMenu);
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+  }
+
+  applyLanguage(getPreferredLanguage());
+})();
+
+</script>
+</body>
+</html>

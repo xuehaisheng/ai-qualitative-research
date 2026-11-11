@@ -1,4 +1,5 @@
 ---
+layout: default
 title: "研究ノート"
 seo_title_ja: "研究ノート | AI × 質的研究"
 seo_title_en: "Notes | AI × Qualitative Research"
@@ -14,26 +15,82 @@ permalink: /articles/
       <div class="section-panel glass-panel page-heading">
         <div class="eyebrow" data-bilingual data-ja="Article Archive" data-en="Article Archive">Article Archive</div>
         <h1 data-bilingual data-ja="研究ノート一覧" data-en="Research Notes">研究ノート一覧</h1>
-        <p data-bilingual data-ja="Markdown で追加した記事がここに並ぶ。研究ノート、短いエッセイ、方法論メモなどを少しずつ増やしていくための一覧である。" data-en="Posts added in Markdown appear here. You can gradually grow this space with research notes, short essays, and methodological memos.">Markdown で追加した記事がここに並ぶ。研究ノート、短いエッセイ、方法論メモなどを少しずつ増やしていくための一覧である。</p>
+        <p data-bilingual data-ja="研究ノート、短いエッセイ、方法論メモなどを少しずつ増やしていくための一覧である。" data-en="A growing collection of research notes, short essays, and methodological memos. Articles are written in Japanese.">研究ノート、短いエッセイ、方法論メモなどを少しずつ増やしていくための一覧である。</p>
       </div>
     </div>
   </section>
 
-  <section class="page-section">
+{%- for series_entry in site.data.series %}
+{%- assign series_key = series_entry[0] -%}
+{%- assign series = series_entry[1] -%}
+{%- assign series_posts = site.posts | where: "series", series_key -%}
+{%- if series_posts.size > 0 %}
+  <section class="page-section topic-section" id="{{ series_key }}">
     <div class="container">
+      <div class="section-heading">
+        <h2>{{ series.title }}</h2>
+        <p>{{ series.note }}</p>
+      </div>
+      <nav class="topic-nav" aria-label="Topics">
+        {%- for topic in series.topics %}
+        {%- assign topic_posts = series_posts | where: "topic", topic.key %}
+        <a href="#{{ series_key }}-{{ topic.key }}">{{ topic.name }}<span>{{ topic_posts.size }}</span></a>
+        {%- endfor %}
+      </nav>
+    </div>
+  </section>
+  {%- for topic in series.topics %}
+  {%- assign topic_posts = series_posts | where: "topic", topic.key | sort: "order" -%}
+  {%- if topic_posts.size > 0 %}
+  <section class="page-section topic-section" id="{{ series_key }}-{{ topic.key }}">
+    <div class="container">
+      <div class="section-heading">
+        <h2>{{ topic.name }}</h2>
+        <p>{{ topic.desc }}</p>
+      </div>
       <div class="card-grid card-grid-3">
-        {% for post in site.posts %}
-          {% assign post_summary_ja = post.summary_ja | default: post.excerpt | strip_html | strip_newlines %}
-          {% assign post_summary_en = post.summary_en | default: post_summary_ja %}
-          {% assign post_title_en = post.title_en | default: post.title %}
-          <article class="card glass-card note-card">
-            <div class="card-meta">{{ post.date | date: "%Y.%m.%d" }}</div>
-            <h2 data-bilingual data-ja="{{ post.title | escape }}" data-en="{{ post_title_en | escape }}">{{ post.title }}</h2>
-            <p data-bilingual data-ja="{{ post_summary_ja | escape }}" data-en="{{ post_summary_en | escape }}">{{ post_summary_ja }}</p>
-            <a class="text-link" href="{{ post.url | relative_url }}" data-bilingual data-ja="記事を読む" data-en="Read article">記事を読む</a>
-          </article>
-        {% endfor %}
+        {%- for post in topic_posts %}
+        {%- assign post_summary = post.summary_ja | default: post.excerpt | strip_html | strip_newlines | strip | truncate: 90 %}
+        <article class="card glass-card note-card">
+          <h3><a href="{{ post.url | relative_url }}" style="color:inherit;text-decoration:none">{{ post.title }}</a></h3>
+          <p>{{ post_summary }}</p>
+          <a class="text-link" href="{{ post.url | relative_url }}" data-bilingual data-ja="記事を読む" data-en="Read article">記事を読む</a>
+        </article>
+        {%- endfor %}
       </div>
     </div>
   </section>
+  {%- endif %}
+  {%- endfor %}
+{%- endif %}
+{%- endfor %}
+
+{%- capture other_cards -%}
+  {%- for post in site.posts -%}
+  {%- unless post.series -%}
+  {%- assign post_summary_ja = post.summary_ja | default: post.excerpt | strip_html | strip_newlines | strip | truncate: 90 -%}
+  {%- assign post_summary_en = post.summary_en | default: post_summary_ja -%}
+  {%- assign post_title_en = post.title_en | default: post.title %}
+        <article class="card glass-card note-card">
+          <div class="card-meta">{{ post.date | date: "%Y.%m.%d" }}</div>
+          <h3 data-bilingual data-ja="{{ post.title | escape }}" data-en="{{ post_title_en | escape }}">{{ post.title }}</h3>
+          <p data-bilingual data-ja="{{ post_summary_ja | escape }}" data-en="{{ post_summary_en | escape }}">{{ post_summary_ja }}</p>
+          <a class="text-link" href="{{ post.url | relative_url }}" data-bilingual data-ja="記事を読む" data-en="Read article">記事を読む</a>
+        </article>
+  {%- endunless -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- assign other_cards_check = other_cards | strip -%}
+{%- if other_cards_check != "" %}
+  <section class="page-section">
+    <div class="container">
+      <div class="section-heading">
+        <h2 data-bilingual data-ja="その他の記事" data-en="Other articles">その他の記事</h2>
+      </div>
+      <div class="card-grid card-grid-3">
+{{ other_cards }}
+      </div>
+    </div>
+  </section>
+{%- endif %}
 </main>
