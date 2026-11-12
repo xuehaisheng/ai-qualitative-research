@@ -132,6 +132,9 @@
       input.value = ''; group.value = ''; topic.value = '';
     }
     apply(false);
+    // apply() reorders the list, which loses the browser's jump to #id; jump again.
+    const target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (target && target.classList.contains('paper-item')) requestAnimationFrame(() => target.scrollIntoView({block: 'start', behavior: 'instant'}));
   }
   const noteInput = document.getElementById('note-search');
   if (noteInput) {
