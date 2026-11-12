@@ -270,3 +270,8 @@ button.tag[aria-pressed="true"] { background: #111; color: #fff; border-color: #
 .lang-switch { border-color: rgba(0,0,0,.08) !important; }
 .brand-mark { box-shadow: none !important; }
 .cursor { color: #111 !important; }
+
+/* Section title and its "すべて見る" link stay on one row at every width. */
+.section-heading.with-action, .home-page .section-heading.with-action { display: flex !important; flex-direction: row !important; justify-content: space-between !important; align-items: center !important; gap: 16px !important; text-align: left !important; }
+.section-heading.with-action h2 { margin: 0 !important; text-align: left !important; }
+.section-heading.with-action .view-all { flex: none; }
