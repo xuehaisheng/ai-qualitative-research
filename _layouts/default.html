@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <script>try{var l=localStorage.getItem("site-lang");if(l!=="ja"&&l!=="en")l=(navigator.language||"").toLowerCase().indexOf("ja")===0?"ja":"en";document.documentElement.lang=l;}catch(e){}</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {%- if page.seo_title_ja -%}
   {%- assign title_ja = page.seo_title_ja -%}
@@ -10,10 +11,14 @@
 {%- else -%}
   {%- assign title_ja = site.title -%}
 {%- endif -%}
-{%- assign title_en = page.seo_title_en | default: title_ja -%}
+{%- if page.title_en -%}
+  {%- assign title_en = page.title_en | append: " | AI × Qualitative Research" -%}
+{%- else -%}
+  {%- assign title_en = page.seo_title_en | default: title_ja -%}
+{%- endif -%}
 {%- assign excerpt_text = page.excerpt | strip_html | strip_newlines | strip | truncate: 120 -%}
 {%- assign desc_ja = page.seo_description_ja | default: page.summary_ja | default: excerpt_text | default: site.description -%}
-{%- assign desc_en = page.seo_description_en | default: desc_ja %}
+{%- assign desc_en = page.seo_description_en | default: page.summary_en | default: desc_ja %}
   <meta name="description" content="{{ desc_ja | escape }}">
   <title>{{ title_ja | escape }}</title>
 {% include site-style.html %}
@@ -36,7 +41,7 @@
   data-page-description-ja="{{ desc_ja | escape }}"
   data-page-description-en="{{ desc_en | escape }}"
 >
-  <a class="skip-link" href="#content-start">本文へ</a>
+  <a class="skip-link" href="#content-start" data-bilingual data-ja="本文へ" data-en="Skip to content">本文へ</a>
   <div class="page-orb orb-left" aria-hidden="true"></div>
   <div class="page-orb orb-right" aria-hidden="true"></div>
 
@@ -65,7 +70,7 @@
             <button class="lang-btn active" type="button" data-lang="ja">JA</button>
             <button class="lang-btn" type="button" data-lang="en">EN</button>
           </div>
-          <button aria-label="メニューを開く" class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-panel">
+          <button aria-label="メニューを開く" data-aria-ja="メニューを開く" data-aria-en="Open menu" class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-panel">
             <span></span>
             <span></span>
             <span></span>
@@ -175,6 +180,9 @@
     window.localStorage.setItem(storageKey, lang);
 
     bilingualNodes.forEach((node) => setNodeText(node, lang));
+    document.querySelectorAll("[data-ph-" + lang + "]").forEach((node) => { node.placeholder = node.getAttribute("data-ph-" + lang); });
+    document.querySelectorAll("[data-aria-" + lang + "]").forEach((node) => { node.setAttribute("aria-label", node.getAttribute("data-aria-" + lang)); });
+    document.dispatchEvent(new CustomEvent("site-lang", { detail: lang }));
     langButtons.forEach((button) => {
       button.classList.toggle("active", button.dataset.lang === lang);
     });

@@ -12,21 +12,21 @@ permalink: /articles/
 <section class="page-hero"><div class="container"><div class="section-panel page-heading">
 <div class="eyebrow" data-bilingual data-ja="Article Archive" data-en="Article Archive">Article Archive</div>
 <h1 data-bilingual data-ja="研究ノート一覧" data-en="Research Notes">研究ノート一覧</h1>
-<p data-bilingual data-ja="研究ノート、短いエッセイ、方法論メモなどを少しずつ増やしていくための一覧である。用語の説明は「AIリテラシー」のページにまとめている。" data-en="A growing collection of research notes, short essays, and methodological memos. Articles are written in Japanese. Key terms are explained on the AI Literacy pages.">研究ノート、短いエッセイ、方法論メモなどを少しずつ増やしていくための一覧である。用語の説明は「AIリテラシー」のページにまとめている。</p>
+<p data-bilingual data-ja="研究ノート、短いエッセイ、方法論メモなどを少しずつ増やしていくための一覧である。用語の説明は「AIリテラシー」のページにまとめている。" data-en="A growing collection of research notes, short essays and methodological memos. Key terms are explained on the AI Literacy pages.">研究ノート、短いエッセイ、方法論メモなどを少しずつ増やしていくための一覧である。用語の説明は「AIリテラシー」のページにまとめている。</p>
 </div></div></section>
 <section class="page-section"><div class="container">
 <div class="reader-toolbar">
-<label class="reader-field">記事を探す<input id="note-search" type="search" placeholder="タイトル・キーワード" autocomplete="off"></label>
-<label class="reader-field">表示順<select id="note-sort"><option value="order">掲載順</option><option value="updated" selected>新しい順</option></select></label>
+<label class="reader-field">{% include t.html ja="記事を探す" en="Search notes" %}<input id="note-search" type="search" placeholder="タイトル・キーワード" data-ph-ja="タイトル・キーワード" data-ph-en="Title, keyword" autocomplete="off"></label>
+<label class="reader-field">{% include t.html ja="表示順" en="Sort" %}<select id="note-sort"><option value="order" data-bilingual data-ja="掲載順" data-en="Site order">掲載順</option><option value="updated" selected data-bilingual data-ja="新しい順" data-en="Newest first">新しい順</option></select></label>
 </div>
-<div class="reader-pill-nav" aria-label="記事の分類">
-<button type="button" class="reader-pill" data-note-topic="" aria-pressed="true">すべて</button>
-<button type="button" class="reader-pill" data-note-topic="質的研究" aria-pressed="false">質的研究</button>
-<button type="button" class="reader-pill" data-note-topic="AIの理解" aria-pressed="false">AIの理解</button>
-<button type="button" class="reader-pill" data-note-topic="研究の実践" aria-pressed="false">研究の実践</button>
+<div class="reader-pill-nav" aria-label="記事の分類" data-aria-ja="記事の分類" data-aria-en="Topics">
+<button type="button" class="reader-pill" data-note-topic="" aria-pressed="true" data-bilingual data-ja="すべて" data-en="All">すべて</button>
+<button type="button" class="reader-pill" data-note-topic="質的研究" aria-pressed="false" data-bilingual data-ja="質的研究" data-en="Qualitative research">質的研究</button>
+<button type="button" class="reader-pill" data-note-topic="AIの理解" aria-pressed="false" data-bilingual data-ja="AIの理解" data-en="Understanding AI">AIの理解</button>
+<button type="button" class="reader-pill" data-note-topic="研究の実践" aria-pressed="false" data-bilingual data-ja="研究の実践" data-en="Research practice">研究の実践</button>
 </div>
 <p class="reader-results" id="note-count" role="status" aria-live="polite" hidden></p>
 <div class="reader-note-grid" data-note-grid>{% assign notes = site.posts | sort: 'order' %}{% for note in notes %}{% include note-card.html note=note %}{% endfor %}</div>
-<div class="reader-empty" id="note-empty" hidden><p>該当する記事がありません。</p><button class="reader-button" type="button" data-reset-notes>検索条件をクリア</button></div>
-<div class="reader-section-foot"><a class="reader-link arrow-link" href="{{ '/papers/' | relative_url }}"><span>AI×質的研究の文献</span>{% include arrow.html %}</a></div>
+<div class="reader-empty" id="note-empty" hidden><p data-bilingual data-ja="該当する記事がありません。" data-en="No matching notes.">該当する記事がありません。</p><button class="reader-button" type="button" data-reset-notes data-bilingual data-ja="検索条件をクリア" data-en="Clear filters">検索条件をクリア</button></div>
+<div class="reader-section-foot"><a class="reader-link arrow-link" href="{{ '/papers/' | relative_url }}"><span data-bilingual data-ja="AI×質的研究の文献" data-en="Literature on AI and qualitative research">AI×質的研究の文献</span>{% include arrow.html %}</a></div>
 </div></section></main>

@@ -87,3 +87,55 @@ AIの将来についても、言う人によって見通しが大きく違う。
 
 - Freking, K. (2020, April 24). Injecting disinfectant ‘sounds interesting’ to Trump. Lysol disagrees. *The Christian Science Monitor*. [https://csmonitor.com/USA/2020/0424/Injecting-disinfectant-sounds-interesting-to-Trump.-Lysol-disagrees](https://csmonitor.com/USA/2020/0424/Injecting-disinfectant-sounds-interesting-to-Trump.-Lysol-disagrees)
 
+<!--EN-->
+
+Any position is fine. You can be critical of AI, promote it, or stay neutral. But we want to judge with reason, not only with feeling. Feeling matters a great deal too, of course. For that, it is important to judge with knowledge.
+
+## So that this does not happen
+
+What happens when you judge without knowing? Here is one extreme example.
+
+On April 23, 2020, there was a White House press briefing on the novel coronavirus. After a report on research showing that disinfectant kills the virus quickly, President Trump (as he then was) said, in effect, that it might be interesting to check whether something like injecting disinfectant into the body could be done. The next day, Reckitt Benckiser, maker of the disinfectants Lysol and Dettol, issued a statement saying that under no circumstance should its disinfectant products be put into the human body (Freking, 2020).
+
+<figure class="editorial-figure" id="trump-disinfectant">
+  <a href="https://www.youtube.com/watch?v=zicGxU5MfwE" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/zicGxU5MfwE/maxresdefault.jpg" alt="President Trump speaking about disinfectant at the press briefing on April 23, 2020. Video thumbnail from NBC New York." width="1280" height="720" loading="lazy" decoding="async"></a>
+  <figcaption>The White House press briefing of April 23, 2020, where injecting disinfectant was mentioned.<span class="editorial-credit">Source: thumbnail of the official NBC New York video. <a href="https://www.youtube.com/watch?v=zicGxU5MfwE" target="_blank" rel="noopener">Video ↗</a> · <a href="https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-vice-president-pence-members-coronavirus-task-force-press-briefing-31/" target="_blank" rel="noopener">White House transcript ↗</a></span></figcaption>
+</figure>
+
+This is not about AI. But when you judge a field you do not know well on the basis of plausible-sounding ideas, this kind of thing happens. The same goes for AI. Whether you use AI or not, I want you to know about it first. Not only about AI itself, but also about what the companies and people building it are doing. Here I give three reasons why I think qualitative researchers need AI literacy.
+
+## ① Knowledge has different resolutions
+
+{% include figure.html src="fig-resolution-en.jpg" cap="“Not wrong. But a different resolution.” From the workshop slides." alt="Generative AI and qualitative research side by side. Top row: “Generative AI predicts the next word” and “Qualitative research analyzes words”. Bottom row, a little more precisely: “Generative AI predicts the next token” and “Qualitative research analyzes qualitative data (mainly words)”." %}
+
+“Generative AI predicts the next word.” “Qualitative research analyzes words.” Neither is wrong.
+
+But someone who knows a bit more would put it this way. Generative AI predicts the next [token]({{ '/literacy/token/' | relative_url }}). A token is the unit in which AI processes text, roughly a word or part of a word. Qualitative research analyzes qualitative data (mainly words). Qualitative data means data not turned into numbers, such as interview transcripts, field notes, diaries and photographs.
+
+The difference between the two ways of putting it is a difference in the resolution of knowledge. On the qualitative research side there is depth: phenomenology, GTA, thematic analysis, narrative, conversation analysis. AI has just as much depth. There are many words that change how you see it once you know them: Transformer, attention, pre-training, RLHF, hallucination, agents. The [AI literacy]({{ '/literacy/' | relative_url }}) pages on this site are there to raise that resolution little by little.
+
+{% include figure.html src="fig-depth-en.jpg" cap="“Both have depth.” Technical terms and names in generative AI and in qualitative research. From the workshop slides." alt="Two circles side by side. At the center of the left circle, “Generative AI”, surrounded by terms and researchers' names such as Transformer, attention, pre-training, RLHF, hallucination and agents. At the center of the right circle, “Qualitative research”, surrounded by terms and names such as phenomenology, GTA, M-GTA, thematic analysis, conversation analysis, narrative and ethnography." %}
+
+## ② AI becomes a loudspeaker
+
+You want to learn about AI but do not know how. Ask someone, and you may be told, “Just ask AI about AI.” I do not think this advice is very productive.
+
+When someone who understands uses AI, AI becomes a loudspeaker. Their existing ability is multiplied many times over. When someone who cannot judge uses it, average output tends to come out. If you teach at a university, you have probably read reports made with AI. They are all standard, average writing, and not very interesting. Where that leads is [AI slop]({{ '/literacy/slop/' | relative_url }}): low-quality, AI-looking content mass-produced by AI. Asking AI is not bad in itself. But to judge whether the answer you get back is good, the person asking needs knowledge too.
+
+## ③ “Can do” and “can check” are different
+
+AI seems able to do anything. It can write code for the statistics software R. It can develop software. It can prove mathematical theorems.
+
+But someone who does not know what R is cannot tell whether the code AI wrote is correct. Someone who thinks Java is a kind of coffee cannot inspect the software AI built. Someone who does not know [Lean]({{ '/literacy/lean/' | relative_url }}) cannot check AI's proofs. Lean is a language in which a computer automatically checks that every line of a proof is correct.
+
+Qualitative research is the same. If you do not know what good qualitative research is, you cannot evaluate the analysis that comes out, even with the “magic” of AI. Of course, there are many standards for what good research is, and no single recipe. Even so, at the very least you need to know what kind of qualitative research you yourself want to do.
+
+## Whose predictions to believe, and on what grounds
+
+On the future of AI, too, forecasts differ greatly depending on who is speaking. Elon Musk put the probability that AI destroys humanity at 10–20%. NVIDIA's Jensen Huang called such calculations made up. Whose predictions to believe, and on what grounds: judging that is also AI literacy. I collected the specific statements and sources in [Whose predictions should we trust, and why?]({{ '/articles/predictions/' | relative_url }}).
+
+On this site, I want to hand over material for deciding whether to use AI or not. The companies building AI say fine things in public while doing some fairly dirty things behind the scenes. So reading what is written here may make you not want to use AI. Deciding not to use it is a judgment too. Which to choose is up to the reader.
+
+## References
+
+- Freking, K. (2020, April 24). Injecting disinfectant ‘sounds interesting’ to Trump. Lysol disagrees. *The Christian Science Monitor*. [https://csmonitor.com/USA/2020/0424/Injecting-disinfectant-sounds-interesting-to-Trump.-Lysol-disagrees](https://csmonitor.com/USA/2020/0424/Injecting-disinfectant-sounds-interesting-to-Trump.-Lysol-disagrees)

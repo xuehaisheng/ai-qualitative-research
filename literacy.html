@@ -18,12 +18,12 @@ permalink: /literacy/
           <p data-bilingual data-ja="立場はどれでもよい。批判でも、推進でも、中立でも構わない。ただ、情緒だけでなく、理性的にも判断したい。そのためには、知った上で判断することが大事である。" data-en="Any position is fine: critical, supportive, or neutral. But we want to judge with reason as well as feeling. That means judging with knowledge.">立場はどれでもよい。批判でも、推進でも、中立でも構わない。ただ、情緒だけでなく、理性的にも判断したい。そのためには、知った上で判断することが大事である。</p>
           <a class="reader-link arrow-link" href="{{ '/articles/why-ai-literacy/' | relative_url }}"><span data-bilingual data-ja="なぜAIリテラシーが必要か（研究ノート）" data-en="Why AI literacy? (research note)">なぜAIリテラシーが必要か（研究ノート）</span>{% include arrow.html %}</a>
         </div>
-        <p data-bilingual data-ja="AIを使うか、使わないか。その判断材料になる用語を、一つの用語につき一ページで、背後にある研究とあわせてまとめている。各ページから、関連する用語や研究ノートへたどれる。" data-en="One page per key term, with the research behind it and links to related terms and notes. Pages are written in Japanese.">AIを使うか、使わないか。その判断材料になる用語を、一つの用語につき一ページで、背後にある研究とあわせてまとめている。各ページから、関連する用語や研究ノートへたどれる。</p>
-        <label class="reader-field">用語を探す<input type="search" class="wiki-search" id="wiki-search" placeholder="用語を探す（例：トークン、幻覚、エージェント）" aria-label="用語を探す"></label><p class="reader-results" id="wiki-count" role="status" aria-live="polite" hidden></p><div class="reader-empty" id="wiki-empty" hidden><p>該当する用語がありません。</p><button class="reader-button" type="button" data-reset-wiki>検索条件をクリア</button></div>
+        <p data-bilingual data-ja="AIを使うか、使わないか。その判断材料になる用語を、一つの用語につき一ページで、背後にある研究とあわせてまとめている。各ページから、関連する用語や研究ノートへたどれる。" data-en="To use AI or not: the terms that help you decide, one page per term, with the research behind each. Every page links to related terms and research notes.">AIを使うか、使わないか。その判断材料になる用語を、一つの用語につき一ページで、背後にある研究とあわせてまとめている。各ページから、関連する用語や研究ノートへたどれる。</p>
+        <label class="reader-field">{% include t.html ja="用語を探す" en="Search terms" %}<input type="search" class="wiki-search" id="wiki-search" placeholder="用語を探す（例：トークン、幻覚、エージェント）" data-ph-ja="用語を探す（例：トークン、幻覚、エージェント）" data-ph-en="Search terms (e.g. token, hallucination, agent)" aria-label="用語を探す" data-aria-ja="用語を探す" data-aria-en="Search terms"></label><p class="reader-results" id="wiki-count" role="status" aria-live="polite" hidden></p><div class="reader-empty" id="wiki-empty" hidden><p data-bilingual data-ja="該当する用語がありません。" data-en="No matching terms.">該当する用語がありません。</p><button class="reader-button" type="button" data-reset-wiki data-bilingual data-ja="検索条件をクリア" data-en="Clear search">検索条件をクリア</button></div>
         <nav class="topic-nav" aria-label="Categories">
-          <a href="#start">最初に読むなら</a>
+          <a href="#start">{% include t.html ja="最初に読むなら" en="Start here" %}</a>
           {%- for c in site.data.wiki_categories %}
-          <a href="#{{ c.id }}">{{ c.title }}</a>
+          <a href="#{{ c.id }}">{% include t.html ja=c.title en=c.title_en %}</a>
           {%- endfor %}
         </nav>
       </div>
@@ -31,11 +31,11 @@ permalink: /literacy/
   </section>
 
   <section class="page-section" id="start"><div class="container"><div class="reading-path">
-    <div class="reading-path-head"><h2>最初に読むなら</h2><p>はじめての人は、この五つを順に読むと、あとのページが読みやすくなる。</p></div>
+    <div class="reading-path-head"><h2>{% include t.html ja="最初に読むなら" en="Start here" %}</h2><p>{% include t.html ja="はじめての人は、この五つを順に読むと、あとのページが読みやすくなる。" en="New to this? Read these five in order, and the other pages will be easier to follow." %}</p></div>
     <ol class="reading-steps">
       {%- assign start_keys = "llm,token,context,hallucination,sycophancy" | split: "," %}
       {%- for k in start_keys %}{% assign e = site.wiki | where: "key", k | first %}{% if e %}
-      <li><a href="{{ e.url | relative_url }}"><span class="step-no"><b>{{ forloop.index }}</b></span><span class="step-en">{{ e.en }}</span><strong>{{ e.title }}</strong><span class="step-sum">{{ e.summary }}</span></a></li>
+      <li><a href="{{ e.url | relative_url }}"><span class="step-no"><b>{{ forloop.index }}</b></span><span class="step-en lang-ja">{{ e.en }}</span><strong>{% include t.html ja=e.title en=e.en %}</strong><span class="step-sum">{% include t.html ja=e.summary en=e.summary_en %}</span></a></li>
       {%- endif %}{% endfor %}
     </ol>
   </div></div></section>
@@ -45,15 +45,15 @@ permalink: /literacy/
   <section class="page-section topic-section wiki-cat" id="{{ c.id }}">
     <div class="container">
       <div class="section-heading">
-        <h2>{{ c.title }}</h2>
-        <p>{{ c.desc }}</p>
+        <h2>{% include t.html ja=c.title en=c.title_en %}</h2>
+        <p>{% include t.html ja=c.desc en=c.desc_en %}</p>
       </div>
       <div class="wiki-index">
         {%- for e in entries %}
-        <a class="wiki-item" href="{{ e.url | relative_url }}" data-search="{{ e.title | downcase | escape }} {{ e.en | downcase | escape }} {{ e.summary | escape }}">
-          <span class="wiki-item-en">{{ e.en }}</span>
-          <strong>{{ e.title }}</strong>
-          <span class="wiki-item-sum">{{ e.summary }}</span>
+        <a class="wiki-item" href="{{ e.url | relative_url }}" data-search="{{ e.title | downcase | escape }} {{ e.en | downcase | escape }} {{ e.summary | escape }} {{ e.summary_en | downcase | escape }}">
+          <span class="wiki-item-en lang-ja">{{ e.en }}</span>
+          <strong>{% include t.html ja=e.title en=e.en %}</strong>
+          <span class="wiki-item-sum">{% include t.html ja=e.summary en=e.summary_en %}</span>
         </a>
         {%- endfor %}
       </div>

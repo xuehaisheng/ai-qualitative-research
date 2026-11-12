@@ -12,6 +12,7 @@ topic: "質的研究"
 related_notes: ["meta-synthesis-with-ai", "understanding", "other-fields"]
 updated: "2026-11-12 00:00:00 +0900"
 change_note: "出典リンクの追加と、Qualitative PsychologyのAI利用方針の記述を修正。"
+change_note_en: "Added source links and corrected the description of Qualitative Psychology's AI policy."
 sort_date: 20261112
 ---
 
@@ -143,3 +144,132 @@ sort_date: 20261112
 - van den Berkmortel, B., Westra, D., Gifford, R., & van de Baan, F. C. (2026). Analyzing nurse sentiment in a Dutch regional newspaper during the COVID-19 pandemic: Comparative content analysis of GPT-5, Gemini 2.5 Pro, and human coding. *Journal of Medical Internet Research, 28*, e98374. https://doi.org/10.2196/98374
 - 薛海升・梶原佐保・豐田隼（2026）. 質的研究者は生成AIをどう論じるか. 日本質的心理学会第23回大会 ポスター発表.
 
+<!--EN-->
+
+AI that works with language enters the very center of qualitative research. It would not have been strange for the kind of “crisis of the field” that NLP and mathematics went through to reach qualitative research too ([How did other fields react to AI?]({{ '/articles/other-fields/' | relative_url }})). What actually happened? I looked into it. Much of the literature discussed here was collected in our qualitative meta-synthesis (Xue, Kajiwara & Toyoda, 2026). The full list is on the [Literature]({{ '/papers/' | relative_url }}) page.
+
+The reactions fall roughly into four stages.
+
+1. **Expectation and comparison** (2023–2024): if it understands language, it should work for analysis too. Studies comparing AI and human analysis multiplied.
+2. **Rejection** (2025): the Frankenstein comparison study in September, the 419-signatory rejection statement in December.
+3. **Contestation** (2026): rebuttals that rejected the rejection, and essays taking cautious positions, followed one after another.
+4. **Beyond** (2026–): comparison studies continue, and the debate moves past the binary.
+
+The stages do not replace each other cleanly; they overlap.
+
+## Stage 1 (2023–2024): expectation and comparison
+
+Papers on “qualitative research × generative AI” indexed in Web of Science alone grew from 329 in 2022 to 4,075 in 2025, about twelvefold.
+
+The first reaction was simple. Generative AI handles language. Qualitative data is language too. So perhaps it could be used for coding and thematic analysis. Coding is labor-intensive work of attaching labels, so the hope was that it would become easier.
+
+Automatic coding itself is not new, though. Even before ChatGPT, [qualitative data analysis software]({{ '/literacy/caqdas/' | relative_url }}) such as NVivo and ATLAS.ti had features that classified keywords and sentiment automatically. Generative AI extended this to thematic analysis.
+
+### The results are all over the place
+
+The most common studies in this period compared AI and human analysis. In our screening too, of the 140 papers narrowed down by title and abstract, the largest group, 31, was of this type (a provisional classification). Line up the main studies and the results are all over the place.
+
+| Study | Data and models | Results |
+|---|---|---|
+| [Prescott et al. (2024)](https://doi.org/10.2196/54482) | 40 SMS messages for HIV support. ChatGPT, Bard | 71% of inductive themes matched. Code-level agreement 37–47%. About 20 minutes versus about 570 minutes |
+| [Sakaguchi et al. (2025)](https://doi.org/10.2196/71521) | 30 interviews at a Japanese hospital. ChatGPT-4 | Over 80% agreement on descriptive themes. About 30% on themes requiring cultural or emotional interpretation |
+| [Mizumoto & Teng (2025)](https://doi.org/10.1016/j.rmal.2025.100210) | Open-ended answers from 143 Japanese university students. Several LLMs | Even the best model reached only κ = 0.68, short of the mark for strong agreement (0.8) |
+| [Bennis & Mouwafaq (2025)](https://doi.org/10.1186/s12911-025-02961-5) | 448 responses. Nine generative AI models | Some models matched the expert analysis perfectly (Jaccard 1.00) |
+| [Lockwood et al. (2026)](https://doi.org/10.1037/spq0000715) | Open-ended answers from 60 faculty. ChatGPT-4 and a novice human | Results broadly similar, and AI much faster. But its process could not be seen, and some codes were unclear |
+
+Every one of these studies treats the human analysis as the right answer and measures how close AI gets. I have some doubts about this. The results of qualitative research are supposed to differ from person to person. A study done by A and a study done by B will differ even with the same data. Perhaps they do not need to agree. Whether this way of comparing, which treats human analysis as the “right answer”, is valid for qualitative research would be questioned in the next stage.
+
+## Stage 2 (2025): rejection
+
+### Frankenstein thematic analysis
+
+In September 2025, Jowsey and colleagues published a paper in PLOS ONE that actually tried thematic analysis with AI. Its title includes “Frankenstein”, which can be read as a warning: something made by a well-meaning scientist brings results its maker did not foresee.
+
+The method: they found five health studies that had published their analysis data, had Microsoft Copilot analyze each dataset three times, and compared the results with the human analysis in the original papers. On average 58% of the quotations Copilot gave did not exist in the data; they were fabricated. The human researchers' quotations were accurate to the data 79% of the time on average, so the human papers had errors too. And Copilot's themes and quotations were taken almost entirely from the first two or three pages of the data. The conclusion: the current Copilot cannot be recommended for thematic analysis.
+
+Still, I think this result should be read with some discount. The analysis was probably actually done in 2024, and the model used was not especially capable. Moreover, they handed over long data all at once. AI can read the beginning and end of long material but is weak in the middle ([Lost in the Middle]({{ '/literacy/lost-in-the-middle/' | relative_url }})). Quotations clustering in the first few pages is exactly that showing up.
+
+### “We reject the use of generative AI for reflexive qualitative research”
+
+In December of the same year, a statement titled “We reject the use of generative artificial intelligence for reflexive qualitative research” appeared in Qualitative Inquiry (Jowsey et al., 2025). These are very strong words. It was issued as the position of 419 qualitative researchers from 32 countries, and its authors include Braun and Clarke, who systematized reflexive thematic analysis.
+
+There are three reasons.
+
+1. **It cannot make meaning**: generative AI cannot make meaning from words.
+2. **A human research practice**: reflexive thematic analysis and similar approaches are “human research practices” carried out by researchers who have subjectivity and are situated in a position. Mix AI in, and it becomes something else.
+3. **Social and environmental justice**: training AI uses large amounts of electricity and water. And much of the work of removing harmful content is done by workers in the Global South.
+
+On the third, let me add my own view. The environmental burden may no longer be as serious as was said at the time, since technology for power and water has advanced. On the other hand, there really is a structure of exploitation in which people in the Global South are made to give AI feedback for low wages simply because they can speak English.
+
+Rejection also began to enter institutions. In January 2026, the APA journal Qualitative Psychology set out a [policy](https://www.apa.org/pubs/journals/qua/ai-policy) that it will not publish papers that used AI for literature reviews, describing methods, collecting and analyzing data, reporting results, interpretation and so on ([Levitt, 2026](https://doi.org/10.1037/qup0000353)). It also prohibits using AI as the sole, primary or unverified source when searching for citations and references. For translation it requires submitting the manuscript in the original language or human checking, and it distinguishes word choice and sentence-level editing from these prohibitions.
+
+## Stage 3 (2026): contestation
+
+### “Rejecting the rejection”
+
+From 2026, rebuttals to the rejection statement followed one after another: essays that reject the rejection.
+
+- **Friese and colleagues** ([Friese et al., 2026](https://doi.org/10.1177/10778004261429393)): wholesale rejection closes off methodological development. When researchers lead, AI can be a legitimate analytic aid, as CAQDAS (qualitative data analysis software such as NVivo and MAXQDA) is. This rebuttal too was signed by 112 supporters from 22 countries.
+- **De Paoli** ([De Paoli, 2026b](https://doi.org/10.1177/10778004261425137)): it looks like a methodological argument, but it is actually a ban based on philosophical premises. It risks becoming dogma and blocks debate and innovation. In another paper the same year ([De Paoli, 2026a](https://doi.org/10.1177/08944393261451707)), following Turing's “Computing Machinery and Intelligence”, he argued that we should ask empirically not “can a machine in principle analyze?” but “can humans and AI working together produce analyses that match human analysts?”
+- **Ibrahim and colleagues** ([Ibrahim et al., 2026](https://doi.org/10.1177/10778004261456208)): generative AI is not monolithic. Its attention to context and wholeness fits parts of qualitative epistemology. What is needed is “technological reflexivity”.
+- **Greenhalgh** ([Greenhalgh, 2026](https://doi.org/10.1177/10778004261429383)): she shares the concerns of the rejection statement, but wholesale rejection is not justified. We should go beyond the binary of adoption or rejection and ask “who holds interpretive authority?”
+- **Mendoza and Quilantang** ([Mendoza & Quilantang, 2026](https://doi.org/10.1108/QRJ-11-2025-0428)): mediation is itself a condition of reflexivity. “Productive friction” with AI sharpens judgment. Fairness to researchers at the margins should be considered too.
+- **Sibeoni and colleagues** ([Sibeoni et al., 2026](https://doi.org/10.1177/10497323261417237)): the field is in a “grieving process” of denial, anger, bargaining, depression and acceptance. We should neither reject nor glorify AI, but look for practices of working with it.
+- **Goh** ([Goh, 2026](https://www.timeshighereducation.com/opinion/qualitative-researchers-ai-rejection-based-identity-not-reason), Times Higher Education): rejection is a defense of identity, not reason. It weakens less-resourced institutions. Note, however, that the author is founder and CEO of a service that performs qualitative analysis with AI (Evidano, formerly AILYZE), and has a stake.
+
+Here I also have a thought. Just because 419 signatures were gathered, does that mean all other qualitative researchers have to follow?
+
+Sibeoni and colleagues' “grieving process” is, I think, a familiar framework for psychology researchers. Many people may now be at the “anger” stage: the stage of not wanting to accept AI.
+
+The point about fairness matters too. A well-funded lab can hire several analysts. Without funding, using AI is far easier. Wouldn't wholesale rejection itself shut out researchers with fewer resources? There is also a way of using AI as a tool for relativizing your own interpretation, by having it argue against your analysis.
+
+### Positions close to rejection, and cautious positions
+
+Alongside the rebuttals, essays taking positions close to rejection, or cautious ones, have also appeared.
+
+- **Nguyen and Welch** ([Nguyen & Welch, 2026](https://doi.org/10.1177/00076503251386539)): placing AI between researchers and what they study distorts the very conditions under which meaningful knowledge arises.
+- **Duke** ([Duke, 2026](https://doi.org/10.1080/00187259.2025.2546439)): relying on AI makes “thin description” count as “enough” and erodes analytic skill. The commitments made to participants are also bypassed.
+- **Roberts and colleagues** ([Roberts et al., 2024](https://doi.org/10.1016/j.cpa.2024.102722)): AI's humanness is an illusion created by our projecting intent onto it. A confident tone, hallucination, [sycophancy]({{ '/literacy/sycophancy/' | relative_url }}) and the inability to take responsibility are the problems.
+- **Matta and colleagues** ([Matta et al., 2026](https://doi.org/10.1177/16094069261456950)): a middle position. AI invites “interpretive conservatism” and “interpretive depletion”. Human interpretation, text mining and AI should be combined so they make up for one another.
+
+I sum up the contest so far as four points of dispute: ① can AI make meaning, ② whose is reflexivity, ③ who holds interpretive authority, and ④ environmental, labor and data justice.
+
+## Stage 4 (2026–): beyond
+
+### Comparison studies continue
+
+Comparison studies have not stopped since the rejection statement. And in the same year, results that look like opposites sit side by side.
+
+Hill and colleagues had ChatGPT-5, Claude 4 Sonnet, QualiGPT and two blinded human analysts analyze one focus group of patients and members of the public on digital health support (7 people, about 12,000 words) ([Hill et al., 2026](https://doi.org/10.1371/journal.pdig.0001189)). Against a consensus of three experts, deductive coding agreement was 93.5% for AI and 92.7% for humans, so AI was non-inferior. In inductive analysis, however, only ChatGPT-5 was non-inferior, with an error rate of 12.4%. What they paid attention to also differed: the human analysts framed problems at the level of relationships and feelings, while AI tended to frame them as problems of systems and procedures. The conclusion: “as an adjunct, not a replacement”.
+
+Van den Berkmortel and colleagues had GPT-5, Gemini 2.5 Pro and humans code 317 articles in a Dutch regional newspaper (about nurses during COVID-19) (van den Berkmortel et al., 2026). Agreement between GPT-5 and humans was α = 0.49, short of the 0.70 between humans. The authors sum it up: AI codes “whether it is mentioned”; people prioritize “interpretive weight”. Even among studies from the same period, the conclusion varies a lot depending on the standard used.
+
+### How AI has been portrayed beneath the contest
+
+Beneath the contest over rejection or acceptance, how have researchers portrayed AI? From 28 methodological essays published in 2024–2026, we extracted 213 units describing AI and grouped them into four metaphors: “likeness”, whether AI is portrayed as like a person or as a tool; “lens”, what becomes visible and invisible through AI; “hand”, what to delegate and what not to let go of; and “scale”, what to value and what to give up. Researchers move back and forth among these four questions.
+
+How we carried out this study with AI is in [Doing a meta-synthesis with AI]({{ '/articles/meta-synthesis-with-ai/' | relative_url }}).
+
+## References
+
+- De Paoli, S. (2026a). Can machines perform a qualitative data analysis? Reading the debate with Alan Turing. *Social Science Computer Review*. https://doi.org/10.1177/08944393261451707
+- De Paoli, S. (2026b). Why we should reject to reject the use of generative artificial intelligence in qualitative analysis: A response to Jowsey, Braun, Clarke, Lupton, and Fine (2025). *Qualitative Inquiry*. https://doi.org/10.1177/10778004261425137
+- Duke, M. R. (2026). Artificial intelligence and the end(s) of qualitative data analysis. *Human Organization, 85*(1), 8–10. https://doi.org/10.1080/00187259.2025.2546439
+- Friese, S., Nguyen-Trung, K., Powell, S., & Morgan, D. L. (2026). Beyond binary positions: Making space for critical and reflexive GenAI integration in qualitative research. *Qualitative Inquiry*. https://doi.org/10.1177/10778004261429393
+- Goh, J. (2026, January 16). Qualitative researchers' AI rejection is based on identity, not reason. *Times Higher Education*. https://www.timeshighereducation.com/opinion/qualitative-researchers-ai-rejection-based-identity-not-reason
+- Greenhalgh, T. (2026). Reflexive qualitative research and generative AI: A call to go beyond the binary. *Qualitative Inquiry*. https://doi.org/10.1177/10778004261429383
+- Hill, C., Dahil, A., Simpson, G., Hardisty, D., Keast, J., Pinn, C. K., & Dambha-Miller, H. (2026). Large language models for thematic analysis in healthcare research: A blinded mixed-methods comparison with human analysts. *PLOS Digital Health, 5*(4), e0001189. https://doi.org/10.1371/journal.pdig.0001189
+- Ibrahim, E. I., Nelson, L. K., & Voyer, A. (2026). Should generative AI be used in reflexive qualitative research? *Qualitative Inquiry*. https://doi.org/10.1177/10778004261456208
+- Jowsey, T., Braun, V., Clarke, V., Lupton, D., & Fine, M. (2025). We reject the use of generative artificial intelligence for reflexive qualitative research. *Qualitative Inquiry*. https://doi.org/10.1177/10778004251401851
+- Jowsey, T., Stapleton, P., Campbell, S., Davidson, A., McGillivray, C., Maugeri, I., Lee, M., & Keogh, J. (2025). Frankenstein, thematic analysis and generative artificial intelligence: Quality appraisal methods and considerations for qualitative research. *PLOS ONE, 20*(9), e0330217. https://doi.org/10.1371/journal.pone.0330217
+- Levitt, H. M. (2026). A consideration of the ethics and methodological integrity of generative artificial intelligence in qualitative research: Guidelines for Qualitative Psychology. *Qualitative Psychology*. https://doi.org/10.1037/qup0000353
+- Matta, C., Nordmark, S., & Masiello, I. (2026). AI could undermine qualitative research. Luckily, we have a plan. *International Journal of Qualitative Methods, 25*. https://doi.org/10.1177/16094069261456950
+- Mendoza, K. P. R., & Quilantang, R. F. (2026). In relation, not replacement: A reflexive case for generative AI in qualitative research. *Qualitative Research Journal*. https://doi.org/10.1108/QRJ-11-2025-0428
+- Mizumoto, A., & Teng, M. F. (2025). Large language models fall short in classifying learners' open-ended responses. *Research Methods in Applied Linguistics, 4*(2), 100210. https://doi.org/10.1016/j.rmal.2025.100210
+- Nguyen, D. C., & Welch, C. (2026). Engaged and responsible scholarship: Why qualitative researchers should not embrace GenAI. *Business & Society, 65*(7), 1787–1792. https://doi.org/10.1177/00076503251386539
+- Prescott, M. R., Yeager, S., Ham, L., Rivera Saldana, C. D., Serrano, V., Narez, J., Paltin, D., Delgado, J., Moore, D. J., & Montoya, J. (2024). Comparing the efficacy and efficiency of human and generative AI: Qualitative thematic analyses. *JMIR AI, 3*, e54482. https://doi.org/10.2196/54482
+- Roberts, J., Baker, M., & Andrew, J. (2024). Artificial intelligence and qualitative research: The promise and perils of large language model (LLM) "assistance." *Critical Perspectives on Accounting, 99*, 102722. https://doi.org/10.1016/j.cpa.2024.102722
+- Sakaguchi, K., Sakama, R., & Watari, T. (2025). Evaluating ChatGPT in qualitative thematic analysis with human researchers in the Japanese clinical context and its cultural interpretation challenges: Comparative qualitative study. *Journal of Medical Internet Research, 27*, e71521. https://doi.org/10.2196/71521
+- Sibeoni, J., Verneuil, L., Manolios, E., Meunier, J.-P., Ponsard, C., Mathé, J., & Revah-Lévy, A. (2026). AI and qualitative health research: Working through a necessary grieving process. *Qualitative Health Research*. https://doi.org/10.1177/10497323261417237
+- van den Berkmortel, B., Westra, D., Gifford, R., & van de Baan, F. C. (2026). Analyzing nurse sentiment in a Dutch regional newspaper during the COVID-19 pandemic: Comparative content analysis of GPT-5, Gemini 2.5 Pro, and human coding. *Journal of Medical Internet Research, 28*, e98374. https://doi.org/10.2196/98374
+- Xue, H., Kajiwara, S., & Toyoda, H. (2026). How do qualitative researchers discuss generative AI? A new attempt at qualitative meta-synthesis [Poster presentation, in Japanese]. 23rd Annual Meeting of the Japanese Association of Qualitative Psychology.

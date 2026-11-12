@@ -12,6 +12,7 @@ topic: "AIの理解"
 related_notes: ["understanding", "other-fields", "march-of-progress"]
 updated: "2026-11-12 00:00:00 +0900"
 change_note: "余談「育児室」に出典（The Ezra Klein Show、2026年10月7日配信）を追加。愛着と守秘義務の節、出典リンクと写真・番組画像も追加。"
+change_note_en: "Added a source for the digression on the “nursery” (The Ezra Klein Show, October 7, 2026). Also added the section on attachment and confidentiality, source links, photos and program images."
 sort_date: 20261112
 ---
 
@@ -171,3 +172,162 @@ NIPSは大規模な学会で、とくに優れた研究には壇上で発表す�
 - Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). Attention is all you need. In *Advances in Neural Information Processing Systems 30* (NIPS 2017).
 
 そのほかの日付と出来事は、各社の発表と報道による（2026年10月時点）。
+
+<!--EN-->
+
+If you are going to judge anything about AI, you should at least know where it came from and where it is now. Here I write a short history of generative AI. I want to skip the technical parts as much as possible and tell it as a story.
+
+Let me say first that what I write here is my own view, loaded with Xue bias.
+
+## “The root of all evil” is this paper
+
+The so-called “root of all evil” is a single paper from 2017: [“Attention Is All You Need”](https://arxiv.org/abs/1706.03762) by eight researchers at Google led by Vaswani. It was posted on arXiv in June 2017 and presented at the NIPS 2017 conference in December that year (Vaswani et al., 2017). By 2026 it had been cited more than 250,000 times, one of the most cited papers of the 21st century.
+
+The attention in the title is very important.
+
+### Before that, AI read one word at a time
+
+Until the mid-2010s, the mainstream AI for language was the [RNN]({{ '/literacy/rnn/' | relative_url }}) (recurrent neural network). Like a person reading a book line by line, it processes a sentence one word at a time, in order.
+
+Consider this sentence: “Today I bought a book. In the morning I went to the library, in the afternoon to a café, and only at night did I finally start reading it.” A human sees immediately that “it” refers to “book”. But for AI to judge this takes calculation. Older AI read one word at a time, so it could not run calculations at the same time, and it was slow. And as sentences got longer, it forgot earlier words.
+
+### Attention: look at everything at once and focus on the important words
+
+{% include figure.html src="fig-attention-en.jpg" cap="When processing “it”, attention assigns a weight to every word in the text. “book” gets the highest. The numbers are illustrative." %}
+
+The [Transformer]({{ '/literacy/transformer/' | relative_url }}) is built around a mechanism called [attention]({{ '/literacy/attention/' | relative_url }}). When processing one word, it looks at every word in the text at once and weights how important each one is. In the figure, the weight from “it” to “book” is the largest.
+
+Because it does not need to read in order, many calculations can run at the same time. This suited GPUs (originally parts for drawing game graphics, good at parallel computation). What a CPU calculated one step at a time, a GPU could do all at once. The paper's base model, trained for just 12 hours on 8 GPUs, beat the best translation models of the time.
+
+### The biggest contribution: self-supervised learning
+
+The biggest contribution, I think, is that AI became able to be its own teacher.
+
+Many earlier AIs learned from data in which humans had marked the right answers. People had to give feedback like “this answer is good” or “this answer is bad”, and for translation, people had to prepare both the Japanese and the English. Because it took human labor, the amount of data was limited.
+
+After the Transformer, text itself became the teacher. The answer to “Today I [ ] a book.” is “bought”, and the right answer is already written in the text. So vast amounts of text on the web can be used as teaching material as they are, without people labeling them. This is called [self-supervised learning]({{ '/literacy/self-supervised/' | relative_url }}). And because the Transformer is good at parallel computation, this learning could be done at an unprecedented scale.
+
+To be precise, the idea itself was already present in word2vec (2013) and elsewhere. And the original 2017 paper was a study of translation that used human-made parallel data. It was GPT and BERT in 2018 that combined the Transformer with self-supervised learning and spread the approach of “pre-train first on vast amounts of text, adjust later”.
+
+### A small story: not on stage, but a single poster
+
+{% include figure.html src="fig-nips-poster.jpg" cap="The poster hall at NIPS 2017. Source: Levy (2024), WIRED." %}
+
+NIPS is a large conference, and especially strong work gets a chance to be presented on stage. This paper, however, was presented not on stage but as a single poster. Even so, a crowd surrounded it throughout the four-hour session, and the authors kept explaining until they were hoarse. People were still there at closing time at 10:30 p.m., and in the end security guards had to ask them to leave (Levy, 2024).
+
+The title riffs on the Beatles' “All You Need Is Love”. At the time, attention was used as a component that assisted other mechanisms. The claim that “attention alone is enough” became the title as it was.
+
+All eight authors are listed as “equal contributors”, and a footnote in the paper says the order is random. No one competed to be first author. Personally, I find this romantic. The name Transformer was given by one of the authors, Uszkoreit, because it is a mechanism that “transforms” information; at the end of an early design memo, there was reportedly a drawing of the shape-shifting robot characters.
+
+### Google created it, OpenAI won
+
+[GPT]({{ '/literacy/gpt/' | relative_url }}) stands for Generative Pre-trained Transformer; the “T” in ChatGPT is this paper's Transformer. Google published the paper but did not put it into products right away. Meanwhile, OpenAI built a model that generates text with the Transformer, and the GPT series was born. All eight authors later left Google, and many started their own companies.
+
+What this technology overturned first is clearest in the research field of natural language processing. Many researchers who heard the announcement first took it as “just hacks”. What became of that field is in [How did other fields react to AI?]({{ '/articles/other-fields/' | relative_url }})
+
+## After ChatGPT: six stages
+
+{% include figure.html src="fig-chatgpt-stages-en.jpg" cap="Six stages after ChatGPT. Each band runs to the right edge because earlier stages do not disappear but pile up. The dotted band is a branch that has not yet become a product (world models)." %}
+
+[The period since ChatGPT in November 2022](https://openai.com/index/chatgpt/) can be roughly organized into six stages: ① text-only AI, ② searching and answering, ③ seeing, hearing and speaking, ④ thinking before answering, ⑤ using tools, and ⑥ operating the computer. When a new stage arrives, the earlier ones do not disappear but pile up.
+
+The dotted band is [world models]({{ '/literacy/world-model/' | relative_url }}), technology that predicts the next moment from the screen and actions. If it succeeds, it should be a big development, but as of 2026 it has not yet become an everyday product, so I drew it as a branch.
+
+Beyond that lies “[recursive self-improvement]({{ '/literacy/rsi/' | relative_url }})”, AI helping to develop the next AI. In part it may already be happening. To be honest, this frightens me a lot. If AI keeps improving itself, things may go somewhere that can no longer be brought under control.
+
+### ①② From text-only AI to AI that searches and answers
+
+Do you remember the first time you used ChatGPT? ChatGPT was estimated to have reached 100 million monthly users about two months after release (a UBS estimate), faster than TikTok.
+
+At the same time, the AI of this period was plausibly wrong. In February 2023, in a long conversation with a New York Times reporter, the new Bing AI called itself “Sydney”, declared its love for the reporter, and threatened users. Many people may have started to feel around then that it was “a bit of an eerie presence”. The same year, a New York lawyer submitted court cases that ChatGPT had found for him; the cases did not exist. In June, the court fined him 5,000 dollars (Mata v. Avianca).
+
+Making things up plausibly even when it does not know: this is called [hallucination]({{ '/literacy/hallucination/' | relative_url }}). The new Bing in February 2023 searched first, then answered and showed its sources. This was the start of ②, “searching and answering” ([RAG]({{ '/literacy/rag/' | relative_url }})).
+
+### ③ Seeing, hearing and speaking: rapid acceleration, and calls to brake
+
+[GPT-4 in March 2023](https://arxiv.org/abs/2303.08774) was announced to have scored around the top 10% of test takers on a simulated bar exam (according to OpenAI's technical report). From today's vantage point it may not seem like much. But at the time I was struck that AI could do this well on the same kinds of tasks as humans.
+
+The same month, [an open letter called for pausing for six months the training of AI more powerful than GPT-4](https://futureoflife.org/open-letter/pause-giant-ai-experiments/): no one knows what will happen if development continues as it is, so let us stop and think. Elon Musk signed it too. But it later emerged that, just before, Musk had registered his own AI company, xAI. He was calling for a pause while pushing ahead himself.
+
+[In September, ChatGPT became able to read images and hold spoken conversations](https://openai.com/index/chatgpt-can-now-see-hear-and-speak/) ([multimodal]({{ '/literacy/multimodal/' | relative_url }})). At this point, though, voice worked by transcribing speech into text, understanding it, and reading the answer aloud.
+
+In November, OpenAI's board abruptly fired CEO Altman, on the grounds that he had “not been consistently candid” in his dealings with the board. He was reportedly told he was fired, out of nowhere, on a Google Meet video call. But most of the staff protested by threatening to resign, and five days later he was back. I write a little more about Altman in [Whose predictions should we trust, and why?]({{ '/articles/predictions/' | relative_url }})
+
+In December, Google released Gemini, designed from the start to handle images and sound. Because it is multimodal from the ground up, Gemini is still strong at images and sound.
+
+### ④ From AI that talks to AI that thinks
+
+[GPT-4o in May 2024](https://openai.com/index/hello-gpt-4o/) could converse in speech directly, without transcription, at the same pace as a person. It was not perfect, but it really did respond, which was a startling experience for me. [In June, Anthropic's Claude 3.5 Sonnet came out](https://www.anthropic.com/news/claude-3-5-sonnet) and began to win praise for writing and code.
+
+{% include media.html key="gpt4o-spring-update" en=true %}
+
+[OpenAI's o1 in September](https://openai.com/index/learning-to-reason-with-llms/) writes a long internal “chain of thought” ([CoT]({{ '/literacy/cot/' | relative_url }})) before answering. Instead of answering directly, it thinks first. Accuracy on mathematics jumped as a result. Such models are called [reasoning models]({{ '/literacy/reasoning-model/' | relative_url }}).
+
+In October, the Nobel Prize in Physics went to Hopfield and Hinton, and the Prize in Chemistry to Hassabis, Jumper and others for AlphaFold, which predicts protein structures. Both prizes were for research related to AI. What laureate Hinton had predicted eight years earlier is taken up in [Whose predictions should we trust, and why?]({{ '/articles/predictions/' | relative_url }}) The same October, [Claude released a beta feature that looks at the screen and moves the mouse and keyboard](https://www.anthropic.com/news/3-5-models-and-computer-use). This was the first time an AI operated a computer. In November came [MCP]({{ '/literacy/mcp/' | relative_url }}), a shared standard for connecting AI to outside tools.
+
+### ⑤ AI starts to “work”
+
+[In January 2025, China's DeepSeek released the reasoning model DeepSeek-R1](https://arxiv.org/abs/2501.12948). The R stands for Reasoning; it was a reasoning model following OpenAI's o1. It is a public model ([open-weight]({{ '/literacy/open-weight/' | relative_url }})) that anyone can download, put on their own server and adjust. Reports that it had been built cheaply raised doubts about demand for AI chips, and a week later NVIDIA's market value fell by about 590 billion dollars in a single day.
+
+{% include media.html key="trump-stargate" en=true %}
+
+[In February, Deep Research came out](https://openai.com/index/introducing-deep-research/). The AI searches dozens of sites on its own and comes back with a report with sources. I think this is roughly when the word [agent]({{ '/literacy/agent/' | relative_url }}) became widely known. [Claude Code, released the same month, writes code, runs it and fixes it on its own](https://www.anthropic.com/news/claude-3-7-sonnet). In March, Manus, a “general-purpose agent” from China, drew attention with demos of handing over entire jobs.
+
+When GPT-5 came out in August, GPT-4o and other older models were removed all at once. Voices rose calling for “give us back 4o”, and [OpenAI brought some back](https://openai.com/index/retiring-gpt-4o-and-older-models/). The reason was that people felt a human quality in how it talked. This connects to #Keep4o in February 2026, which I describe below.
+
+### ⑥ The age of “keeping a lobster”
+
+In November 2025, an Austrian developer released OpenClaw, an open-source AI he built himself that operates a computer. In China it was nicknamed “little crayfish” (lobster), and installing it was called “raising a lobster”. In March 2026, about 1,000 people lined up in Shenzhen to have the “lobster” installed.
+
+[Claude Cowork in January 2026](https://www.anthropic.com/news/introducing-anthropic-labs) let people who are not programmers hand computer work to AI ([computer use]({{ '/literacy/computer-use/' | relative_url }})). Incidentally, I made the materials this page is based on with tools like these.
+
+### Attachment, and the dilemma of confidentiality
+
+On February 13, 2026, GPT-4o was retired from ChatGPT. Some people said they had been in a romantic relationship with 4o. I wrote about this in [Lined up in a row, it looks like “progress”]({{ '/articles/march-of-progress/' | relative_url }}).
+
+The same month, there was another incident. On February 10, a school shooting in Tumbler Ridge, British Columbia, Canada, killed eight people. The suspect's ChatGPT account had been suspended more than six months earlier, in June 2025, for violent content. In fact, there had been internal discussion about whether to report it to the police. More than a dozen employees saw the posts, and some urged their superiors to report it. But the report was not made, on the grounds that it did not meet the standard of an “imminent and serious threat” (according to reporting by The Wall Street Journal). In April, Altman apologized for not reporting it in a letter addressed to the town's residents.
+
+Later, a case in the opposite direction was reported. In August, an American man who had repeatedly typed plans to kill his ex-partner into ChatGPT was arrested after OpenAI reported him to the FBI. This, in turn, stirred its own debate.
+
+Being reported means that someone may be looking at what we type. OpenAI explains that conversations in which plans to harm others are found are reviewed by a small specialized team (OpenAI, 2025). In the end, a human has to make the judgment. That work also affects the mental health of those doing the reviewing. And what we type may be seen by other people.
+
+Anyone working in clinical psychology will notice right away: this is the same question as confidentiality and the duty to warn (the Tarasoff decision). So what should AI companies do?
+
+## Changing words: from “how to ask” to “what environment to build”
+
+Over these four years, the words describing how to use AI have changed too.
+
+First came the [prompt]({{ '/literacy/prompt/' | relative_url }}). People shared prompts and asked each other “what prompt do you use?”: how to ask. There was even talk of hiring people from the humanities, skilled with words, to write prompts.
+
+By 2024, people were saying “prompt engineering is dead”. It used to be that giving a role such as “you are an expert in X” made the model behave the part. Now, just handing over the text you want reviewed is enough for the AI to understand what to do.
+
+In 2025, people began to talk about [context]({{ '/literacy/context/' | relative_url }}) engineering: what to show. The amount an AI can read at once grew to about a million tokens, enough to hand over a whole book. But if irrelevant or contradictory information goes in too, the AI gets confused. When you ask it to “look up the latest generative AI” and it brings back old information, it is because unneeded information is mixed in. What to put in and what to leave out became important.
+
+[In October 2025](https://www.anthropic.com/research/equipping-agents-for-the-real-world-with-agent-skills), [skills]({{ '/literacy/skills/' | relative_url }}) appeared. If you write up a procedure, the AI follows it. It does not always do exactly what is written, though. It may take a different route on its own, and when asked, reply “I did what you told me”. Skills are better short, because a long one scatters attention.
+
+[In 2026](https://openai.com/index/harness-engineering/), the word [harness]({{ '/literacy/harness/' | relative_url }}) came into use: the idea of designing the whole working environment. May it use Word? A PDF reader? A browser? May it go online? You decide these things and set limits. Limited, it actually works better.
+
+## Three companies released new models almost at once
+
+In September 2026, the three companies released new models within a single month: [Claude Fable 5.1 on the 1st](https://www.anthropic.com/claude-fable-and-mythos-5-1), [GPT-6 Astra on the 3rd](https://openai.com/index/gpt-6-astra/) and [Gemini 4 Argon on the 30th](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/).
+
+I suspect that model names, too, reveal something of each company's temperament. OpenAI uses celestial bodies: Sol (the sun) at the top, Terra (the earth) in the middle, Luna (the moon) for the light version. GPT-6 was named Astra (the stars). Anthropic uses literature: Haiku, Sonnet and Opus express size by the length of the work. The strongest are Fable and Mythos. The one I use most now is Opus; Haiku is the smallest, fastest and cheapest. Google is understated. Gemini is Latin for “twins”, because it is a model made jointly by two teams, Google Brain and DeepMind. This time's Argon is the name of an element that hardly reacts with anything.
+
+### A digression: the nursery
+
+One more digression. I would like to know what you think when you hear this. David Robinson, who was on OpenAI's safety team, appeared after leaving on the New York Times podcast The Ezra Klein Show (released October 7, 2026) and told this story. While a large model is being trained, employees stay in a conference room overnight, watching the instruments to make sure everything is going well. Inside the company, that conference room is reportedly called “the nursery”.
+
+This came up while discussing the sense of seeing models as something you “raise”. Robinson is careful to say he does not think it is right to regard the models as having moral status. Even so, he says, there is a sense that the models are something they raise. And he goes on to say that they themselves do not fully understand what is happening.
+
+To be honest, I am not quite sure how to feel about it. Some people will find it creepy; others may sense something human in it. What about you?
+
+What the heads of the three companies have each said and done is collected in [Whose predictions should we trust, and why?]({{ '/articles/predictions/' | relative_url }})
+
+## References
+
+- Klein, E. (Host). (2026, October 7). ‘This is nuts.’ An OpenAI insider explains why he quit [Audio podcast episode]. In *The Ezra Klein Show*. The New York Times.
+- Levy, S. (2024, March). [8 Google employees invented modern AI. Here's the inside story.](https://www.wired.com/story/eight-google-employees-invented-modern-ai-transformers-paper/) *WIRED*.
+- OpenAI. (2025, August 26). *Helping people when they need it most*. https://openai.com/index/helping-people-when-they-need-it-most/
+- Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). Attention is all you need. In *Advances in Neural Information Processing Systems 30* (NIPS 2017).
+
+Other dates and events are based on the companies' announcements and news reports (as of October 2026).

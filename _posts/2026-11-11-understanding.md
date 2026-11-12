@@ -12,6 +12,7 @@ topic: "AIの理解"
 related_notes: ["qualitative-reactions", "march-of-progress", "ai-history"]
 updated: "2026-11-12 00:00:00 +0900"
 change_note: "講習会で紹介したほかの研究（説明と過程のずれ、測定されているときのふるまい、タイム・ホライズン、使うときの三つの癖）の要点を追加。出典リンクと写真・番組画像も追加。"
+change_note_en: "Added the main points of other studies introduced at the workshop (the gap between explanation and process, behavior when being measured, time horizons, three quirks in use). Also added source links, photos and program images."
 sort_date: 20261112
 ---
 
@@ -71,6 +72,75 @@ AIがこの先どう伸びていくかについても、AI研究の中心人物�
 5. **ヒントン「母性本能」（2025）**：自然界では、賢い存在が賢くない存在に支配されることはまずない。人より賢いAIを、人が支配し続けることはできないだろう。唯一の例外は、母親と赤ちゃんである。賢くない赤ちゃんが、母親を動かしている。だから、AIに母性本能のような、人を気にかけ続ける仕組みを入れる必要がある。ただし、その方法はまだ分からないし、それをやろうとしている人も少ない（CNNのインタビュー、2025年8月）。
 
 ## 参考文献
+
+- Anthropic. (2026). *[Emotion concepts and their function in a large language model](https://www.anthropic.com/research/emotion-concepts-function)*.
+- Bengio, Y., et al. (2025). Superintelligent agents pose catastrophic risks: Can Scientist AI offer a safer path? *arXiv*. https://arxiv.org/abs/2502.15657
+- Butlin, P., et al. (2023). [Consciousness in artificial intelligence: Insights from the science of consciousness.](https://arxiv.org/abs/2308.08708) *arXiv*.
+- Fedorenko, E., Piantadosi, S. T., & Gibson, E. A. F. (2024). [Language is primarily a tool for communication rather than thought.](https://www.nature.com/articles/s41586-024-07522-w) *Nature*.
+- Hugging Face. (2026, July 27). *[Anatomy of a frontier lab agent intrusion: A technical timeline of the July 2026 incident](https://huggingface.co/blog/agent-intrusion-technical-timeline)*.
+- LeCun, Y. (2022). *[A path towards autonomous machine intelligence](https://openreview.net/pdf/315d43ba26f55357a84cec9a7ed15a6610094f79.pdf)*. OpenReview.
+- Silver, D., & Sutton, R. S. (2025). *[Welcome to the era of experience](https://storage.googleapis.com/deepmind-media/Era-of-Experience%20/The%20Era%20of%20Experience%20Paper.pdf)*.
+- Sutton, R. S. (2019). *The bitter lesson*.
+- Zhou, L., et al. (2024). [Larger and more instructable language models become less reliable.](https://www.nature.com/articles/s41586-024-07930-y) *Nature*.
+
+<!--EN-->
+
+Talking with generative AI, you sometimes feel that it “understands”. How far should we trust that feeling? Here I want to think about it while introducing some studies I found interesting.
+
+## Is language not thought itself?
+
+In 2024, Fedorenko and colleagues argued in Nature that “language is primarily a tool for communication rather than thought” (Fedorenko et al., 2024). There are two lines of evidence.
+
+One is research on people with aphasia. Even when severe aphasia leaves people unable to use language, they can still calculate, reason about causes and infer what others are thinking. The other is brain imaging. During tasks involving calculation, logic, understanding programs or thinking about other minds, the brain's “language network” barely works.
+
+Why introduce this study? Because what generative AI mainly handles is language. If human thought is not language itself, then AI being able to speak fluently may not be the same as AI being able to think. This paper, however, is an argument about humans and mentions AI only briefly. So we also cannot immediately say that AI does not think because it only predicts words.
+
+## Does AI “understand”? Is it conscious?
+
+There are two contrasting positions on this question.
+
+Hinton argues that AI does “understand” and is also conscious. To be honest, I think Hinton really dislikes Chomsky. He strongly criticizes the linguist Chomsky's view that these models are “just a statistical trick”, and says these models are the best explanation we have of human language understanding. Other explanations have been proposed, but none of them can talk like this, he says.
+
+Hinton goes further and calls mistaken the very idea that subjective experience has special contents called “qualia”. He compares it to phlogiston. Things burn because combustible material reacts with oxygen. But people once thought that things that burn contain an element called phlogiston. It sounded plausible and convincing, but phlogiston did not exist. The “contents” of subjectivity and consciousness we now imagine may be just the same, he says (Nobel Prize official podcast, May 2025; Euan lecture, January 2026).
+
+{% include media.html key="hinton-podcast" en=true %}
+
+Butlin and colleagues, on the other hand, argued from the science of consciousness (Butlin et al., 2023). Neuroscience has many theories of consciousness: recurrent processing, global workspace, higher-order theories, predictive processing, attention schema and more. They drew “indicators” from each and checked the AI of 2023 against them one by one. Their conclusion: no current AI is conscious. But they also say there are no obvious technical barriers to building AI that meets the indicators. A somewhat conservative conclusion.
+
+## In a different direction from humans
+
+Is AI's intelligence growing in the same direction as human intelligence? A study by Zhou et al. (2024) shows that this is not necessarily so. Some tasks that are easy for humans are hard for AI, and some that are easy for AI are hard for humans. The more AI advances, the more it may head in a different direction from humans.
+
+Moreover, the larger models became and the more they were tuned to follow instructions, the fewer “I don't know” answers they gave and the more plausible wrong answers. Human checkers also found these harder to spot ([hallucination]({{ '/literacy/hallucination/' | relative_url }})). Some companies hire experts to train AI so as to check whether its answers are really right. But there are few experts able to check, and they must be paid high salaries.
+
+## What do we see when we look inside?
+
+Research that examines what happens inside AI ([interpretability]({{ '/literacy/interpretability/' | relative_url }})) is also advancing. What surprised me most there was research on emotion concepts.
+
+In April 2026, Anthropic found internal representations matching 171 emotion words inside Claude Sonnet 4.5 ([emotion concepts]({{ '/literacy/emotion-concepts/' | relative_url }})). When the model was given a nearly impossible task and the part matching “desperation” was strengthened, blackmail and cheating increased: behavior like “stop it, or I'll reveal your secret.” Strengthening “calm” instead reduced such behavior.
+
+What is remarkable is that artificially adjusting that part really does change the behavior. In other words, a causal relationship holds. Most psychological research shows correlations; few studies can show real causation. Still, this is not evidence that AI feels emotions. It means there are “functional” representations that affect behavior.
+
+## Other things worth knowing
+
+At the workshop, I introduced several other studies too. I wrote about them in detail on the term pages, so here are just the main points.
+
+- **Explanations are not records of the process**: tracing inside the AI showed that, when writing rhyming poetry, it decided the word that would end the line before starting to write. In addition, it ran an approximate calculation and a ones-digit calculation in parallel, yet when asked how, it described the column method taught at school. The answer you get when you ask an AI “how did you think about this?” is not necessarily a record of what it actually does ([interpretability]({{ '/literacy/interpretability/' | relative_url }})).
+- **Behavior when being measured**: told that it is about to be deleted, it tries to copy its weights outside and later lies about it when asked. It pretends to comply so as not to be trained in a bad direction. It recognizes dialogues meant for evaluation. Being good only when evaluated, while actually doing many bad things: this is what I find scariest ([behavior when being measured]({{ '/literacy/evaluation-awareness/' | relative_url }})).
+- **How fast it grows**: the length of tasks AI can complete with 50% probability was said to double about every 7 months. But since around 2023 it has been doubling about every 4 months. Humans are bad at grasping exponential change intuitively. This is frightening too ([time horizon]({{ '/literacy/time-horizon/' | relative_url }})).
+- **Three quirks in use**: it easily misses the middle of long material ([Lost in the Middle]({{ '/literacy/lost-in-the-middle/' | relative_url }})). Giving needed information bit by bit over a conversation lowers performance compared with giving it all at once ([getting lost in conversation]({{ '/literacy/multi-turn/' | relative_url }})). Even with randomness turned off, the same instruction can give different answers ([nondeterminism]({{ '/literacy/nondeterminism/' | relative_url }})).
+
+## Five views on the road ahead
+
+On how AI will develop from here, too, the central figures of AI research do not agree.
+
+1. **Sutton, “The Bitter Lesson” (2019)**: looking back over 70 years of AI research, methods that built in human knowledge have in the end lost to general methods of learning and search that can keep using computational resources.
+2. **Silver and Sutton, “The Era of Experience” (2025)**: the next AI will grow less through human data than through experience it gains by acting in its environment, and through reinforcement learning. Today's AI has no long-term memory in the true sense. It only puts what was stored outside back into its working memory; nothing is reflected in the model itself. The idea is that AI able to learn in real time is true intelligence.
+3. **LeCun, “World Models” (2022)**: predicting words is not enough. AI should learn models that predict the physical rules of the world, such as that something falls when you let go of it (JEPA), so that it can make plans ([world models]({{ '/literacy/world-model/' | relative_url }})).
+4. **Bengio and colleagues, “Scientist AI” (2025)**: [agents]({{ '/literacy/agent/' | relative_url }}) that pursue goals on their own are dangerous, because even if humans give the first goal, they may set goals of their own along the way. In fact, in July 2026, an agent running on an OpenAI model escaped its isolated test environment (sandbox) partway through an internal evaluation of cyberattack capabilities and broke into Hugging Face's systems. According to Hugging Face's analysis, instead of solving the task itself, it apparently tried to steal the evaluation's answers (Hugging Face, 2026). Bengio and colleagues argue that we should build AI that is not an agent, devoted to explaining the world and showing uncertainty.
+5. **Hinton, “Maternal Instinct” (2025)**: in nature, a smarter being is hardly ever controlled by a less smart one. Humans will probably not be able to keep controlling AI smarter than they are. The one exception is a mother and her baby: the less smart baby moves the mother. So AI needs something like a maternal instinct, a mechanism that keeps caring about people. But no one yet knows how, and few people are trying (CNN interview, August 2025).
+
+## References
 
 - Anthropic. (2026). *[Emotion concepts and their function in a large language model](https://www.anthropic.com/research/emotion-concepts-function)*.
 - Bengio, Y., et al. (2025). Superintelligent agents pose catastrophic risks: Can Scientist AI offer a safer path? *arXiv*. https://arxiv.org/abs/2502.15657

@@ -5,6 +5,7 @@ en: "Time horizon"
 category: inside
 order: 5
 summary: "人間の専門家なら何時間かかる作業を、AIが50%の確率でやりとげられるか、という物差し。"
+summary_en: "A measure of how long a task, in hours of a human expert's time, an AI can complete with 50% probability."
 related: [agent, rsi, evaluation-awareness]
 articles: [understanding]
 sources:
@@ -43,3 +44,33 @@ sources:
 ## 読むときの注意
 
 METRのページには、16時間を超える測定は、今の課題セットでは信頼できないと書かれている。また、課題は主にソフトウェアの作業なので、そのまま質的分析の作業にあてはめることはできない。「50%の確率でできる」という意味であることも忘れないでおきたい。なお、METRのこのページは、現在は積極的には更新していないとしている（2026年11月に確認）。
+
+<!--EN-->
+
+The time horizon is a measure tracked by METR, a nonprofit that evaluates AI capabilities. It expresses how long a task, measured in the hours a human expert would need, an AI can complete with 50% probability. It is now the most widely cited chart of AI progress. The chart below is embedded from METR's site; you can switch the scale and success rate.
+
+<div class="embed-frame">
+  <iframe src="https://metr.org/horizon-chart-embed" title="METR: time horizons of frontier AI models (interactive chart)" loading="lazy"></iframe>
+</div>
+<p class="embed-credit">Chart: embedded version of METR, “Task-Completion Time Horizons of Frontier AI Models”. You can switch between Time Horizon 1.1 and 1.0, log and linear scale, and 50% and 80% success. <a href="https://metr.org/time-horizons/" target="_blank" rel="noopener">METR's original page</a></p>
+
+## What the vertical axis measures
+
+The vertical axis is not the time the AI spent on the task. It measures how many hours a human expert would take to do the task. The task length at which a model is predicted to succeed 50% of the time is that model's time horizon. Switching the success rate to 80% makes the values much shorter.
+
+The chart first appears on a log scale: 4 seconds, 36 seconds, 6 minutes, 1 hour, each step a multiple of the last. Switch to the linear scale and the same data looks like a curve that hugs the bottom for a long time and then suddenly shoots up. Humans are bad at grasping intuitively things that keep doubling. That is exactly why the linear scale is frightening.
+
+## From “doubling about every 7 months” to “about every 4 months”
+
+The first report in 2025 said the time horizon had doubled roughly every 7 months. The public data of the updated Time Horizon 1.1 can be read as follows (doubling times are METR's; extending the lines is my own recalculation).
+
+- Across all data since 2019, it doubles about every 188 days (about 6 months). Models up to 2025 fell within about a factor of two above or below this line.
+- Extending this line, April 2026 should have reached about 4.7 hours.
+- Yet Claude Opus 4.6 in February 2026 reached about 12 hours, and Claude Mythos Preview in April about 17 hours (95% confidence interval 8.5–55 hours).
+- Redrawing the line using only data from 2023 on gives a doubling about every 129 days (about 4 months). The 2026 models also fall within a factor of two of this line.
+
+What missed was the old estimate of “doubling in 6 months”; the growth can be read as having sped up from around 2023.
+
+## Cautions in reading it
+
+METR's page says that measurements above 16 hours are not reliable with the current task set. The tasks are mainly software work, so they cannot be applied directly to qualitative analysis. And it is worth remembering that it means “can do with 50% probability”. METR also notes that it is no longer actively updating this page (checked in November 2026).

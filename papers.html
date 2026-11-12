@@ -15,36 +15,36 @@ permalink: /papers/
 <section class="page-hero"><div class="container"><div class="section-panel page-heading">
 <div class="eyebrow">Literature</div>
 <h1 data-bilingual data-ja="AI×質的研究の文献" data-en="AI × Qualitative Research: Literature">AI×質的研究の文献</h1>
-<p data-bilingual data-ja="生成AIを質的研究に使うことをめぐる論考と、AIと人間の分析を比べた研究を集めた。論考は、著者の立場によって、楽観・支持・慎重・反対の四つに大まかに分けている。一つの論文に複数の面があることも多いので、分け方は目安として見てほしい。各文献に、原題と日本語訳、日本語の概要、書誌情報をつけた。" data-en="Essays on using generative AI in qualitative research, grouped roughly by stance (optimistic, supportive, cautious, against), and studies comparing AI and human analysis. Each entry has the original title, a Japanese summary and full reference.">生成AIを質的研究に使うことをめぐる論考と、AIと人間の分析を比べた研究を集めた。論考は、著者の立場によって、楽観・支持・慎重・反対の四つに大まかに分けている。一つの論文に複数の面があることも多いので、分け方は目安として見てほしい。各文献に、原題と日本語訳、日本語の概要、書誌情報をつけた。</p>
-<div class="reader-quick-links"><span class="label">関連する研究ノート</span><a href="{{ '/articles/qualitative-reactions/' | relative_url }}">質的研究者は、AIにどう反応したか</a><a href="{{ '/articles/meta-synthesis-with-ai/' | relative_url }}">AIと一緒に、メタ統合をやってみた</a></div>
+<p data-bilingual data-ja="生成AIを質的研究に使うことをめぐる論考と、AIと人間の分析を比べた研究を集めた。論考は、著者の立場によって、楽観・支持・慎重・反対の四つに大まかに分けている。一つの論文に複数の面があることも多いので、分け方は目安として見てほしい。各文献に、原題と日本語訳、日本語の概要、書誌情報をつけた。" data-en="Essays on using generative AI in qualitative research, and studies comparing AI and human analysis. The essays are grouped roughly by the authors&#39; stance: optimistic, supportive, cautious, against. Many papers have more than one side, so treat the grouping as a guide. Each entry has the original title, a summary and the full reference.">生成AIを質的研究に使うことをめぐる論考と、AIと人間の分析を比べた研究を集めた。論考は、著者の立場によって、楽観・支持・慎重・反対の四つに大まかに分けている。一つの論文に複数の面があることも多いので、分け方は目安として見てほしい。各文献に、原題と日本語訳、日本語の概要、書誌情報をつけた。</p>
+<div class="reader-quick-links"><span class="label">{% include t.html ja="関連する研究ノート" en="Related notes" %}</span><a href="{{ '/articles/qualitative-reactions/' | relative_url }}">{% include t.html ja="質的研究者は、AIにどう反応したか" en="How did qualitative researchers react to AI?" %}</a><a href="{{ '/articles/meta-synthesis-with-ai/' | relative_url }}">{% include t.html ja="AIと一緒に、メタ統合をやってみた" en="Doing a meta-synthesis with AI" %}</a></div>
 </div></div></section>
 <section class="page-section"><div class="container">
 <div class="reader-toolbar">
-<label class="reader-field">文献を探す<input type="search" id="paper-search" placeholder="著者名・タイトル・キーワード" autocomplete="off"></label>
-<label class="reader-field">立場<select id="paper-group-filter"><option value="">すべて</option>{% for s in stances %}{% assign info = site.data.paper_stances | where: 'id', s | first %}<option value="{{ s }}">{{ info.short }}</option>{% endfor %}</select></label>
-<label class="reader-field">テーマ<select id="paper-topic"><option value="">すべて</option>{% for th in themes %}<option value="{{ th | escape }}">{{ th }}</option>{% endfor %}</select></label>
-<label class="reader-field">表示順<select id="paper-sort"><option value="author">著者名</option><option value="year-desc">発表年：新しい順</option><option value="year-asc">発表年：古い順</option></select></label>
+<label class="reader-field">{% include t.html ja="文献を探す" en="Search" %}<input type="search" id="paper-search" placeholder="著者名・タイトル・キーワード" data-ph-ja="著者名・タイトル・キーワード" data-ph-en="Author, title, keyword" autocomplete="off"></label>
+<label class="reader-field">{% include t.html ja="立場" en="Stance" %}<select id="paper-group-filter"><option value="" data-bilingual data-ja="すべて" data-en="All">すべて</option>{% for s in stances %}{% assign info = site.data.paper_stances | where: 'id', s | first %}<option value="{{ s }}" data-bilingual data-ja="{{ info.short }}" data-en="{{ info.short_en }}">{{ info.short }}</option>{% endfor %}</select></label>
+<label class="reader-field">{% include t.html ja="テーマ" en="Theme" %}<select id="paper-topic"><option value="" data-bilingual data-ja="すべて" data-en="All">すべて</option>{% for th in themes %}<option value="{{ th | escape }}" data-bilingual data-ja="{{ th | escape }}" data-en="{{ site.data.i18n.themes[th] | escape }}">{{ th }}</option>{% endfor %}</select></label>
+<label class="reader-field">{% include t.html ja="表示順" en="Sort" %}<select id="paper-sort"><option value="author" data-bilingual data-ja="著者名" data-en="Author">著者名</option><option value="year-desc" data-bilingual data-ja="発表年：新しい順" data-en="Year: newest first">発表年：新しい順</option><option value="year-asc" data-bilingual data-ja="発表年：古い順" data-en="Year: oldest first">発表年：古い順</option></select></label>
 </div>
-<div class="reader-section-foot" style="margin-top:0"><p id="paper-count" class="reader-results" role="status" aria-live="polite"></p><button type="button" class="reader-button" data-reset-papers>検索条件をクリア</button></div>
-<div class="reader-section-foot"><div class="paper-actions"><button class="reader-button" data-export-visible="ris" type="button">表示中の文献をRISで保存</button><button class="reader-button" data-export-visible="bib" type="button">BibTeXで保存</button></div></div>
+<div class="reader-section-foot" style="margin-top:0"><p id="paper-count" class="reader-results" role="status" aria-live="polite"></p><button type="button" class="reader-button" data-reset-papers data-bilingual data-ja="検索条件をクリア" data-en="Clear filters">検索条件をクリア</button></div>
+<div class="reader-section-foot"><div class="paper-actions"><button class="reader-button" data-export-visible="ris" type="button" data-bilingual data-ja="表示中の文献をRISで保存" data-en="Save shown items as RIS">表示中の文献をRISで保存</button><button class="reader-button" data-export-visible="bib" type="button" data-bilingual data-ja="BibTeXで保存" data-en="Save as BibTeX">BibTeXで保存</button></div></div>
 <p class="reader-toast" data-reader-status role="status" aria-live="polite"></p>
-<div class="reader-empty" id="paper-empty" hidden><p>該当する文献がありません。</p><button type="button" class="reader-button" data-reset-papers>検索条件をクリア</button></div>
+<div class="reader-empty" id="paper-empty" hidden><p data-bilingual data-ja="該当する文献がありません。" data-en="No matching items.">該当する文献がありません。</p><button type="button" class="reader-button" data-reset-papers data-bilingual data-ja="検索条件をクリア" data-en="Clear filters">検索条件をクリア</button></div>
 </div></section>
 {% for gid in stances %}
 {% assign items = papers | where: 'stance', gid %}
 {% assign info = site.data.paper_stances | where: 'id', gid | first %}
 <section class="page-section paper-group" id="{{ gid }}"><div class="container">
-<div class="section-heading"><h2>{{ info.title }}</h2><p>{{ info.desc }}</p></div>
+<div class="section-heading"><h2>{% include t.html ja=info.title en=info.title_en %}</h2><p>{% include t.html ja=info.desc en=info.desc_en %}</p></div>
 <div class="paper-list">{% for paper in items %}
 <article class="paper-item" id="{{ paper.id }}">
-<p class="paper-cite">{{ paper.cite }}{% assign b = site.data.bibliography[paper.id] %}{% if b.journal != '' %} ・ <i>{{ b.journal }}</i>{% endif %}</p>
+<p class="paper-cite">{{ paper.cite }}{% assign b = site.data.bibliography[paper.id] %}{% if b.journal != '' %} · <i>{{ b.journal }}</i>{% endif %}</p>
 <h3 class="paper-title" lang="en">{% if paper.doi != '' %}<a href="{{ paper.doi }}" target="_blank" rel="noopener">{{ paper.title }}</a>{% else %}{{ paper.title }}{% endif %}</h3>
-<p class="paper-title-ja">{{ paper.title_ja }}</p>
-<div class="paper-tags">{% for tag in paper.themes %}<button type="button" class="tag" data-tag="{{ tag | escape }}" aria-pressed="false">{{ tag }}</button>{% endfor %}</div>
-<p class="paper-summary">{{ paper.summary }}</p>
+<p class="paper-title-ja lang-ja">{{ paper.title_ja }}</p>
+<div class="paper-tags">{% for tag in paper.themes %}<button type="button" class="tag" data-tag="{{ tag | escape }}" aria-pressed="false">{% include t.html ja=tag en=site.data.i18n.themes[tag] %}</button>{% endfor %}</div>
+<p class="paper-summary">{% include t.html ja=paper.summary en=paper.summary_en %}</p>
 <p class="paper-ref">{{ paper.apa }}{% if paper.doi != '' %} <a href="{{ paper.doi }}" target="_blank" rel="noopener">{{ paper.doi }}</a>{% endif %}</p>
-<div class="paper-actions">{% if paper.doi != '' %}<a class="paper-fulltext" href="{{ paper.doi }}" target="_blank" rel="noopener">本文を読む{% include external.html %}</a>{% endif %}{% if paper.policy_url %}<a href="{{ paper.policy_url }}" target="_blank" rel="noopener">公式のAI利用方針</a>{% endif %}<button class="reader-button" type="button" data-paper-action="copy" data-paper-id="{{ paper.id }}">引用をコピー</button><button class="reader-button" type="button" data-paper-action="ris" data-paper-id="{{ paper.id }}">RIS</button><button class="reader-button" type="button" data-paper-action="bib" data-paper-id="{{ paper.id }}">BibTeX</button></div>
+<div class="paper-actions">{% if paper.doi != '' %}<a class="paper-fulltext" href="{{ paper.doi }}" target="_blank" rel="noopener">{% include t.html ja="本文を読む" en="Read the paper" %}{% include external.html %}</a>{% endif %}{% if paper.policy_url %}<a href="{{ paper.policy_url }}" target="_blank" rel="noopener">{% include t.html ja="公式のAI利用方針" en="Official AI policy" %}</a>{% endif %}<button class="reader-button" type="button" data-paper-action="copy" data-paper-id="{{ paper.id }}" data-bilingual data-ja="引用をコピー" data-en="Copy reference">引用をコピー</button><button class="reader-button" type="button" data-paper-action="ris" data-paper-id="{{ paper.id }}">RIS</button><button class="reader-button" type="button" data-paper-action="bib" data-paper-id="{{ paper.id }}">BibTeX</button></div>
 </article>
 {% endfor %}</div></div></section>
 {% endfor %}</main>
-<script type="application/json" id="paper-data">[{% for p in papers %}{% assign b = site.data.bibliography[p.id] %}{"id":{{ p.id | jsonify }},"stance":{{ p.stance | jsonify }},"year":{{ p.year | jsonify }},"title":{{ p.title | jsonify }},"title_ja":{{ p.title_ja | jsonify }},"apa":{{ p.apa | jsonify }},"doi":{{ p.doi | jsonify }},"summary":{{ p.summary | jsonify }},"themes":{{ p.themes | jsonify }},"bib":{{ b | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}]</script>
+<script type="application/json" id="paper-data">[{% for p in papers %}{% assign b = site.data.bibliography[p.id] %}{"id":{{ p.id | jsonify }},"stance":{{ p.stance | jsonify }},"year":{{ p.year | jsonify }},"title":{{ p.title | jsonify }},"title_ja":{{ p.title_ja | jsonify }},"apa":{{ p.apa | jsonify }},"doi":{{ p.doi | jsonify }},"summary":{{ p.summary | jsonify }},"summary_en":{{ p.summary_en | jsonify }},"themes":{{ p.themes | jsonify }},"bib":{{ b | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}]</script>

@@ -3,13 +3,14 @@ layout: default
 body_class: wiki-page
 ---
 {%- assign cat = site.data.wiki_categories | where: "id", page.category | first -%}
+{%- assign parts = content | split: '<!--EN-->' -%}
 <main class="page-main">
   <section class="page-hero">
     <div class="container">
       <div class="section-panel page-heading">
-        <div class="eyebrow wiki-crumb"><a href="{{ '/literacy/' | relative_url }}">AIリテラシー</a>{% if cat %} ／ <a href="{{ '/literacy/' | relative_url }}#{{ cat.id }}">{{ cat.title }}</a>{% endif %}</div>
-        <h1>{{ page.title }}</h1>
-        {%- if page.en %}<p class="wiki-en">{{ page.en }}</p>{% endif %}
+        <div class="eyebrow wiki-crumb"><a href="{{ '/literacy/' | relative_url }}">{% include t.html ja="AIリテラシー" en="AI literacy" %}</a>{% if cat %} ／ <a href="{{ '/literacy/' | relative_url }}#{{ cat.id }}">{% include t.html ja=cat.title en=cat.title_en %}</a>{% endif %}</div>
+        <h1>{% include t.html ja=page.title en=page.en %}</h1>
+        {%- if page.en %}<p class="wiki-en lang-ja">{{ page.en }}</p>{% endif %}
       </div>
     </div>
   </section>
@@ -19,11 +20,11 @@ body_class: wiki-page
       <article class="post-shell">
         <div class="post-body">
           {%- if page.summary %}
-          <p class="wiki-lead">{{ page.summary }}</p>
+          <p class="wiki-lead">{% include t.html ja=page.summary en=page.summary_en %}</p>
           {%- endif %}
-{{ content }}
+<div class="lang-ja">{{ parts[0] }}</div>{% if parts[1] %}<div class="lang-en" lang="en">{{ parts[1] }}</div>{% endif %}
           {%- if page.sources %}
-          <h2>出典</h2>
+          <h2>{% include t.html ja="出典" en="Sources" %}</h2>
           <ul class="wiki-sources">
             {%- for s in page.sources %}
             <li>{{ s.text }}{% if s.url %} <a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.url }}</a>{% endif %}</li>
@@ -36,39 +37,39 @@ body_class: wiki-page
       <aside class="wiki-side">
         {%- if page.related %}
         <div class="wiki-box">
-          <h2>関連項目</h2>
+          <h2>{% include t.html ja="関連項目" en="Related terms" %}</h2>
           <ul>
             {%- for k in page.related %}
             {%- assign d = site.wiki | where: "key", k | first %}
-            {%- if d %}<li><a href="{{ d.url | relative_url }}">{{ d.title }}</a></li>{% endif %}
+            {%- if d %}<li><a href="{{ d.url | relative_url }}">{% include t.html ja=d.title en=d.en %}</a></li>{% endif %}
             {%- endfor %}
           </ul>
         </div>
         {%- endif %}
         {%- if page.articles %}
         <div class="wiki-box">
-          <h2>この項目が出てくる研究ノート</h2>
+          <h2>{% include t.html ja="この項目が出てくる研究ノート" en="Research notes that use this term" %}</h2>
           <ul>
             {%- for k in page.articles %}
             {%- assign a = site.posts | where: "key", k | first %}
-            {%- if a %}<li><a href="{{ a.url | relative_url }}">{{ a.title }}</a></li>{% endif %}
+            {%- if a %}<li><a href="{{ a.url | relative_url }}">{% include t.html ja=a.title en=a.title_en %}</a></li>{% endif %}
             {%- endfor %}
           </ul>
         </div>
         {%- endif %}
         {%- capture backlinks -%}
           {%- for d in site.wiki -%}
-            {%- if d.related contains page.key -%}{%- unless page.related contains d.key -%}<li><a href="{{ d.url | relative_url }}">{{ d.title }}</a></li>{%- endunless -%}{%- endif -%}
+            {%- if d.related contains page.key -%}{%- unless page.related contains d.key -%}<li><a href="{{ d.url | relative_url }}">{% include t.html ja=d.title en=d.en %}</a></li>{%- endunless -%}{%- endif -%}
           {%- endfor -%}
         {%- endcapture -%}
         {%- assign backlinks_check = backlinks | strip -%}
         {%- if backlinks_check != "" %}
         <details class="wiki-box">
-          <summary>この項目にリンクしている項目</summary>
+          <summary>{% include t.html ja="この項目にリンクしている項目" en="Terms that link here" %}</summary>
           <ul>{{ backlinks }}</ul>
         </details>
         {%- endif %}
-        <p class="wiki-back"><a href="{{ '/literacy/' | relative_url }}">AIリテラシーの項目一覧へ</a></p>
+        <p class="wiki-back"><a href="{{ '/literacy/' | relative_url }}">{% include t.html ja="AIリテラシーの項目一覧へ" en="All AI-literacy terms" %}</a></p>
       </aside>
     </div>
   </section>
