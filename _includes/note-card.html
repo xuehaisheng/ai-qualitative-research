@@ -1,7 +1,7 @@
 {%- assign note = include.note -%}
 {%- assign note_title_en = note.title_en | default: note.title -%}
 {%- assign note_summary_en = note.summary_en | default: note.summary_ja -%}
-<article class="reader-note" data-note data-topic="{{ note.topic | escape }}" data-search="{{ note.title | downcase | escape }} {{ note.summary_ja | downcase | escape }}" data-date="{{ note.date | date: '%Y%m%d' }}{{ note.updated | default: note.date | date: '%Y%m%d' }}" data-order="{{ note.order }}">
+<article class="reader-note{% if include.class %} {{ include.class }}{% endif %}" data-note data-topic="{{ note.topic | escape }}" data-search="{{ note.title | downcase | escape }} {{ note.summary_ja | downcase | escape }}" data-date="{{ note.date | date: '%Y%m%d' }}{{ note.updated | default: note.date | date: '%Y%m%d' }}" data-order="{{ note.order }}">
   <div class="reader-meta"><span>{{ note.topic }}</span><time datetime="{{ note.date | date_to_xmlschema }}">{{ note.date | date: '%Y.%m.%d' }}</time></div>
   <h3><a href="{{ note.url | relative_url }}" data-bilingual data-ja="{{ note.title | escape }}" data-en="{{ note_title_en | escape }}">{{ note.title }}</a></h3>
   <p data-bilingual data-ja="{{ note.summary_ja | escape }}" data-en="{{ note_summary_en | escape }}">{{ note.summary_ja }}</p>
