@@ -236,6 +236,17 @@ This site aims to become more than an announcement page: a place where qualitati
 .masthead-on .site-header .brand { position: relative; z-index: 2; }
 .masthead-on .site-header .brand-copy strong { display: inline-block; transform-origin: left center; font-weight: 800 !important; letter-spacing: -.03em !important; }
 .masthead-on .hero-main h1 { opacity: 0; }
+.masthead-on .site-header { border-bottom-color: transparent !important; }
+.masthead-on .site-header::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--reader-line); opacity: 0; pointer-events: none; }
+.masthead-docked .site-header::after { opacity: 1; }
+/* Where the browser supports scroll-driven animations, the shrink runs on the compositor (smooth even in Low Power Mode). */
+.masthead-sda .site-header .brand-copy strong { animation: mh-brand linear both; animation-timeline: scroll(root); animation-range: 0px var(--mh-dist); }
+.masthead-sda .hero .tagline { animation: mh-fade linear both; animation-timeline: scroll(root); animation-range: 0px calc(var(--mh-dist) * .6); }
+.masthead-sda .site-header::after { animation: mh-show linear both; animation-timeline: scroll(root); animation-range: calc(var(--mh-line) - 2px) var(--mh-line); }
+.mh-measure .site-header .brand-copy strong { animation: none !important; transform: none !important; }
+@keyframes mh-brand { from { transform: translate(var(--mh-x), var(--mh-y)) scale(var(--mh-s)); } to { transform: none; } }
+@keyframes mh-fade { to { opacity: 0; } }
+@keyframes mh-show { from { opacity: 0; } to { opacity: 1; } }
 
 /* Full central cards with additional side previews. Embla v8 loop pattern. */
 #about .reader-entries { margin-top: 32px; }
@@ -463,21 +474,35 @@ SOFTWARE.
   const sub = document.querySelector('.hero .tagline');
   const brand = document.querySelector('.site-header .brand-copy strong');
   if (!h1 || !brand) return;
-  document.body.classList.add('masthead-on');
-  let dist = 1, big = 1, dx = 0, queued = false;
+  const body = document.body, root = document.documentElement.style;
+  const sda = window.CSS && CSS.supports('animation-timeline: scroll()');
+  body.classList.add('masthead-on');
+  let dist = 1, line = 1, big = 1, dx = 0, queued = false;
   function measure() {
-    brand.style.transform = '';
+    body.classList.add('mh-measure'); brand.style.transform = '';
     const a = h1.getBoundingClientRect(), b = brand.getBoundingClientRect();
     big = parseFloat(getComputedStyle(h1).fontSize) / parseFloat(getComputedStyle(brand).fontSize);
     big = Math.min(big, a.width / b.width); // never wider than the hero column (e.g. English on a phone)
     dx = a.left - b.left;
     // Scroll distance over which the hero title's centre travels up to the header title's centre.
     dist = Math.max(1, (a.top + scrollY + a.height / 2) - (b.top + b.height / 2));
+    root.setProperty('--mh-dist', dist + 'px');
+    root.setProperty('--mh-x', dx + 'px');
+    root.setProperty('--mh-y', dist + 'px');
+    root.setProperty('--mh-s', String(big));
+    // The hero's bottom line is the bottom of the big box; the header line takes over when it reaches the header.
+    const shell = document.querySelector('.hero-shell'), header = document.querySelector('.site-header');
+    line = shell ? Math.max(dist, shell.getBoundingClientRect().bottom + scrollY - header.getBoundingClientRect().bottom) : dist;
+    root.setProperty('--mh-line', line + 'px');
+    body.classList.remove('mh-measure');
+    if (sda) body.classList.add('masthead-sda');
     update();
   }
   function update() {
     queued = false;
     const p = Math.min(1, Math.max(0, scrollY / dist)), q = 1 - p;
+    body.classList.toggle('masthead-docked', scrollY >= line);
+    if (sda) return;
     brand.style.transform = q ? `translate(${dx * q}px, ${dist * q}px) scale(${1 + (big - 1) * q})` : '';
     if (sub) sub.style.opacity = String(Math.max(0, 1 - p * 1.6));
   }
