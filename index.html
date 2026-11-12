@@ -482,6 +482,7 @@ SOFTWARE.
   const shell = document.querySelector('.hero-shell');
   const movers = [...document.querySelectorAll('.site-header .desktop-nav, .site-header .header-tools')];
   if (!h1 || !brand || !header) return;
+  const toggle = document.querySelector('.menu-toggle');
   const body = document.body, root = document.documentElement.style;
   const sda = window.CSS && CSS.supports('animation-timeline: scroll()');
   body.classList.add('masthead-on');
@@ -514,7 +515,7 @@ SOFTWARE.
   }
   function update() {
     queued = false;
-    const docked = scrollY >= dist;
+    const docked = scrollY >= dist || (toggle && toggle.getAttribute('aria-expanded') === 'true');
     body.classList.toggle('masthead-docked', docked);
     if (sda || docked) { brand.style.transform = ''; movers.forEach(m => m.style.transform = ''); if (!sda && sub) sub.style.opacity = '0'; return; }
     const p = Math.max(0, scrollY / dist), q = 1 - p;
@@ -523,6 +524,8 @@ SOFTWARE.
     if (sub) sub.style.opacity = String(Math.max(0, 1 - p / .7));
   }
   addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, {passive: true});
+  // With the mobile menu open, show the compact header so the big title does not overlap the menu.
+  if (toggle) new MutationObserver(update).observe(toggle, {attributes: true, attributeFilter: ['aria-expanded']});
   addEventListener('resize', measure);
   document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', () => setTimeout(measure, 0)));
   if (document.fonts) document.fonts.ready.then(measure);
