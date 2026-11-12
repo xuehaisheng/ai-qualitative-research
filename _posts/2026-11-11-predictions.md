@@ -130,7 +130,7 @@ Claudeを「相手」として扱う方針もある。2026年1月には、Claude
 
 Google DeepMindの共同創業者デミス・ハサビスは、神経科学の博士で、元はゲームの開発者である。タンパク質の構造を予測するAlphaFoldで、2024年にノーベル化学賞を受けた。Googleの強みは、YouTube、Gmail、検索との統合と、最初からマルチモーダルとして設計されたモデルである。
 
-それでも、2026年の時点で御三家の中で一番弱いのはGoogleだと私は思う。6月には[ジャンパーがAnthropicへ移り](https://x.com/JohnJumperSci/status/2068001285173834106)、8月には[ハサビスがCEOを退いて会長になり](https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/)、[チーフサイエンティストのジェフ・ディーンも退社した](https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/)。自社のAIチップ（TPU）をAnthropicやMetaに大量に販売していて、社内の研究者は計算資源の順番待ちをしているとも報じられた。ゴールドラッシュで一番儲けたのは、金を掘る人ではなく、シャベルを売る人だった。Googleがそちらに向かっている、と読む人もいる。ただし、Googleが公式にそう言っているわけではない。
+それでも、2026年の時点で御三家の中で一番弱いのはGoogleだと私は思う。6月には[ジャンパーがAnthropicへ移り](https://x.com/JohnJumperSci/status/2068001285173834106)、8月には[ハサビスがCEOを退いて会長になり](https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/)、[チーフサイエンティストのジェフ・ディーンも退社した](https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/)。自社のAIチップ（TPU）をAnthropicやMetaに大量に販売していて、社内の研究者は計算資源の順番待ちをしているとも報じられた。ゴールドラッシュで一番儲けたのは、金を掘る人ではなく、シャベルを売る人だった。Googleがそちらに向かっている、と読む人もいる。ただし、Googleが公式にそう言っているわけではなく、噂の段階である。それでも、こうした話を聞くと、Googleのモデルには今後あまり期待できないのかもしれない、と私は思っている。
 
 ## 参考
 
