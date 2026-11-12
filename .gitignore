@@ -1,0 +1,6 @@
+_site/
+.jekyll-cache/
+.sass-cache/
+dist/
+.openai/
+node_modules/

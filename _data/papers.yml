@@ -302,7 +302,7 @@
   cite: "Jowsey et al. (2025)"
   year: 2025
   apa: "Jowsey, T., et al. (2025). Frankenstein, thematic analysis and generative artificial intelligence. PLOS ONE, 20(9), e0330217."
-  doi: ""
+  doi: "https://doi.org/10.1371/journal.pone.0330217"
   summary: "分析データを公開している健康研究5本について、Microsoft Copilotに同じデータを各3回分析させ、元の論文の人間の分析と比べた。Copilotの引用の平均58%はデータに存在しない捏造で、人間の引用は平均79%が正確だった。Copilotの引用はデータの最初の2〜3ページに偏っていた。"
   tags: ["比較研究", "健康研究", "拒否"]
   meta: false
@@ -321,7 +321,8 @@
   year: 2026
   apa: "Levitt, H. M. (2026). A consideration of the ethics and methodological integrity of generative artificial intelligence in qualitative research: Guidelines for Qualitative Psychology. Qualitative Psychology."
   doi: "https://doi.org/10.1037/qup0000353"
-  summary: "Qualitative Psychology誌の生成AI方針を示した編集論文。倫理、科学性、方法論的整合性、社会的公正、環境の観点から問題を整理し、データの収集・分析、解釈、引用探索などで、AIを一次的または未検証の情報源として使うことを禁じる。翻訳やAI生成内容の引用には限定的な指針を示す。"
+  policy_url: "https://www.apa.org/pubs/journals/qua/ai-policy"
+  summary: "Qualitative Psychology誌の生成AI方針を示した編集論文。倫理、科学性、方法論的整合性、社会的公正、環境の観点から問題を整理し、文献レビュー、方法の記述、データの収集・分析、結果の記述、解釈などへのAI利用を禁じる。引用・参考文献の探索では、AIを唯一の、主要な、または未検証の情報源として使うことを禁じ、翻訳や文単位の修正には別の指針を示す。"
   tags: ["指針", "雑誌の方針"]
   meta: false
 - id: nguyen2026orm

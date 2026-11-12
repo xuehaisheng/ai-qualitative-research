@@ -26,3 +26,10 @@ defaults:
     values:
       layout: wiki
       body_class: wiki-page
+
+exclude:
+  - README.md
+  - LOCAL_PREVIEW.md
+  - dist
+  - node_modules
+  - .openai

@@ -7,6 +7,11 @@ order: 8
 summary: "文字だけでなく、画像や音声も扱えること。"
 related: [llm, world-model]
 articles: [ai-history]
+sources:
+  - text: "OpenAI. (2023). ChatGPT can now see, hear, and speak."
+    url: "https://openai.com/index/chatgpt-can-now-see-hear-and-speak/"
+  - text: "OpenAI. (2024). Hello GPT-4o."
+    url: "https://openai.com/index/hello-gpt-4o/"
 ---
 
 マルチモーダルとは、文字だけでなく、画像や音声などの複数の種類の情報を扱えることである。
