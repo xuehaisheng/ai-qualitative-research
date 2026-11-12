@@ -19,6 +19,9 @@
 {% include site-style.html %}
   <link rel="stylesheet" href="{{ '/assets/css/reader.css' | relative_url }}">
   <link rel="alternate" type="application/rss+xml" title="AI × 質的研究" href="{{ '/feed.xml' | absolute_url }}">
+  <link rel="icon" type="image/svg+xml" href="{{ '/assets/img/brand/ai-qualitative-mark.svg' | relative_url }}">
+  <link rel="icon" type="image/x-icon" sizes="16x16 32x32 48x48 64x64" href="{{ '/assets/img/brand/favicon.ico' | relative_url }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/img/brand/apple-touch-icon.png' | relative_url }}">
   <link rel="canonical" href="{{ page.url | absolute_url }}">
   <meta property="og:title" content="{{ title_ja | escape }}">
   <meta property="og:description" content="{{ desc_ja | escape }}">
@@ -103,6 +106,10 @@
           <a href="{{ '/articles/' | relative_url }}" data-bilingual data-ja="研究ノート" data-en="Notes">研究ノート</a><a href="{{ '/papers/' | relative_url }}" data-bilingual data-ja="文献" data-en="Literature">文献</a><a href="{{ '/literacy/' | relative_url }}" data-bilingual data-ja="AIリテラシー" data-en="AI Literacy">AIリテラシー</a><a href="{{ '/' | relative_url }}#contact" data-bilingual data-ja="お問い合わせ" data-en="Contact">お問い合わせ</a>
         </nav>
       </div>
+      <small class="ai-credit" style="display:block;margin-top:16px;padding-top:12px;border-top:1px solid #dfe3de;font-size:0.75rem;line-height:1.8;color:#71766f">
+        <span data-bilingual data-ja="協力（AI）：GPT（OpenAI）・Claude（Anthropic）" data-en="Contributors (AI): GPT (OpenAI) / Claude (Anthropic)">協力（AI）：GPT（OpenAI）・Claude（Anthropic）</span>
+        <span style="display:block;margin-top:4px" data-bilingual="" data-en="This site was built with OpenAI's GPT (Codex) and Anthropic's Claude: organizing the notes and literature, making figures, and building the pages. The content and positions are the organizer's." data-ja="このサイトは、OpenAIのGPT（Codex）とAnthropicのClaudeと一緒に作っている。記事と文献の整理、図、ページの実装を手伝ってもらった。内容と立場は、運営のものである。">このサイトは、OpenAIのGPT（Codex）とAnthropicのClaudeと一緒に作っている。記事と文献の整理、図、ページの実装を手伝ってもらった。内容と立場は、運営のものである。</span>
+      </small>
     </div>
   </footer>
 
