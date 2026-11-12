@@ -17,7 +17,7 @@ permalink: /articles/
 <section class="page-section"><div class="container">
 <div class="reader-toolbar">
 <label class="reader-field">記事を探す<input id="note-search" type="search" placeholder="タイトル・キーワード" autocomplete="off"></label>
-<label class="reader-field">表示順<select id="note-sort"><option value="order">掲載順</option><option value="updated" selected>最近の更新</option></select></label>
+<label class="reader-field">表示順<select id="note-sort"><option value="order">掲載順</option><option value="updated" selected>新しい順</option></select></label>
 </div>
 <div class="reader-pill-nav" aria-label="記事の分類">
 <button type="button" class="reader-pill" data-note-topic="" aria-pressed="true">すべて</button>
@@ -28,5 +28,5 @@ permalink: /articles/
 <p class="reader-results" id="note-count" role="status" aria-live="polite" hidden></p>
 <div class="reader-note-grid" data-note-grid>{% assign notes = site.posts | sort: 'order' %}{% for note in notes %}{% include note-card.html note=note %}{% endfor %}</div>
 <div class="reader-empty" id="note-empty" hidden><p>該当する記事がありません。</p><button class="reader-button" type="button" data-reset-notes>検索条件をクリア</button></div>
-<div class="reader-section-foot"><a class="reader-link" href="{{ '/feed.xml' | relative_url }}">RSSで更新を読む</a><a class="reader-link" href="{{ '/papers/' | relative_url }}">AI×質的研究の文献 ↗</a></div>
+<div class="reader-section-foot"><a class="reader-link arrow-link" href="{{ '/papers/' | relative_url }}"><span>AI×質的研究の文献</span>{% include arrow.html %}</a></div>
 </div></section></main>
