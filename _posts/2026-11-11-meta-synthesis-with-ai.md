@@ -6,6 +6,9 @@ key: meta-synthesis-with-ai
 order: 7
 wiki: [agent, context, lost-in-the-middle, hallucination]
 summary_ja: "質的研究者が生成AIをどう論じてきたかを調べる質的メタ統合を、検索から発表まで、AIと一緒に進めた。どの作業をAIに任せ、どこを自分で決めたのかを、検索式の比較、連動するスクリーニング表、自作の確認ツールとともに記録する。"
+topic: "研究の実践"
+related_notes: ["qualitative-reactions", "understanding", "ai-history"]
+sort_date: 20261111
 ---
 
 質的研究者は生成AIをどう論じてきたのか。私たちは、この問いを質的メタ統合で調べ、日本質的心理学会第23回大会でポスター発表した（薛・梶原・豐田, 2026）。この研究は、最初の文献検索から発表のポスターまで、AIと一緒に進めた。ここでは、その進め方を順に記録する。いちばん伝えたいのは、どの作業をAIに任せ、どこを自分で決めたかである。結果の中身は、[質的研究者は、AIにどう反応したか]({{ '/articles/qualitative-reactions/' | relative_url }})の最後と、分析対象の[文献一覧]({{ '/papers/' | relative_url }})にまとめた。

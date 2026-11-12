@@ -9,7 +9,9 @@ related: [lost-in-the-middle, rag, sycophancy, lean]
 articles: [ai-history, understanding, qualitative-reactions]
 sources:
   - text: "OpenAI. (2025). Why language models hallucinate."
+    url: "https://openai.com/index/why-language-models-hallucinate/"
   - text: "Zhou, L., et al. (2024). Larger and more instructable language models become less reliable. Nature."
+    url: "https://www.nature.com/articles/s41586-024-07930-y"
 ---
 
 ハルシネーション（幻覚）は、AIが自信をもって述べる誤りである。知らないことも、もっともらしく作ってしまう。2023年には、ニューヨークの弁護士がChatGPTに調べさせた判例を裁判所に提出したが、その判例は存在せず、制裁金5000ドルを科された（Mata v. Avianca事件）。

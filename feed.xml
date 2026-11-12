@@ -1,0 +1,9 @@
+---
+layout: null
+permalink: /feed.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>
+<title>{{ site.title | xml_escape }}</title><link>{{ '/' | absolute_url }}</link><description>{{ site.description | xml_escape }}</description><language>ja</language><atom:link href="{{ '/feed.xml' | absolute_url }}" rel="self" type="application/rss+xml"/>
+{% assign notes = site.posts | sort: 'sort_date' | reverse %}{% for note in notes %}<item><title>{{ note.title | xml_escape }}</title><link>{{ note.url | absolute_url }}</link><guid isPermaLink="false">{{ note.url | absolute_url }}{% if note.updated %}#{{ note.updated | date: '%Y%m%d' }}{% endif %}</guid><pubDate>{{ note.updated | default: note.date | date_to_rfc822 }}</pubDate><description>{{ note.summary_ja | xml_escape }}{% if note.change_note %} — {{ note.change_note | xml_escape }}{% endif %}</description></item>{% endfor %}
+</channel></rss>

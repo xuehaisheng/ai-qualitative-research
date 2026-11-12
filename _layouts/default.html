@@ -17,6 +17,14 @@
   <meta name="description" content="{{ desc_ja | escape }}">
   <title>{{ title_ja | escape }}</title>
 {% include site-style.html %}
+  <link rel="stylesheet" href="{{ '/assets/css/reader.css' | relative_url }}">
+  <link rel="alternate" type="application/rss+xml" title="AI × 質的研究" href="{{ '/feed.xml' | absolute_url }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <meta property="og:title" content="{{ title_ja | escape }}">
+  <meta property="og:description" content="{{ desc_ja | escape }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:type" content="{% if page.key %}article{% else %}website{% endif %}">
+  <script defer src="{{ '/assets/js/reader.js' | relative_url }}"></script>
 </head>
 <body
   class="{{ page.body_class | default: layout.body_class | default: 'inner-page' }}"
@@ -25,6 +33,7 @@
   data-page-description-ja="{{ desc_ja | escape }}"
   data-page-description-en="{{ desc_en | escape }}"
 >
+  <a class="skip-link" href="#content-start">本文へ</a>
   <div class="page-orb orb-left" aria-hidden="true"></div>
   <div class="page-orb orb-right" aria-hidden="true"></div>
 
@@ -40,20 +49,20 @@
         </a>
 
         <nav class="desktop-nav" aria-label="Primary navigation">
-          <a class="nav-link" href="{{ '/' | relative_url }}#about\" data-bilingual data-ja="趣旨" data-en="About">趣旨</a>
-          <a class="nav-link" href="{{ '/' | relative_url }}#literacy\" data-bilingual data-ja="AIリテラシー" data-en="AI Literacy">AIリテラシー</a>
-          <a class="nav-link" href="{{ '/' | relative_url }}#events\" data-bilingual data-ja="活動" data-en="Events">活動</a>
-          <a class="nav-link" href="{{ '/' | relative_url }}#notes\" data-bilingual data-ja="研究ノート" data-en="Notes">研究ノート</a>
-          <a class="nav-link" href="{{ '/' | relative_url }}#members\" data-bilingual data-ja="メンバー" data-en="Members">メンバー</a>
-          <a class="nav-link" href="{{ '/' | relative_url }}#contact\" data-bilingual data-ja="お問い合わせ" data-en="Contact">お問い合わせ</a>
-        </nav>
+<a class="nav-link" href="{{ '/articles/' | relative_url }}" data-bilingual data-ja="研究ノート" data-en="Notes">研究ノート</a>
+<a class="nav-link" href="{{ '/papers/' | relative_url }}" data-bilingual data-ja="文献" data-en="Literature">文献</a>
+<a class="nav-link" href="{{ '/literacy/' | relative_url }}" data-bilingual data-ja="AIリテラシー" data-en="AI Literacy">AIリテラシー</a>
+<a class="nav-link" href="{{ '/#events' | relative_url }}" data-bilingual data-ja="活動" data-en="Events">活動</a>
+<a class="nav-link" href="{{ '/#about' | relative_url }}" data-bilingual data-ja="趣旨" data-en="About">趣旨</a>
+<a class="nav-link" href="{{ '/#contact' | relative_url }}" data-bilingual data-ja="お問い合わせ" data-en="Contact">お問い合わせ</a>
+</nav>
 
         <div class="header-tools">
           <div class="lang-switch" aria-label="Language switch">
             <button class="lang-btn active" type="button" data-lang="ja">JA</button>
             <button class="lang-btn" type="button" data-lang="en">EN</button>
           </div>
-          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-panel">
+          <button aria-label="メニューを開く" class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-panel">
             <span></span>
             <span></span>
             <span></span>
@@ -68,18 +77,19 @@
             <button class="lang-btn" type="button" data-lang="en">EN</button>
           </div>
           <nav class="mobile-nav" aria-label="Mobile navigation">
-            <a href="{{ '/' | relative_url }}#about\" data-bilingual data-ja="趣旨" data-en="About">趣旨</a>
-            <a href="{{ '/' | relative_url }}#literacy\" data-bilingual data-ja="AIリテラシー" data-en="AI Literacy">AIリテラシー</a>
-            <a href="{{ '/' | relative_url }}#events\" data-bilingual data-ja="活動" data-en="Events">活動</a>
-            <a href="{{ '/' | relative_url }}#notes\" data-bilingual data-ja="研究ノート" data-en="Notes">研究ノート</a>
-            <a href="{{ '/' | relative_url }}#members\" data-bilingual data-ja="メンバー" data-en="Members">メンバー</a>
-            <a href="{{ '/' | relative_url }}#contact\" data-bilingual data-ja="お問い合わせ" data-en="Contact">お問い合わせ</a>
-          </nav>
+<a href="{{ '/articles/' | relative_url }}" data-bilingual data-ja="研究ノート" data-en="Notes">研究ノート</a>
+<a href="{{ '/papers/' | relative_url }}" data-bilingual data-ja="文献" data-en="Literature">文献</a>
+<a href="{{ '/literacy/' | relative_url }}" data-bilingual data-ja="AIリテラシー" data-en="AI Literacy">AIリテラシー</a>
+<a href="{{ '/#events' | relative_url }}" data-bilingual data-ja="活動" data-en="Events">活動</a>
+<a href="{{ '/#about' | relative_url }}" data-bilingual data-ja="趣旨" data-en="About">趣旨</a>
+<a href="{{ '/#contact' | relative_url }}" data-bilingual data-ja="お問い合わせ" data-en="Contact">お問い合わせ</a>
+</nav>
         </div>
       </div>
     </div>
   </header>
 
+<div id="content-start"></div>
 {{ content }}
 
   <footer class="site-footer">
@@ -89,6 +99,9 @@
           <strong data-bilingual data-ja="AI × 質的研究" data-en="AI × Qualitative Research">AI × 質的研究</strong>
           <span data-bilingual data-ja="AI時代の質的研究を、人とAIの協働から考え直す" data-en="Rethinking qualitative research through human-AI collaboration">AI時代の質的研究を、人とAIの協働から考え直す</span>
         </div>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="{{ '/articles/' | relative_url }}">研究ノート</a><a href="{{ '/papers/' | relative_url }}">文献</a><a href="{{ '/literacy/' | relative_url }}">AIリテラシー</a><a href="{{ '/feed.xml' | relative_url }}">RSS</a><a href="https://github.com/xuehaisheng/ai-qualitative-research/issues/new" target="_blank" rel="noopener">訂正・ご意見</a>
+        </nav>
       </div>
     </div>
   </footer>

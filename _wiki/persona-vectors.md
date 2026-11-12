@@ -9,6 +9,7 @@ related: [emotion-concepts, sycophancy, interpretability]
 articles: [understanding]
 sources:
   - text: "Chen, R., et al. (2025). Persona vectors: Monitoring and controlling character traits in language models."
+    url: "https://www.anthropic.com/research/persona-vectors"
 ---
 
 迎合、悪意、幻覚などの傾向に対応する、モデル内部の活動の「向き」（ペルソナ・ベクトル）を取り出せることが示された（Chen et al., 2025）。たとえば「迎合」の向きを強めると、モデルは心にもないお世辞を言うようになる。

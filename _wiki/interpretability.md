@@ -9,6 +9,7 @@ related: [persona-vectors, emotion-concepts, cot]
 articles: [understanding]
 sources:
   - text: "Anthropic. (2025). Tracing the thoughts of a large language model."
+    url: "https://www.anthropic.com/research/tracing-thoughts-language-model"
 ---
 
 解釈可能性（interpretability）は、AIの内部で何が起きているかを調べる研究分野である。2024年、Anthropicは、Claude Sonnetの内部に、具体的な物や抽象的な概念に対応する多数の「特徴」を見つけた。2025年には、それらをつないだ計算の経路を追跡した。
