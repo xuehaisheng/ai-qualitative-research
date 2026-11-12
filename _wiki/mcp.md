@@ -7,6 +7,9 @@ order: 7
 summary: "AIと外部の道具（アプリやデータベースなど）をつなぐための共通の決まり。"
 related: [agent, computer-use]
 articles: [ai-history]
+sources:
+  - text: "Anthropic. (2024). Introducing the Model Context Protocol."
+    url: "https://www.anthropic.com/news/model-context-protocol"
 ---
 
 MCP（Model Context Protocol）は、AIと外部の道具（アプリやデータベースなど）をつなぐための共通の決まりである。2024年11月にAnthropicが公開した。

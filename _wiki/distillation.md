@@ -7,6 +7,9 @@ order: 10
 summary: "強いモデルの出力を使って、別のモデルを学習させること。"
 related: [open-weight, llm]
 articles: [predictions]
+sources:
+  - text: "Anthropic. (2026). Detecting and preventing distillation attacks."
+    url: "https://www.anthropic.com/news/detecting-and-preventing-distillation-attacks"
 ---
 
 蒸留とは、強いモデルの出力を使って、別のモデルを学習させることである。強いモデルから弱いモデルに「教える」技術と言ってもよい。

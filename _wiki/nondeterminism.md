@@ -8,6 +8,7 @@ summary: "ランダム性をなくす設定にしても、同じ質問への答�
 related: [multi-turn, lost-in-the-middle]
 sources:
   - text: "Thinking Machines Lab. (2025). Defeating nondeterminism in LLM inference."
+    url: "https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/"
 ---
 
 AIには、答えのばらつきを調整する「温度」という設定がある。温度を0にすると、ランダム性がなくなり、同じ質問には同じ答えが返るはずである。ところが実際には、温度0でも、同じ質問への1000回の回答が80通りに分かれた例がある（Thinking Machines Lab, 2025）。

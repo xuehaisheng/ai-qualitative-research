@@ -7,6 +7,9 @@ order: 9
 summary: "学習済みのモデルの中身（重み）が公開されていて、誰でもダウンロードして動かせるモデル。"
 related: [reasoning-model, distillation]
 articles: [ai-history, predictions, other-fields]
+sources:
+  - text: "DeepSeek-AI. (2025). DeepSeek-R1."
+    url: "https://arxiv.org/abs/2501.12948"
 ---
 
 オープンウェイトのモデルは、学習済みのモデルの中身（重み）が公開されていて、誰でもダウンロードし、自分のサーバーに置き、調整できるモデルである。独占されず、誰でも使えて、自分でいじることもできる。2025年1月のDeepSeek-R1が代表例である。

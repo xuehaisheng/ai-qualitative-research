@@ -6,6 +6,11 @@ key: understanding
 order: 6
 wiki: [hallucination, interpretability, persona-vectors, emotion-concepts, world-model, agent, time-horizon]
 summary_ja: "流暢に話せることと、考えられることは同じなのか。言語と思考を分けて考える神経科学の議論、AIの意識をめぐるヒントンとバトリンらの立場、AIの内部をのぞく研究、AI研究の中心人物たちの五つの見方を紹介する。"
+topic: "AIの理解"
+related_notes: ["qualitative-reactions", "march-of-progress", "ai-history"]
+updated: "2026-11-12 00:00:00 +0900"
+change_note: "出典リンクと写真・番組画像を追加。"
+sort_date: 20261112
 ---
 
 生成AIと話していると、相手が「分かっている」ように感じることがある。この感覚は、どこまで信じてよいのだろうか。この記事では、いくつかの研究を手がかりに考える。
@@ -31,6 +36,8 @@ summary_ja: "流暢に話せることと、考えられることは同じなの�
 ヒントンは、AIは「理解している」し、意識もあると主張する。言語学者チョムスキーの「統計的なトリックにすぎない」という見方を批判し、人間の言語理解を説明するものとしては、これらのモデルが最もよい、と言う。ほかの説明は提案されても、ここまで話せるものはないではないか、ということである。
 
 ヒントンはさらに、主観的な経験には「クオリア」という特別な中身がある、という考え方自体を誤りだとする。そして、それを「燃素（フロギストン）」にたとえる。ものが燃えるのは、可燃物と酸素が反応するからである。しかし昔は、燃えるものには燃素という元素が含まれていると考えられていた。一見もっともらしく、聞くと納得してしまうが、燃素は実在しなかった。私たちがいま考えている主観や意識の「中身」も、それと同じではないか、というわけである（ノーベル賞公式ポッドキャスト、2025年5月。ユーアン講演、2026年1月）。
+
+{% include media.html key="hinton-podcast" %}
 
 一方、バトリンらは、意識の科学から論証した（Butlin et al., 2023）。神経科学には、再帰処理、グローバル・ワークスペース、高次理論、予測処理、注意スキーマなど、さまざまな意識の理論がある。それぞれから「指標」を取り出し、2023年時点のAIを一つずつ点検した。結論は、現在のAIに意識をもつものはない、というものである。ただし、指標を満たすAIを作ることに、明らかな技術的障壁もないとしている。少し保守的な結論である。
 
@@ -69,10 +76,10 @@ AIがこの先どう伸びていくかについても、AI研究の中心人物�
 ## 参考文献
 
 - Bengio, Y., et al. (2025). Superintelligent agents pose catastrophic risks: Can Scientist AI offer a safer path? *arXiv*. https://arxiv.org/abs/2502.15657
-- Butlin, P., et al. (2023). Consciousness in artificial intelligence: Insights from the science of consciousness. *arXiv*.
-- Fedorenko, E., Piantadosi, S. T., & Gibson, E. A. F. (2024). Language is primarily a tool for communication rather than thought. *Nature*.
-- LeCun, Y. (2022). *A path towards autonomous machine intelligence*. OpenReview.
-- Silver, D., & Sutton, R. S. (2025). *Welcome to the era of experience*.
+- Butlin, P., et al. (2023). [Consciousness in artificial intelligence: Insights from the science of consciousness.](https://arxiv.org/abs/2308.08708) *arXiv*.
+- Fedorenko, E., Piantadosi, S. T., & Gibson, E. A. F. (2024). [Language is primarily a tool for communication rather than thought.](https://www.nature.com/articles/s41586-024-07522-w) *Nature*.
+- LeCun, Y. (2022). *[A path towards autonomous machine intelligence](https://openreview.net/pdf/315d43ba26f55357a84cec9a7ed15a6610094f79.pdf)*. OpenReview.
+- Silver, D., & Sutton, R. S. (2025). *[Welcome to the era of experience](https://storage.googleapis.com/deepmind-media/Era-of-Experience%20/The%20Era%20of%20Experience%20Paper.pdf)*.
 - Sutton, R. S. (2019). *The bitter lesson*.
-- Zhou, L., et al. (2024). Larger and more instructable language models become less reliable. *Nature*.
-- Anthropic. (2026). *Emotion concepts and their function in a large language model*.
+- Zhou, L., et al. (2024). [Larger and more instructable language models become less reliable.](https://www.nature.com/articles/s41586-024-07930-y) *Nature*.
+- Anthropic. (2026). *[Emotion concepts and their function in a large language model](https://www.anthropic.com/research/emotion-concepts-function)*.

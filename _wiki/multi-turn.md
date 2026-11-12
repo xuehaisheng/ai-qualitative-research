@@ -8,6 +8,7 @@ summary: "必要な情報を会話の中で少しずつ渡すと、一度に渡�
 related: [lost-in-the-middle, nondeterminism, context]
 sources:
   - text: "Laban, P., et al. (2025). LLMs get lost in multi-turn conversation."
+    url: "https://arxiv.org/abs/2505.06120"
 ---
 
 必要な情報を一度に全部渡すより、会話の中で少しずつ渡すと、成績が平均39%下がった（Laban et al., 2025）。主な原因は能力の不足ではない。早い段階で決めつけ、そこから戻れなくなることと、答えが不安定になることである。
