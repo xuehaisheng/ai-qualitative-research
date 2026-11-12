@@ -252,6 +252,11 @@ This site aims to become more than an announcement page: a place where qualitati
 .home-page .shelf-track > .card h3 { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5; overflow: hidden; font-size: 1rem !important; line-height: 1.55 !important; }
 .home-page .shelf-track > .card p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 7; overflow: hidden; font-size: .88rem; line-height: 1.8; }
 .shelf-viewport:focus-visible { outline: 2px solid #111; outline-offset: 3px; }
+/* Touch devices: the browser's own scrolling (runs off the main thread, not throttled in Low Power Mode). */
+.shelf-ready.shelf-native .shelf-viewport { overflow-x: auto; overflow-y: hidden; cursor: auto; scroll-snap-type: x mandatory; scroll-padding-inline: calc(var(--peek) + var(--gap)); scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.shelf-native .shelf-viewport::-webkit-scrollbar { display: none; }
+.shelf-native .shelf-track { width: max-content; will-change: auto; touch-action: auto; }
+.shelf-native .shelf-track > .card { scroll-snap-align: start; }
 .shelf-directory { margin-top: 22px; }
 .event-archive { max-width: 900px; margin: 36px auto 0; }
 .event-archive .entry-item { padding: 28px 0; border-bottom: 1px solid #ddd; }
@@ -292,6 +297,7 @@ SOFTWARE.
 (() => {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const fine = window.matchMedia('(hover: hover) and (pointer: fine)');
+  const touch = window.matchMedia('(hover: none) and (pointer: coarse)');
   document.querySelectorAll('[data-card-shelf]').forEach(shelf => {
     const viewport = shelf.querySelector('.shelf-viewport');
     if (typeof EmblaCarousel !== 'function') return;
@@ -308,6 +314,47 @@ SOFTWARE.
       shelf.style.setProperty('--peek', geo.peek + 'px');
     }
     layout();
+    if (touch.matches) { nativeShelf(); return; }
+    // Touch: native scroll-snap, with copies on both sides so it never reaches an end.
+    function nativeShelf() {
+      const track = viewport.querySelector('.shelf-track');
+      const originals = [...track.children];
+      const n = originals.length;
+      const copy = () => originals.map(card => {
+        const c = card.cloneNode(true);
+        c.setAttribute('aria-hidden','true');
+        c.querySelectorAll('a,button,[tabindex]').forEach(el => el.setAttribute('tabindex','-1'));
+        return c;
+      });
+      track.prepend(...copy()); track.append(...copy());
+      const all = [...track.children];
+      const pad = () => geo.peek + geo.gap;
+      const step = () => all[1].offsetLeft - all[0].offsetLeft;
+      const home = () => all[n].offsetLeft - pad();
+      const indexNow = () => ((Math.round((viewport.scrollLeft - home()) / step()) % n) + n) % n;
+      shelf.classList.add('shelf-native','shelf-ready');
+      shelf.dataset.cardCount = String(n); shelf.dataset.loop = 'true'; shelf.dataset.selected = '0';
+      viewport.scrollLeft = home();
+      let idle;
+      function settle() {
+        const width = all[n].offsetLeft - all[0].offsetLeft, x = viewport.scrollLeft, mid = home();
+        if (x < mid - width / 2) viewport.scrollLeft = x + width;
+        else if (x > mid + width / 2) viewport.scrollLeft = x - width;
+        shelf.dataset.selected = String(indexNow());
+      }
+      viewport.addEventListener('scroll',() => { clearTimeout(idle); idle = setTimeout(settle,180); },{passive:true});
+      let lastW = viewport.clientWidth;
+      new ResizeObserver(() => {
+        if (Math.abs(viewport.clientWidth - lastW) < 1) return;
+        lastW = viewport.clientWidth;
+        const i = indexNow(); layout(); viewport.scrollLeft = all[n + i].offsetLeft - pad();
+      }).observe(viewport);
+      viewport.addEventListener('keydown',event => {
+        if (event.target !== viewport || !['ArrowLeft','ArrowRight'].includes(event.key)) return;
+        event.preventDefault();
+        viewport.scrollBy({left: (event.key === 'ArrowLeft' ? -1 : 1) * step(), behavior: reduced.matches ? 'auto' : 'smooth'});
+      });
+    }
     const api = EmblaCarousel(viewport, {loop: true, align: () => geo.peek + geo.gap, startIndex: 0, dragThreshold: 5, duration: reduced.matches ? 0 : 22});
     let lastWidth = viewport.clientWidth;
     new ResizeObserver(() => {
