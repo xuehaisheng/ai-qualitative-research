@@ -235,13 +235,17 @@ This site aims to become more than an announcement page: a place where qualitati
 #about .reader-entries { margin-top: 32px; }
 .home-page #ai-qualitative, .home-page #literacy { grid-template-columns: minmax(0,1fr); }
 .card-shelf { position: relative; min-width: 0; margin: 0 -24px; container-type: inline-size; }
-.shelf-viewport { --peek: 48px; position: relative; min-width: 0; width: 100%; box-sizing: border-box; overflow-x: auto; padding: 14px 0 36px; scrollbar-width: thin; overscroll-behavior-x: contain; }
-.shelf-ready .shelf-viewport { overflow: hidden; cursor: grab; -webkit-mask-image: linear-gradient(to right,rgba(0,0,0,.45),#000 var(--peek),#000 calc(100% - var(--peek)),rgba(0,0,0,.45)); mask-image: linear-gradient(to right,rgba(0,0,0,.45),#000 var(--peek),#000 calc(100% - var(--peek)),rgba(0,0,0,.45)); }
+.shelf-viewport { position: relative; min-width: 0; width: 100%; box-sizing: border-box; overflow-x: auto; padding: 14px 0 36px; scrollbar-width: thin; overscroll-behavior-x: contain; }
+.shelf-ready .shelf-viewport { overflow: hidden; cursor: grab; }
+/* Blur only the two side slices with two fixed overlays, instead of filtering every moving card. */
+.card-shelf::before, .card-shelf::after { content: none; position: absolute; top: 0; bottom: 0; z-index: 1; width: var(--peek, 48px); pointer-events: none; -webkit-backdrop-filter: blur(1.6px); backdrop-filter: blur(1.6px); }
+.shelf-ready.card-shelf::before, .shelf-ready.card-shelf::after { content: ""; }
+.card-shelf::before { left: 0; background: linear-gradient(to right, rgba(255,255,255,.72), rgba(255,255,255,.38)); }
+.card-shelf::after { right: 0; background: linear-gradient(to left, rgba(255,255,255,.72), rgba(255,255,255,.38)); }
 .shelf-ready .shelf-viewport:active { cursor: grabbing; }
-.shelf-track { display: flex; width: 100%; gap: 0; align-items: stretch; touch-action: pan-y pinch-zoom; }
-.home-page .shelf-track > .card { flex: 0 0 var(--card-w, calc((100% - 68px) / 4.4)); min-width: 0; margin: 0 var(--gap, 20px) 0 0; padding: 22px !important; border: 0 !important; background: #fff !important; border-radius: 0 !important; box-shadow: var(--reader-shadow) !important; outline-color: #111; transition: opacity .25s, filter .25s, box-shadow .2s; }
+.shelf-track { will-change: transform; display: flex; width: 100%; gap: 0; align-items: stretch; touch-action: pan-y pinch-zoom; }
+.home-page .shelf-track > .card { flex: 0 0 var(--card-w, calc((100% - 68px) / 4.4)); min-width: 0; margin: 0 var(--gap, 20px) 0 0; padding: 22px !important; border: 0 !important; background: #fff !important; border-radius: 0 !important; box-shadow: var(--reader-shadow) !important; outline-color: #111; transition: box-shadow .2s; }
 .home-page .shelf-track > .card:hover, .home-page .shelf-track > .card:focus-within { box-shadow: var(--reader-shadow-strong) !important; }
-.shelf-ready .shelf-track > .card.is-peek { opacity: .6; filter: blur(1.2px); }
 .home-page .shelf-track > .card::before, .home-page .shelf-track > .card::after { content: none !important; display: none !important; }
 .home-page .shelf-track > .card h3 { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5; overflow: hidden; font-size: 1rem !important; line-height: 1.55 !important; }
 .home-page .shelf-track > .card p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 7; overflow: hidden; font-size: .88rem; line-height: 1.8; }
@@ -299,6 +303,7 @@ SOFTWARE.
       const card = (w - 2 * geo.peek - (geo.full + 1) * geo.gap) / geo.full;
       shelf.style.setProperty('--card-w', card + 'px');
       shelf.style.setProperty('--gap', geo.gap + 'px');
+      shelf.style.setProperty('--peek', geo.peek + 'px');
     }
     layout();
     const api = EmblaCarousel(viewport, {loop: true, align: () => geo.peek + geo.gap, startIndex: 0, dragThreshold: 5, duration: reduced.matches ? 0 : 22});
@@ -315,23 +320,6 @@ SOFTWARE.
       shelf.dataset.cardCount = String(cards.length);
       shelf.dataset.loop = String(api.internalEngine().options.loop);
       cards.forEach((card,i) => card.classList.toggle('is-current',i === api.selectedScrollSnap()));
-      markPeek();
-    }
-    let peekFrame = 0;
-    function markPeek() {
-      cancelAnimationFrame(peekFrame);
-      peekFrame = requestAnimationFrame(() => {
-        const rect = viewport.getBoundingClientRect();
-        let left = rect.right, right = rect.left;
-        cards.forEach(card => {
-          const r = card.getBoundingClientRect();
-          const full = r.left >= rect.left - 2 && r.right <= rect.right + 2;
-          card.classList.toggle('is-peek',!full);
-          if (full) { left = Math.min(left,r.left); right = Math.max(right,r.right); }
-        });
-        const peek = Math.max(12,Math.min(left - rect.left, rect.right - right));
-        viewport.style.setProperty('--peek',peek + 'px');
-      });
     }
     function move(direction) {
       const index = (api.selectedScrollSnap() + direction + cards.length) % cards.length;
@@ -371,7 +359,7 @@ SOFTWARE.
       if (Math.abs(event.deltaX)>1 && now-lastWheel>180) {move(event.deltaX<0?-1:1);lastWheel=now;}
     },{passive:false});
     reduced.addEventListener('change',() => {cancelHover();api.reInit({duration:reduced.matches?0:25});});
-    api.on('select',update).on('reInit',update).on('scroll',markPeek).on('settle',markPeek).on('resize',markPeek);
+    api.on('select',update).on('reInit',update);
     shelf.classList.add('shelf-ready');update();
   });
 })();
