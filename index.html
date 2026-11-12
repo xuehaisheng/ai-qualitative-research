@@ -22,8 +22,9 @@ body_class: home-page
 <section class="page-section" id="notes"><div class="container">
   <div class="section-heading with-action"><h2>最近の更新</h2><a class="reader-link" href="{{ '/articles/' | relative_url }}">研究ノート一覧へ ↗</a></div>
   <div class="reader-note-grid">
-  {% assign recent = site.posts | sort: 'sort_date' | reverse %}
-  {% for note in recent limit:3 %}{% include note-card.html note=note %}{% endfor %}
+  {% capture recent_order %}{% for item in site.posts %}{{ item.updated | default: item.date | date: '%Y%m%d%H%M%S' }}~{{ item.url }}|{% endfor %}{% endcapture %}
+  {% assign recent_order = recent_order | split: '|' | sort | reverse %}
+  {% for entry in recent_order limit:3 %}{% assign note_url = entry | split: '~' | last %}{% assign note = site.posts | where: 'url', note_url | first %}{% include note-card.html note=note %}{% endfor %}
   </div>
   <div class="reader-section-foot"><p>新しい記事と、出典・記述の更新。</p><a class="reader-link" href="{{ '/feed.xml' | relative_url }}">RSSで更新を読む</a></div>
 </div></section>
