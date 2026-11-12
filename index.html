@@ -212,8 +212,9 @@ This site aims to become more than an announcement page: a place where qualitati
 
 /* Horizontal reading shelves: native swipe and keyboard scrolling remain available. */
 #about .reader-entries { margin-top: 32px; }
-.card-shelf { position: relative; margin: 0 -24px; }
-.shelf-viewport { overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: #bbb transparent; padding: 12px 48px 24px; mask-image: linear-gradient(to right,transparent,#000 48px,#000 calc(100% - 48px),transparent); }
+.home-page #ai-qualitative, .home-page #literacy { grid-template-columns: minmax(0,1fr); }
+.card-shelf { position: relative; min-width: 0; margin: 0 -24px; }
+.shelf-viewport { position: relative; min-width: 0; box-sizing: border-box; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: #bbb transparent; padding: 12px 48px 24px; mask-image: linear-gradient(to right,transparent,#000 48px,#000 calc(100% - 48px),transparent); }
 .shelf-track { display: flex; gap: 24px; align-items: stretch; }
 .home-page .shelf-track > .card { flex: 0 0 min(440px,72vw); min-width: 0; margin: 0; padding: 24px !important; border: 1px solid #ddd; border-radius: 0 !important; scroll-snap-align: center; transition: opacity .25s,filter .25s,transform .25s; }
 .shelf-ready .shelf-track > .card { opacity: .76; filter: blur(.22px); transform: scale(.98); }
