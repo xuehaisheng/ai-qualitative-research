@@ -9,40 +9,42 @@ body_class: papers-page
 permalink: /papers/
 ---
 {% assign papers = site.data.papers | sort: 'id' %}
+{% assign stances = 'optimistic|support|cautious|against|comparison' | split: '|' %}
+{% assign themes = '分析・コーディング|解釈・反省性|倫理・公正|透明性・研究の質|実践の手引き|雑誌・制度の方針|拒否声明をめぐる議論' | split: '|' %}
 <main class="page-main">
 <section class="page-hero"><div class="container"><div class="section-panel page-heading">
 <div class="eyebrow">Literature</div>
 <h1 data-bilingual data-ja="AI×質的研究の文献" data-en="AI × Qualitative Research: Literature">AI×質的研究の文献</h1>
-<p data-bilingual data-ja="生成AIと質的研究をめぐる論考と、AIと人間の分析を比べた研究を集めた。方法論的な論考は、薛・梶原・豐田（2026）の質的メタ統合で分析対象にしたものである。各文献に、日本語の概要と書誌情報をつけている。" data-en="Methodological essays on generative AI and qualitative research, and studies comparing AI and human analysis. The essays were analysed in Xue, Kajiwara, & Toyoda's (2026) qualitative meta-synthesis. Summaries are in Japanese.">生成AIと質的研究をめぐる論考と、AIと人間の分析を比べた研究を集めた。方法論的な論考は、薛・梶原・豐田（2026）の質的メタ統合で分析対象にしたものである。各文献に、日本語の概要と書誌情報をつけている。</p>
+<p data-bilingual data-ja="生成AIを質的研究に使うことをめぐる論考と、AIと人間の分析を比べた研究を集めた。論考は、著者の立場によって、楽観・支持・慎重・反対の四つに大まかに分けている。一つの論文に複数の面があることも多いので、分け方は目安として見てほしい。各文献に、原題と日本語訳、日本語の概要、書誌情報をつけた。" data-en="Essays on using generative AI in qualitative research, grouped roughly by stance (optimistic, supportive, cautious, against), and studies comparing AI and human analysis. Each entry has the original title, a Japanese summary and full reference.">生成AIを質的研究に使うことをめぐる論考と、AIと人間の分析を比べた研究を集めた。論考は、著者の立場によって、楽観・支持・慎重・反対の四つに大まかに分けている。一つの論文に複数の面があることも多いので、分け方は目安として見てほしい。各文献に、原題と日本語訳、日本語の概要、書誌情報をつけた。</p>
 <div class="reader-quick-links"><span class="label">関連する研究ノート</span><a href="{{ '/articles/qualitative-reactions/' | relative_url }}">質的研究者は、AIにどう反応したか</a><a href="{{ '/articles/meta-synthesis-with-ai/' | relative_url }}">AIと一緒に、メタ統合をやってみた</a></div>
 </div></div></section>
 <section class="page-section"><div class="container">
 <div class="reader-toolbar">
-<label class="reader-field">文献を探す<input type="search" id="paper-search" placeholder="著者名・キーワード" autocomplete="off"></label>
-<label class="reader-field">種類<select id="paper-group-filter"><option value="">すべて</option><option value="essays">方法論的な論考</option><option value="comparison">AIと人間の分析の比較</option><option value="other">そのほかの論考・指針</option></select></label>
-<label class="reader-field">テーマ<select id="paper-topic"><option value="">すべて</option>{% capture all_tags %}{% for p in papers %}{% for tag in p.tags %}{{ tag }}|{% endfor %}{% endfor %}{% endcapture %}{% assign tags = all_tags | split: '|' | uniq | sort %}{% for tag in tags %}<option value="{{ tag | escape }}">{{ tag }}</option>{% endfor %}</select></label>
+<label class="reader-field">文献を探す<input type="search" id="paper-search" placeholder="著者名・タイトル・キーワード" autocomplete="off"></label>
+<label class="reader-field">立場<select id="paper-group-filter"><option value="">すべて</option>{% for s in stances %}{% assign info = site.data.paper_stances | where: 'id', s | first %}<option value="{{ s }}">{{ info.short }}</option>{% endfor %}</select></label>
+<label class="reader-field">テーマ<select id="paper-topic"><option value="">すべて</option>{% for th in themes %}<option value="{{ th | escape }}">{{ th }}</option>{% endfor %}</select></label>
 <label class="reader-field">表示順<select id="paper-sort"><option value="author">著者名</option><option value="year-desc">発表年：新しい順</option><option value="year-asc">発表年：古い順</option></select></label>
 </div>
-<div class="reader-section-foot" style="margin-top:0"><label class="reader-check"><input type="checkbox" id="paper-corpus">メタ統合の分析対象</label><button type="button" class="reader-button" data-reset-papers>検索条件をクリア</button></div>
-<div class="reader-section-foot"><p id="paper-count" class="reader-results" role="status" aria-live="polite" hidden></p><div class="paper-actions"><button class="reader-button" data-export-visible="ris" type="button">表示中の文献をRISで保存</button><button class="reader-button" data-export-visible="bib" type="button">BibTeXで保存</button></div></div>
+<div class="reader-section-foot" style="margin-top:0"><p id="paper-count" class="reader-results" role="status" aria-live="polite"></p><button type="button" class="reader-button" data-reset-papers>検索条件をクリア</button></div>
+<div class="reader-section-foot"><div class="paper-actions"><button class="reader-button" data-export-visible="ris" type="button">表示中の文献をRISで保存</button><button class="reader-button" data-export-visible="bib" type="button">BibTeXで保存</button></div></div>
 <p class="reader-toast" data-reader-status role="status" aria-live="polite"></p>
 <div class="reader-empty" id="paper-empty" hidden><p>該当する文献がありません。</p><button type="button" class="reader-button" data-reset-papers>検索条件をクリア</button></div>
 </div></section>
-{% assign groups = 'essays|comparison|other' | split: '|' %}
-{% for gid in groups %}
-{% assign items = papers | where: 'group', gid %}
-{% if gid == 'essays' %}{% assign gtitle = '方法論的な論考' %}{% assign gdesc = '生成AIを質的研究に使うことの是非や条件を論じた論考。すべて、薛・梶原・豐田（2026）の質的メタ統合の分析対象である。' %}
-{% elsif gid == 'comparison' %}{% assign gtitle = 'AIと人間の分析の比較' %}{% assign gdesc = '同じデータをAIと人間で分析し、結果を比べた実証研究。' %}
-{% else %}{% assign gtitle = 'そのほかの論考・指針' %}{% assign gdesc = '雑誌の方針や、分析ツールとしてのAIを検討した論考。' %}{% endif %}
+{% for gid in stances %}
+{% assign items = papers | where: 'stance', gid %}
+{% assign info = site.data.paper_stances | where: 'id', gid | first %}
 <section class="page-section paper-group" id="{{ gid }}"><div class="container">
-<div class="section-heading"><h2>{{ gtitle }}</h2><p>{{ gdesc }}</p></div>
+<div class="section-heading"><h2>{{ info.title }}</h2><p>{{ info.desc }}</p></div>
 <div class="paper-list">{% for paper in items %}
 <article class="paper-item" id="{{ paper.id }}">
-<div class="paper-head"><h3>{{ paper.cite }}</h3><div class="paper-tags">{% if paper.meta %}<span class="tag tag-meta">メタ統合の分析対象</span>{% endif %}{% for tag in paper.tags %}<button type="button" class="tag" data-tag="{{ tag | escape }}" aria-pressed="false">{{ tag }}</button>{% endfor %}</div></div>
+<p class="paper-cite">{{ paper.cite }}{% assign b = site.data.bibliography[paper.id] %}{% if b.journal != '' %} ・ <i>{{ b.journal }}</i>{% endif %}</p>
+<h3 class="paper-title" lang="en">{% if paper.doi != '' %}<a href="{{ paper.doi }}" target="_blank" rel="noopener">{{ paper.title }}</a>{% else %}{{ paper.title }}{% endif %}</h3>
+<p class="paper-title-ja">{{ paper.title_ja }}</p>
+<div class="paper-tags">{% for tag in paper.themes %}<button type="button" class="tag" data-tag="{{ tag | escape }}" aria-pressed="false">{{ tag }}</button>{% endfor %}</div>
 <p class="paper-summary">{{ paper.summary }}</p>
 <p class="paper-ref">{{ paper.apa }}{% if paper.doi != '' %} <a href="{{ paper.doi }}" target="_blank" rel="noopener">{{ paper.doi }}</a>{% endif %}</p>
 <div class="paper-actions">{% if paper.policy_url %}<a href="{{ paper.policy_url }}" target="_blank" rel="noopener">公式のAI利用方針</a>{% endif %}<button class="reader-button" type="button" data-paper-action="copy" data-paper-id="{{ paper.id }}">引用をコピー</button><button class="reader-button" type="button" data-paper-action="link" data-paper-id="{{ paper.id }}">リンクをコピー</button><button class="reader-button" type="button" data-paper-action="ris" data-paper-id="{{ paper.id }}">RIS</button><button class="reader-button" type="button" data-paper-action="bib" data-paper-id="{{ paper.id }}">BibTeX</button></div>
 </article>
 {% endfor %}</div></div></section>
 {% endfor %}</main>
-<script type="application/json" id="paper-data">[{% for p in papers %}{% assign b = site.data.bibliography[p.id] %}{"id":{{ p.id | jsonify }},"group":{{ p.group | jsonify }},"year":{{ p.year | jsonify }},"apa":{{ p.apa | jsonify }},"doi":{{ p.doi | jsonify }},"summary":{{ p.summary | jsonify }},"tags":{{ p.tags | jsonify }},"meta":{% if p.meta %}true{% else %}false{% endif %},"bib":{{ b | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}]</script>
+<script type="application/json" id="paper-data">[{% for p in papers %}{% assign b = site.data.bibliography[p.id] %}{"id":{{ p.id | jsonify }},"stance":{{ p.stance | jsonify }},"year":{{ p.year | jsonify }},"title":{{ p.title | jsonify }},"title_ja":{{ p.title_ja | jsonify }},"apa":{{ p.apa | jsonify }},"doi":{{ p.doi | jsonify }},"summary":{{ p.summary | jsonify }},"themes":{{ p.themes | jsonify }},"bib":{{ b | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}]</script>
