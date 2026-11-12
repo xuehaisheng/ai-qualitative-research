@@ -7,6 +7,9 @@ order: 8
 summary: "AIが画面を見て、マウスとキーボードを動かし、PCの作業をすること。"
 related: [agent, mcp, harness]
 articles: [ai-history]
+sources:
+  - text: "Anthropic. (2024). Introducing computer use, a new Claude 3.5 Sonnet, and Claude 3.5 Haiku."
+    url: "https://www.anthropic.com/news/3-5-models-and-computer-use"
 ---
 
 2024年10月、Claudeが画面を見てマウスとキーボードを動かす機能を試験版で出した。AIがPCを操作したのは、これが初めてである。

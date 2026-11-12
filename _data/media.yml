@@ -1,0 +1,45 @@
+hinton-podcast:
+  src: /assets/img/editorial/hinton-podcast-page.jpg
+  width: 1024
+  height: 676
+  alt: ノーベル賞のディプロマを手にしたジェフリー・ヒントンの肖像
+  caption: ノーベル賞のディプロマを手にしたヒントン。公式ポッドキャスト掲載写真（番組公開：2025年5月15日）。
+  credit: © Nobel Prize Outreach. 撮影：Nanaka Adachi。
+  source_url: https://www.nobelprize.org/prizes/physics/2024/hinton/podcast/
+  image_url: https://www.nobelprize.org/images/164138-landscape-x-large.jpg
+amodei-cfr:
+  src: /assets/img/editorial/amodei-cfr.jpg
+  width: 1280
+  height: 720
+  alt: Council on Foreign Relationsの会場で話すダリオ・アモデイ
+  caption: CFRでAIの進歩と雇用を語るダリオ・アモデイ（2025年3月10日）。
+  credit: 出典：Council on Foreign Relations。
+  source_url: https://www.cfr.org/event/ceo-speaker-series-dario-amodei-anthropic
+  image_url: https://assets.cfr.org/images/w_1280/t_cfr_16_9/f_auto/v1769546939/KSZ_7034_6ec2f1_3503214fff5/KSZ_7034_6ec2f1_3503214fff5.jpg
+jensen-all-in:
+  src: /assets/img/editorial/jensen-all-in.jpg
+  width: 1280
+  height: 720
+  alt: ジェンスン・フアンとAll-Inの出演者を配した番組の公式サムネイル
+  caption: ジェンスン・フアンがAIのリスクを論じたAll-In出演回（2026年9月14日公開）の公式サムネイル。
+  credit: 出典：All-In Podcast。
+  source_url: https://www.youtube.com/watch?v=S7CrlFLAmEA
+  image_url: https://i.ytimg.com/vi/S7CrlFLAmEA/maxresdefault.jpg
+gpt4o-spring-update:
+  src: /assets/img/editorial/gpt4o-official-video.jpg
+  width: 1280
+  height: 720
+  alt: Spring UpdateでGPT-4oの音声対話を実演するOpenAIの登壇者
+  caption: OpenAIのSpring Updateで行われたGPT-4oの音声対話デモ（2024年5月13日）。
+  credit: 出典：OpenAI「Introducing GPT-4o」公式映像。
+  source_url: https://www.youtube.com/watch?v=DQacCB9tDaw
+  image_url: https://i.ytimg.com/vi/DQacCB9tDaw/maxresdefault.jpg
+trump-stargate:
+  src: /assets/img/editorial/stargate-white-house-video.jpg
+  width: 1280
+  height: 720
+  alt: Stargate計画の発表で演壇に立つドナルド・トランプ
+  caption: Stargate計画を発表するトランプ米大統領（2025年1月21日）。ホワイトハウス公式映像のサムネイル。
+  credit: 出典：The White House 公式映像。
+  source_url: https://www.youtube.com/watch?v=X5gMiDnYEds
+  image_url: https://i.ytimg.com/vi/X5gMiDnYEds/maxresdefault.jpg

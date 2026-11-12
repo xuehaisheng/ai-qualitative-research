@@ -3,48 +3,18 @@ layout: default
 body_class: post-page
 ---
 <main class="page-main">
-  <section class="page-hero">
-    <div class="container">
-      <div class="section-panel page-heading">
-        <div class="eyebrow"><a href="{{ '/articles/' | relative_url }}">研究ノート</a></div>
-        <h1>{{ page.title }}</h1>
-        <p class="post-byline">{{ page.date | date: "%Y.%m.%d" }}{% if page.author %}　{{ page.author }}{% endif %}</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="page-section">
-    <div class="container">
-      <article class="post-shell">
-        <div class="post-body">
-{{ content }}
-        </div>
-      </article>
-
-      {%- if page.wiki %}
-      <aside class="post-terms">
-        <h2>この記事に出てくる用語</h2>
-        <p>
-          {%- for k in page.wiki %}
-          {%- assign d = site.wiki | where: "key", k | first %}
-          {%- if d %}<a href="{{ d.url | relative_url }}">{{ d.title }}</a>{% endif %}
-          {%- endfor %}
-        </p>
-      </aside>
-      {%- endif %}
-
-      {%- assign others = site.posts | sort: "order" %}
-      <aside class="series-box">
-        <h2>ほかの研究ノート</h2>
-        <ul>
-          {%- for p in others %}
-          {%- unless p.url == page.url %}
-          <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
-          {%- endunless %}
-          {%- endfor %}
-        </ul>
-        <p class="series-links"><a href="{{ '/literacy/' | relative_url }}">AIリテラシー（用語のページ）</a><a href="{{ '/articles/' | relative_url }}">研究ノート一覧</a></p>
-      </aside>
-    </div>
-  </section>
-</main>
+<section class="page-hero"><div class="container"><div class="section-panel page-heading">
+<div class="eyebrow"><a href="{{ '/articles/' | relative_url }}">研究ノート</a>{% if page.topic %} ／ {{ page.topic }}{% endif %}</div>
+<h1>{{ page.title }}</h1>
+<p class="post-byline"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y.%m.%d' }}</time>{% if page.author %}　{{ page.author }}{% endif %}{% if page.updated %}<span class="updated-label">更新 {{ page.updated | date: '%Y.%m.%d' }}</span>{% endif %}</p>
+{% if page.change_note %}<p class="post-change">{{ page.change_note }}</p>{% endif %}
+</div></div></section>
+<section class="page-section"><div class="container">
+<div class="reading-layout">
+<article class="post-shell"><div class="post-body">{{ content }}</div></article>
+<details class="reading-toc" data-reading-toc open><summary>この記事の目次</summary><ol></ol></details>
+</div>
+{% if page.wiki %}<aside class="post-terms"><h2>この記事に出てくる用語</h2><p>{% for key in page.wiki %}{% assign term = site.wiki | where: 'key', key | first %}{% if term %}<a href="{{ term.url | relative_url }}">{{ term.title }}</a>{% endif %}{% endfor %}</p></aside>{% endif %}
+<aside class="post-next"><h2>あわせて読む</h2><ul>{% for key in page.related_notes limit:3 %}{% assign note = site.posts | where: 'key', key | first %}{% if note %}<li><a href="{{ note.url | relative_url }}">{{ note.title }}</a></li>{% endif %}{% endfor %}</ul></aside>
+<div class="reader-post-foot"><a href="{{ '/articles/' | relative_url }}">研究ノート一覧</a><a href="{{ '/papers/' | relative_url }}">文献一覧</a><a href="{{ '/feed.xml' | relative_url }}">RSS</a><a href="https://github.com/xuehaisheng/ai-qualitative-research/issues/new" target="_blank" rel="noopener">訂正・ご意見</a></div>
+</div></section></main>

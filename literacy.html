@@ -15,40 +15,18 @@ permalink: /literacy/
         <div class="eyebrow">AI Literacy</div>
         <h1 data-bilingual data-ja="AIリテラシー" data-en="AI Literacy">AIリテラシー</h1>
         <p data-bilingual data-ja="AIを使うか、使わないか。その判断材料になる用語を、一つの用語につき一ページで、背後にある研究とあわせてまとめている。各ページから、関連する用語や研究ノートへたどれる。" data-en="One page per key term, with the research behind it and links to related terms and notes. Pages are written in Japanese.">AIを使うか、使わないか。その判断材料になる用語を、一つの用語につき一ページで、背後にある研究とあわせてまとめている。各ページから、関連する用語や研究ノートへたどれる。</p>
-        <input type="search" class="wiki-search" id="wiki-search" placeholder="用語を探す（例：トークン、幻覚、エージェント）" aria-label="用語を探す">
+        <label class="reader-field">用語を探す<input type="search" class="wiki-search" id="wiki-search" placeholder="用語を探す（例：トークン、幻覚、エージェント）" aria-label="用語を探す"></label><p class="reader-results" id="wiki-count" role="status" aria-live="polite" hidden></p><div class="reader-empty" id="wiki-empty" hidden><p>該当する用語がありません。</p><button class="reader-button" type="button" data-reset-wiki>検索条件をクリア</button></div>
         <nav class="topic-nav" aria-label="Categories">
           <a href="#why">なぜAIリテラシーか</a>
           {%- for c in site.data.wiki_categories %}
-          {%- assign n = site.wiki | where: "category", c.id %}
-          <a href="#{{ c.id }}">{{ c.title }}<span>{{ n.size }}</span></a>
+          <a href="#{{ c.id }}">{{ c.title }}</a>
           {%- endfor %}
         </nav>
       </div>
     </div>
   </section>
 
-  <section class="page-section topic-section" id="why">
-    <div class="container">
-      <div class="section-heading">
-        <h2>なぜAIリテラシーか</h2>
-        <p>立場はどれでもよい。批判でも、推進でも、中立でも構わない。ただ、情緒だけでなく、理性的にも判断したい。そのためには、知った上で判断することが大事である。</p>
-      </div>
-      <div class="card-grid card-grid-3">
-        <article class="card glass-card lit-card">
-          <h3>知識の解像度</h3>
-          <p>「生成AIは次の言葉を予測する」「質的研究では言葉を分析する」。どちらも間違いではない。でも、少し詳しい人なら「次の<a href="{{ '/literacy/token/' | relative_url }}">トークン</a>を予測する」「質的データを分析する」と言うはずである。知識の解像度が違う。質的研究の側に現象学やGTAやテーマ分析の奥行きがあるように、AIの側にも同じくらいの奥行きがある。</p>
-        </article>
-        <article class="card glass-card lit-card">
-          <h3>AIは拡声器になる</h3>
-          <p>「AIのことはAIに聞けばいい」という助言は、あまり生産的ではないと思う。何がよいものかを判断できる人が使えば、AIはもともとの力を何倍にもする拡声器になりうる。判断できない人が使うと、平板で平均的なものが出やすい。その行き着く先が<a href="{{ '/literacy/slop/' | relative_url }}">AIスロップ</a>である。</p>
-        </article>
-        <article class="card glass-card lit-card">
-          <h3>「できる」と「確かめられる」は別</h3>
-          <p>AIは統計のコードも書けるし、数学の証明もできる。でも、Rを知らない人にはそのコードが正しいか分からないし、<a href="{{ '/literacy/lean/' | relative_url }}">Lean</a>を読めない人にはAIの証明を確かめられない。質的研究でも同じで、何がよい質的研究かを知らないと、AIという「魔法」を使っても、出てきた分析を評価できない。</p>
-        </article>
-      </div>
-    </div>
-  </section>
+  <section class="page-section"><div class="container"><div class="literacy-path"><h2>最初に読むなら</h2><p><a href="{{ '/literacy/llm/' | relative_url }}">LLM</a><span aria-hidden="true">→</span><a href="{{ '/literacy/token/' | relative_url }}">トークン</a><span aria-hidden="true">→</span><a href="{{ '/literacy/context/' | relative_url }}">コンテキスト</a><span aria-hidden="true">→</span><a href="{{ '/literacy/hallucination/' | relative_url }}">ハルシネーション</a><span aria-hidden="true">→</span><a href="{{ '/literacy/sycophancy/' | relative_url }}">迎合</a></p></div></div></section>
 
   {%- for c in site.data.wiki_categories %}
   {%- assign entries = site.wiki | where: "category", c.id | sort: "order" %}
@@ -71,27 +49,29 @@ permalink: /literacy/
   </section>
   {%- endfor %}
 
+<section class="page-section" id="why"><div class="container"><details class="reader-details"><summary>なぜAIリテラシーか</summary>
+      <div class="section-heading">
+        <h2>なぜAIリテラシーか</h2>
+        <p>立場はどれでもよい。批判でも、推進でも、中立でも構わない。ただ、情緒だけでなく、理性的にも判断したい。そのためには、知った上で判断することが大事である。</p>
+      </div>
+      <div class="card-grid card-grid-3">
+        <article class="card glass-card lit-card">
+          <h3>知識の解像度</h3>
+          <p>「生成AIは次の言葉を予測する」「質的研究では言葉を分析する」。どちらも間違いではない。でも、少し詳しい人なら「次の<a href="{{ '/literacy/token/' | relative_url }}">トークン</a>を予測する」「質的データを分析する」と言うはずである。知識の解像度が違う。質的研究の側に現象学やGTAやテーマ分析の奥行きがあるように、AIの側にも同じくらいの奥行きがある。</p>
+        </article>
+        <article class="card glass-card lit-card">
+          <h3>AIは拡声器になる</h3>
+          <p>「AIのことはAIに聞けばいい」という助言は、あまり生産的ではないと思う。何がよいものかを判断できる人が使えば、AIはもともとの力を何倍にもする拡声器になりうる。判断できない人が使うと、平板で平均的なものが出やすい。その行き着く先が<a href="{{ '/literacy/slop/' | relative_url }}">AIスロップ</a>である。</p>
+        </article>
+        <article class="card glass-card lit-card">
+          <h3>「できる」と「確かめられる」は別</h3>
+          <p>AIは統計のコードも書けるし、数学の証明もできる。でも、Rを知らない人にはそのコードが正しいか分からないし、<a href="{{ '/literacy/lean/' | relative_url }}">Lean</a>を読めない人にはAIの証明を確かめられない。質的研究でも同じで、何がよい質的研究かを知らないと、AIという「魔法」を使っても、出てきた分析を評価できない。</p>
+        </article>
+      </div>
+    </details></div></section>
   <section class="page-section">
     <div class="container">
       <p class="lit-foot">長めの論考は<a href="{{ '/articles/' | relative_url }}">研究ノート</a>に、AIと質的研究をめぐる文献は<a href="{{ '/papers/' | relative_url }}">文献一覧</a>にまとめている。数字や出来事は2026年10月時点のものである。</p>
     </div>
   </section>
 </main>
-
-<script>
-(function () {
-  var input = document.getElementById("wiki-search");
-  if (!input) return;
-  var items = Array.prototype.slice.call(document.querySelectorAll(".wiki-item"));
-  var cats = Array.prototype.slice.call(document.querySelectorAll(".wiki-cat"));
-  input.addEventListener("input", function () {
-    var q = input.value.trim().toLowerCase();
-    items.forEach(function (el) {
-      el.hidden = q !== "" && el.getAttribute("data-search").indexOf(q) === -1;
-    });
-    cats.forEach(function (c) {
-      c.hidden = c.querySelectorAll(".wiki-item:not([hidden])").length === 0;
-    });
-  });
-})();
-</script>

@@ -7,6 +7,9 @@ order: 4
 summary: "もとは馬具の意味。モデルを包む、道具・文書・テスト・権限の一式を指す。"
 related: [prompt, context, skills, agent]
 articles: [ai-history]
+sources:
+  - text: "OpenAI. (2026). Harness engineering: leveraging Codex in an agent-first world."
+    url: "https://openai.com/index/harness-engineering/"
 ---
 
 ハーネスは、もとは馬具の意味である。AIの文脈では、モデルを包む、道具・文書・テスト・権限の一式を指す。2026年2月ごろから使われるようになった。
