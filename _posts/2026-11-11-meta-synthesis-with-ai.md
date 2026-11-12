@@ -244,6 +244,6 @@ There is a reason for the third one. When you have AI analyze something, a plaus
 
 - Lakoff, G., & Johnson, M. (1980). *Metaphors we live by*. University of Chicago Press.
 - Willig, C. (2022). *Introducing qualitative research in psychology* (4th ed.). Open University Press.
-- Xue, H., Kajiwara, S., & Toyoda, J. (2026). How do qualitative researchers discuss generative AI? A new attempt at qualitative meta-synthesis [Poster presentation, in Japanese]. 23rd Annual Meeting of the Japanese Association of Qualitative Psychology.
+- Xue, H., Kajiwara, S., & Toyoda, H. (2026). How do qualitative researchers discuss generative AI? A new attempt at qualitative meta-synthesis [Poster presentation, in Japanese]. 23rd Annual Meeting of the Japanese Association of Qualitative Psychology.
 
 The models used were GPT-5.5, GPT-5.6 and GPT-6.1 (OpenAI) and Claude Opus 5.5 (Anthropic).
