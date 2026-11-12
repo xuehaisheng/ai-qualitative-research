@@ -1,7 +1,9 @@
 {%- assign media = site.data.media[include.key] -%}
 {%- if media -%}
+{%- if include.en -%}{%- assign m_alt = media.alt_en -%}{%- assign m_cap = media.caption_en -%}{%- assign m_credit = media.credit_en -%}{%- assign m_src = "Source" -%}
+{%- else -%}{%- assign m_alt = media.alt -%}{%- assign m_cap = media.caption -%}{%- assign m_credit = media.credit -%}{%- assign m_src = "原資料" -%}{%- endif -%}
 <figure class="editorial-figure">
-  <a href="{{ media.source_url }}" target="_blank" rel="noopener"><img src="{{ media.src | relative_url }}" alt="{{ media.alt | escape }}" width="{{ media.width }}" height="{{ media.height }}" loading="lazy" decoding="async"></a>
-  <figcaption>{{ media.caption }} <span class="editorial-credit">{{ media.credit }} <a href="{{ media.source_url }}" target="_blank" rel="noopener">原資料 ↗</a></span></figcaption>
+  <a href="{{ media.source_url }}" target="_blank" rel="noopener"><img src="{{ media.src | relative_url }}" alt="{{ m_alt | escape }}" width="{{ media.width }}" height="{{ media.height }}" loading="lazy" decoding="async"></a>
+  <figcaption>{{ m_cap }} <span class="editorial-credit">{{ m_credit }} <a href="{{ media.source_url }}" target="_blank" rel="noopener">{{ m_src }} ↗</a></span></figcaption>
 </figure>
 {%- endif -%}

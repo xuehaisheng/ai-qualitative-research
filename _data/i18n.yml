@@ -1,0 +1,15 @@
+# English labels for values stored in Japanese elsewhere.
+topics:
+  "質的研究": "Qualitative research"
+  "AIの理解": "Understanding AI"
+  "研究の実践": "Research practice"
+authors:
+  "薛海升": "Haisheng Xue"
+themes:
+  "分析・コーディング": "Analysis & coding"
+  "解釈・反省性": "Interpretation & reflexivity"
+  "倫理・公正": "Ethics & justice"
+  "透明性・研究の質": "Transparency & quality"
+  "実践の手引き": "Practical guides"
+  "雑誌・制度の方針": "Journal & institutional policy"
+  "拒否声明をめぐる議論": "The rejection-statement debate"

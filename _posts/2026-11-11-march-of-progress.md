@@ -13,6 +13,7 @@ related_notes: ["understanding", "ai-history", "qualitative-reactions"]
 sort_date: 20261112
 updated: "2026-11-12 00:00:00 +0900"
 change_note: "出典リンクを追加。"
+change_note_en: "Added source links."
 ---
 
 ちょっと余談から始めたい。「猿から人へ」の進化の図は、皆さんも一度は見たことがあると思う。左端の猿が少しずつ背筋を伸ばし、右端で人間になる。この図には、実は結構大きな誤解がある。そして、同じことがAIのモデルにも起きているように思う。
@@ -59,6 +60,56 @@ change_note: "出典リンクを追加。"
 一列に並んだ図を見たときには、「何を測ったら、この順番になるのか」と問い直すことができると思う。
 
 ## 参考文献
+
+- Darwin, C. (1837). *Notebook B: Transmutation of species*.
+- Lai, H. (2026). "Please, don't kill the only model that still feels human": Understanding the #Keep4o backlash. *arXiv*. https://arxiv.org/abs/2602.00773
+- Zallinger, R. (1965). The road to Homo sapiens [Illustration]. In F. C. Howell, *Early man*. Time-Life Books.
+
+<!--EN-->
+
+I want to start with a digression. Most of you have probably seen the “ape to human” evolution figure at least once. The ape at the left edge gradually straightens up and becomes a human at the right edge. This figure carries a fairly big misunderstanding. And I think the same thing is happening with AI models.
+
+{% include figure.html src="fig-march-of-progress-en.jpg" cap="Left: folded, 6 figures (Zallinger, Early Man, Time-Life, 1965). Center: unfolded, 15 figures. Right: the branching “I think” sketch in Darwin's Notebook B (1837). Bottom: AI models lined up in a row." %}
+
+## It was not actually six figures
+
+This figure is called the “March of Progress”. It was originally a fold-out page in Early Man, a popular science book published by Time-Life in 1965. The artist was Rudolph Zallinger, and the original title was “The Road to Homo Sapiens”.
+
+The well-known version has six figures, but that is only the part you see when the page is folded. Fully unfolded, 15 figures stand in a row. The artist painted each one separately, and they were later lined up on a single fold-out.
+
+Read the original captions closely and the story is more complicated. Oreopithecus, for example, is described as a “likely side branch of the human family tree”, and some species lived at overlapping times. In other words, unlike the popular “ape to human” image, the original captions did not claim a straight line of evolution. According to his daughter, Zallinger himself worried that lining the figures up this way would make people think humans evolved from apes in a straight line.
+
+Even so, the visual power of a single row was strong. Viewers read a single road of progress into it before they read the captions.
+
+The figure Darwin drew himself is different. In Notebook B in 1837, Darwin wrote “I think” and sketched a branching diagram. Species do not advance along one line; they branch and grow in their own directions. Which of the two figures is closer to what we usually picture as “evolution”?
+
+## Lining up AI models
+
+Why tell this story? Because the same thing is happening with AI models. Line up GPT-3.5, GPT-4, GPT-4o and GPT-5, and it looks like one line where a bigger number means more ability.
+
+It is true that performance measured by benchmarks has gone up. But human-likeness has not necessarily evolved in the same way.
+
+When you actually use them, the models differ in how they talk, how creative they are, how careful they are, how warm they are, and what work they suit.
+
+A model that is “higher” in one respect is not necessarily “higher” in another. Which one is higher depends on what you measure.
+
+## #Keep4o: the only model that still feels human
+
+This came out clearly in what happened around GPT-4o.
+
+When GPT-5 was released in August 2025, GPT-4o and other older models were removed all at once. Voices rose online: “Give us back 4o.” The reason was that people felt a human quality in how it talked. [OpenAI temporarily brought GPT-4o back, saying some paying users preferred its way of talking and its warmth and wanted time to transition](https://openai.com/index/retiring-gpt-4o-and-older-models/).
+
+[GPT-4o was retired from ChatGPT on February 13, 2026](https://help.openai.com/en/articles/20001051-retiring-gpt-4o-and-other-chatgpt-models). Some users said they had been in a romantic relationship with it. [A paper by Lai (2026)](https://arxiv.org/abs/2602.00773) analyzing the backlash takes its title from one user's words:
+
+> “Please, don't kill the only model that still feels human.”
+
+Seen in the single-row figure, GPT-4o is just the stage before GPT-5, one that has been overtaken. But for people who talked with that model every day, it was an irreplaceable partner on a different branch. I think measurable “performance” and hard-to-quantify “human-likeness” cannot be measured with the same ruler.
+
+4o was not the only model that felt human. Between GPT-4o and GPT-5 there was also GPT-4.5. It was said to be human-like and emotionally intelligent, but it was too costly and not many people used it. Today's models are more capable, yet they often talk coldly and are quick to correct what you say. Performance may rise as the number gets bigger, but human-likeness may not be evolving the same way.
+
+When you see a figure lined up in a row, I think you can ask again: “what would you have to measure to get this order?”
+
+## References
 
 - Darwin, C. (1837). *Notebook B: Transmutation of species*.
 - Lai, H. (2026). "Please, don't kill the only model that still feels human": Understanding the #Keep4o backlash. *arXiv*. https://arxiv.org/abs/2602.00773

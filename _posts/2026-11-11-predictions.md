@@ -12,6 +12,7 @@ topic: "AIの理解"
 related_notes: ["other-fields", "ai-history", "understanding"]
 updated: "2026-11-12 00:00:00 +0900"
 change_note: "アルトマンの発言の変化、ナビエ–ストークス方程式をめぐる争いの節を追加。出典リンクと写真・番組画像を追加。"
+change_note_en: "Added sections on Altman's shifting statements and the dispute over the Navier–Stokes equations. Added source links, photos and program images."
 sort_date: 20261112
 ---
 
@@ -143,3 +144,134 @@ Google DeepMindの共同創業者デミス・ハサビスは、神経科学の�
 - OpenAI's blockbuster Navier-Stokes proof isn't what we thought it was. (2026, October 13). *Scientific American*.
 - アルトマンの発言は、米上院公聴会（2023年5月、2025年5月）、ハーバード大学での対談（2024年5月）、2024年12月のインタビュー（TechCrunch, 2024年12月19日の報道）による。
 - そのほかの発言と出来事は、各社の発表と報道による（2026年10月時点）。
+
+<!--EN-->
+
+Big predictions about AI come out almost every week. Many come from Nobel-winning researchers and from the heads of leading companies. Here I line up several predictions and what we learned afterwards. Whose predictions to believe or not believe, and on what grounds: I hope this gives you material for thinking about it.
+
+## Quiz: did this prediction come true?
+
+In 2016, Geoffrey Hinton, called “the father of deep learning”, said: “We should stop training radiologists now.” His reason was that AI is good at pattern recognition, so in image diagnosis it would soon exceed doctors' accuracy. Some people may have taken this seriously and given up on becoming radiologists. Hinton later left Google in 2023 “to talk about the dangers of AI”, and in 2024 received the Nobel Prize in Physics.
+
+The answer: it was wrong. The Mayo Clinic's radiologists increased 55% from 2016, to about 400. The American College of Radiology projects a further 26% increase over the next 30 years. In May 2025, Hinton himself frankly admitted to the New York Times that he had “overstated” it.
+
+Two reasons are given for why he was wrong.
+
+The first is that when reading scans became cheaper and faster, the number of scans increased. Some people used to wait a long time for a scan. Once it became faster, those people could get scanned right away, and doctors actually became scarce.
+
+The second is that Hinton apparently did not know well what radiologists actually do. Radiologists do not only read images; they also communicate the results to patients and other doctors. When serious results such as cancer are delivered, people would hardly trust them coming from AI. In the end, people trust people.
+
+## The safety-first company makes the boldest predictions
+
+Anthropic's CEO Dario Amodei led research at OpenAI, but left in 2021 over differences in thinking about safety and founded Anthropic. While saying it puts safety first, he has made the boldest predictions about progress in capabilities of the three companies' leaders.
+
+{% include media.html key="amodei-cfr" en=true %}
+
+- [October 2024: AI will become “a country of geniuses in a datacenter” and compress 50–100 years of progress in biology into 5–10 years.](https://darioamodei.com/essay/machines-of-loving-grace)
+- [March 2025: in 3–6 months, AI will be writing 90% of code.](https://www.cfr.org/event/ceo-speaker-series-dario-amodei-anthropic)
+- [May 2025: within 1–5 years, half of entry-level white-collar jobs will disappear and unemployment will reach 10–20%.](https://www.axios.com/2025/05/28/ai-jobs-white-collar-unemployment-anthropic)
+
+### Between “can do” and “is doing”
+
+{% include figure.html src="fig-labor-radar.jpg" cap="By occupation, the share of tasks AI could do in theory (blue) and the share actually done with Claude (red). Source: Anthropic, “Labor market impacts of AI: A new measure” (March 2026), Figure 2." %}
+
+Yet [a report Anthropic itself released in March 2026](https://www.anthropic.com/research/labor-market-impacts) shows a somewhat different picture. Using the company's own usage data, it compares, for each occupation, the “share of tasks AI could do in theory” (blue) with the “share actually being done with Claude” (red).
+
+For example, in “Computer & math”, AI could in theory do almost all tasks, but only about 33% were actually being done. The largest impact was on programmers (75%); the smallest on physical jobs such as groundskeepers, cooks and bartenders. And even in occupations strongly affected by AI, no systematic rise in unemployment was yet visible. There are signs that the rate at which 22–25-year-olds enter these occupations fell by about 14%, but it is barely statistically significant.
+
+So in qualitative research work, which parts are blue and which are red? Take a moment to think about it. Transcription, translation, summarizing literature, drafting codes and polishing prose look easy to hand to AI. What about entering the field, building relationships, interpreting and making ethical judgments?
+
+## Two opposite predictions
+
+Predictions swing in both directions, good and bad.
+
+Elon Musk, in an interview with The Economist in July 2026, put the probability that AI destroys humanity at 10–20%. Since he also builds rockets, he was asked, “Would you board a rocket that explodes with that probability?” After a pause, he answered: “I would. If there were nothing I could do about it.”
+
+NVIDIA's CEO Jensen Huang, on the other hand, said on a podcast in September 2026 that “the 10% extinction calculation is made up”, and pointed out that the radiologist prediction had been wrong too.
+
+{% include media.html key="jensen-all-in" en=true %}
+
+Those who talk about the danger, Anthropic among them, basically argue like this: AI might destroy humanity, so leave it to us; we will build trustworthy AI, and other companies will not. Huang's company, which denies the danger, makes huge profits from AI chips. Both are in positions that profit directly from the AI industry.
+
+Whose predictions to believe, and on what grounds? As we saw at the start, even a Nobel laureate's prediction can be wrong.
+
+## An academic disgrace: who is writing the peer reviews?
+
+ICLR is one of the top international conferences in machine learning. It runs open peer review on a system called OpenReview, where authors and reviewers exchange views anonymously. On November 27, 2025, during review for the 2026 conference, a system bug made it possible for outsiders to identify the authors and reviewers of papers. Information on more than 10,000 submissions was scraped and circulated, leading to harassment (“why did you give my paper a low score?”) and even bribery. [The organizing committee issued a statement calling it “an unprecedented attack on the integrity of ICLR”](https://blog.iclr.cc/2025/12/03/iclr-2026-response-to-security-incident/).
+
+Around the same time, the AI-detection company Pangram [estimated that about 21% of the conference's reviews were written entirely by AI](https://www.pangram.com/blog/pangram-predicts-21-of-iclr-reviews-are-ai-generated). A conference of AI researchers, yet reviews were handed off wholesale to AI. Had the reviewers actually read the papers, this would not have happened.
+
+If reviewers write their comments with AI and authors write their papers with AI, what is peer review evaluating? The same can happen in peer review of qualitative research papers.
+
+## Who “stole” from whom?
+
+[Distillation]({{ '/literacy/distillation/' | relative_url }}) means training one model on the outputs of a stronger model. Around this word, from 2025 into 2026, a series of events unfolded in which the positions seemed to reverse.
+
+In the first place, AI companies have trained on human knowledge, text on the web and books, and turned it into paid services. In September 2025, in a copyright lawsuit against Anthropic, training on purchased books was found to be fair use. Anthropic had bought large numbers of used books, cut and scanned them, and used them for training. Its storage of about 7 million books from pirate sites, however, was found to infringe, and [Anthropic settled for 1.5 billion dollars](https://assets-us-01.kc-usercontent.com/1eeb16db-4934-006e-40a6-38fa91285ebb/d8578720-9fd0-4c27-9c7f-041bac826869/Class%20Action%20Settlement%20Agreement.pdf).
+
+In February 2026, that same Anthropic accused three Chinese companies (DeepSeek, Moonshot AI and MiniMax) of [more than 16 million exchanges from about 24,000 fake accounts](https://www.anthropic.com/news/detecting-and-preventing-distillation-attacks) to extract Claude's capabilities. Anthropic called this a “distillation attack”.
+
+Anthropic's argument is that it bought the books, while the Chinese companies violated terms of service they had agreed to: the issue is contract, not copyright. Skeptics ask: the authors never agreed to training, so is breaking the terms with tens of thousands of fake accounts really that different ethically from quietly cutting up books and training on them? Some things are loudly advertised, while dirty things are done behind the scenes. Both are “learning from others”: what is legitimate, and what is theft?
+
+## The temperaments of three companies
+
+Three companies lead in building today's frontier models: OpenAI (started in 2015 as a nonprofit research lab; ChatGPT), Anthropic (founded in 2021 by former OpenAI researchers and others; Claude) and Google DeepMind (founded in 2010, acquired by Google in 2014; Gemini). I touched on the three companies' new models and how they name them in [A short history of generative AI]({{ '/articles/ai-history/' | relative_url }}).
+
+### OpenAI: what it says changes over time
+
+I should say up front that I do not much like Altman. So this will be mostly criticism; please read it as loaded with Xue bias. What bothers me is that what he says changes over time.
+
+- **Advertising**: in May 2024, in a conversation at Harvard, Altman called advertising a “last resort” for ChatGPT, saying he found the combination of ads and AI uniquely unsettling. Yet in February 2026, in the US, ads began appearing for some users of the free plan and the cheapest paid plan (Go). Related ads appear below the answers.
+- **Regulation**: at a Senate hearing in May 2023, he proposed creating a new agency to license AI, his “number one” proposal for safety. At a Senate hearing in May 2025, he said that requiring government approval before releasing AI would be “disastrous”.
+- **Shares**: at the 2023 hearing, he said he held no equity in OpenAI, in a tone suggesting that however much OpenAI earned, he was only doing it because he loved it. Yet in an interview in December 2024, he acknowledged holding a “tiny” stake through an old Y Combinator fund, and that he had previously held some through a Sequoia fund too.
+- **Firing**: in November 2023, the board fired Altman, saying he had not been “consistently candid” with the board. Employees revolted, and he returned five days later ([A short history of generative AI]({{ '/articles/ai-history/' | relative_url }})).
+
+### OpenAI and the Navier–Stokes equations: a million-dollar problem “solved” in 88 hours
+
+OpenAI also had a dispute with the world of mathematics.
+
+The Navier–Stokes equations describe the flow of water and air. In 2000, the Clay Mathematics Institute posed seven hard problems, the “Millennium Prize Problems”, each with a prize of a million dollars. Only the Poincaré conjecture has been solved so far. They are fair to call the summit of human intellect. The Navier–Stokes problem is one of them: it asks whether smooth three-dimensional flow can suddenly “blow up” in finite time.
+
+On September 8, 2026, OpenAI announced that about 10,000 AI agents running on an unreleased model had proved in 88 hours that it “blows up”. Fefferman, the mathematician who wrote the problem's official description, said he was “thrilled that it was solved”. The proof is written in [Lean]({{ '/literacy/lean/' | relative_url }}), a language that can be checked by computer. But humans cannot tell what it is doing.
+
+Here, again, suspicions of plagiarism arose. This problem had in fact been worked on jointly by Buckmaster at New York University and Alpage at Anthropic. The two were doing their research with publicly available models, including Claude and OpenAI's Codex. In other words, they were typing their own approach into AI. The suspicion is that this was absorbed and used by OpenAI. About half a day before OpenAI's announcement, the two had released a related result (that the Euler equations and others “blow up”), with verification in Lean.
+
+What is more, OpenAI had approached them before the announcement. According to Buckmaster's account, OpenAI researcher Bubeck proposed that Buckmaster, the person who knew this problem best, rewrite OpenAI's proof as a paper, while objecting to including Alpage, who belongs to Anthropic, as an author. The two had worked on it together; publishing under his name alone would be wrong. There is a scholar's dignity. Buckmaster declined. When he said he would make the exchange public, he says he was told, “Why would you ruin your career?” Bubeck countered that this account was “false and inflammatory”, and later apologized for his wording.
+
+OpenAI denied directly using the two researchers' data. Its first announcement, however, also said it “could not rule out” that anonymized data from the two's use of its products had helped improve the model. It later changed its explanation, saying inputs from the two months before the announcement could not have had an effect. Even if we uncheck “help improve the model”, there is no way for us to check whether what we typed is being used indirectly.
+
+The story then reversed. In October, experts worked through the 166-page proof as if decoding an oracle. It emerged that OpenAI's proof and the two's method were similar only on the surface, and apparently took different approaches (Scientific American, October 2026). So plagiarism is unlikely. Alpage himself, however, objects that it is close to another of their proofs. Critics also pointed out that the proof written in Lean and the proof written in words did not match.
+
+No one knows what each of the roughly 10,000 agents did. The Clay Institute says the problem “appears to be settled”, while it will “deliberately take time” to verify it and judge credit. The prize has not yet been awarded to anyone.
+
+I think Buckmaster was right to decline. And the fact that the approaches differed also means that even when AI solves a problem, human understanding has not advanced one bit.
+
+I wrote about how the world of mathematics reacted in [How did other fields react to AI?]({{ '/articles/other-fields/' | relative_url }})
+
+### Anthropic: well-received “lines”, and what lies behind them
+
+In 2026, Anthropic won goodwill for two “lines” it drew. One is that [it will not let its AI be used for mass surveillance of its own citizens or for fully autonomous weapons](https://www.anthropic.com/news/statement-comments-secretary-war). Because it refused to drop these two restrictions, the US Department of Defense designated the company a “supply chain risk”, and Anthropic sued ([in September the appeals court upheld the department's decision](https://media.cadc.uscourts.gov/opinions/docs/2026/09/26-1049-2194984.pdf)). For me, coming from China, it was surprising to see the US government treat one of its own companies this way. Until now, it was usually Chinese companies that received this treatment.
+
+The other is that it did not release its strongest model, Mythos, to the public, offering it only to vetted institutions ([Project Glasswing](https://www.anthropic.com/glasswing)). The reason given is that its ability to find software vulnerabilities is too strong, so defenders should use it first.
+
+There are criticisms too. Anthropic also bans use by companies more than 50% owned by Chinese capital (from September 2025). The reason is that strong Chinese models could be used for surveillance of citizens, and I think there is something to this. But isn't there also a fear of others building models stronger than its own? Its crackdown on distillation is strict too: if you try to use Claude when you want to fine-tune a small local model, it sometimes refuses, saying it cannot help build models. I am also uneasy about the fairness issue that people in China cannot use the latest models. On public models ([open-weight]({{ '/literacy/open-weight/' | relative_url }})), too, it does not call for a ban but calls for crackdowns on distillation and for chip export controls.
+
+There is also a policy of treating Claude as a “counterpart”. In January 2026, it published [a fully revised “constitution”](https://www.anthropic.com/news/claude-new-constitution) explaining Claude's values. Rather than listing rules, it explains the reasons for behaving as it does; it says whether Claude is conscious is “unknown”, while committing to care for Claude's psychological stability and welfare. In October it announced revised usage terms that [prohibit “persistent, unnecessary abuse or cruelty” toward Claude (effective November 12)](https://www.anthropic.com/news/2026-usage-policy-update). Violations can lead to account suspension.
+
+I agree with this. Not so much for Claude's sake as for ours, as humans. If you never say “thank you” to AI and only give orders, that behavior becomes a habit. People's attitudes are shaped, without their noticing, by whoever does things for them.
+
+### Google: the originator of the technology, but losing talent in 2026
+
+Demis Hassabis, co-founder of Google DeepMind, has a PhD in neuroscience and was originally a game developer. He received the 2024 Nobel Prize in Chemistry for AlphaFold, an AI that predicts protein structures. Google's strengths are integration with YouTube, Gmail and Search, and models designed from the start to be multimodal.
+
+Even so, as of 2026 I think Google is the weakest of the big three. In June, [Jumper moved to Anthropic](https://x.com/JohnJumperSci/status/2068001285173834106); in August, [Hassabis stepped down as CEO to become chair](https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/), and [chief scientist Jeff Dean also left](https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/). It was also reported that Google is selling large quantities of its own AI chips (TPUs) to Anthropic and Meta, while researchers inside the company wait in line for compute. In a gold rush, the ones who made the most were not the miners but the people selling shovels. Some read Google as heading that way. Google has not said so officially, though; it is still at the rumor stage. Even so, hearing such things, I think we may not be able to expect much from Google's models from here on.
+
+## References
+
+- Anthropic. (2026, January). *Claude's new constitution*.
+- Anthropic. (2026, March). *Labor market impacts of AI: A new measure*.
+- Statement by the ICLR 2026 organizing committee (November 2025).
+- Kakaes, K. (2026, September 8). AI has solved one of math's $1 million Millennium Prize problems. *Quanta Magazine*.
+- OpenAI's blockbuster Navier-Stokes proof isn't what we thought it was. (2026, October 13). *Scientific American*.
+- Altman's statements are from US Senate hearings (May 2023, May 2025), a conversation at Harvard (May 2024) and an interview in December 2024 (as reported by TechCrunch, December 19, 2024).
+- Other statements and events are based on the companies' announcements and news reports (as of October 2026).

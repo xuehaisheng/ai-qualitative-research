@@ -2,19 +2,22 @@
 layout: default
 body_class: post-page
 ---
+{%- assign topic_en = site.data.i18n.topics[page.topic] | default: page.topic -%}
+{%- assign author_en = site.data.i18n.authors[page.author] | default: page.author -%}
+{%- assign parts = content | split: '<!--EN-->' -%}
 <main class="page-main">
 <section class="page-hero"><div class="container"><div class="section-panel page-heading">
-<div class="eyebrow"><a href="{{ '/articles/' | relative_url }}">研究ノート</a>{% if page.topic %} ／ {{ page.topic }}{% endif %}</div>
-<h1>{{ page.title }}</h1>
-<p class="post-byline"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y.%m.%d' }}</time>{% if page.author %}　{{ page.author }}{% endif %}{% if page.updated %}<span class="updated-label">更新 {{ page.updated | date: '%Y.%m.%d' }}</span>{% endif %}</p>
-{% if page.change_note %}<p class="post-change">{{ page.change_note }}</p>{% endif %}
+<div class="eyebrow"><a href="{{ '/articles/' | relative_url }}">{% include t.html ja="研究ノート" en="Research notes" %}</a>{% if page.topic %} ／ {% include t.html ja=page.topic en=topic_en %}{% endif %}</div>
+<h1>{% include t.html ja=page.title en=page.title_en %}</h1>
+<p class="post-byline"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y.%m.%d' }}</time>{% if page.author %}　{% include t.html ja=page.author en=author_en %}{% endif %}{% if page.updated %}<span class="updated-label">{% include t.html ja="更新" en="Updated" %} {{ page.updated | date: '%Y.%m.%d' }}</span>{% endif %}</p>
+{% if page.change_note %}<p class="post-change">{% include t.html ja=page.change_note en=page.change_note_en %}</p>{% endif %}
 </div></div></section>
 <section class="page-section"><div class="container">
 <div class="reading-layout">
-<article class="post-shell"><div class="post-body">{{ content }}</div></article>
-<details class="reading-toc" data-reading-toc open><summary>この記事の目次</summary><ol></ol></details>
+<article class="post-shell"><div class="post-body"><div class="lang-ja">{{ parts[0] }}</div>{% if parts[1] %}<div class="lang-en" lang="en">{{ parts[1] }}</div>{% endif %}</div></article>
+<details class="reading-toc" data-reading-toc open><summary>{% include t.html ja="この記事の目次" en="Contents" %}</summary><ol></ol></details>
 </div>
-{% if page.wiki %}<aside class="post-terms"><h2>この記事に出てくる用語</h2><p>{% for key in page.wiki %}{% assign term = site.wiki | where: 'key', key | first %}{% if term %}<a href="{{ term.url | relative_url }}">{{ term.title }}</a>{% endif %}{% endfor %}</p></aside>{% endif %}
-<aside class="post-next"><h2>あわせて読む</h2><ul>{% for key in page.related_notes limit:3 %}{% assign note = site.posts | where: 'key', key | first %}{% if note %}<li><a href="{{ note.url | relative_url }}">{{ note.title }}</a></li>{% endif %}{% endfor %}</ul></aside>
-<div class="reader-post-foot"><a href="{{ '/articles/' | relative_url }}">研究ノート一覧</a><a href="{{ '/papers/' | relative_url }}">文献一覧</a><a href="{{ '/feed.xml' | relative_url }}">RSS</a><a href="https://github.com/xuehaisheng/ai-qualitative-research/issues/new" target="_blank" rel="noopener">訂正・ご意見</a></div>
+{% if page.wiki %}<aside class="post-terms"><h2>{% include t.html ja="この記事に出てくる用語" en="Terms in this note" %}</h2><p>{% for key in page.wiki %}{% assign term = site.wiki | where: 'key', key | first %}{% if term %}<a href="{{ term.url | relative_url }}">{% include t.html ja=term.title en=term.en %}</a>{% endif %}{% endfor %}</p></aside>{% endif %}
+<aside class="post-next"><h2>{% include t.html ja="あわせて読む" en="Read next" %}</h2><ul>{% for key in page.related_notes limit:3 %}{% assign note = site.posts | where: 'key', key | first %}{% if note %}<li><a href="{{ note.url | relative_url }}">{% include t.html ja=note.title en=note.title_en %}</a></li>{% endif %}{% endfor %}</ul></aside>
+<div class="reader-post-foot"><a href="{{ '/articles/' | relative_url }}">{% include t.html ja="研究ノート一覧" en="All research notes" %}</a><a href="{{ '/papers/' | relative_url }}">{% include t.html ja="文献一覧" en="Literature" %}</a><a href="{{ '/feed.xml' | relative_url }}">RSS</a><a href="https://github.com/xuehaisheng/ai-qualitative-research/issues/new" target="_blank" rel="noopener">{% include t.html ja="訂正・ご意見" en="Corrections & comments" %}</a></div>
 </div></section></main>

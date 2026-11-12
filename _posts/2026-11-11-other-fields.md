@@ -12,6 +12,7 @@ topic: "AIの理解"
 related_notes: ["qualitative-reactions", "predictions", "understanding"]
 updated: "2026-11-12 00:00:00 +0900"
 change_note: "出典リンクを追加。"
+change_note_en: "Added source links."
 sort_date: 20261112
 ---
 
@@ -81,3 +82,72 @@ Linuxを作ったリーナス・トーバルズは、2025年11月の講演で、
 - Stack Overflow. (2026). *2026 Developer Survey*.
 
 数学の出来事とフィールズ賞受賞者25名の宣言（2026年9月11日）は、各社の発表と報道による（2026年10月時点）。
+
+<!--EN-->
+
+Generative AI works with language. So the fields that deal with language and knowledge have felt its effects soonest and most strongly. Before turning to qualitative research, I want to look at how other fields reacted: natural language processing (NLP), programming and mathematics.
+
+## NLP: “hacks” that transformed a whole field
+
+Natural language processing (NLP) is the research field that gets computers to handle human language. In April 2025, Quanta Magazine put together an oral history in which researchers in the field looked back on that time [(Quanta Magazine, 2025)](https://www.quantamagazine.org/when-chatgpt-broke-an-entire-field-an-oral-history-20250430/).
+
+In 2017, when the [Transformer]({{ '/literacy/transformer/' | relative_url }}) was announced, many researchers took it as “just hacks”. That is how Pavlick at Brown University recalls the reaction at the time, and Mooney at the University of Texas says he thought it was “conceptually wrong”. Some students, though, felt it was a turning point.
+
+In 2018, BERT, built on the Transformer, broke one record after another. “Everyone was writing BERT papers,” people said, and research concentrated so heavily that it was called “BERTology”. Research heading in other directions was abandoned one project after another.
+
+With GPT-3 in 2020, problems students had spent years on could be reproduced right away. Callison-Burch at the University of Pennsylvania calls this a “career existential crisis”.
+
+And then came ChatGPT in 2022. One researcher says many research problems “disappeared” within a day of its release. Another says what disappeared was not individual topics but whole categories of the field. It became a situation where you could just do this and be done.
+
+### Dissertation topics vanished overnight
+
+Students were hit hardest. Callison-Burch says “PhD students literally formed support groups for one another”, and Dagan says “students in the middle of their research had no choice but to change direction drastically.” One of Mooney's students wondered whether real research was now happening at companies, and thought about dropping out.
+
+After that, the field turned sharply toward studying LLMs themselves. Bowman says “it felt like the field had completely changed direction”, and Dagan says “by the end of 2023 it felt less like NLP and more like the field of ‘AI’.” Michael says, “I am now an AI alignment researcher” (alignment: research on matching AI to human values).
+
+If my own topic disappeared in the middle of my research, I think I would despair.
+
+## Programming: objections remain, yet almost everyone uses it
+
+In programming, critical voices remain. You often hear that it is “just pattern recognition” or that it “makes things up plausibly”. Even if 90% is right, the remaining 10% being wrong is a problem. Some say hunting for the mistakes becomes hell.
+
+Linus Torvalds, who created Linux, said in a talk in November 2025 that “[vibe coding]({{ '/literacy/vibe-coding/' | relative_url }})”, building things by leaving it to AI without reading the code closely, is fine for getting started but “may be a horrible idea” for maintenance.
+
+It has also become clear that how it feels and what actually happens can diverge. In an experiment by METR, 16 experienced open-source developers worked on 246 real tasks from their own large projects. When AI use was randomly assigned task by task, work with AI was 19% slower. Yet the developers themselves felt they had been 20% faster [(METR, 2025)](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/). Humans, not just AI, “hallucinate”. In a 2025 survey, too, 66% of developers said they struggle with AI answers that are “almost right, but not quite”.
+
+Even so, use keeps spreading. In the Stack Overflow developer survey, [84% said in 2025 that they use or plan to use AI tools](https://survey.stackoverflow.co/2025/). In [the 2026 survey](https://survey.stackoverflow.co/2026/ai/data/ai-freq), 73% of developers who use AI used it every day. At the same time, 93% said they cannot trust AI output without sources (Stack Overflow, 2025, 2026). Criticism and use coexist in the same people. I, for one, use AI a lot for development.
+
+## Mathematics: proofs arrived like a flood
+
+In mathematics, AI companies announced one proof after another from summer to autumn 2026.
+
+- **August**: Anthropic announced that [an unreleased Claude had proved that more than two-thirds of the nontrivial zeros of the zeta function lie on the critical line](https://www.anthropic.com/research/riemann-zeta), and published the proof in [Lean]({{ '/literacy/lean/' | relative_url }}) on GitHub. It had tried to prove the Riemann hypothesis itself and failed; this was a related result obtained along the way. It does not mean the Riemann hypothesis was 67% proved.
+- **September**: OpenAI [announced that it had proved a hard problem on the Navier–Stokes equations](https://openai.com/index/navier-stokes-solution/), one of the seven Millennium Prize Problems for which the Clay Mathematics Institute offered a million dollars in 2000. It reportedly came from running about 10,000 AI agents for 88 hours. The proof was verified in Lean, but humans cannot tell what it is doing. In October, when several groups of experts worked through the 166-page proof, it turned out to take a different approach from the one OpenAI had described. No one knows what each of the roughly 10,000 models contributed. The Clay Mathematics Institute is reviewing it. There was also a dispute over whose credit it is and whether it is plagiarism; I wrote about it in [Whose predictions should we trust, and why?]({{ '/articles/predictions/' | relative_url }}).
+- **October**: OpenAI [published 722 manuscripts by an internal model on GitHub all at once](https://openai.com/index/sharing-ai-progress-in-mathematics/). About half were verified in Lean, but three were withdrawn within a day. At the time of release, even OpenAI's researchers had not read them all. If you ask me, this is a terrible thing to do.
+
+There are also moves to accept it: the AI for Math Fund (December 2024), which supports building AI tools for mathematics, and [Hexagon (October 2026)](https://terrytao.wordpress.com/2026/10/06/hexagon/), a nonprofit archive that gives citable numbers to AI-generated results arXiv does not accept. Wood, a member of its advisory group, calls it “not the end but the beginning of the process of human understanding”.
+
+### Pushback against “mathematics turned into a benchmark”
+
+At the same time, strong pushback arose. [A declaration by 25 Fields Medalists (September 2026)](https://terrytao.wordpress.com/2026/09/11/a-severe-misalignment-of-ai-in-mathematics/) criticized open problems being turned into showcases for AI companies' performance, and called the two sides' aims “severely misaligned”. Solving problems is only a means to understanding, which is the aim of mathematics. The criticism is that what AI companies are doing is not contributing to the production of human knowledge but staging performance showcases.
+
+The points of the pushback come down to four. First, mathematics is being turned into a benchmark. Second, results are released in bulk before peer review; even their makers had not read them all, and some manuscripts were too badly written to read. Third, the lineage of knowledge is broken: manuscripts appear without adequate citation, as if created from a vacuum. This differs from the way knowledge is produced, by building on what others have found. The declaration says serious problems of attribution and plagiarism arise. Fourth, proofs multiply but understanding does not. Even if machine-verified results pile up, digesting, explaining and passing them on is human work. Mathematicians are asking why they should have to read what AI generated when no one is even paying them.
+
+Terence Tao called the pile of pre-release manuscripts [“toxic waste”](https://observer.co.uk/news/science-technology/article/terence-tao-ai-turns-beautiful-mathematics-into-toxic-waste), and after release rephrased it as “perhaps processed waste”. He is not opposed across the board, however. What is being proposed is to use open-source mathematical models whose internals can be checked and which mathematicians can run themselves, and [“Math 2.0”](https://terrytao.wordpress.com/2026/10/10/math-2-0/), which takes solving problems out of the center and counts understanding what has been solved as an achievement.
+
+## So what about qualitative research?
+
+Language is what qualitative research analyzes. Much of its data, interviews, narratives and records, is language. At the same time, language is also the medium of analysis. The tools and products of analysis, codes, categories, interpretations and papers, are language too.
+
+If so, it would not have been strange for a “crisis of the field” to reach qualitative research before NLP or mathematics. Do you feel it? I feel it strongly. Already in 2023, I thought this was serious.
+
+What actually happened? I looked into it. The results are in [How have qualitative researchers responded to AI?]({{ '/articles/qualitative-reactions/' | relative_url }})
+
+## References
+
+- METR. (2025). *Measuring the impact of early-2025 AI on experienced open-source developer productivity*.
+- Quanta Magazine. (2025, April). When ChatGPT broke an entire field: An oral history.
+- Stack Overflow. (2025). *2025 Developer Survey*.
+- Stack Overflow. (2026). *2026 Developer Survey*.
+
+The events in mathematics and the declaration by 25 Fields Medalists (September 11, 2026) are based on the companies' announcements and news reports (as of October 2026).

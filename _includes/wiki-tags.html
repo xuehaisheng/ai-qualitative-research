@@ -1,5 +1,5 @@
 {%- assign tag_term = site.wiki | where: 'key', include.key | first -%}
 {%- assign tag_cat = site.data.wiki_categories | where: 'id', tag_term.category | first -%}
 {%- if tag_cat -%}
-<div class="card-tags"><span class="tag">{{ tag_cat.title }}</span></div>
+<div class="card-tags"><span class="tag">{% include t.html ja=tag_cat.title en=tag_cat.title_en %}</span></div>
 {%- endif -%}

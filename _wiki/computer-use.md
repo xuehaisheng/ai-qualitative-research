@@ -5,6 +5,7 @@ en: "Computer use"
 category: usage
 order: 8
 summary: "AIが画面を見て、マウスとキーボードを動かし、PCの作業をすること。"
+summary_en: "AI looking at the screen and moving the mouse and keyboard to do work on a computer."
 related: [agent, mcp, harness]
 articles: [ai-history]
 sources:
@@ -15,3 +16,9 @@ sources:
 2024年10月、Claudeが画面を見てマウスとキーボードを動かす機能を試験版で出した。AIがPCを操作したのは、これが初めてである。
 
 これがプログラマー以外にも広がったのは、2025年の終わりからである。2025年11月、オーストリアの開発者が、個人で作ったオープンソースの、PCを操作するAI「OpenClaw」を公開した。中国では通称「小龍蝦（ロブスター）」と呼ばれ、インストールすることを「ロブスターを飼う」と言った。2026年3月には、深圳で「ロブスター」を入れてもらうために約1000人が並んだ。2026年1月のClaude Coworkは、プログラマーでない人も、PCの作業をAIに任せられるようにした。
+
+<!--EN-->
+
+In October 2024, Claude released a beta feature that looks at the screen and moves the mouse and keyboard. This was the first time an AI operated a computer.
+
+It spread beyond programmers from late 2025. In November 2025, an Austrian developer released OpenClaw, an open-source AI he built himself that operates a computer. In China it was nicknamed “little crayfish” (lobster), and installing it was called “raising a lobster”. In March 2026, about 1,000 people lined up in Shenzhen to have the “lobster” installed. Claude Cowork, released in January 2026, let people who are not programmers hand computer work to AI.

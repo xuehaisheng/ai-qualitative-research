@@ -2,12 +2,20 @@
 - id: basics
   title: "AIの仕組み"
   desc: "生成AIがどう動いているかを理解するための、基本の用語。"
+  title_en: "How AI works"
+  desc_en: "Basic terms for understanding how generative AI works."
 - id: usage
   title: "使い方と道具"
   desc: "AIを使うときによく出てくる言葉と、AIにまつわる道具や仕組み。"
+  title_en: "Using AI: words and tools"
+  desc_en: "Words that come up when using AI, and the tools and systems around it."
 - id: quirks
   title: "知っておきたいクセ"
   desc: "AIを研究に使う前に知っておきたい、間違え方や揺れ方。"
+  title_en: "Quirks to know"
+  desc_en: "How AI goes wrong and wavers: things to know before using it in research."
 - id: inside
   title: "中をのぞく研究と測る研究"
   desc: "AIの内部やふるまいを調べた研究、能力の伸びを測る研究。"
+  title_en: "Looking inside, and measuring"
+  desc_en: "Research that examines what happens inside AI and how it behaves, and research that measures how its abilities grow."

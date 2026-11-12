@@ -36,9 +36,9 @@ This site aims to become more than an announcement page: a place where qualitati
 </article>
 </div>
 <div class="reader-entries">
-  <a class="reader-entry" href="{{ '/articles/' | relative_url }}"><strong>研究ノート</strong><span>記事・実践の記録</span></a>
-  <a class="reader-entry" href="{{ '/papers/' | relative_url }}"><strong>AI×質的研究の文献</strong><span>文献の概要と書誌情報</span></a>
-  <a class="reader-entry" href="{{ '/literacy/' | relative_url }}"><strong>AIリテラシー</strong><span>用語と、その背後にある研究</span></a>
+  <a class="reader-entry" href="{{ '/articles/' | relative_url }}"><strong data-bilingual data-ja="研究ノート" data-en="Research notes">研究ノート</strong><span data-bilingual data-ja="記事・実践の記録" data-en="Essays and records of practice">記事・実践の記録</span></a>
+  <a class="reader-entry" href="{{ '/papers/' | relative_url }}"><strong data-bilingual data-ja="AI×質的研究の文献" data-en="Literature">AI×質的研究の文献</strong><span data-bilingual data-ja="文献の概要と書誌情報" data-en="Summaries and full references">文献の概要と書誌情報</span></a>
+  <a class="reader-entry" href="{{ '/literacy/' | relative_url }}"><strong data-bilingual data-ja="AIリテラシー" data-en="AI literacy">AIリテラシー</strong><span data-bilingual data-ja="用語と、その背後にある研究" data-en="Key terms and the research behind them">用語と、その背後にある研究</span></a>
 </div>
 </div>
 </div>
@@ -46,7 +46,7 @@ This site aims to become more than an announcement page: a place where qualitati
 
 <section class="page-section" id="notes"><div class="container">
   <div class="section-heading with-action"><h2 data-bilingual data-ja="最近の更新" data-en="Latest updates">最近の更新</h2>{% include view-all.html path="/articles/" count=site.posts.size %}</div>
-  <div class="card-shelf" data-card-shelf role="region" aria-label="研究ノート"><div class="shelf-viewport" id="notes-cards" tabindex="0"><div class="shelf-track">
+  <div class="card-shelf" data-card-shelf role="region" aria-label="研究ノート" data-aria-ja="研究ノート" data-aria-en="Research notes"><div class="shelf-viewport" id="notes-cards" tabindex="0"><div class="shelf-track">
   {% capture recent_order %}{% for item in site.posts %}{{ item.date | date: '%Y%m%d%H%M%S' }}{{ item.updated | default: item.date | date: '%Y%m%d%H%M%S' }}~{{ item.url }}|{% endfor %}{% endcapture %}
   {% assign recent_order = recent_order | split: '|' | sort | reverse %}
   {% for entry in recent_order %}{% assign note_url = entry | split: '~' | last %}{% assign note = site.posts | where: 'url', note_url | first %}{% include note-card.html note=note class="card fit-card" shelf=true %}{% endfor %}
@@ -60,7 +60,7 @@ This site aims to become more than an announcement page: a place where qualitati
 <h2 data-bilingual="" data-en="AI × Qualitative Research" data-ja="AI×質的研究">AI×質的研究</h2>
 {% include view-all.html path="/papers/" count=site.data.papers.size %}
 </div>
-<div class="card-shelf" data-card-shelf data-fit role="region" aria-label="AI×質的研究の文献"><div class="shelf-viewport" id="papers-cards" tabindex="0"><div class="shelf-track"><article class="card glass-card note-card lit-preview-card fit-card">
+<div class="card-shelf" data-card-shelf data-fit role="region" aria-label="AI×質的研究の文献" data-aria-ja="AI×質的研究の文献" data-aria-en="Literature"><div class="shelf-viewport" id="papers-cards" tabindex="0"><div class="shelf-track"><article class="card glass-card note-card lit-preview-card fit-card">
 <div class="card-meta" data-bilingual="" data-en="Jowsey et al. (2025) / Qualitative Inquiry" data-ja="Jowsey et al. (2025) / Qualitative Inquiry">Jowsey et al. (2025) / Qualitative Inquiry</div>
 <h3><a class="card-title-link" href="{{ '/papers/' | relative_url }}#jowsey2025reject" data-bilingual="" data-en="We Reject the Use of Generative Artificial Intelligence for Reflexive Qualitative Research" data-ja="We Reject the Use of Generative Artificial Intelligence for Reflexive Qualitative Research">We Reject the Use of Generative Artificial Intelligence for Reflexive Qualitative Research</a></h3>
 <p data-bilingual="" data-en="A statement by 419 qualitative researchers from 32 countries. It argues that approaches such as reflexive thematic analysis are human research practices requiring a subjective, situated, reflexive researcher, so using generative AI is methodologically incongruent; it also rejects such use on social and environmental justice grounds." data-ja="32か国419名の質的研究者による拒否声明である。再帰的テーマ分析などは、主観をもち、位置づけられた研究者が行う人間の研究実践であり、生成AIの使用は方法論的に一致しないとする。さらに社会正義と環境正義の観点からも、再帰的質的研究での生成AIの使用を拒否している。">32か国419名の質的研究者による拒否声明である。再帰的テーマ分析などは、主観をもち、位置づけられた研究者が行う人間の研究実践であり、生成AIの使用は方法論的に一致しないとする。さらに社会正義と環境正義の観点からも、再帰的質的研究での生成AIの使用を拒否している。</p>
@@ -97,7 +97,7 @@ This site aims to become more than an announcement page: a place where qualitati
 <article class="card glass-card note-card lit-preview-card fit-card">
 <div class="card-meta">{{ paper.cite | escape }}</div>
 <h3><a class="card-title-link" href="{{ '/papers/' | relative_url }}#{{ paper.id }}">{{ paper.title | escape }}</a></h3>
-<p>{{ paper.summary | escape }}</p>
+<p data-bilingual data-ja="{{ paper.summary | escape }}" data-en="{{ paper.summary_en | escape }}">{{ paper.summary | escape }}</p>
 {% include paper-tags.html id=paper.id %}
 </article>
 {% endunless %}{% endfor %}
@@ -110,7 +110,7 @@ This site aims to become more than an announcement page: a place where qualitati
 <h2 data-bilingual="" data-en="What Is AI?" data-ja="AIとは何か">AIとは何か</h2>
 {% include view-all.html path="/literacy/" count=site.wiki.size %}
 </div>
-<div class="card-shelf" data-card-shelf role="region" aria-label="AIリテラシー"><div class="shelf-viewport" id="literacy-cards" tabindex="0"><div class="shelf-track"><article class="card glass-card fit-card">
+<div class="card-shelf" data-card-shelf role="region" aria-label="AIリテラシー" data-aria-ja="AIリテラシー" data-aria-en="AI literacy"><div class="shelf-viewport" id="literacy-cards" tabindex="0"><div class="shelf-track"><article class="card glass-card fit-card">
 <h3><a class="card-title-link" href="{{ '/literacy/token/' | relative_url }}" data-bilingual="" data-en="Token" data-ja="トークン">トークン</a></h3>
 <p data-bilingual="" data-en="A token is the unit in which AI processes text, roughly a word or part of a word. Generative AI writes by predicting the next token, one at a time. Usage costs and how much a model can read at once are also counted in tokens." data-ja="トークンは、AIが文章を処理するときの単位で、単語や文字の一部にあたる。生成AIは、次に来るトークンを一つずつ予測して文章を作っている。利用料金や、AIが一度に読める量もトークンで数える。">トークンは、AIが文章を処理するときの単位で、単語や文字の一部にあたる。生成AIは、次に来るトークンを一つずつ予測して文章を作っている。利用料金や、AIが一度に読める量もトークンで数える。</p>
 {% include wiki-tags.html key="token" %}
@@ -140,7 +140,7 @@ This site aims to become more than an announcement page: a place where qualitati
 {% for term in shelf_terms %}{% unless featured_terms contains term.key %}
 <article class="card glass-card fit-card">
 <h3><a class="card-title-link" href="{{ term.url | relative_url }}" data-bilingual data-ja="{{ term.title | escape }}" data-en="{{ term.en | default: term.title | escape }}">{{ term.title | escape }}</a></h3>
-<p>{{ term.summary | escape }}</p>
+<p data-bilingual data-ja="{{ term.summary | escape }}" data-en="{{ term.summary_en | escape }}">{{ term.summary | escape }}</p>
 {% include wiki-tags.html key=term.key %}
 </article>
 {% endunless %}{% endfor %}
@@ -165,13 +165,13 @@ This site aims to become more than an announcement page: a place where qualitati
 <h4 data-bilingual="" data-en="How Do Qualitative Researchers Discuss Generative AI? A New Attempt at Qualitative Meta-Synthesis" data-ja="質的研究者は生成AIをどう論じるか――質的メタ統合の新たな試みを通して――">質的研究者は生成AIをどう論じるか――質的メタ統合の新たな試みを通して――</h4>
 <div class="entry-place" data-bilingual="" data-en="JAQP 23rd Annual Meeting, poster presentation (Hongo Campus, The University of Tokyo)" data-ja="日本質的心理学会第23回大会 ポスター発表（東京大学本郷キャンパス）">日本質的心理学会第23回大会 ポスター発表（東京大学本郷キャンパス）</div>
 <p data-bilingual="" data-en="A poster by Xue, Kajiwara, and Toyoda. Using qualitative meta-synthesis, it examined how qualitative researchers have written about generative AI." data-ja="薛海升、梶原佐保、豐田隼によるポスター発表。質的研究者が生成AIをどう論じてきたかを、質的メタ統合で調べた。">薛海升、梶原佐保、豐田隼によるポスター発表。質的研究者が生成AIをどう論じてきたかを、質的メタ統合で調べた。</p>
-<a class="text-link" data-bilingual="" data-en="How we did it (note)" data-ja="研究の進め方（研究ノート）" href="{{ '/articles/meta-synthesis-with-ai/' | relative_url }}">研究の進め方（研究ノート）</a> <a class="text-link" data-bilingual="" data-en="Findings (PDF)" data-ja="結果の概要（PDF）" href="{{ '/assets/pdf/2026-10-31_ai-qualitative-meta-synthesis-poster.pdf' | relative_url }}" rel="noopener" target="_blank">結果の概要（PDF）</a>
+<a class="text-link" data-bilingual="" data-en="How we did it (note)" data-ja="研究の進め方（研究ノート）" href="{{ '/articles/meta-synthesis-with-ai/' | relative_url }}">研究の進め方（研究ノート）</a> <a class="text-link" data-bilingual="" data-en="Findings (PDF, in Japanese)" data-ja="結果の概要（PDF）" href="{{ '/assets/pdf/2026-10-31_ai-qualitative-meta-synthesis-poster.pdf' | relative_url }}" rel="noopener" target="_blank">結果の概要（PDF）</a>
 </article><article class="entry-item">
 <div class="entry-date">2026-10-30</div>
 <h4 data-bilingual="" data-en="AI Literacy for Qualitative Researchers" data-ja="質的研究者のためのAIリテラシー">質的研究者のためのAIリテラシー</h4>
 <div class="entry-place" data-bilingual="" data-en="JAQP 23rd Annual Meeting, pre-conference workshop (Faculty of Education Building, The University of Tokyo / hybrid)" data-ja="日本質的心理学会第23回大会 前日講習会（東京大学教育学部棟・ハイブリッド開催）">日本質的心理学会第23回大会 前日講習会（東京大学教育学部棟・ハイブリッド開催）</div>
 <p data-bilingual="" data-en="A workshop by Haisheng Xue (The University of Tokyo) covering how AI works and how it developed, how to understand it, debates among qualitative researchers, and practical use in research. The slides are available as a PDF." data-ja="薛海升（東京大学）による講習会。AIの仕組みと歴史、AIをどう理解するか、質的研究者のあいだの議論、研究での実際の使い方を扱った。当日のスライドをPDFで公開している。">薛海升（東京大学）による講習会。AIの仕組みと歴史、AIをどう理解するか、質的研究者のあいだの議論、研究での実際の使い方を扱った。当日のスライドをPDFで公開している。</p>
-<a class="text-link" data-bilingual="" data-en="Slides (PDF)" data-ja="スライド（PDF）" href="{{ '/assets/pdf/2026-10-30_ai-literacy-workshop.pdf' | relative_url }}" rel="noopener" target="_blank">スライド（PDF・約27MB）</a>
+<a class="text-link" data-bilingual="" data-en="Slides (PDF, in Japanese)" data-ja="スライド（PDF）" href="{{ '/assets/pdf/2026-10-30_ai-literacy-workshop.pdf' | relative_url }}" rel="noopener" target="_blank">スライド（PDF・約27MB）</a>
 </article><article class="entry-item">
 <div class="entry-date">2026-04</div>
 <h4 data-bilingual="" data-en="Collaboration between AI and qualitative research: Focusing on researchers' reflexivity" data-ja="AIと質的研究の協働――研究者の反省性に着目して――">AIと質的研究の協働――研究者の反省性に着目して――</h4>
@@ -200,15 +200,15 @@ This site aims to become more than an announcement page: a place where qualitati
 </article>
 <article class="card glass-card member-card">
 <div class="card-meta" data-bilingual="" data-en="Co-researcher" data-ja="共同研究者">共同研究者</div>
-<h3>梶原佐保</h3>
-<p class="member-affiliation">東京大学 大学院教育学研究科 総合教育科学専攻（臨床心理学コース） 特任研究員／日本学術振興会 特別研究員（DC2）</p>
-<a class="text-link" href="https://researchmap.jp/sahokajiwara" rel="noopener" target="_blank" aria-label="梶原佐保のresearchmap">researchmap</a>
+<h3 data-bilingual data-ja="梶原佐保" data-en="Saho KAJIWARA">梶原佐保</h3>
+<p class="member-affiliation" data-bilingual data-ja="東京大学 大学院教育学研究科 総合教育科学専攻（臨床心理学コース） 特任研究員／日本学術振興会 特別研究員（DC2）" data-en="Project Researcher, Graduate School of Education (Clinical Psychology), The University of Tokyo / JSPS Research Fellow (DC2)">東京大学 大学院教育学研究科 総合教育科学専攻（臨床心理学コース） 特任研究員／日本学術振興会 特別研究員（DC2）</p>
+<a class="text-link" href="https://researchmap.jp/sahokajiwara" rel="noopener" target="_blank" aria-label="梶原佐保のresearchmap" data-aria-ja="梶原佐保のresearchmap" data-aria-en="Saho Kajiwara on researchmap">researchmap</a>
 </article>
 <article class="card glass-card member-card">
 <div class="card-meta" data-bilingual="" data-en="Co-researcher" data-ja="共同研究者">共同研究者</div>
-<h3>豐田隼</h3>
-<p class="member-affiliation">東京大学 大学院教育学研究科 特任研究員／日本学術振興会 特別研究員（PD）</p>
-<a class="text-link" href="https://researchmap.jp/toyoda.h" rel="noopener" target="_blank" aria-label="豐田隼のresearchmap">researchmap</a>
+<h3 data-bilingual data-ja="豐田隼" data-en="Jun TOYODA">豐田隼</h3>
+<p class="member-affiliation" data-bilingual data-ja="東京大学 大学院教育学研究科 特任研究員／日本学術振興会 特別研究員（PD）" data-en="Project Researcher, Graduate School of Education, The University of Tokyo / JSPS Research Fellow (PD)">東京大学 大学院教育学研究科 特任研究員／日本学術振興会 特別研究員（PD）</p>
+<a class="text-link" href="https://researchmap.jp/toyoda.h" rel="noopener" target="_blank" aria-label="豐田隼のresearchmap" data-aria-ja="豐田隼のresearchmap" data-aria-en="Jun Toyoda on researchmap">researchmap</a>
 </article>
 </div>
 </div>
@@ -527,7 +527,7 @@ SOFTWARE.
   // With the mobile menu open, show the compact header so the big title does not overlap the menu.
   if (toggle) new MutationObserver(update).observe(toggle, {attributes: true, attributeFilter: ['aria-expanded']});
   addEventListener('resize', measure);
-  document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', () => setTimeout(measure, 0)));
+  document.addEventListener('site-lang', () => setTimeout(measure, 0));
   if (document.fonts) document.fonts.ready.then(measure);
   measure();
 })();

@@ -1,16 +1,17 @@
 {%- assign note = include.note -%}
 {%- assign note_title_en = note.title_en | default: note.title -%}
 {%- assign note_summary_en = note.summary_en | default: note.summary_ja -%}
-<article class="reader-note{% if include.class %} {{ include.class }}{% endif %}" data-note data-topic="{{ note.topic | escape }}" data-search="{{ note.title | downcase | escape }} {{ note.summary_ja | downcase | escape }}" data-date="{{ note.date | date: '%Y%m%d' }}{{ note.updated | default: note.date | date: '%Y%m%d' }}" data-order="{{ note.order }}">
-  <div class="reader-meta"><span>{{ note.topic }}</span><time datetime="{{ note.date | date_to_xmlschema }}">{{ note.date | date: '%Y.%m.%d' }}</time></div>
+<article class="reader-note{% if include.class %} {{ include.class }}{% endif %}" data-note data-topic="{{ note.topic | escape }}" data-search="{{ note.title | downcase | escape }} {{ note.summary_ja | downcase | escape }} {{ note.title_en | downcase | escape }} {{ note.summary_en | downcase | escape }}" data-date="{{ note.date | date: '%Y%m%d' }}{{ note.updated | default: note.date | date: '%Y%m%d' }}" data-order="{{ note.order }}">
+  {%- assign note_topic_en = site.data.i18n.topics[note.topic] | default: note.topic -%}
+  <div class="reader-meta"><span>{% include t.html ja=note.topic en=note_topic_en %}</span><time datetime="{{ note.date | date_to_xmlschema }}">{{ note.date | date: '%Y.%m.%d' }}</time></div>
   <h3><a{% if include.shelf %} class="card-title-link"{% endif %} href="{{ note.url | relative_url }}" data-bilingual data-ja="{{ note.title | escape }}" data-en="{{ note_title_en | escape }}">{{ note.title }}</a></h3>
   <p data-bilingual data-ja="{{ note.summary_ja | escape }}" data-en="{{ note_summary_en | escape }}">{{ note.summary_ja }}</p>
   {%- if include.shelf %}
-  {%- assign note_terms = '' | split: '' %}{% for k in note.wiki limit: 3 %}{% assign t = site.wiki | where: 'key', k | first %}{% if t %}{% assign t_short = t.title | split: '（' | first %}{% assign note_terms = note_terms | push: t_short %}{% endif %}{% endfor %}
+  {%- assign note_terms = '' | split: '' %}{% assign note_terms_en = '' | split: '' %}{% for k in note.wiki limit: 3 %}{% assign t = site.wiki | where: 'key', k | first %}{% if t %}{% assign t_short = t.title | split: '（' | first %}{% assign note_terms = note_terms | push: t_short %}{% assign note_terms_en = note_terms_en | push: t.en %}{% endif %}{% endfor %}
   {%- if note_terms.size > 0 %}
-  <div class="card-tags">{% for t in note_terms %}<span class="tag">{{ t }}</span>{% endfor %}</div>
+  <div class="card-tags">{% for t in note_terms %}<span class="tag">{% include t.html ja=t en=note_terms_en[forloop.index0] %}</span>{% endfor %}</div>
   {%- endif %}
   {%- else %}
-  <a class="reader-link arrow-link" href="{{ note.url | relative_url }}"><span data-bilingual data-ja="記事を読む" data-en="Read article">記事を読む</span>{% include arrow.html %}</a>
+  <a class="reader-link arrow-link" href="{{ note.url | relative_url }}"><span data-bilingual data-ja="記事を読む" data-en="Read note">記事を読む</span>{% include arrow.html %}</a>
   {%- endif %}
 </article>

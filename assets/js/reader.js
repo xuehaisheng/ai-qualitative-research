@@ -2,6 +2,7 @@
   'use strict';
   const normalize = value => String(value || '').normalize('NFKC').toLocaleLowerCase().trim();
   const matches = (text, query) => normalize(query).split(/\s+/).filter(Boolean).every(word => normalize(text).includes(word));
+  const L = (ja, en) => document.documentElement.lang === 'en' ? en : ja;
   const toast = message => {
     const target = document.querySelector('[data-reader-status]');
     if (target) target.textContent = message;
@@ -21,11 +22,11 @@
         field.remove();
         if (!copied) throw new Error('Copy unavailable');
       }
-      button.textContent = 'コピーしました';
-      toast('コピーしました。');
+      button.textContent = L('コピーしました', 'Copied');
+      toast(L('コピーしました。', 'Copied.'));
       setTimeout(() => { button.textContent = original; }, 1800);
     } catch {
-      toast('コピーできませんでした。下の引用情報を選択してコピーしてください。');
+      toast(L('コピーできませんでした。下の引用情報を選択してコピーしてください。', 'Could not copy. Please select the reference below and copy it.'));
     }
   }
   function download(name, text, type) {
@@ -57,7 +58,7 @@
       let count = 0;
       items.forEach(item => {
         const p = byId.get(item.id);
-        const visible = matches([p.title, p.title_ja, p.apa, p.summary, ...p.themes].join(' '), input.value)
+        const visible = matches([p.title, p.title_ja, p.apa, p.summary, p.summary_en, ...p.themes].join(' '), input.value)
           && (!group.value || p.stance === group.value)
           && (!topic.value || p.themes.includes(topic.value));
         item.hidden = !visible;
@@ -76,7 +77,7 @@
       });
       const status = document.getElementById('paper-count');
       const filtered = Boolean(input.value.trim() || group.value || topic.value);
-      status.textContent = filtered ? `${count}件の文献が見つかりました（全${items.length}件）。` : `全${items.length}件の文献`;
+      status.textContent = filtered ? L(`${count}件の文献が見つかりました（全${items.length}件）。`, `${count} of ${items.length} items found.`) : L(`全${items.length}件の文献`, `${items.length} items`);
       status.hidden = count === 0;
       document.getElementById('paper-empty').hidden = count > 0;
       document.querySelectorAll('[data-export-visible]').forEach(button => { button.disabled = count === 0; });
@@ -126,12 +127,13 @@
       const visible = [...document.querySelectorAll('.paper-item:not([hidden])')].map(item => byId.get(item.id));
       const isRIS = button.dataset.exportVisible === 'ris';
       download(`ai-qualitative-research.${isRIS ? 'ris' : 'bib'}`, visible.map(isRIS ? ris : bibtex).join('\n'), 'text/plain;charset=utf-8');
-      toast('引用情報を書き出しました。');
+      toast(L('引用情報を書き出しました。', 'References exported.'));
     }));
     if (location.hash && byId.has(location.hash.slice(1))) {
       input.value = ''; group.value = ''; topic.value = '';
     }
     apply(false);
+    document.addEventListener('site-lang', () => apply(false));
     // apply() reorders the list, which loses the browser's jump to #id; jump again.
     const target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
     if (target && target.classList.contains('paper-item')) requestAnimationFrame(() => target.scrollIntoView({block: 'start', behavior: 'instant'}));
@@ -147,7 +149,7 @@
       ordered.forEach(note => { grid.append(note); note.hidden = !matches(note.dataset.search, noteInput.value) || Boolean(topic && note.dataset.topic !== topic); });
       const count = notes.filter(note => !note.hidden).length;
       const status = document.getElementById('note-count');
-      status.textContent = '検索条件に合う記事を表示しています。';
+      status.textContent = L('検索条件に合う記事を表示しています。', 'Showing notes that match.');
       status.hidden = count === 0 || !(noteInput.value.trim() || topic);
       document.getElementById('note-empty').hidden = count > 0;
     }
@@ -173,7 +175,7 @@
       categories.forEach(c => { c.hidden = ![...c.querySelectorAll('.wiki-item')].some(e => !e.hidden); });
       const count = entries.filter(e => !e.hidden).length;
       const status = document.getElementById('wiki-count');
-      status.textContent = '検索条件に合う用語を表示しています。';
+      status.textContent = L('検索条件に合う用語を表示しています。', 'Showing terms that match.');
       status.hidden = count === 0 || !wikiInput.value.trim();
       document.getElementById('wiki-empty').hidden = count > 0;
     };
@@ -189,12 +191,14 @@
       if (!heading.id) heading.id = `section-${index + 1}`;
       const item = document.createElement('li');
       item.dataset.level = heading.tagName.slice(1);
+      const block = heading.closest('.lang-ja, .lang-en');
+      if (block) item.className = block.classList.contains('lang-en') ? 'lang-en' : 'lang-ja';
       const link = document.createElement('a');
       link.href = `#${heading.id}`;
       link.textContent = heading.textContent;
       item.append(link); list.append(item);
     });
-    toc.hidden = headings.length < 2;
+    toc.hidden = headings.length < 4;
     const media = matchMedia('(min-width:821px)');
     toc.open = media.matches;
     media.addEventListener('change', () => { toc.open = media.matches; });

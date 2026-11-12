@@ -129,3 +129,121 @@ AIに作業を任せた分、読むことと考えることに時間を使えた
 - 薛海升・梶原佐保・豐田隼（2026）. 質的研究者は生成AIをどう論じるか. 日本質的心理学会第23回大会 ポスター発表.
 
 使用したモデルは、GPT-5.5、GPT-5.6、GPT-6.1（OpenAI）と Claude Opus 5.5（Anthropic）である。
+
+<!--EN-->
+
+How have qualitative researchers written about generative AI? We investigated this question with a qualitative meta-synthesis and presented a poster at the 23rd Annual Meeting of the Japanese Association of Qualitative Psychology (Xue, Kajiwara & Toyoda, 2026). We carried out this study with AI, from the first literature search to the poster. Here I describe how we did it, step by step. What I most want to convey is which tasks we left to AI and what we decided ourselves. The findings are summarized at the end of [How have qualitative researchers responded to AI?]({{ '/articles/qualitative-reactions/' | relative_url }}).
+
+## The overall flow
+
+The work fell into five stages: search, screening, analysis, synthesis and presentation. In a word, AI sped up the “work”; the researchers decided what to ask, what to select and how to put it together.
+
+| Stage | What we left to AI | What we decided ourselves |
+|---|---|---|
+| ① Search | Drafting eight candidate search strings, running them and measuring precision | Deciding what to look for and choosing the final search string |
+| ② Screening | Putting the records into sheets, translating titles and abstracts, collecting full-text PDFs | Making every decision in all three rounds of screening by hand |
+| ③ Analysis | Several AI agents analyzing the discourse and metaphors of each paper | Reading the originals, and checking and correcting every unit |
+| ④ Synthesis | Offering reference views, such as vectorization | Working out the four metaphors and the structure of “-ologies” |
+| ⑤ Presentation | Laying out the poster and adjusting margins | Concentrating on the content |
+
+## ① Search: even the search strings came from trial and error with AI
+
+We worked with AI from the very first search. Codex, OpenAI's AI agent, operated Web of Science in a browser, drafted eight candidate search strings and ran them. For each, it took the 30 most relevant results and counted the share that truly fit (precision).
+
+| String | Aim | Hits | Precision |
+|---|---|---|---|
+| A | Cast a wide net (core terms only) | 7,385 | 50% |
+| B | Methodological reflection | 654 | 77% |
+| **C** | **Opinion, perspective, review (main string)** | **195** | **60%** |
+| D | Title-focused (high precision) | 358 | 73% |
+| E | Remove noise (NOT search) | 767 | 73% |
+| F | Revised to keep recall | 2,228 | 53% |
+| G | Methodological version with higher precision | 785 | 60% |
+| H | Mixed title and abstract | 1,068 | 53% |
+
+Hits are after filtering by year and document type. Precision is the share of the top 30 that strictly fit.
+
+String A, at 7,385 hits, was too broad. On precision alone, B and D were better. We still chose C as the main string because its 195 hits were close to our target of 100–300, and it matched the kinds of documents we wanted: opinion papers, perspectives, reviews and guidelines. We kept B as a supplement and D as a high-precision version. Codex also wrote up the search record (search strings, hits, precision, sources of noise and reasons for revisions) in Japanese and English. But what kinds of documents to look for, and which search string to adopt, we decided ourselves.
+
+In the end, on July 4, 2026, we searched 12 indexes through Web of Science and EBSCOhost and removed duplicates in EndNote, leaving 522 records.
+
+## ② Screening: papers excluded in one round do not appear on the next sheet
+
+{% include figure.html src="fig-screening-sheet-en.jpg" cap="The actual “Round 2” sheet, with the column headers translated. From left: decision, reason for exclusion, record ID, Japanese machine translation of the title, original title." %}
+
+We also had AI build the sheets for screening the 522 records. The Excel file has four linked sheets.
+
+1. **EndNote paste**: bibliographic data for the 522 records. Titles and abstracts sit beside a Japanese machine translation made through the DeepSeek API.
+2. **Round 1**: decide on titles alone.
+3. **Round 2**: decide on titles and abstracts. Papers deleted in Round 1 do not appear on this sheet.
+4. **Round 3**: limit to methodological essays and select the final set.
+
+Papers excluded in one round do not appear on the next sheet. So when screening round by round with our own eyes, we did not have to look at the same paper again and again. Reasons for exclusion are chosen from codes E1–E12. AI scripts also automatically collected full-text PDFs of open-access papers. For those it could not collect, it made a list by publisher and cause, and we obtained them by hand.
+
+The result went from 522 records to 140 (after reviewing titles and abstracts), 32 (limited to methodological essays), 29 (full text obtained), and finally 28. One study protocol was included and removed later. One paper was in German, and we read it in Japanese translation. AI made the sheets and translations, but we entered every decision ourselves.
+
+## ③ Analysis: several AI agents read one paper each, and humans check everything
+
+The core of the analysis is extracting, as “units”, how a paper portrays AI. As frames of reference we used Foucauldian discourse analysis (Willig, 2022) and conceptual metaphor theory (Lakoff & Johnson, 1980).
+
+First, we ran many GPT-5.5 (Codex) subagents and had them split the papers between them. When one AI reads everything at once, its attention is spread thin and accuracy drops ([Lost in the Middle]({{ '/literacy/lost-in-the-middle/' | relative_url }})). Giving each paper to a separate agent improves accuracy. The result was 213 units and 315 context excerpts with page references. Next, we had Claude reanalyze the same papers one by one. GPT and Claude also produced translations of the English originals, but I read the originals myself too. Finally, the three authors checked and corrected every unit.
+
+### Keeping a trail from the original text to the results
+
+To check every unit, we built our own review tools.
+
+V2 is a “paper map”. Excerpts from the original (with page numbers), the analytic units for each paper and the synthesized themes are connected by lines, so you can trace back which original text each theme came from.
+
+{% include figure.html src="fig-review-v2-en.jpg" cap="Paper map (V2), redrawn in English. From left: excerpts from the original, analytic units for each paper, synthesized themes." %}
+
+V3 is a review screen for each paper. All of that paper's units are listed, and the reviewer decides on each one, “approve” or “hold”. Editing headings and changing which subtheme a unit belongs to also happen here. Everything is online: you log in with an account and can add new papers.
+
+{% include figure.html src="fig-review-v3-en.jpg" cap="Review screen for each paper (V3), redrawn in English. The list of papers on the left; that paper's units in the middle, decided one by one." %}
+
+While we were at it, we added an “achievements” system that awards badges as you progress through the review. It is like a game. It was unnecessary, but I thought a little candy (a reward) would make it easier to keep going.
+
+What we cared about was not taking AI output as the result as it is, but keeping a path back to the original text.
+
+## ④ Synthesis: AI laid out the material, and we decided how to put it together
+
+{% include figure.html src="fig-vector-plots-en.jpg" cap="A reference figure from Claude: units vectorized and placed in space. Small dots are individual units; large dots are the seven themes we had at the time." %}
+
+At this stage, too, we had Claude offer various reference views. One example is vectorizing the units and placing those with similar meanings close together in space. Vectorization means turning text into a sequence of numbers so that closeness of meaning can be measured as distance.
+
+The result did not show the distribution we had expected, and we did not adopt the figure as it was. But that turned out to be a big hint. We thought: maybe it can be split into four. What do we take AI to be in the first place (likeness, ontology)? What can we see through AI (lens, epistemology)? What do we do with it as a method (hand, methodology)? What becomes of us, of what we analyze, and of qualitative research when we use AI (scale, axiology)?
+
+The final four metaphors, and the structure that matches each to an “-ology”, I worked out myself. After the first author put it together, we checked its validity through discussion among the co-authors.
+
+## ⑤ Presentation: leave the form to AI and concentrate on content
+
+{% include figure.html src="fig-poster-results-en.jpg" cap="The results section of the poster made with Claude (23rd Annual Meeting of the Japanese Association of Qualitative Psychology), redrawn in English. The four metaphors (likeness, lens, hand, scale) and their subthemes. Click to enlarge." alt="The results section of the poster. Four bands, likeness, lens, hand and scale, run from top to bottom, each with a quotation from a paper, a question, the number of units and subthemes." %}
+
+We made the poster with Claude too. It was laid out in HTML and exported to PDF. Say “there is too little margin at the top and bottom”, and it reworks the whole layout at once. Because there was no need to spend time adjusting positions one by one, we could concentrate on the content instead.
+
+Even so, we did not leave the form entirely to AI. We took a hint for a structure divided by color fields and lines from Mondrian's abstract paintings. Human eyes also have illusions: thin lines in the same color look paler, for example. So we made the thin parts slightly darker and adjusted the font weights. Without this kind of knowledge, we would not have made those adjustments, and the poster would have stayed looking pale.
+
+## Summary: using AI in a verifiable way, for human understanding
+
+My position is not to leave everything to AI, but to use what AI produces in a form humans can verify. And to use AI for human understanding.
+
+Because we left the work to AI, we could spend time reading and thinking. As a result, rather than leaving everything to AI, we ended up as people who know this field well. What matters more than what AI does, I think, is how people grow and how human understanding deepens through using AI.
+
+## Requests you can try right away
+
+Finally, here are some requests you can try right away. Replace “X” with your own topic.
+
+1. **Finding sources**: “Find 10 peer-reviewed papers on X published since 2015. Put the authors, year, title, journal and link in a table.”
+2. **Reviews**: “I want to do a systematic review on X. Draft three search strings for Web of Science and explain the strengths and weaknesses of each.”
+3. **Analysis**: “Do a thematic analysis of the attached interview transcripts. For the evidence of each theme, attach a tag with the page and line number of the statement, and make an HTML page where clicking a tag highlights the passage in the original.”
+4. **Presentation materials**: “Turn this abstract into the structure of an A0 portrait poster. Propose headings, figure positions and even margins.”
+5. **HTML**: “Put what we just looked up into a single web page (HTML) that a first-time reader can understand.”
+
+There is a reason for the third one. When you have AI analyze something, a plausible summary comes out. But if you cannot see which statement is the evidence, you cannot verify it. If you have AI tag each piece of analysis with “page and line”, and make a web page where clicking a tag highlights the original, checking becomes quick. If you have several people's interviews, having a separate agent analyze each person's improves accuracy.
+
+## References
+
+- Lakoff, G., & Johnson, M. (1980). *Metaphors we live by*. University of Chicago Press.
+- Willig, C. (2022). *Introducing qualitative research in psychology* (4th ed.). Open University Press.
+- Xue, H., Kajiwara, S., & Toyoda, J. (2026). How do qualitative researchers discuss generative AI? A new attempt at qualitative meta-synthesis [Poster presentation, in Japanese]. 23rd Annual Meeting of the Japanese Association of Qualitative Psychology.
+
+The models used were GPT-5.5, GPT-5.6 and GPT-6.1 (OpenAI) and Claude Opus 5.5 (Anthropic).
