@@ -45,19 +45,20 @@ This site aims to become more than an announcement page: a place where qualitati
 </section>
 
 <section class="page-section" id="notes"><div class="container">
-  <div class="section-heading with-action"><h2 data-bilingual data-ja="最近の更新" data-en="Latest updates">最近の更新</h2><a class="reader-link arrow-link" href="{{ '/articles/' | relative_url }}"><span data-bilingual data-ja="研究ノート一覧" data-en="All research notes">研究ノート一覧</span>{% include arrow.html %}</a></div>
+  <div class="section-heading with-action"><h2 data-bilingual data-ja="最近の更新" data-en="Latest updates">最近の更新</h2>{% include view-all.html path="/articles/" count=site.posts.size %}</div>
   <div class="card-shelf" data-card-shelf role="region" aria-label="研究ノート"><div class="shelf-viewport" id="notes-cards" tabindex="0"><div class="shelf-track">
   {% capture recent_order %}{% for item in site.posts %}{{ item.date | date: '%Y%m%d%H%M%S' }}{{ item.updated | default: item.date | date: '%Y%m%d%H%M%S' }}~{{ item.url }}|{% endfor %}{% endcapture %}
   {% assign recent_order = recent_order | split: '|' | sort | reverse %}
-  {% for entry in recent_order %}{% assign note_url = entry | split: '~' | last %}{% assign note = site.posts | where: 'url', note_url | first %}{% include note-card.html note=note class="card" %}{% endfor %}
+  {% for entry in recent_order %}{% assign note_url = entry | split: '~' | last %}{% assign note = site.posts | where: 'url', note_url | first %}{% include note-card.html note=note class="card fit-card" shelf=true %}{% endfor %}
   </div></div></div>
 </div></section>
 
 <section class="page-section">
 <div class="container">
 <div class="section-panel" id="ai-qualitative">
-<div class="section-heading">
+<div class="section-heading with-action">
 <h2 data-bilingual="" data-en="AI × Qualitative Research" data-ja="AI×質的研究">AI×質的研究</h2>
+{% include view-all.html path="/papers/" count=site.data.papers.size %}
 </div>
 <div class="card-shelf" data-card-shelf data-fit role="region" aria-label="AI×質的研究の文献"><div class="shelf-viewport" id="papers-cards" tabindex="0"><div class="shelf-track"><article class="card glass-card note-card lit-preview-card fit-card">
 <div class="card-meta" data-bilingual="" data-en="Jowsey et al. (2025) / Qualitative Inquiry" data-ja="Jowsey et al. (2025) / Qualitative Inquiry">Jowsey et al. (2025) / Qualitative Inquiry</div>
@@ -101,13 +102,13 @@ This site aims to become more than an announcement page: a place where qualitati
 </article>
 {% endunless %}{% endfor %}
 </div></div></div>
-<div class="shelf-directory"><a class="reader-link arrow-link" href="{{ '/papers/' | relative_url }}"><span data-bilingual data-ja="文献一覧を見る" data-en="Literature list">文献一覧を見る</span>{% include arrow.html %}</a></div>
 </div></div></section>
 <section class="page-section">
 <div class="container">
 <div class="section-panel" id="literacy">
-<div class="section-heading">
+<div class="section-heading with-action">
 <h2 data-bilingual="" data-en="What Is AI?" data-ja="AIとは何か">AIとは何か</h2>
+{% include view-all.html path="/literacy/" count=site.wiki.size %}
 </div>
 <div class="card-shelf" data-card-shelf role="region" aria-label="AIリテラシー"><div class="shelf-viewport" id="literacy-cards" tabindex="0"><div class="shelf-track"><article class="card glass-card fit-card">
 <h3><a class="card-title-link" href="{{ '/literacy/token/' | relative_url }}" data-bilingual="" data-en="Token" data-ja="トークン">トークン</a></h3>
@@ -144,13 +145,13 @@ This site aims to become more than an announcement page: a place where qualitati
 </article>
 {% endunless %}{% endfor %}
 </div></div></div>
-<div class="shelf-directory"><a class="reader-link arrow-link" href="{{ '/literacy/' | relative_url }}"><span data-bilingual data-ja="AIリテラシーの一覧を見る" data-en="AI literacy list">AIリテラシーの一覧を見る</span>{% include arrow.html %}</a></div>
 </div></div></section>
 <section class="page-section">
 <div class="container">
 <div class="section-panel" id="events">
-<div class="section-heading">
+<div class="section-heading with-action">
 <h2 data-bilingual="" data-en="Events" data-ja="活動">活動</h2>
+{% include view-all.html path="/events/" %}
 </div>
 <div class="split-grid">
 <div class="list-shell glass-card">
@@ -178,7 +179,6 @@ This site aims to become more than an announcement page: a place where qualitati
 <p data-bilingual="" data-en="A paper by Xue, Inada, Toyoda, and Nochi." data-ja="薛海升、稲田真子、豐田隼、能智正博による論文。">薛海升、稲田真子、豐田隼、能智正博による論文。</p>
 <a class="text-link" data-bilingual="" data-en="researchmap" data-ja="researchmap" href="https://researchmap.jp/XUEHaisheng/published_papers" rel="noopener" target="_blank">researchmap</a>
 </article></div>
-<div class="shelf-directory"><a class="reader-link arrow-link" href="{{ '/events/' | relative_url }}"><span data-bilingual data-ja="過去の記録の一覧" data-en="Past events">過去の記録の一覧</span>{% include arrow.html %}</a></div>
 </div>
 </div>
 </div>
@@ -259,7 +259,8 @@ This site aims to become more than an announcement page: a place where qualitati
 .home-page .shelf-track > .card p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 7; overflow: hidden; font-size: .88rem; line-height: 1.8; }
 .card-title-link { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: rgba(17,17,17,.45); }
 .card-title-link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
-.card-title-link:hover, .card-title-link:focus-visible { text-decoration-thickness: 2px; text-decoration-color: #111; }
+.reader-note h3 a.card-title-link { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: rgba(17,17,17,.45); }
+.card-title-link:hover, .card-title-link:focus-visible, .reader-note h3 a.card-title-link:hover { text-decoration-thickness: 2px; text-decoration-color: #111; }
 /* Paper cards: fixed height; the summary takes whatever space the title leaves (line count set by script). */
 .home-page .shelf-track > .fit-card { display: flex; flex-direction: column; }
 .home-page [data-fit] .shelf-track > .fit-card { height: var(--card-h, 440px); }
@@ -273,7 +274,13 @@ This site aims to become more than an announcement page: a place where qualitati
 .shelf-native .shelf-viewport::-webkit-scrollbar { display: none; }
 .shelf-native .shelf-track { width: max-content; will-change: auto; touch-action: auto; }
 .shelf-native .shelf-track > .card { scroll-snap-align: start; }
-.shelf-directory { margin-top: 22px; }
+.view-all { display: inline-flex; align-items: center; gap: 10px; color: var(--reader-ink); text-decoration: none; font-size: .86rem; font-weight: 600; white-space: nowrap; }
+.view-all-count { color: var(--reader-muted); font-weight: 500; font-variant-numeric: tabular-nums; margin-left: -4px; }
+.view-all-icon { display: inline-grid; place-items: center; width: 34px; height: 34px; border: 1px solid #111; border-radius: 50%; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,.10); transition: background-color .15s, color .15s, box-shadow .15s; }
+.view-all-icon .link-icon { margin: 0; }
+.view-all:hover .view-all-icon, .view-all:focus-visible .view-all-icon, .view-all:active .view-all-icon { background: #111; color: #fff; box-shadow: var(--reader-shadow-strong); }
+.view-all:hover .view-all-label { text-decoration: underline; text-underline-offset: 4px; }
+.section-heading.with-action { align-items: center !important; }
 .event-archive { max-width: 900px; margin: 36px auto 0; }
 .event-archive .entry-item { padding: 28px 0; border-bottom: 1px solid #ddd; }
 .event-archive h4 { font-size: 1.15rem; line-height: 1.6; margin: 10px 0; }
