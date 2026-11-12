@@ -14,10 +14,7 @@ body_class: home-page
 <span class="typing-target">AI時代の質的研究を、人とAIの協働から考え直すためのプラットフォーム</span>
 <span aria-hidden="true" class="cursor"></span>
 </p>
-<div class="hero-actions">
-<a class="btn btn-primary" href="#notes" data-bilingual data-ja="最近の更新" data-en="Latest updates">最近の更新</a>
-<a class="btn btn-secondary" href="{{ '/papers/' | relative_url }}" data-bilingual data-ja="文献一覧へ" data-en="Literature list">文献一覧へ</a>
-</div></div></div></div></section>
+</div></div></div></section>
 
 <section class="page-section">
 <div class="container">
@@ -38,6 +35,11 @@ This site aims to become more than an announcement page: a place where qualitati
 このサイトは、単なる告知ページではなく、質的研究者にとって不可欠なAIリテラシーを獲得できる場、学術的な考察と実践的な共有を行き来できる場へと育てていくことを目指す。</p>
 </article>
 </div>
+<div class="reader-entries">
+  <a class="reader-entry" href="{{ '/articles/' | relative_url }}"><strong>研究ノート</strong><span>記事・実践の記録</span></a>
+  <a class="reader-entry" href="{{ '/papers/' | relative_url }}"><strong>AI×質的研究の文献</strong><span>文献の概要と書誌情報</span></a>
+  <a class="reader-entry" href="{{ '/literacy/' | relative_url }}"><strong>AIリテラシー</strong><span>用語と、その背後にある研究</span></a>
+</div>
 </div>
 </div>
 </section>
@@ -50,25 +52,14 @@ This site aims to become more than an announcement page: a place where qualitati
   {% for entry in recent_order limit:3 %}{% assign note_url = entry | split: '~' | last %}{% assign note = site.posts | where: 'url', note_url | first %}{% include note-card.html note=note %}{% endfor %}
   </div>
 </div></section>
-<section class="page-section"><div class="container"><div class="reader-entries">
-  <a class="reader-entry" href="{{ '/articles/' | relative_url }}"><strong>研究ノート</strong><span>記事・実践の記録</span></a>
-  <a class="reader-entry" href="{{ '/papers/' | relative_url }}"><strong>AI×質的研究の文献</strong><span>文献の概要と書誌情報</span></a>
-  <a class="reader-entry" href="{{ '/literacy/' | relative_url }}"><strong>AIリテラシー</strong><span>用語と、その背後にある研究</span></a>
-</div></div></section>
+
 <section class="page-section">
 <div class="container">
 <div class="section-panel" id="ai-qualitative">
 <div class="section-heading">
 <h2 data-bilingual="" data-en="AI × Qualitative Research" data-ja="AI×質的研究">AI×質的研究</h2>
-</div><div class="reader-quick-links"><a href="{{ '/articles/qualitative-reactions/' | relative_url }}">質的研究者は、AIにどう反応したか</a><a href="{{ '/articles/meta-synthesis-with-ai/' | relative_url }}">研究の進め方：AIと一緒に、メタ統合をやってみた</a></div>
-<div class="card-grid card-grid-3">
-
-
-
-
-
-
-<article class="card glass-card note-card lit-preview-card">
+</div>
+<div class="card-shelf" data-card-shelf role="region" aria-label="AI×質的研究の文献"><button class="shelf-arrow shelf-prev" type="button" data-direction="-1" aria-label="前のカードへ"><span aria-hidden="true">‹</span></button><button class="shelf-arrow shelf-next" type="button" data-direction="1" aria-label="次のカードへ"><span aria-hidden="true">›</span></button><div class="shelf-viewport" id="papers-cards" tabindex="0"><div class="shelf-track"><article class="card glass-card note-card lit-preview-card">
 <div class="card-meta" data-bilingual="" data-en="Jowsey et al. (2025) / Qualitative Inquiry" data-ja="Jowsey et al. (2025) / Qualitative Inquiry">Jowsey et al. (2025) / Qualitative Inquiry</div>
 <h3 data-bilingual="" data-en="We Reject the Use of Generative Artificial Intelligence for Reflexive Qualitative Research" data-ja="We Reject the Use of Generative Artificial Intelligence for Reflexive Qualitative Research">We Reject the Use of Generative Artificial Intelligence for Reflexive Qualitative Research</h3>
 <p data-bilingual="" data-en="A statement by 419 qualitative researchers from 32 countries. It argues that approaches such as reflexive thematic analysis are human research practices requiring a subjective, situated, reflexive researcher, so using generative AI is methodologically incongruent; it also rejects such use on social and environmental justice grounds." data-ja="32か国419名の質的研究者による拒否声明である。再帰的テーマ分析などは、主観をもち、位置づけられた研究者が行う人間の研究実践であり、生成AIの使用は方法論的に一致しないとする。さらに社会正義と環境正義の観点からも、再帰的質的研究での生成AIの使用を拒否している。">32か国419名の質的研究者による拒否声明である。再帰的テーマ分析などは、主観をもち、位置づけられた研究者が行う人間の研究実践であり、生成AIの使用は方法論的に一致しないとする。さらに社会正義と環境正義の観点からも、再帰的質的研究での生成AIの使用を拒否している。</p>
@@ -83,7 +74,7 @@ This site aims to become more than an announcement page: a place where qualitati
 <h3 data-bilingual="" data-en="A Consideration of the Ethics and Methodological Integrity of Generative Artificial Intelligence in Qualitative Research: Guidelines for Qualitative Psychology" data-ja="A Consideration of the Ethics and Methodological Integrity of Generative Artificial Intelligence in Qualitative Research: Guidelines for Qualitative Psychology">A Consideration of the Ethics and Methodological Integrity of Generative Artificial Intelligence in Qualitative Research: Guidelines for Qualitative Psychology</h3>
 <p data-bilingual="" data-en="This editorial by Heidi M. Levitt presents Qualitative Psychology's policy on generative AI use in qualitative research. It summarizes ethical, scientific, methodological-integrity, social-justice, and environmental concerns, and prohibits using AI as a primary or unchecked source in peer review, literature review, method writing, data collection and analysis, reporting findings, interpretation, and citation searching, while offering limited guidance on translation and citation of AI-generated content." data-ja="Heidi M. Levitt による『Qualitative Psychology』の編集論文である。生成AIの利用が質的研究の倫理、科学性、方法論的整合性、社会的公正、環境面に及ぼす問題を整理し、同誌のAI利用方針を示している。査読、文献レビュー、方法記述、データ収集・分析、分析結果の記述、解釈などへのAI利用を禁じ、引用探索ではAIを唯一の、主要な、または未検証の情報源として用いることを禁じている。翻訳や文単位の修正には別の指針を示している。">Heidi M. Levitt による『Qualitative Psychology』の編集論文である。生成AIの利用が質的研究の倫理、科学性、方法論的整合性、社会的公正、環境面に及ぼす問題を整理し、同誌のAI利用方針を示している。査読、文献レビュー、方法記述、データ収集・分析、分析結果の記述、解釈などへのAI利用を禁じ、引用探索ではAIを唯一の、主要な、または未検証の情報源として用いることを禁じている。翻訳や文単位の修正には別の指針を示している。</p>
 <a class="text-link" data-bilingual="" data-en="Full text" data-ja="本文リンク" href="https://doi.org/10.1037/qup0000353" rel="noopener" target="_blank">本文リンク</a> <a class="source-link" href="https://www.apa.org/pubs/journals/qua/ai-policy" target="_blank" rel="noopener">公式のAI利用方針</a>
-</article></div><details class="reader-details"><summary data-bilingual data-ja="もっと見る" data-en="More" aria-label="AIと質的研究の文献をもっと見る">もっと見る</summary><div class="card-grid card-grid-3"><article class="card glass-card note-card lit-preview-card">
+</article><article class="card glass-card note-card lit-preview-card">
 <div class="card-meta" data-bilingual="" data-en="Nguyen &amp; Welch (2026) / online September 30, 2025" data-ja="Nguyen &amp; Welch (2026) / online 2025年9月30日">Nguyen &amp; Welch (2026) / online 2025年9月30日</div>
 <h3 data-bilingual="" data-en="Generative Artificial Intelligence in Qualitative Data Analysis: Analyzing—Or Just Chatting?" data-ja="Generative Artificial Intelligence in Qualitative Data Analysis: Analyzing—Or Just Chatting?">Generative Artificial Intelligence in Qualitative Data Analysis: Analyzing—Or Just Chatting?</h3>
 <p data-bilingual="" data-en="This article by Duc Cuong Nguyen and Catherine Welch examines, from technological and methodological perspectives, whether generative AI is an appropriate tool for qualitative data analysis. Through their own evaluation, comparisons with existing studies, and assessment of AI features in qualitative-analysis software, the authors argue that LLM chatbots do not reliably perform searching, coding, interpretation of meaning, or theoretical abstraction, and that plausible-looking outputs themselves create epistemic risks." data-ja="Duc Cuong Nguyen と Catherine Welch による論文である。生成AIが質的データ分析に適した「分析ツール」なのかを、技術的・方法論的に検討している。著者らは、自らのデータ分析、既存研究との比較、質的分析ソフトのAI機能の検証を通じて、LLMチャットボットは検索、コーディング、意味解釈、理論的抽象化を安定して担うものではなく、もっともらしい応答が分析に見えること自体が認識論的リスクを生むと論じている。">Duc Cuong Nguyen と Catherine Welch による論文である。生成AIが質的データ分析に適した「分析ツール」なのかを、技術的・方法論的に検討している。著者らは、自らのデータ分析、既存研究との比較、質的分析ソフトのAI機能の検証を通じて、LLMチャットボットは検索、コーディング、意味解釈、理論的抽象化を安定して担うものではなく、もっともらしい応答が分析に見えること自体が認識論的リスクを生むと論じている。</p>
@@ -98,27 +89,16 @@ This site aims to become more than an announcement page: a place where qualitati
 <h3 data-bilingual="" data-en="AI and Qualitative Health Research: Working Through a Necessary Grieving Process" data-ja="AI and Qualitative Health Research: Working Through a Necessary Grieving Process">AI and Qualitative Health Research: Working Through a Necessary Grieving Process</h3>
 <p data-bilingual="" data-en="Using Kübler-Ross's five stages of grief, the authors map the field's tensions over AI and argue that what is at stake is qualitative researchers' identity itself. They propose practices such as collective prompt-writing and coding retreats for critical scrutiny of outputs." data-ja="キューブラー＝ロスの悲嘆の五段階（否認・怒り・取引・抑うつ・受容）を使って、AIをめぐる分野の緊張を描く。問われているのは効率ではなく、質的研究者としてのアイデンティティそのものだとし、集合的なプロンプト作成や、出力を批判的に点検する「コーディング・リトリート」などの実践を提案している。">キューブラー＝ロスの悲嘆の五段階（否認・怒り・取引・抑うつ・受容）を使って、AIをめぐる分野の緊張を描く。問われているのは効率ではなく、質的研究者としてのアイデンティティそのものだとし、集合的なプロンプト作成や、出力を批判的に点検する「コーディング・リトリート」などの実践を提案している。</p>
 <a class="text-link" data-bilingual="" data-en="Full text" data-ja="本文リンク" href="https://doi.org/10.1177/10497323261417237" rel="noopener" target="_blank">本文リンク</a>
-</article></div></details>
-<div class="hero-actions">
-<a class="btn btn-primary" data-bilingual="" data-en="See the full literature list" data-ja="文献一覧を見る" href="{{ '/papers/' | relative_url }}">文献一覧を見る</a>
-</div>
-</div>
-</div>
-</section>
+</article></div></div></div>
+<div class="shelf-directory"><a class="reader-link arrow-link" href="{{ '/papers/' | relative_url }}"><span data-bilingual data-ja="文献一覧を見る" data-en="Literature list">文献一覧を見る</span>{% include arrow.html %}</a></div>
+</div></div></section>
 <section class="page-section">
 <div class="container">
 <div class="section-panel" id="literacy">
 <div class="section-heading">
 <h2 data-bilingual="" data-en="What Is AI?" data-ja="AIとは何か">AIとは何か</h2>
 </div>
-<div class="card-grid card-grid-3">
-
-
-
-
-
-
-<article class="card glass-card">
+<div class="card-shelf" data-card-shelf role="region" aria-label="AIリテラシー"><button class="shelf-arrow shelf-prev" type="button" data-direction="-1" aria-label="前のカードへ"><span aria-hidden="true">‹</span></button><button class="shelf-arrow shelf-next" type="button" data-direction="1" aria-label="次のカードへ"><span aria-hidden="true">›</span></button><div class="shelf-viewport" id="literacy-cards" tabindex="0"><div class="shelf-track"><article class="card glass-card">
 <h3 data-bilingual="" data-en="Token" data-ja="トークン">トークン</h3>
 <p data-bilingual="" data-en="A token is the unit in which AI processes text, roughly a word or part of a word. Generative AI writes by predicting the next token, one at a time. Usage costs and how much a model can read at once are also counted in tokens." data-ja="トークンは、AIが文章を処理するときの単位で、単語や文字の一部にあたる。生成AIは、次に来るトークンを一つずつ予測して文章を作っている。利用料金や、AIが一度に読める量もトークンで数える。">トークンは、AIが文章を処理するときの単位で、単語や文字の一部にあたる。生成AIは、次に来るトークンを一つずつ予測して文章を作っている。利用料金や、AIが一度に読める量もトークンで数える。</p>
 <a class="text-link" data-bilingual="" data-en="Read more" data-ja="詳しく見る" href="{{ '/literacy/token/' | relative_url }}">詳しく見る</a>
@@ -130,7 +110,7 @@ This site aims to become more than an announcement page: a place where qualitati
 <h3 data-bilingual="" data-en="Context" data-ja="コンテキスト">コンテキスト</h3>
 <p data-bilingual="" data-en="Context is everything an AI can see at once: instructions, the conversation so far, attached files. Since around 2025, what you show the model has come to matter more than how you phrase the question. Note that material in the middle of a long input is easily missed." data-ja="コンテキストは、AIが一度に見られる情報の全体で、指示、それまでの会話、添付した資料などが含まれる。2025年ごろから、「どう聞くか」より「何を見せるか」が大事だと言われるようになった。長い資料の真ん中は見落とされやすい点にも注意したい。">コンテキストは、AIが一度に見られる情報の全体で、指示、それまでの会話、添付した資料などが含まれる。2025年ごろから、「どう聞くか」より「何を見せるか」が大事だと言われるようになった。長い資料の真ん中は見落とされやすい点にも注意したい。</p>
 <a class="text-link" data-bilingual="" data-en="Read more" data-ja="詳しく見る" href="{{ '/literacy/context/' | relative_url }}">詳しく見る</a>
-</article></div><details class="reader-details"><summary data-bilingual data-ja="もっと見る" data-en="More" aria-label="AIリテラシーの記事をもっと見る">もっと見る</summary><div class="card-grid card-grid-3"><article class="card glass-card">
+</article><article class="card glass-card">
 <h3 data-bilingual="" data-en="RAG" data-ja="RAG">RAG</h3>
 <p data-bilingual="" data-en="IBM describes RAG as “an architecture for optimizing the performance of an artificial intelligence model by connecting it with external knowledge bases.” In research practice, it supports AI responses by connecting them to external sources such as papers, documents, and notes." data-ja="IBMはRAGを “an architecture for optimizing the performance of an artificial intelligence model by connecting it with external knowledge bases” と説明している。研究資料、論文、メモなど外部知識を参照しながらAIの応答を補助する仕組みである。">IBMはRAGを “an architecture for optimizing the performance of an artificial intelligence model by connecting it with external knowledge bases” と説明している。研究資料、論文、メモなど外部知識を参照しながらAIの応答を補助する仕組みである。</p>
 <a class="text-link" data-bilingual="" data-en="Source: IBM" data-ja="引用元: IBM" href="https://www.ibm.com/think/topics/retrieval-augmented-generation" rel="noopener" target="_blank">引用元: IBM</a>
@@ -142,14 +122,9 @@ This site aims to become more than an announcement page: a place where qualitati
 <h3 data-bilingual="" data-en="Agentic AI" data-ja="Agentic AI">Agentic AI</h3>
 <p data-bilingual="" data-en="IBM defines agentic AI as “an artificial intelligence system that can accomplish a specific goal with limited supervision.” It refers to AI systems that use tools and coordinate multiple steps toward a goal." data-ja="IBMは Agentic AI を “an artificial intelligence system that can accomplish a specific goal with limited supervision” と説明している。外部ツールを使い、複数の手順を組み合わせながら、目的達成に向けて動くAIシステムである。">IBMは Agentic AI を “an artificial intelligence system that can accomplish a specific goal with limited supervision” と説明している。外部ツールを使い、複数の手順を組み合わせながら、目的達成に向けて動くAIシステムである。</p>
 <a class="text-link" data-bilingual="" data-en="Source: IBM" data-ja="引用元: IBM" href="https://www.ibm.com/think/topics/agentic-ai" rel="noopener" target="_blank">引用元: IBM</a>
-</article></div></details>
-<div class="hero-actions">
-<a class="btn btn-primary" data-bilingual="" data-en="Browse AI literacy pages" data-ja="AIリテラシーの用語ページへ" href="{{ '/literacy/' | relative_url }}">AIリテラシーの用語ページへ</a>
-<a class="btn btn-secondary" data-bilingual="" data-en="Read research notes" data-ja="研究ノートを読む" href="{{ '/articles/' | relative_url }}">研究ノートを読む</a>
-</div>
-</div>
-</div>
-</section>
+</article></div></div></div>
+<div class="shelf-directory"><a class="reader-link arrow-link" href="{{ '/literacy/' | relative_url }}"><span data-bilingual data-ja="AIリテラシーの一覧を見る" data-en="AI literacy list">AIリテラシーの一覧を見る</span>{% include arrow.html %}</a></div>
+</div></div></section>
 <section class="page-section">
 <div class="container">
 <div class="section-panel" id="events">
@@ -163,54 +138,26 @@ This site aims to become more than an announcement page: a place where qualitati
 </div>
 <div class="list-shell glass-card">
 <h3 data-bilingual="" data-en="Archive" data-ja="過去の記録">過去の記録</h3>
-<div class="entry-list">
-<article class="entry-item">
+<div class="entry-list"><article class="entry-item">
 <div class="entry-date">2026-10-31</div>
 <h4 data-bilingual="" data-en="How Do Qualitative Researchers Discuss Generative AI? A New Attempt at Qualitative Meta-Synthesis" data-ja="質的研究者は生成AIをどう論じるか――質的メタ統合の新たな試みを通して――">質的研究者は生成AIをどう論じるか――質的メタ統合の新たな試みを通して――</h4>
 <div class="entry-place" data-bilingual="" data-en="JAQP 23rd Annual Meeting, poster presentation (Hongo Campus, The University of Tokyo)" data-ja="日本質的心理学会第23回大会 ポスター発表（東京大学本郷キャンパス）">日本質的心理学会第23回大会 ポスター発表（東京大学本郷キャンパス）</div>
 <p data-bilingual="" data-en="A poster by Xue, Kajiwara, and Toyoda. Using qualitative meta-synthesis, it examined how qualitative researchers have written about generative AI." data-ja="薛海升、梶原佐保、豐田隼によるポスター発表。質的研究者が生成AIをどう論じてきたかを、質的メタ統合で調べた。">薛海升、梶原佐保、豐田隼によるポスター発表。質的研究者が生成AIをどう論じてきたかを、質的メタ統合で調べた。</p>
 <a class="text-link" data-bilingual="" data-en="How we did it (note)" data-ja="研究の進め方（研究ノート）" href="{{ '/articles/meta-synthesis-with-ai/' | relative_url }}">研究の進め方（研究ノート）</a> <a class="text-link" data-bilingual="" data-en="Findings (PDF)" data-ja="結果の概要（PDF）" href="{{ '/assets/pdf/2026-10-31_ai-qualitative-meta-synthesis-poster.pdf' | relative_url }}" rel="noopener" target="_blank">結果の概要（PDF）</a>
-</article>
-<article class="entry-item">
+</article><article class="entry-item">
 <div class="entry-date">2026-10-30</div>
 <h4 data-bilingual="" data-en="AI Literacy for Qualitative Researchers" data-ja="質的研究者のためのAIリテラシー">質的研究者のためのAIリテラシー</h4>
 <div class="entry-place" data-bilingual="" data-en="JAQP 23rd Annual Meeting, pre-conference workshop (Faculty of Education Building, The University of Tokyo / hybrid)" data-ja="日本質的心理学会第23回大会 前日講習会（東京大学教育学部棟・ハイブリッド開催）">日本質的心理学会第23回大会 前日講習会（東京大学教育学部棟・ハイブリッド開催）</div>
 <p data-bilingual="" data-en="A workshop by Haisheng Xue (The University of Tokyo) covering how AI works and how it developed, how to understand it, debates among qualitative researchers, and practical use in research. The slides are available as a PDF." data-ja="薛海升（東京大学）による講習会。AIの仕組みと歴史、AIをどう理解するか、質的研究者のあいだの議論、研究での実際の使い方を扱った。当日のスライドをPDFで公開している。">薛海升（東京大学）による講習会。AIの仕組みと歴史、AIをどう理解するか、質的研究者のあいだの議論、研究での実際の使い方を扱った。当日のスライドをPDFで公開している。</p>
 <a class="text-link" data-bilingual="" data-en="Slides (PDF)" data-ja="スライド（PDF）" href="assets/pdf/2026-10-30_ai-literacy-workshop.pdf" rel="noopener" target="_blank">スライド（PDF・約27MB）</a>
-</article>
-<article class="entry-item">
+</article><article class="entry-item">
 <div class="entry-date">2026-04</div>
 <h4 data-bilingual="" data-en="Collaboration between AI and qualitative research: Focusing on researchers' reflexivity" data-ja="AIと質的研究の協働――研究者の反省性に着目して――">AIと質的研究の協働――研究者の反省性に着目して――</h4>
 <div class="entry-place" data-bilingual="" data-en="Paper, Bulletin of the Clinical Psychology Course, Graduate School of Education, The University of Tokyo, Vol. 49, pp. 9–16" data-ja="論文　東京大学大学院教育学研究科臨床心理学コース紀要 第49巻 9–16頁">論文　東京大学大学院教育学研究科臨床心理学コース紀要 第49巻 9–16頁</div>
 <p data-bilingual="" data-en="A paper by Xue, Inada, Toyoda, and Nochi." data-ja="薛海升、稲田真子、豐田隼、能智正博による論文。">薛海升、稲田真子、豐田隼、能智正博による論文。</p>
 <a class="text-link" data-bilingual="" data-en="researchmap" data-ja="researchmap" href="https://researchmap.jp/XUEHaisheng/published_papers" rel="noopener" target="_blank">researchmap</a>
-</article>
-<details class="reader-details archive-more"><summary data-bilingual data-ja="もっと見る" data-en="More" aria-label="過去の記録をもっと見る">もっと見る</summary>
-<div class="entry-list">
-<article class="entry-item">
-<div class="entry-date">2025-10-18</div>
-<h4 data-bilingual="" data-en="How AI Changes Qualitative Research III: Critical Perspectives on AI × Qualitative Research" data-ja="AIが質的研究をどう変えていくか――その③――AI×質的研究をめぐる批判的展望">AIが質的研究をどう変えていくか――その③――AI×質的研究をめぐる批判的展望</h4>
-<div class="entry-place" data-bilingual="" data-en="JAQP 22nd Annual Meeting" data-ja="日本質的心理学会第22回大会">日本質的心理学会第22回大会</div>
-<p data-bilingual="" data-en="A public symposium/workshop panel by Haisheng Xue, Jun Toyoda, Mako Inada, Yuki Nakata, Yoshio Kashida, and Yasuhiro Omi." data-ja="薛海升、豐田隼、稲田真子、中田友貴、樫田美雄、尾見康博による公募シンポジウム・ワークショップパネル。">薛海升、豐田隼、稲田真子、中田友貴、樫田美雄、尾見康博による公募シンポジウム・ワークショップパネル。</p>
-<a class="text-link" data-bilingual="" data-en="researchmap" data-ja="researchmap" href="https://researchmap.jp/XUEHaisheng/presentations/52917169" rel="noopener" target="_blank">researchmap</a>
-</article>
-<article class="entry-item">
-<div class="entry-date">2024-10-19</div>
-<h4 data-bilingual="" data-en="How AI Changes Qualitative Research II" data-ja="AIが質的研究をどう変えていくか―その②―">AIが質的研究をどう変えていくか―その②―</h4>
-<div class="entry-place" data-bilingual="" data-en="JAQP 21st Annual Meeting" data-ja="日本質的心理学会第21回大会">日本質的心理学会第21回大会</div>
-<p data-bilingual="" data-en="A public symposium/workshop panel by Haisheng Xue, Tae Horiuchi, Hidenaga Ohashi, Yuki Nakata, Yasuhiro Omi, and Kenji Kawano." data-ja="薛海升、堀内多恵、大橋英永、中田友貴、尾見康博、川野健治による公募シンポジウム・ワークショップパネル。">薛海升、堀内多恵、大橋英永、中田友貴、尾見康博、川野健治による公募シンポジウム・ワークショップパネル。</p>
-<a class="text-link" data-bilingual="" data-en="researchmap" data-ja="researchmap" href="https://researchmap.jp/XUEHaisheng/presentations/48269131" rel="noopener" target="_blank">researchmap</a>
-</article>
-<article class="entry-item">
-<div class="entry-date">2023-11-04</div>
-<h4 data-bilingual="" data-en="How AI Changes Qualitative Research" data-ja="AIが質的研究をどう変えていくか">AIが質的研究をどう変えていくか</h4>
-<div class="entry-place" data-bilingual="" data-en="JAQP 20th Annual Meeting" data-ja="日本質的心理学会第20回大会">日本質的心理学会第20回大会</div>
-<p data-bilingual="" data-en="An invited symposium/workshop panel by Haisheng Xue, Yuki Nakata, Hidenaga Ohashi, Masahiro Nochi, and Yasuhiro Omi." data-ja="薛海升、中田友貴、大橋英永、能智正博、尾見康博による指名シンポジウム・ワークショップパネル。">薛海升、中田友貴、大橋英永、能智正博、尾見康博による指名シンポジウム・ワークショップパネル。</p>
-<a class="text-link" data-bilingual="" data-en="researchmap" data-ja="researchmap" href="https://researchmap.jp/XUEHaisheng/presentations/43988317" rel="noopener" target="_blank">researchmap</a>
-</article>
-</div>
-</details>
-</div>
+</article></div>
+<div class="shelf-directory"><a class="reader-link arrow-link" href="{{ '/events/' | relative_url }}"><span data-bilingual data-ja="過去の記録の一覧" data-en="Past events">過去の記録の一覧</span>{% include arrow.html %}</a></div>
 </div>
 </div>
 </div>
@@ -233,11 +180,13 @@ This site aims to become more than an announcement page: a place where qualitati
 <article class="card glass-card member-card">
 <div class="card-meta" data-bilingual="" data-en="Co-researcher" data-ja="共同研究者">共同研究者</div>
 <h3>梶原佐保</h3>
+<p class="member-affiliation">東京大学 大学院教育学研究科 総合教育科学専攻（臨床心理学コース） 特任研究員／日本学術振興会 特別研究員（DC2）</p>
 <a class="text-link" href="https://researchmap.jp/sahokajiwara" rel="noopener" target="_blank" aria-label="梶原佐保のresearchmap">researchmap</a>
 </article>
 <article class="card glass-card member-card">
 <div class="card-meta" data-bilingual="" data-en="Co-researcher" data-ja="共同研究者">共同研究者</div>
 <h3>豐田隼</h3>
+<p class="member-affiliation">東京大学 大学院教育学研究科 特任研究員／日本学術振興会 特別研究員（PD）</p>
 <a class="text-link" href="https://researchmap.jp/toyoda.h" rel="noopener" target="_blank" aria-label="豐田隼のresearchmap">researchmap</a>
 </article>
 </div>
@@ -254,7 +203,67 @@ This site aims to become more than an announcement page: a place where qualitati
 <p data-bilingual="" data-en="For workshop or training requests, questions about our research, collaboration, or corrections to this site, please use the Google Form. We will reply to the email address you enter." data-ja="講習会・研修のご依頼、研究についてのご質問、共同研究のご相談、サイトの内容への訂正やご意見は、Googleフォームからお寄せください。ご入力いただいたメールアドレスにご連絡します。">講習会・研修のご依頼、研究についてのご質問、共同研究のご相談、サイトの内容への訂正やご意見は、Googleフォームからお寄せください。ご入力いただいたメールアドレスにご連絡します。</p>
 <a class="btn btn-primary contact-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdhIVuPwF8vNkgLbdL26EpNcEVokmeYoXH4ME0bqhOIe6wMoA/viewform" target="_blank" rel="noopener"><span data-bilingual="" data-en="Open the contact form" data-ja="お問い合わせフォームを開く">お問い合わせフォームを開く</span>{% include external.html %}</a>
 </div>
-<div class="reader-contact"><a href="https://github.com/xuehaisheng/ai-qualitative-research/issues/new" rel="noopener" target="_blank" data-bilingual data-ja="訂正・ご意見（GitHub）" data-en="Corrections and feedback (GitHub)">訂正・ご意見（GitHub）</a></div></div>
+</div>
 </div>
 </section>
 </main>
+
+<style>
+
+/* Horizontal reading shelves: native swipe and keyboard scrolling remain available. */
+#about .reader-entries { margin-top: 32px; }
+.card-shelf { position: relative; margin: 0 -24px; }
+.shelf-viewport { overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: #bbb transparent; padding: 12px 48px 24px; mask-image: linear-gradient(to right,transparent,#000 48px,#000 calc(100% - 48px),transparent); }
+.shelf-track { display: flex; gap: 24px; align-items: stretch; }
+.home-page .shelf-track > .card { flex: 0 0 min(440px,72vw); min-width: 0; margin: 0; padding: 24px !important; border: 1px solid #ddd; border-radius: 0 !important; scroll-snap-align: center; transition: opacity .25s,filter .25s,transform .25s; }
+.shelf-ready .shelf-track > .card { opacity: .76; filter: blur(.22px); transform: scale(.98); }
+.shelf-ready .shelf-track > .card.is-current,.shelf-track > .card:hover,.shelf-track > .card:focus-within { opacity: 1; filter: none; transform: none; }
+.shelf-arrow { display: none; position: absolute; top: 0; bottom: 16px; width: 42px; z-index: 2; border: 0; color: #111; background: transparent; cursor: pointer; padding: 0; }
+.shelf-ready .shelf-arrow { display: grid; place-items: center; }
+.shelf-arrow span { display: grid; place-items: center; width: 32px; height: 40px; font: 32px/1 sans-serif; background: #fff; border: 1px solid #ddd; box-shadow: 0 3px 14px #0001; }
+.shelf-prev { left: 0; } .shelf-next { right: 0; }
+.shelf-arrow:disabled { opacity: .25; cursor: default; }
+.shelf-arrow:focus-visible,.shelf-viewport:focus-visible { outline: 2px solid #111; outline-offset: 3px; }
+.shelf-directory { margin-top: 26px; }
+.event-archive { max-width: 900px; margin: 36px auto 0; }
+.event-archive .entry-item { padding: 28px 0; border-bottom: 1px solid #ddd; }
+.event-archive h4 { font-size: 1.15rem; line-height: 1.6; margin: 10px 0; }
+@media(max-width:600px) { .card-shelf { margin: 0 -20px; } .shelf-viewport { padding-left: 30px; padding-right: 30px; mask-image: linear-gradient(to right,transparent,#000 24px,#000 calc(100% - 24px),transparent); } .home-page .shelf-track > .card { flex-basis: calc(100vw - 104px); padding: 20px !important; } .shelf-arrow { width: 25px; } .shelf-arrow span { width: 24px; font-size: 25px; } .shelf-track { gap: 16px; } }
+@media(prefers-reduced-motion:reduce) { .shelf-track > .card { transition: none !important; transform: none !important; filter: none !important; } }
+</style>
+<script>
+
+(() => {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const fine = window.matchMedia('(hover: hover) and (pointer: fine)');
+  document.querySelectorAll('[data-card-shelf]').forEach(shelf => {
+    const viewport = shelf.querySelector('.shelf-viewport');
+    const cards = [...shelf.querySelectorAll('.shelf-track > article')];
+    const buttons = [...shelf.querySelectorAll('[data-direction]')];
+    let current = window.innerWidth > 600 ? 1 : 0, hoverTimer, frame;
+    const center = index => cards[index].offsetLeft + cards[index].offsetWidth / 2 - viewport.clientWidth / 2;
+    function update() {
+      const target = viewport.scrollLeft + viewport.clientWidth / 2;
+      current = cards.reduce((best, card, i) => Math.abs(card.offsetLeft + card.offsetWidth/2 - target) < Math.abs(cards[best].offsetLeft + cards[best].offsetWidth/2 - target) ? i : best, 0);
+      cards.forEach((card,i) => card.classList.toggle('is-current',i === current));
+      buttons.forEach(button => button.disabled = Number(button.dataset.direction) < 0 ? viewport.scrollLeft <= 2 : viewport.scrollLeft >= viewport.scrollWidth - viewport.clientWidth - 2);
+    }
+    function move(direction) {
+      const index = Math.max(0,Math.min(cards.length-1,current + direction));
+      viewport.scrollTo({left:center(index),behavior:reduced.matches ? 'auto' : 'smooth'});
+    }
+    buttons.forEach(button => {
+      button.setAttribute('aria-controls',viewport.id);
+      button.addEventListener('click',() => {clearTimeout(hoverTimer);move(Number(button.dataset.direction));});
+      button.addEventListener('pointerenter',() => { if (fine.matches && !reduced.matches && !button.disabled) hoverTimer=setTimeout(() => move(Number(button.dataset.direction)),420); });
+      button.addEventListener('pointerleave',() => clearTimeout(hoverTimer));
+    });
+    viewport.addEventListener('keydown',event => {if(event.target !== viewport || !['ArrowLeft','ArrowRight'].includes(event.key))return;event.preventDefault();move(event.key === 'ArrowLeft' ? -1 : 1);});
+    viewport.addEventListener('scroll',() => {cancelAnimationFrame(frame);frame=requestAnimationFrame(update);},{passive:true});
+    viewport.addEventListener('focusin',event => {const card=event.target.closest('article');if(card) viewport.scrollTo({left:center(cards.indexOf(card)),behavior:'auto'});});
+    shelf.classList.add('shelf-ready');
+    requestAnimationFrame(() => {viewport.scrollTo({left:center(current),behavior:'auto'});update();});
+    window.addEventListener('resize',() => {viewport.scrollTo({left:center(current),behavior:'auto'});update();});
+  });
+})();
+</script>
