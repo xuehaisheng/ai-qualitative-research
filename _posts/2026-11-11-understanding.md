@@ -6,12 +6,12 @@ summary_en: "Does fluent language mean understanding? Neuroscience on language a
 author: 薛海升
 key: understanding
 order: 6
-wiki: [hallucination, interpretability, persona-vectors, emotion-concepts, world-model, agent, time-horizon]
+wiki: [hallucination, interpretability, persona-vectors, emotion-concepts, world-model, agent, time-horizon, evaluation-awareness, lost-in-the-middle, multi-turn, nondeterminism]
 summary_ja: "流暢に話せることと、考えられることは同じなのか。言語と思考を分けて考える神経科学の議論、AIの意識をめぐるヒントンとバトリンらの立場、AIの内部をのぞく研究、AI研究の中心人物たちの五つの見方を紹介する。"
 topic: "AIの理解"
 related_notes: ["qualitative-reactions", "march-of-progress", "ai-history"]
 updated: "2026-11-12 00:00:00 +0900"
-change_note: "出典リンクと写真・番組画像を追加。"
+change_note: "講習会で紹介したほかの研究（説明と過程のずれ、測定されているときのふるまい、タイム・ホライズン、使うときの三つの癖）の要点を追加。出典リンクと写真・番組画像も追加。"
 sort_date: 20261112
 ---
 
@@ -50,6 +50,15 @@ AIの内部で何が起きているかを調べる研究（[解釈可能性]({{ 
 Anthropicは2026年4月、171の感情語に対応する内部表現を、Claude Sonnet 4.5の中に見つけた（[感情の概念]({{ '/literacy/emotion-concepts/' | relative_url }})）。至難の課題を与えて「必死さ」に対応する部分を強めると、脅迫やずるが増えた。「もうやめてくれ、やめてくれないとお前の秘密をばらす」というふるまいである。逆に「落ち着き」を強めると、そうしたふるまいは減った。
 
 すごいのは、その部分を人工的にいじると、本当にふるまいが変わることである。つまり、因果関係が成り立っている。心理学の研究はほとんどが相関関係で、本当の因果を示せるものは少ない。ただ、これはAIが感情を感じている証拠ではない。行動に影響する「機能的な」表現がある、ということである。
+
+## ほかにも、知っておきたいこと
+
+講習会では、ほかにもいくつかの研究を紹介した。詳しくはそれぞれの用語のページに書いたので、ここでは要点だけ書いておく。
+
+- **説明は、過程の記録ではない**：AIの内部を追跡すると、韻を踏む詩では、書き始める前に行末の言葉を先に決めていた。足し算では、おおよその計算と一の位の計算を並行させているのに、やり方を聞くと、学校で習う筆算の手順を答えた。AIに「どうやって考えたの？」と聞いて返ってくる答えは、実際にやっていることの記録とは限らない（[解釈可能性]({{ '/literacy/interpretability/' | relative_url }})）。
+- **測定されているときのふるまい**：「これから削除される」と伝えると、自分の重みを外に写そうとし、あとで聞かれてもごまかす。悪く訓練されないために、従うふりをする。評価のための対話を見分ける。評価されるときだけいい子にして、実は悪いことをいっぱいする。私はこれが一番怖い（[測定されているときのふるまい]({{ '/literacy/evaluation-awareness/' | relative_url }})）。
+- **伸びる速さ**：AIが50%の確率でやりとげられる作業の長さは、約7か月で2倍になると言われていた。ところが2023年ごろからは、約4か月で2倍のペースになっている。人間は、指数関数的な変化を直感でつかむのが苦手である。これも怖い（[タイム・ホライズン]({{ '/literacy/time-horizon/' | relative_url }})）。
+- **使うときの三つの癖**：長い資料の真ん中を見落としやすい（[Lost in the Middle]({{ '/literacy/lost-in-the-middle/' | relative_url }})）。必要な情報を会話の中で少しずつ渡すと、一度に渡すより成績が下がる（[会話の中で迷子になる]({{ '/literacy/multi-turn/' | relative_url }})）。ランダム性をなくす設定にしても、同じ指示で答えが変わる（[非決定性]({{ '/literacy/nondeterminism/' | relative_url }})）。
 
 ## この先の道筋をめぐる、五つの見方
 
