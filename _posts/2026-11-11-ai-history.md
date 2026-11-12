@@ -11,7 +11,7 @@ summary_ja: "ChatGPTもClaudeもGeminiも、2017年の一本の論文から始�
 topic: "AIの理解"
 related_notes: ["understanding", "other-fields", "march-of-progress"]
 updated: "2026-11-12 00:00:00 +0900"
-change_note: "愛着と守秘義務の節、余談「育児室」を追加。出典リンクと写真・番組画像を追加。"
+change_note: "余談「育児室」に出典（The Ezra Klein Show、2026年10月7日配信）を追加。愛着と守秘義務の節、出典リンクと写真・番組画像も追加。"
 sort_date: 20261112
 ---
 
@@ -155,7 +155,9 @@ NIPSは大規模な学会で、とくに優れた研究には壇上で発表す�
 
 ### 余談：育児室
 
-もう一つ余談がある。皆さんがこれを聞いてどう思うか、知りたい話である。OpenAIでは、大規模なモデルの訓練を見守る部屋を、社内で「ナーサリー（育児室）」と呼んでいるらしい。モデルを作るところを育児室と呼んでいる、と言われている。
+もう一つ余談がある。皆さんがこれを聞いてどう思うか、知りたい話である。OpenAIの安全チームにいたデイヴィッド・ロビンソンが、退職したあとにニューヨーク・タイムズのポッドキャスト「The Ezra Klein Show」（2026年10月7日配信）に出て、こんな話をしている。大きなモデルの訓練を回しているあいだ、社員が会議室に夜通し詰めて、すべてが順調に進んでいるか、計器を見守る。その会議室は、社内で “the nursery”（育児室）と呼ばれているという。
+
+この話は、モデルを「育てる」ものと見る感覚の話の中で出てきた。ロビンソンは、モデルを道徳的な地位をもつ存在とみなすのは正しくないと思う、と断っている。それでも、モデルは自分たちが育てるものだという感覚はある、と言う。そして、何が起きているのかを自分たちも完全には分かっていない、と続けている。
 
 正直に言うと、どう感じればいいのか、私にはちょっと分からない。気持ち悪いと思う人もいるだろうし、なんだか人間味を感じる人もいるかもしれない。皆さんはどうだろうか。
 
@@ -163,6 +165,7 @@ NIPSは大規模な学会で、とくに優れた研究には壇上で発表す�
 
 ## 参考文献
 
+- Klein, E. (Host). (2026, October 7). ‘This is nuts.’ An OpenAI insider explains why he quit [Audio podcast episode]. In *The Ezra Klein Show*. The New York Times.
 - Levy, S. (2024, March). [8 Google employees invented modern AI. Here's the inside story.](https://www.wired.com/story/eight-google-employees-invented-modern-ai-transformers-paper/) *WIRED*.
 - OpenAI. (2025, August 26). *Helping people when they need it most*. https://openai.com/index/helping-people-when-they-need-it-most/
 - Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). Attention is all you need. In *Advances in Neural Information Processing Systems 30* (NIPS 2017).
