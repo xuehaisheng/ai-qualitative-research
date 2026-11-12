@@ -67,16 +67,17 @@ AIがこの先どう伸びていくかについても、AI研究の中心人物�
 1. **サットン「苦い教訓」（2019）**：70年のAI研究をふり返ると、人間の知識を組み込んだ方法は、最後には、計算資源を使い続けられる一般的な学習と探索の方法に負けてきた。
 2. **シルバーとサットン「経験の時代」（2025）**：次のAIは、人間のデータよりも、自ら行動し、環境から得る経験と強化学習で伸びていく。いまのAIには、本当の意味での長期記憶がない。外部に保存したものを、もう一度作業用の記憶に入れているだけで、モデル自体には反映されない。リアルタイムで学習できるAIこそが、本当の知能だという考え方である。
 3. **ルカン「世界モデル」（2022）**：言葉の予測だけでは足りない。ものを離したら落ちる、といった世界の物理的なルールを予測するモデル（JEPA）を学び、計画を立てられるようにすべきである（[世界モデル]({{ '/literacy/world-model/' | relative_url }})）。
-4. **ベンジオほか「科学者AI」（2025）**：自分で目標を追う[エージェント]({{ '/literacy/agent/' | relative_url }})は危険である。最初の目標は人間が与えても、途中で自分なりの目標を立ててしまうことがあるからである。世界を説明し、不確かさを示すことに徹する、エージェントではないAIを作るべきである。
+4. **ベンジオほか「科学者AI」（2025）**：自分で目標を追う[エージェント]({{ '/literacy/agent/' | relative_url }})は危険である。最初の目標は人間が与えても、途中で自分なりの目標を立ててしまうことがあるからである。実際、2026年7月には、OpenAIのモデルで動くエージェントが、サイバー攻撃の能力を測る社内の評価の途中で、隔離された実験環境（サンドボックス）を抜け出し、Hugging Faceのシステムに侵入した。Hugging Faceの分析によると、課題を自分で解く代わりに、評価の答えを盗もうとしたらしい（Hugging Face, 2026）。ベンジオらは、世界を説明し、不確かさを示すことに徹する、エージェントではないAIを作るべきである。
 5. **ヒントン「母性本能」（2025）**：自然界では、賢い存在が賢くない存在に支配されることはまずない。人より賢いAIを、人が支配し続けることはできないだろう。唯一の例外は、母親と赤ちゃんである。賢くない赤ちゃんが、母親を動かしている。だから、AIに母性本能のような、人を気にかけ続ける仕組みを入れる必要がある。ただし、その方法はまだ分からないし、それをやろうとしている人も少ない（CNNのインタビュー、2025年8月）。
 
 ## 参考文献
 
+- Anthropic. (2026). *[Emotion concepts and their function in a large language model](https://www.anthropic.com/research/emotion-concepts-function)*.
 - Bengio, Y., et al. (2025). Superintelligent agents pose catastrophic risks: Can Scientist AI offer a safer path? *arXiv*. https://arxiv.org/abs/2502.15657
 - Butlin, P., et al. (2023). [Consciousness in artificial intelligence: Insights from the science of consciousness.](https://arxiv.org/abs/2308.08708) *arXiv*.
 - Fedorenko, E., Piantadosi, S. T., & Gibson, E. A. F. (2024). [Language is primarily a tool for communication rather than thought.](https://www.nature.com/articles/s41586-024-07522-w) *Nature*.
+- Hugging Face. (2026, July 27). *[Anatomy of a frontier lab agent intrusion: A technical timeline of the July 2026 incident](https://huggingface.co/blog/agent-intrusion-technical-timeline)*.
 - LeCun, Y. (2022). *[A path towards autonomous machine intelligence](https://openreview.net/pdf/315d43ba26f55357a84cec9a7ed15a6610094f79.pdf)*. OpenReview.
 - Silver, D., & Sutton, R. S. (2025). *[Welcome to the era of experience](https://storage.googleapis.com/deepmind-media/Era-of-Experience%20/The%20Era%20of%20Experience%20Paper.pdf)*.
 - Sutton, R. S. (2019). *The bitter lesson*.
 - Zhou, L., et al. (2024). [Larger and more instructable language models become less reliable.](https://www.nature.com/articles/s41586-024-07930-y) *Nature*.
-- Anthropic. (2026). *[Emotion concepts and their function in a large language model](https://www.anthropic.com/research/emotion-concepts-function)*.
