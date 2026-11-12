@@ -1,4 +1,4 @@
 {%- assign tag_paper = site.data.papers | where: 'id', include.id | first -%}
 {%- if tag_paper.themes and tag_paper.themes.size > 0 -%}
-<div class="card-tags">{% for tag in tag_paper.themes %}<span class="tag">{% include t.html ja=tag en=site.data.i18n.themes[tag] %}</span>{% endfor %}</div>
+<div class="card-tags">{% for tag in tag_paper.themes %}<span class="tag">{% assign tag_en = site.data.i18n.themes[tag] %}{% include t.html ja=tag en=tag_en %}</span>{% endfor %}</div>
 {%- endif -%}

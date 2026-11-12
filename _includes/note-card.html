@@ -9,7 +9,7 @@
   {%- if include.shelf %}
   {%- assign note_terms = '' | split: '' %}{% assign note_terms_en = '' | split: '' %}{% for k in note.wiki limit: 3 %}{% assign t = site.wiki | where: 'key', k | first %}{% if t %}{% assign t_short = t.title | split: '（' | first %}{% assign note_terms = note_terms | push: t_short %}{% assign note_terms_en = note_terms_en | push: t.en %}{% endif %}{% endfor %}
   {%- if note_terms.size > 0 %}
-  <div class="card-tags">{% for t in note_terms %}<span class="tag">{% include t.html ja=t en=note_terms_en[forloop.index0] %}</span>{% endfor %}</div>
+  <div class="card-tags">{% for t in note_terms %}<span class="tag">{% assign t_en = note_terms_en[forloop.index0] %}{% include t.html ja=t en=t_en %}</span>{% endfor %}</div>
   {%- endif %}
   {%- else %}
   <a class="reader-link arrow-link" href="{{ note.url | relative_url }}"><span data-bilingual data-ja="記事を読む" data-en="Read note">記事を読む</span>{% include arrow.html %}</a>
