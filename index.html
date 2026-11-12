@@ -15,18 +15,18 @@ body_class: home-page
 <span aria-hidden="true" class="cursor"></span>
 </p>
 <div class="hero-actions">
-<a class="btn btn-primary" href="#notes">最近の更新</a>
-<a class="btn btn-secondary" href="{{ '/papers/' | relative_url }}">文献一覧へ</a>
+<a class="btn btn-primary" href="#notes" data-bilingual data-ja="最近の更新" data-en="Latest updates">最近の更新</a>
+<a class="btn btn-secondary" href="{{ '/papers/' | relative_url }}" data-bilingual data-ja="文献一覧へ" data-en="Literature list">文献一覧へ</a>
 </div></div></div></div></section>
 
 <section class="page-section" id="notes"><div class="container">
-  <div class="section-heading with-action"><h2>最近の更新</h2><a class="reader-link" href="{{ '/articles/' | relative_url }}">研究ノート一覧へ ↗</a></div>
+  <div class="section-heading with-action"><h2 data-bilingual data-ja="最近の更新" data-en="Latest updates">最近の更新</h2><a class="reader-link" href="{{ '/articles/' | relative_url }}" data-bilingual data-ja="研究ノート一覧へ ↗" data-en="All research notes ↗">研究ノート一覧へ ↗</a></div>
   <div class="reader-note-grid">
   {% capture recent_order %}{% for item in site.posts %}{{ item.updated | default: item.date | date: '%Y%m%d%H%M%S' }}~{{ item.url }}|{% endfor %}{% endcapture %}
   {% assign recent_order = recent_order | split: '|' | sort | reverse %}
   {% for entry in recent_order limit:3 %}{% assign note_url = entry | split: '~' | last %}{% assign note = site.posts | where: 'url', note_url | first %}{% include note-card.html note=note %}{% endfor %}
   </div>
-  <div class="reader-section-foot"><p>新しい記事と、出典・記述の更新。</p><a class="reader-link" href="{{ '/feed.xml' | relative_url }}">RSSで更新を読む</a></div>
+  <div class="reader-section-foot"><p data-bilingual data-ja="新しい記事と、出典・記述の更新。" data-en="New articles and updates to sources and text.">新しい記事と、出典・記述の更新。</p><a class="reader-link" href="{{ '/feed.xml' | relative_url }}" data-bilingual data-ja="RSSで更新を読む" data-en="Follow updates via RSS">RSSで更新を読む</a></div>
 </div></section>
 <section class="page-section"><div class="container"><div class="reader-entries">
   <a class="reader-entry" href="{{ '/articles/' | relative_url }}"><strong>研究ノート</strong><span>記事・実践の記録</span></a>
@@ -61,7 +61,7 @@ body_class: home-page
 <h3 data-bilingual="" data-en="A Consideration of the Ethics and Methodological Integrity of Generative Artificial Intelligence in Qualitative Research: Guidelines for Qualitative Psychology" data-ja="A Consideration of the Ethics and Methodological Integrity of Generative Artificial Intelligence in Qualitative Research: Guidelines for Qualitative Psychology">A Consideration of the Ethics and Methodological Integrity of Generative Artificial Intelligence in Qualitative Research: Guidelines for Qualitative Psychology</h3>
 <p data-bilingual="" data-en="This editorial by Heidi M. Levitt presents Qualitative Psychology's policy on generative AI use in qualitative research. It summarizes ethical, scientific, methodological-integrity, social-justice, and environmental concerns, and prohibits using AI as a primary or unchecked source in peer review, literature review, method writing, data collection and analysis, reporting findings, interpretation, and citation searching, while offering limited guidance on translation and citation of AI-generated content." data-ja="Heidi M. Levitt による『Qualitative Psychology』の編集論文である。生成AIの利用が質的研究の倫理、科学性、方法論的整合性、社会的公正、環境面に及ぼす問題を整理し、同誌のAI利用方針を示している。査読、文献レビュー、方法記述、データ収集・分析、分析結果の記述、解釈などへのAI利用を禁じ、引用探索ではAIを唯一の、主要な、または未検証の情報源として用いることを禁じている。翻訳や文単位の修正には別の指針を示している。">Heidi M. Levitt による『Qualitative Psychology』の編集論文である。生成AIの利用が質的研究の倫理、科学性、方法論的整合性、社会的公正、環境面に及ぼす問題を整理し、同誌のAI利用方針を示している。査読、文献レビュー、方法記述、データ収集・分析、分析結果の記述、解釈などへのAI利用を禁じ、引用探索ではAIを唯一の、主要な、または未検証の情報源として用いることを禁じている。翻訳や文単位の修正には別の指針を示している。</p>
 <a class="text-link" data-bilingual="" data-en="Full text" data-ja="本文リンク" href="https://doi.org/10.1037/qup0000353" rel="noopener" target="_blank">本文リンク</a> <a class="source-link" href="https://www.apa.org/pubs/journals/qua/ai-policy" target="_blank" rel="noopener">公式のAI利用方針</a>
-</article></div><details class="reader-details"><summary>ほかの文献紹介</summary><div class="card-grid card-grid-3"><article class="card glass-card note-card lit-preview-card">
+</article></div><details class="reader-details"><summary data-bilingual data-ja="ほかの文献紹介" data-en="More literature">ほかの文献紹介</summary><div class="card-grid card-grid-3"><article class="card glass-card note-card lit-preview-card">
 <div class="card-meta" data-bilingual="" data-en="Nguyen &amp; Welch (2026) / online September 30, 2025" data-ja="Nguyen &amp; Welch (2026) / online 2025年9月30日">Nguyen &amp; Welch (2026) / online 2025年9月30日</div>
 <h3 data-bilingual="" data-en="Generative Artificial Intelligence in Qualitative Data Analysis: Analyzing—Or Just Chatting?" data-ja="Generative Artificial Intelligence in Qualitative Data Analysis: Analyzing—Or Just Chatting?">Generative Artificial Intelligence in Qualitative Data Analysis: Analyzing—Or Just Chatting?</h3>
 <p data-bilingual="" data-en="This article by Duc Cuong Nguyen and Catherine Welch examines, from technological and methodological perspectives, whether generative AI is an appropriate tool for qualitative data analysis. Through their own evaluation, comparisons with existing studies, and assessment of AI features in qualitative-analysis software, the authors argue that LLM chatbots do not reliably perform searching, coding, interpretation of meaning, or theoretical abstraction, and that plausible-looking outputs themselves create epistemic risks." data-ja="Duc Cuong Nguyen と Catherine Welch による論文である。生成AIが質的データ分析に適した「分析ツール」なのかを、技術的・方法論的に検討している。著者らは、自らのデータ分析、既存研究との比較、質的分析ソフトのAI機能の検証を通じて、LLMチャットボットは検索、コーディング、意味解釈、理論的抽象化を安定して担うものではなく、もっともらしい応答が分析に見えること自体が認識論的リスクを生むと論じている。">Duc Cuong Nguyen と Catherine Welch による論文である。生成AIが質的データ分析に適した「分析ツール」なのかを、技術的・方法論的に検討している。著者らは、自らのデータ分析、既存研究との比較、質的分析ソフトのAI機能の検証を通じて、LLMチャットボットは検索、コーディング、意味解釈、理論的抽象化を安定して担うものではなく、もっともらしい応答が分析に見えること自体が認識論的リスクを生むと論じている。</p>
@@ -195,7 +195,7 @@ This site aims to become more than an announcement page: a place where qualitati
 このサイトは、単なる告知ページではなく、質的研究者にとって不可欠なAIリテラシーを獲得できる場、学術的な考察と実践的な共有を行き来できる場へと育てていくことを目指す。</p>
 </article>
 </div>
-<details class="reader-details"><summary>このサイトで扱うこと</summary><div class="hero-overview">
+<details class="reader-details"><summary data-bilingual data-ja="このサイトで扱うこと" data-en="What this site covers">このサイトで扱うこと</summary><div class="hero-overview">
 <div class="hero-overview-copy">
 <div class="side-label" data-bilingual="" data-en="Project Scope" data-ja="Project Scope">Project Scope</div>
 <h2 data-bilingual="" data-en="A platform where AI and qualitative research intersect" data-ja="AIと質的研究が交差するためのプラットフォーム">AIと質的研究が交差するためのプラットフォーム</h2>
@@ -242,6 +242,12 @@ This site aims to become more than an announcement page: a place where qualitati
 <div class="section-heading">
 <h2 data-bilingual="" data-en="Contact" data-ja="お問い合わせ">お問い合わせ</h2>
 </div>
+<div class="contact-form-shell">
+<h3 data-bilingual="" data-en="Contact form" data-ja="お問い合わせフォーム">お問い合わせフォーム</h3>
+<p data-bilingual="" data-en="For workshop or training requests, questions about our research, collaboration, or corrections to this site, please use the form below. We will reply to the email address you enter." data-ja="講習会・研修のご依頼、研究についてのご質問、共同研究のご相談、サイトの内容への訂正やご意見は、下のフォームからお寄せください。ご入力いただいたメールアドレスにご連絡します。">講習会・研修のご依頼、研究についてのご質問、共同研究のご相談、サイトの内容への訂正やご意見は、下のフォームからお寄せください。ご入力いただいたメールアドレスにご連絡します。</p>
+<div class="contact-form-frame"><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdhIVuPwF8vNkgLbdL26EpNcEVokmeYoXH4ME0bqhOIe6wMoA/viewform?embedded=true" title="お問い合わせフォーム（Google フォーム）" loading="lazy">読み込んでいます…</iframe></div>
+<p class="contact-form-alt"><a href="https://docs.google.com/forms/d/e/1FAIpQLSdhIVuPwF8vNkgLbdL26EpNcEVokmeYoXH4ME0bqhOIe6wMoA/viewform" target="_blank" rel="noopener" data-bilingual="" data-en="Open the form in a new tab ↗" data-ja="フォームを新しいタブで開く ↗">フォームを新しいタブで開く ↗</a></p>
+</div>
 <div class="split-grid">
 <div class="list-shell glass-card">
 <h3 data-bilingual="" data-en="Links" data-ja="関連リンク">関連リンク</h3>
@@ -257,7 +263,7 @@ This site aims to become more than an announcement page: a place where qualitati
 </ul>
 </div>
 </div>
-<div class="reader-contact"><a href="https://github.com/xuehaisheng/ai-qualitative-research/issues/new" rel="noopener" target="_blank">訂正・ご意見（GitHub）</a><a href="{{ '/feed.xml' | relative_url }}">更新情報（RSS）</a></div></div>
+<div class="reader-contact"><a href="https://github.com/xuehaisheng/ai-qualitative-research/issues/new" rel="noopener" target="_blank" data-bilingual data-ja="訂正・ご意見（GitHub）" data-en="Corrections and feedback (GitHub)">訂正・ご意見（GitHub）</a><a href="{{ '/feed.xml' | relative_url }}" data-bilingual data-ja="更新情報（RSS）" data-en="Updates (RSS)">更新情報（RSS）</a></div></div>
 </div>
 </section>
 </main>
