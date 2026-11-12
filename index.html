@@ -46,11 +46,11 @@ This site aims to become more than an announcement page: a place where qualitati
 
 <section class="page-section" id="notes"><div class="container">
   <div class="section-heading with-action"><h2 data-bilingual data-ja="最近の更新" data-en="Latest updates">最近の更新</h2><a class="reader-link arrow-link" href="{{ '/articles/' | relative_url }}"><span data-bilingual data-ja="研究ノート一覧" data-en="All research notes">研究ノート一覧</span>{% include arrow.html %}</a></div>
-  <div class="reader-note-grid">
+  <div class="card-shelf" data-card-shelf role="region" aria-label="研究ノート"><div class="shelf-viewport" id="notes-cards" tabindex="0"><div class="shelf-track">
   {% capture recent_order %}{% for item in site.posts %}{{ item.date | date: '%Y%m%d%H%M%S' }}{{ item.updated | default: item.date | date: '%Y%m%d%H%M%S' }}~{{ item.url }}|{% endfor %}{% endcapture %}
   {% assign recent_order = recent_order | split: '|' | sort | reverse %}
-  {% for entry in recent_order limit:3 %}{% assign note_url = entry | split: '~' | last %}{% assign note = site.posts | where: 'url', note_url | first %}{% include note-card.html note=note %}{% endfor %}
-  </div>
+  {% for entry in recent_order %}{% assign note_url = entry | split: '~' | last %}{% assign note = site.posts | where: 'url', note_url | first %}{% include note-card.html note=note class="card" %}{% endfor %}
+  </div></div></div>
 </div></section>
 
 <section class="page-section">
@@ -247,6 +247,8 @@ This site aims to become more than an announcement page: a place where qualitati
 .home-page .shelf-track > .card { flex: 0 0 var(--card-w, calc((100% - 68px) / 4.4)); min-width: 0; margin: 0 var(--gap, 20px) 0 0; padding: 22px !important; border: 0 !important; background: #fff !important; border-radius: 0 !important; box-shadow: var(--reader-shadow) !important; outline-color: #111; transition: box-shadow .2s; }
 .home-page .shelf-track > .card:hover, .home-page .shelf-track > .card:focus-within { box-shadow: var(--reader-shadow-strong) !important; }
 .home-page .shelf-track > .card::before, .home-page .shelf-track > .card::after { content: none !important; display: none !important; }
+.home-page .shelf-track > .reader-note h3 { margin: 12px 0 !important; font-size: 1.05rem !important; }
+.home-page .shelf-track > .reader-note p { margin-bottom: 16px; }
 .home-page .shelf-track > .card h3 { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5; overflow: hidden; font-size: 1rem !important; line-height: 1.55 !important; }
 .home-page .shelf-track > .card p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 7; overflow: hidden; font-size: .88rem; line-height: 1.8; }
 .shelf-viewport:focus-visible { outline: 2px solid #111; outline-offset: 3px; }
