@@ -45,7 +45,6 @@
     const input = document.getElementById('paper-search');
     const group = document.getElementById('paper-group-filter');
     const topic = document.getElementById('paper-topic');
-    const corpus = document.getElementById('paper-corpus');
     const sort = document.getElementById('paper-sort');
     const items = [...document.querySelectorAll('.paper-item')];
     const sections = [...document.querySelectorAll('.paper-group')];
@@ -53,16 +52,14 @@
     if (query.has('q')) input.value = query.get('q');
     if ([...group.options].some(o => o.value === query.get('group'))) group.value = query.get('group');
     if ([...topic.options].some(o => o.value === query.get('topic'))) topic.value = query.get('topic');
-    corpus.checked = query.get('corpus') === '1';
     if ([...sort.options].some(o => o.value === query.get('sort'))) sort.value = query.get('sort');
     function apply(updateURL = true) {
       let count = 0;
       items.forEach(item => {
         const p = byId.get(item.id);
-        const visible = matches([p.apa, p.summary, ...p.tags].join(' '), input.value)
-          && (!group.value || p.group === group.value)
-          && (!topic.value || p.tags.includes(topic.value))
-          && (!corpus.checked || p.meta);
+        const visible = matches([p.title, p.title_ja, p.apa, p.summary, ...p.themes].join(' '), input.value)
+          && (!group.value || p.stance === group.value)
+          && (!topic.value || p.themes.includes(topic.value));
         item.hidden = !visible;
         if (visible) count++;
         item.querySelectorAll('[data-tag]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.tag === topic.value)));
@@ -78,8 +75,9 @@
         ordered.forEach(item => list.append(item));
       });
       const status = document.getElementById('paper-count');
-      status.textContent = '検索条件に合う文献を表示しています。';
-      status.hidden = count === 0 || !(input.value.trim() || group.value || topic.value || corpus.checked);
+      const filtered = Boolean(input.value.trim() || group.value || topic.value);
+      status.textContent = filtered ? `${count}件の文献が見つかりました（全${items.length}件）。` : `全${items.length}件の文献`;
+      status.hidden = count === 0;
       document.getElementById('paper-empty').hidden = count > 0;
       document.querySelectorAll('[data-export-visible]').forEach(button => { button.disabled = count === 0; });
       if (updateURL && location.protocol !== 'file:') {
@@ -87,15 +85,15 @@
         if (input.value.trim()) params.set('q', input.value.trim());
         if (group.value) params.set('group', group.value);
         if (topic.value) params.set('topic', topic.value);
-        if (corpus.checked) params.set('corpus', '1');
         if (sort.value !== 'author') params.set('sort', sort.value);
-        history.replaceState(null, '', `${location.pathname}${params.size ? '?' + params : ''}${location.hash}`);
+        const qs = params.toString();
+        history.replaceState(null, '', `${location.pathname}${qs ? '?' + qs : ''}${location.hash}`);
       }
     }
     const clean = value => String(value || '').replace(/[\r\n]+/g, ' ').trim();
     function ris(p) {
       const b = p.bib;
-      const lines = ['TY  - JOUR', `ID  - ${p.id}`, `TI  - ${clean(b.title)}`, `PY  - ${p.year}`];
+      const lines = [b.journal === 'Times Higher Education' ? 'TY  - MGZN' : 'TY  - JOUR', `ID  - ${p.id}`, `TI  - ${clean(b.title)}`, `PY  - ${p.year}`];
       b.authors.filter(a => a !== 'others').forEach(a => lines.push(`AU  - ${clean(a)}`));
       if (b.journal) lines.push(`JO  - ${clean(b.journal)}`);
       if (b.volume) lines.push(`VL  - ${b.volume}`);
@@ -115,13 +113,13 @@
       const fields = { title: b.title, author: b.authors.join(' and '), year: p.year, journal: b.journal, volume: b.volume, number: b.issue, pages: b.pages ? b.pages.replace(/–/g, '--') : '', doi: p.doi && p.doi.includes('doi.org/') ? p.doi.split('doi.org/')[1] : '', url: p.doi, note: p.apa };
       return `@article{${p.id},\n${Object.entries(fields).filter(([,v]) => v).map(([k,v]) => `  ${k} = {${escape(v)}}`).join(',\n')}\n}\n`;
     }
-    [input, group, topic, corpus, sort].forEach(el => el.addEventListener(el === input ? 'input' : 'change', () => apply()));
-    document.querySelectorAll('[data-reset-papers]').forEach(button => button.addEventListener('click', () => { input.value = ''; group.value = ''; topic.value = ''; corpus.checked = false; sort.value = 'author'; apply(); input.focus(); }));
+    [input, group, topic, sort].forEach(el => el.addEventListener(el === input ? 'input' : 'change', () => apply()));
+    document.querySelectorAll('[data-reset-papers]').forEach(button => button.addEventListener('click', () => { input.value = ''; group.value = ''; topic.value = ''; sort.value = 'author'; apply(); input.focus(); }));
     document.querySelectorAll('[data-tag]').forEach(button => button.addEventListener('click', () => { topic.value = topic.value === button.dataset.tag ? '' : button.dataset.tag; apply(); }));
     document.querySelectorAll('[data-paper-action]').forEach(button => button.addEventListener('click', () => {
       const p = byId.get(button.dataset.paperId);
       if (button.dataset.paperAction === 'copy') copyText(p.apa + (p.doi ? ' ' + p.doi : ''), button);
-      if (button.dataset.paperAction === 'link') copyText(`${document.querySelector('link[rel="canonical"]').href}#${p.id}`, button);
+      if (button.dataset.paperAction === 'link') copyText(`${location.origin}${location.pathname}#${p.id}`, button);
       if (button.dataset.paperAction === 'ris') download(`${p.id}.ris`, ris(p), 'application/x-research-info-systems;charset=utf-8');
       if (button.dataset.paperAction === 'bib') download(`${p.id}.bib`, bibtex(p), 'application/x-bibtex;charset=utf-8');
     }));
@@ -132,7 +130,7 @@
       toast('引用情報を書き出しました。');
     }));
     if (location.hash && byId.has(location.hash.slice(1))) {
-      input.value = ''; group.value = ''; topic.value = ''; corpus.checked = false;
+      input.value = ''; group.value = ''; topic.value = '';
     }
     apply(false);
   }

@@ -1,0 +1,5 @@
+{%- assign fig_src = '/assets/img/figures/' | append: include.src | relative_url -%}
+<figure class="slide-fig">
+  <a href="{{ fig_src }}" target="_blank" rel="noopener"><img src="{{ fig_src }}" alt="{{ include.alt | default: include.cap | strip_html | escape }}" loading="lazy"></a>
+  {%- if include.cap %}<figcaption>{{ include.cap }}</figcaption>{% endif %}
+</figure>
