@@ -19,14 +19,36 @@ body_class: home-page
 <a class="btn btn-secondary" href="{{ '/papers/' | relative_url }}" data-bilingual data-ja="文献一覧へ" data-en="Literature list">文献一覧へ</a>
 </div></div></div></div></section>
 
+<section class="page-section">
+<div class="container">
+<div class="section-panel" id="about">
+<div class="section-heading">
+<h2 data-bilingual="" data-en="About" data-ja="趣旨">趣旨</h2>
+</div>
+<div class="card-grid card-grid-1">
+<article class="card glass-card">
+<div class="card-meta" data-bilingual="" data-en="Background &amp; Purpose" data-ja="Background &amp; Purpose">Background &amp; Purpose</div>
+<h3 data-bilingual="" data-en="Why AI × qualitative research now?" data-ja="なぜ今、AI×質的研究なのか">なぜ今、AI×質的研究なのか</h3>
+<p data-bilingual="" data-en="Rapid advances in generative AI are raising new questions for qualitative research practice and methodology. AI may support research design, data organization, analytic assistance, and knowledge visualization, while also prompting us to ask what kinds of relationships and collaboration can emerge between researchers and AI. This project treats AI not as a simple replacement, but as a partner through which the future of qualitative research can be explored.
+
+This site aims to become more than an announcement page: a place where qualitative researchers can gain essential AI literacy and move between scholarly reflection and practical sharing." data-ja="生成AIの急速な発展は、質的研究の実践や方法論にも新たな問いを投げかけている。AIは調査設計、データ整理、分析補助、知識の可視化などを支えうる一方で、研究者とどのような関係を結び、どのように協働しうるのかという問いも浮かび上がらせる。本プロジェクトでは、AIを単なる代替ではなく、ともに質的研究の未来を探究する存在として捉える。
+
+このサイトは、単なる告知ページではなく、質的研究者にとって不可欠なAIリテラシーを獲得できる場、学術的な考察と実践的な共有を行き来できる場へと育てていくことを目指す。">生成AIの急速な発展は、質的研究の実践や方法論にも新たな問いを投げかけている。AIは調査設計、データ整理、分析補助、知識の可視化などを支えうる一方で、研究者とどのような関係を結び、どのように協働しうるのかという問いも浮かび上がらせる。本プロジェクトでは、AIを単なる代替ではなく、ともに質的研究の未来を探究する存在として捉える。
+
+このサイトは、単なる告知ページではなく、質的研究者にとって不可欠なAIリテラシーを獲得できる場、学術的な考察と実践的な共有を行き来できる場へと育てていくことを目指す。</p>
+</article>
+</div>
+</div>
+</div>
+</section>
+
 <section class="page-section" id="notes"><div class="container">
-  <div class="section-heading with-action"><h2 data-bilingual data-ja="最近の更新" data-en="Latest updates">最近の更新</h2><a class="reader-link" href="{{ '/articles/' | relative_url }}" data-bilingual data-ja="研究ノート一覧へ ↗" data-en="All research notes ↗">研究ノート一覧へ ↗</a></div>
+  <div class="section-heading with-action"><h2 data-bilingual data-ja="最近の更新" data-en="Latest updates">最近の更新</h2><a class="reader-link arrow-link" href="{{ '/articles/' | relative_url }}"><span data-bilingual data-ja="研究ノート一覧" data-en="All research notes">研究ノート一覧</span>{% include arrow.html %}</a></div>
   <div class="reader-note-grid">
-  {% capture recent_order %}{% for item in site.posts %}{{ item.updated | default: item.date | date: '%Y%m%d%H%M%S' }}~{{ item.url }}|{% endfor %}{% endcapture %}
+  {% capture recent_order %}{% for item in site.posts %}{{ item.date | date: '%Y%m%d%H%M%S' }}{{ item.updated | default: item.date | date: '%Y%m%d%H%M%S' }}~{{ item.url }}|{% endfor %}{% endcapture %}
   {% assign recent_order = recent_order | split: '|' | sort | reverse %}
   {% for entry in recent_order limit:3 %}{% assign note_url = entry | split: '~' | last %}{% assign note = site.posts | where: 'url', note_url | first %}{% include note-card.html note=note %}{% endfor %}
   </div>
-  <div class="reader-section-foot"><p data-bilingual data-ja="新しい記事と、出典・記述の更新。" data-en="New articles and updates to sources and text.">新しい記事と、出典・記述の更新。</p><a class="reader-link" href="{{ '/feed.xml' | relative_url }}" data-bilingual data-ja="RSSで更新を読む" data-en="Follow updates via RSS">RSSで更新を読む</a></div>
 </div></section>
 <section class="page-section"><div class="container"><div class="reader-entries">
   <a class="reader-entry" href="{{ '/articles/' | relative_url }}"><strong>研究ノート</strong><span>記事・実践の記録</span></a>
@@ -143,11 +165,25 @@ body_class: home-page
 <h3 data-bilingual="" data-en="Archive" data-ja="過去の記録">過去の記録</h3>
 <div class="entry-list">
 <article class="entry-item">
+<div class="entry-date">2026-10-31〜11-01</div>
+<h4 data-bilingual="" data-en="How Do Qualitative Researchers Discuss Generative AI? A New Attempt at Qualitative Meta-Synthesis" data-ja="質的研究者は生成AIをどう論じるか――質的メタ統合の新たな試みを通して――">質的研究者は生成AIをどう論じるか――質的メタ統合の新たな試みを通して――</h4>
+<div class="entry-place" data-bilingual="" data-en="JAQP 23rd Annual Meeting, poster presentation (Hongo Campus, The University of Tokyo)" data-ja="日本質的心理学会第23回大会 ポスター発表（東京大学本郷キャンパス）">日本質的心理学会第23回大会 ポスター発表（東京大学本郷キャンパス）</div>
+<p data-bilingual="" data-en="A poster by Xue, Kajiwara, and Toyoda. Using qualitative meta-synthesis, it examined how qualitative researchers have written about generative AI." data-ja="薛海升、梶原佐保、豐田隼によるポスター発表。質的研究者が生成AIをどう論じてきたかを、質的メタ統合で調べた。">薛海升、梶原佐保、豐田隼によるポスター発表。質的研究者が生成AIをどう論じてきたかを、質的メタ統合で調べた。</p>
+<a class="text-link" data-bilingual="" data-en="How we did it (note)" data-ja="研究の進め方（研究ノート）" href="{{ '/articles/meta-synthesis-with-ai/' | relative_url }}">研究の進め方（研究ノート）</a> <a class="text-link" data-bilingual="" data-en="Findings (note)" data-ja="結果の概要（研究ノート）" href="{{ '/articles/qualitative-reactions/' | relative_url }}">結果の概要（研究ノート）</a>
+</article>
+<article class="entry-item">
 <div class="entry-date">2026-10-30</div>
 <h4 data-bilingual="" data-en="AI Literacy for Qualitative Researchers" data-ja="質的研究者のためのAIリテラシー">質的研究者のためのAIリテラシー</h4>
 <div class="entry-place" data-bilingual="" data-en="JAQP 23rd Annual Meeting, pre-conference workshop (Faculty of Education Building, The University of Tokyo / hybrid)" data-ja="日本質的心理学会第23回大会 前日講習会（東京大学教育学部棟・ハイブリッド開催）">日本質的心理学会第23回大会 前日講習会（東京大学教育学部棟・ハイブリッド開催）</div>
 <p data-bilingual="" data-en="A workshop by Haisheng Xue (The University of Tokyo) covering how AI works and how it developed, how to understand it, debates among qualitative researchers, and practical use in research. The slides are available as a PDF." data-ja="薛海升（東京大学）による講習会。AIの仕組みと歴史、AIをどう理解するか、質的研究者のあいだの議論、研究での実際の使い方を扱った。当日のスライドをPDFで公開している。">薛海升（東京大学）による講習会。AIの仕組みと歴史、AIをどう理解するか、質的研究者のあいだの議論、研究での実際の使い方を扱った。当日のスライドをPDFで公開している。</p>
 <a class="text-link" data-bilingual="" data-en="Slides (PDF)" data-ja="スライド（PDF）" href="assets/pdf/2026-10-30_ai-literacy-workshop.pdf" rel="noopener" target="_blank">スライド（PDF・約27MB）</a>
+</article>
+<article class="entry-item">
+<div class="entry-date">2026</div>
+<h4 data-bilingual="" data-en="Collaboration between AI and qualitative research: Focusing on researchers' reflexivity" data-ja="AIと質的研究の協働――研究者の反省性に着目して――">AIと質的研究の協働――研究者の反省性に着目して――</h4>
+<div class="entry-place" data-bilingual="" data-en="Paper, Bulletin of the Clinical Psychology Course, Graduate School of Education, The University of Tokyo, Vol. 49, pp. 9–16" data-ja="論文　東京大学大学院教育学研究科臨床心理学コース紀要 第49巻 9–16頁">論文　東京大学大学院教育学研究科臨床心理学コース紀要 第49巻 9–16頁</div>
+<p data-bilingual="" data-en="A paper by Xue, Inada, Toyoda, and Nochi." data-ja="薛海升、稲田真子、豐田隼、能智正博による論文。">薛海升、稲田真子、豐田隼、能智正博による論文。</p>
+<a class="text-link" data-bilingual="" data-en="researchmap" data-ja="researchmap" href="https://researchmap.jp/XUEHaisheng/published_papers" rel="noopener" target="_blank">researchmap</a>
 </article>
 <article class="entry-item">
 <div class="entry-date">2025-10-18</div>
@@ -178,48 +214,6 @@ body_class: home-page
 </section>
 <section class="page-section">
 <div class="container">
-<div class="section-panel" id="about">
-<div class="section-heading">
-<h2 data-bilingual="" data-en="About" data-ja="趣旨">趣旨</h2>
-</div>
-<div class="card-grid card-grid-1">
-<article class="card glass-card">
-<div class="card-meta" data-bilingual="" data-en="Background &amp; Purpose" data-ja="Background &amp; Purpose">Background &amp; Purpose</div>
-<h3 data-bilingual="" data-en="Why AI × qualitative research now?" data-ja="なぜ今、AI×質的研究なのか">なぜ今、AI×質的研究なのか</h3>
-<p data-bilingual="" data-en="Rapid advances in generative AI are raising new questions for qualitative research practice and methodology. AI may support research design, data organization, analytic assistance, and knowledge visualization, while also prompting us to ask what kinds of relationships and collaboration can emerge between researchers and AI. This project treats AI not as a simple replacement, but as a partner through which the future of qualitative research can be explored.
-
-This site aims to become more than an announcement page: a place where qualitative researchers can gain essential AI literacy and move between scholarly reflection and practical sharing." data-ja="生成AIの急速な発展は、質的研究の実践や方法論にも新たな問いを投げかけている。AIは調査設計、データ整理、分析補助、知識の可視化などを支えうる一方で、研究者とどのような関係を結び、どのように協働しうるのかという問いも浮かび上がらせる。本プロジェクトでは、AIを単なる代替ではなく、ともに質的研究の未来を探究する存在として捉える。
-
-このサイトは、単なる告知ページではなく、質的研究者にとって不可欠なAIリテラシーを獲得できる場、学術的な考察と実践的な共有を行き来できる場へと育てていくことを目指す。">生成AIの急速な発展は、質的研究の実践や方法論にも新たな問いを投げかけている。AIは調査設計、データ整理、分析補助、知識の可視化などを支えうる一方で、研究者とどのような関係を結び、どのように協働しうるのかという問いも浮かび上がらせる。本プロジェクトでは、AIを単なる代替ではなく、ともに質的研究の未来を探究する存在として捉える。
-
-このサイトは、単なる告知ページではなく、質的研究者にとって不可欠なAIリテラシーを獲得できる場、学術的な考察と実践的な共有を行き来できる場へと育てていくことを目指す。</p>
-</article>
-</div>
-<details class="reader-details"><summary data-bilingual data-ja="このサイトで扱うこと" data-en="What this site covers">このサイトで扱うこと</summary><div class="hero-overview">
-<div class="hero-overview-copy">
-<div class="side-label" data-bilingual="" data-en="Project Scope" data-ja="Project Scope">Project Scope</div>
-<h2 data-bilingual="" data-en="A platform where AI and qualitative research intersect" data-ja="AIと質的研究が交差するためのプラットフォーム">AIと質的研究が交差するためのプラットフォーム</h2>
-<p data-bilingual="" data-en="This platform makes room for learning the basics of AI, exploring how it can be used in qualitative research, and asking where caution or restraint may be needed. It approaches the relationship between researchers and AI with both openness and care." data-ja="AIの基礎を学び、質的研究でどのように活用できるかを考え、同時にどこで慎重であるべきかも問い直していく。人とAIの関係を、開かれた姿勢と慎重さの両方から探るための場である。">AIの基礎を学び、質的研究でどのように活用できるかを考え、同時にどこで慎重であるべきかも問い直していく。人とAIの関係を、開かれた姿勢と慎重さの両方から探るための場である。</p>
-</div>
-<div class="signal-list">
-<div class="signal-item">
-<strong data-bilingual="" data-en="AI Basics" data-ja="AIの基礎理解">AIの基礎理解</strong>
-<span data-bilingual="" data-en="Learn what AI is, what it can do, and where its limits begin in relation to research practice." data-ja="AIとは何か、何ができて何が苦手なのかを、研究実践に引き寄せて整理する。">AIとは何か、何ができて何が苦手なのかを、研究実践に引き寄せて整理する。</span>
-</div>
-<div class="signal-item">
-<strong data-bilingual="" data-en="Practice" data-ja="実践と検討">実践と検討</strong>
-<span data-bilingual="" data-en="Explore concrete ways AI might support qualitative research in practice." data-ja="質的研究の現場でAIをどのように活用できるかを、具体的な使い方とともに考える。">質的研究の現場でAIをどのように活用できるかを、具体的な使い方とともに考える。</span>
-</div>
-<div class="signal-item">
-<strong data-bilingual="" data-en="Collaboration and Boundaries" data-ja="協働と境界">協働と境界</strong>
-<span data-bilingual="" data-en="Consider where AI can assist and where human judgment should remain central." data-ja="AIに委ねる部分と、人が判断し続ける部分の境界を丁寧に見極める。">AIに委ねる部分と、人が判断し続ける部分の境界を丁寧に見極める。</span>
-</div>
-</div>
-</div></details></div>
-</div>
-</section>
-<section class="page-section">
-<div class="container">
 <div class="section-panel" id="members">
 <div class="section-heading">
 <h2 data-bilingual="" data-en="Members" data-ja="メンバー">メンバー</h2>
@@ -242,11 +236,9 @@ This site aims to become more than an announcement page: a place where qualitati
 <div class="section-heading">
 <h2 data-bilingual="" data-en="Contact" data-ja="お問い合わせ">お問い合わせ</h2>
 </div>
-<div class="contact-form-shell">
-<h3 data-bilingual="" data-en="Contact form" data-ja="お問い合わせフォーム">お問い合わせフォーム</h3>
-<p data-bilingual="" data-en="For workshop or training requests, questions about our research, collaboration, or corrections to this site, please use the form below. We will reply to the email address you enter." data-ja="講習会・研修のご依頼、研究についてのご質問、共同研究のご相談、サイトの内容への訂正やご意見は、下のフォームからお寄せください。ご入力いただいたメールアドレスにご連絡します。">講習会・研修のご依頼、研究についてのご質問、共同研究のご相談、サイトの内容への訂正やご意見は、下のフォームからお寄せください。ご入力いただいたメールアドレスにご連絡します。</p>
-<div class="contact-form-frame"><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdhIVuPwF8vNkgLbdL26EpNcEVokmeYoXH4ME0bqhOIe6wMoA/viewform?embedded=true" title="お問い合わせフォーム（Google フォーム）" loading="lazy">読み込んでいます…</iframe></div>
-<p class="contact-form-alt"><a href="https://docs.google.com/forms/d/e/1FAIpQLSdhIVuPwF8vNkgLbdL26EpNcEVokmeYoXH4ME0bqhOIe6wMoA/viewform" target="_blank" rel="noopener" data-bilingual="" data-en="Open the form in a new tab ↗" data-ja="フォームを新しいタブで開く ↗">フォームを新しいタブで開く ↗</a></p>
+<div class="contact-link-block">
+<p data-bilingual="" data-en="For workshop or training requests, questions about our research, collaboration, or corrections to this site, please use the Google Form. We will reply to the email address you enter." data-ja="講習会・研修のご依頼、研究についてのご質問、共同研究のご相談、サイトの内容への訂正やご意見は、Googleフォームからお寄せください。ご入力いただいたメールアドレスにご連絡します。">講習会・研修のご依頼、研究についてのご質問、共同研究のご相談、サイトの内容への訂正やご意見は、Googleフォームからお寄せください。ご入力いただいたメールアドレスにご連絡します。</p>
+<a class="btn btn-primary contact-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdhIVuPwF8vNkgLbdL26EpNcEVokmeYoXH4ME0bqhOIe6wMoA/viewform" target="_blank" rel="noopener"><span data-bilingual="" data-en="Open the contact form" data-ja="お問い合わせフォームを開く">お問い合わせフォームを開く</span>{% include external.html %}</a>
 </div>
 <div class="split-grid">
 <div class="list-shell glass-card">
@@ -263,7 +255,7 @@ This site aims to become more than an announcement page: a place where qualitati
 </ul>
 </div>
 </div>
-<div class="reader-contact"><a href="https://github.com/xuehaisheng/ai-qualitative-research/issues/new" rel="noopener" target="_blank" data-bilingual data-ja="訂正・ご意見（GitHub）" data-en="Corrections and feedback (GitHub)">訂正・ご意見（GitHub）</a><a href="{{ '/feed.xml' | relative_url }}" data-bilingual data-ja="更新情報（RSS）" data-en="Updates (RSS)">更新情報（RSS）</a></div></div>
+<div class="reader-contact"><a href="https://github.com/xuehaisheng/ai-qualitative-research/issues/new" rel="noopener" target="_blank" data-bilingual data-ja="訂正・ご意見（GitHub）" data-en="Corrections and feedback (GitHub)">訂正・ご意見（GitHub）</a></div></div>
 </div>
 </section>
 </main>

@@ -43,7 +43,7 @@ permalink: /papers/
 <div class="paper-tags">{% for tag in paper.themes %}<button type="button" class="tag" data-tag="{{ tag | escape }}" aria-pressed="false">{{ tag }}</button>{% endfor %}</div>
 <p class="paper-summary">{{ paper.summary }}</p>
 <p class="paper-ref">{{ paper.apa }}{% if paper.doi != '' %} <a href="{{ paper.doi }}" target="_blank" rel="noopener">{{ paper.doi }}</a>{% endif %}</p>
-<div class="paper-actions">{% if paper.policy_url %}<a href="{{ paper.policy_url }}" target="_blank" rel="noopener">公式のAI利用方針</a>{% endif %}<button class="reader-button" type="button" data-paper-action="copy" data-paper-id="{{ paper.id }}">引用をコピー</button><button class="reader-button" type="button" data-paper-action="link" data-paper-id="{{ paper.id }}">リンクをコピー</button><button class="reader-button" type="button" data-paper-action="ris" data-paper-id="{{ paper.id }}">RIS</button><button class="reader-button" type="button" data-paper-action="bib" data-paper-id="{{ paper.id }}">BibTeX</button></div>
+<div class="paper-actions">{% if paper.doi != '' %}<a class="paper-fulltext" href="{{ paper.doi }}" target="_blank" rel="noopener">本文を読む{% include external.html %}</a>{% endif %}{% if paper.policy_url %}<a href="{{ paper.policy_url }}" target="_blank" rel="noopener">公式のAI利用方針</a>{% endif %}<button class="reader-button" type="button" data-paper-action="copy" data-paper-id="{{ paper.id }}">引用をコピー</button><button class="reader-button" type="button" data-paper-action="ris" data-paper-id="{{ paper.id }}">RIS</button><button class="reader-button" type="button" data-paper-action="bib" data-paper-id="{{ paper.id }}">BibTeX</button></div>
 </article>
 {% endfor %}</div></div></section>
 {% endfor %}</main>

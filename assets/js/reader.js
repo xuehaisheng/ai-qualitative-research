@@ -119,7 +119,6 @@
     document.querySelectorAll('[data-paper-action]').forEach(button => button.addEventListener('click', () => {
       const p = byId.get(button.dataset.paperId);
       if (button.dataset.paperAction === 'copy') copyText(p.apa + (p.doi ? ' ' + p.doi : ''), button);
-      if (button.dataset.paperAction === 'link') copyText(`${location.origin}${location.pathname}#${p.id}`, button);
       if (button.dataset.paperAction === 'ris') download(`${p.id}.ris`, ris(p), 'application/x-research-info-systems;charset=utf-8');
       if (button.dataset.paperAction === 'bib') download(`${p.id}.bib`, bibtex(p), 'application/x-bibtex;charset=utf-8');
     }));
