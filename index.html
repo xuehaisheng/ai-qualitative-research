@@ -250,10 +250,12 @@ This site aims to become more than an announcement page: a place where qualitati
 .home-page .shelf-track > .reader-note p { margin-bottom: 16px; }
 .home-page .shelf-track > .card h3 { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5; overflow: hidden; font-size: 1rem !important; line-height: 1.55 !important; }
 .home-page .shelf-track > .card p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 7; overflow: hidden; font-size: .88rem; line-height: 1.8; }
-.card-title-link { color: inherit; text-decoration: none; }
+.card-title-link { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: rgba(17,17,17,.45); }
 .card-title-link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
-.card-title-link:hover, .card-title-link:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
-.home-page .shelf-track > .lit-preview-card p { -webkit-line-clamp: 10; margin-bottom: 0; }
+.card-title-link:hover, .card-title-link:focus-visible { text-decoration-thickness: 2px; text-decoration-color: #111; }
+/* Paper cards: fixed height; the summary takes whatever space the title leaves (line count set by script). */
+.home-page .shelf-track > .lit-preview-card { display: flex; flex-direction: column; height: var(--card-h, 440px); }
+.home-page .shelf-track > .lit-preview-card p { flex: none; margin-bottom: 0; }
 .shelf-viewport:focus-visible { outline: 2px solid #111; outline-offset: 3px; }
 /* Touch devices: the browser's own scrolling (runs off the main thread, not throttled in Low Power Mode). */
 .shelf-ready.shelf-native .shelf-viewport { overflow-x: auto; overflow-y: hidden; cursor: auto; scroll-snap-type: x mandatory; scroll-padding-inline: calc(var(--peek) + var(--gap)); scrollbar-width: none; -webkit-overflow-scrolling: touch; }
@@ -315,7 +317,25 @@ SOFTWARE.
       shelf.style.setProperty('--card-w', card + 'px');
       shelf.style.setProperty('--gap', geo.gap + 'px');
       shelf.style.setProperty('--peek', geo.peek + 'px');
+      shelf.style.setProperty('--card-h', Math.round(Math.min(480, Math.max(400, card * 1.35))) + 'px');
+      fitSummaries();
     }
+    // Show as many summary lines as fit under the title, ending with an ellipsis.
+    function fitCard(card) {
+      const p = card.querySelector('p');
+      if (!p) return;
+      const lh = parseFloat(getComputedStyle(p).lineHeight) || 24;
+      const room = card.clientHeight - parseFloat(getComputedStyle(card).paddingBottom) - p.offsetTop;
+      const lines = Math.max(2, Math.floor((room + 2) / lh));
+      p.style.webkitLineClamp = String(lines);
+      p.style.maxHeight = lines * lh + 'px';
+    }
+    function fitSummaries() { shelf.querySelectorAll('.lit-preview-card').forEach(fitCard); }
+    // Titles change height when fonts load or the language switches; refit that card.
+    const titleWatch = new ResizeObserver(entries => entries.forEach(e => fitCard(e.target.closest('.lit-preview-card'))));
+    function watchTitles() { shelf.querySelectorAll('.lit-preview-card h3').forEach(h => titleWatch.observe(h)); }
+    watchTitles();
+    if (document.fonts) document.fonts.ready.then(fitSummaries);
     layout();
     if (touch.matches) { nativeShelf(); return; }
     // Touch: native scroll-snap, with copies on both sides so it never reaches an end.
@@ -331,6 +351,7 @@ SOFTWARE.
       });
       track.prepend(...copy()); track.append(...copy());
       const all = [...track.children];
+      watchTitles(); fitSummaries();
       const pad = () => geo.peek + geo.gap;
       const step = () => all[1].offsetLeft - all[0].offsetLeft;
       const home = () => all[n].offsetLeft - pad();
