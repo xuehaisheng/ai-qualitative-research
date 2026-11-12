@@ -231,20 +231,25 @@ This site aims to become more than an announcement page: a place where qualitati
 
 <style>
 
-/* Masthead: the header's own title starts large over the hero and shrinks into place as the page scrolls. */
+/* Masthead: at the top, the big title sits on the same line as the navigation, inside one box with the tagline.
+   Scrolling shrinks it into the header. The title is drawn at full size and scaled down (never up), so it stays sharp. */
 .masthead-on .site-header .header-shell { overflow: visible !important; }
-.masthead-on .site-header .brand { position: relative; z-index: 2; }
-.masthead-on .site-header .brand-copy strong { display: inline-block; transform-origin: left center; font-weight: 800 !important; letter-spacing: -.03em !important; }
+.masthead-on .site-header .brand { position: relative; z-index: 2; align-self: stretch; display: flex !important; align-items: center; }
+.masthead-on .site-header .brand-copy strong { font-weight: 800 !important; letter-spacing: -.03em !important; white-space: nowrap; }
+.masthead-on:not(.masthead-docked):not(.mh-measure) .site-header .brand-copy strong { position: absolute; left: 0; top: 50%; font-size: var(--mh-size) !important; line-height: 1.2; transform-origin: left center; transform: translate(0, calc(-50% + var(--mh-y))); }
+.masthead-on.home-page .hero { margin-top: calc(-1 * var(--mh-header, 72px)) !important; padding-top: 14px !important; }
 .masthead-on .hero-main h1 { opacity: 0; }
 .masthead-on .site-header { border-bottom-color: transparent !important; }
 .masthead-on .site-header::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--reader-line); opacity: 0; pointer-events: none; }
 .masthead-docked .site-header::after { opacity: 1; }
-/* Where the browser supports scroll-driven animations, the shrink runs on the compositor (smooth even in Low Power Mode). */
-.masthead-sda .site-header .brand-copy strong { animation: mh-brand linear both; animation-timeline: scroll(root); animation-range: 0px var(--mh-dist); }
-.masthead-sda .hero .tagline { animation: mh-fade linear both; animation-timeline: scroll(root); animation-range: 0px calc(var(--mh-dist) * .6); }
-.masthead-sda .site-header::after { animation: mh-show linear both; animation-timeline: scroll(root); animation-range: calc(var(--mh-line) - 2px) var(--mh-line); }
-.mh-measure .site-header .brand-copy strong { animation: none !important; transform: none !important; }
-@keyframes mh-brand { from { transform: translate(var(--mh-x), var(--mh-y)) scale(var(--mh-s)); } to { transform: none; } }
+.masthead-on:not(.masthead-docked):not(.mh-measure) .site-header .desktop-nav, .masthead-on:not(.masthead-docked):not(.mh-measure) .site-header .header-tools { transform: translateY(var(--mh-y)); }
+/* Where supported, the shrink is a scroll-driven animation that runs with the scroll itself (smooth even in Low Power Mode). */
+.masthead-sda:not(.masthead-docked) .site-header .brand-copy strong { animation: mh-brand linear both; animation-timeline: scroll(root); animation-range: 0px var(--mh-dist); }
+.masthead-sda:not(.masthead-docked) .site-header .desktop-nav, .masthead-sda:not(.masthead-docked) .site-header .header-tools { animation: mh-nav linear both; animation-timeline: scroll(root); animation-range: 0px var(--mh-dist); }
+.masthead-sda .hero .tagline { animation: mh-fade linear both; animation-timeline: scroll(root); animation-range: 0px calc(var(--mh-dist) * .7); }
+.masthead-sda .site-header::after { animation: mh-show linear both; animation-timeline: scroll(root); animation-range: calc(var(--mh-dist) - 2px) var(--mh-dist); }
+@keyframes mh-brand { from { transform: translate(0, calc(-50% + var(--mh-y))) scale(1); } to { transform: translate(0, -50%) scale(var(--mh-s)); } }
+@keyframes mh-nav { from { transform: translateY(var(--mh-y)); } to { transform: none; } }
 @keyframes mh-fade { to { opacity: 0; } }
 @keyframes mh-show { from { opacity: 0; } to { opacity: 1; } }
 
@@ -472,39 +477,50 @@ SOFTWARE.
 (() => {
   const h1 = document.querySelector('.hero-main h1');
   const sub = document.querySelector('.hero .tagline');
+  const header = document.querySelector('.site-header');
   const brand = document.querySelector('.site-header .brand-copy strong');
-  if (!h1 || !brand) return;
+  const shell = document.querySelector('.hero-shell');
+  const movers = [...document.querySelectorAll('.site-header .desktop-nav, .site-header .header-tools')];
+  if (!h1 || !brand || !header) return;
   const body = document.body, root = document.documentElement.style;
   const sda = window.CSS && CSS.supports('animation-timeline: scroll()');
   body.classList.add('masthead-on');
-  let dist = 1, line = 1, big = 1, dx = 0, queued = false;
+  let dist = 1, small = 1, size = 1, dy = 0, queued = false;
   function measure() {
-    body.classList.add('mh-measure'); brand.style.transform = '';
-    const a = h1.getBoundingClientRect(), b = brand.getBoundingClientRect();
-    big = parseFloat(getComputedStyle(h1).fontSize) / parseFloat(getComputedStyle(brand).fontSize);
-    big = Math.min(big, a.width / b.width); // never wider than the hero column (e.g. English on a phone)
-    dx = a.left - b.left;
-    // Scroll distance over which the hero title's centre travels up to the header title's centre.
-    dist = Math.max(1, (a.top + scrollY + a.height / 2) - (b.top + b.height / 2));
+    body.classList.add('mh-measure');
+    brand.style.transform = ''; movers.forEach(m => m.style.transform = '');
+    root.setProperty('--mh-header', header.offsetHeight + 'px');
+    const b = brand.getBoundingClientRect();
+    small = parseFloat(getComputedStyle(brand).fontSize);
+    size = parseFloat(getComputedStyle(h1).fontSize);
+    // Keep the big title clear of the navigation on narrow screens.
+    const tools = movers.map(m => m.getBoundingClientRect()).filter(r => r.width).map(r => r.left);
+    const room = (tools.length ? Math.min(...tools) : innerWidth) - b.left - 16;
+    size = Math.max(small, Math.min(size, small * room / b.width));
+    const a = h1.getBoundingClientRect();
+    dy = (a.top + scrollY + a.height / 2) - (b.top + b.height / 2);
+    // Shrink while the box's bottom line rises to the header.
+    dist = Math.max(60, shell ? shell.getBoundingClientRect().bottom + scrollY - header.getBoundingClientRect().bottom : 120);
+    root.setProperty('--mh-size', size + 'px');
+    root.setProperty('--mh-y', dy + 'px');
+    root.setProperty('--mh-s', String(small / size));
     root.setProperty('--mh-dist', dist + 'px');
-    root.setProperty('--mh-x', dx + 'px');
-    root.setProperty('--mh-y', dist + 'px');
-    root.setProperty('--mh-s', String(big));
-    // The hero's bottom line is the bottom of the big box; the header line takes over when it reaches the header.
-    const shell = document.querySelector('.hero-shell'), header = document.querySelector('.site-header');
-    line = shell ? Math.max(dist, shell.getBoundingClientRect().bottom + scrollY - header.getBoundingClientRect().bottom) : dist;
-    root.setProperty('--mh-line', line + 'px');
     body.classList.remove('mh-measure');
+    // Exact end scale from the two rendered widths, so the hand-over to the docked title does not jump.
+    const bigWidth = brand.offsetWidth;
+    if (bigWidth) { small = size * b.width / bigWidth; root.setProperty('--mh-s', String(b.width / bigWidth)); }
     if (sda) body.classList.add('masthead-sda');
     update();
   }
   function update() {
     queued = false;
-    const p = Math.min(1, Math.max(0, scrollY / dist)), q = 1 - p;
-    body.classList.toggle('masthead-docked', scrollY >= line);
-    if (sda) return;
-    brand.style.transform = q ? `translate(${dx * q}px, ${dist * q}px) scale(${1 + (big - 1) * q})` : '';
-    if (sub) sub.style.opacity = String(Math.max(0, 1 - p * 1.6));
+    const docked = scrollY >= dist;
+    body.classList.toggle('masthead-docked', docked);
+    if (sda || docked) { brand.style.transform = ''; movers.forEach(m => m.style.transform = ''); if (!sda && sub) sub.style.opacity = '0'; return; }
+    const p = Math.max(0, scrollY / dist), q = 1 - p;
+    brand.style.transform = `translate(0, calc(-50% + ${dy * q}px)) scale(${q + p * small / size})`;
+    movers.forEach(m => m.style.transform = `translateY(${dy * q}px)`);
+    if (sub) sub.style.opacity = String(Math.max(0, 1 - p / .7));
   }
   addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, {passive: true});
   addEventListener('resize', measure);
