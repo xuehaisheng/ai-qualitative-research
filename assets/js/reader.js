@@ -237,7 +237,6 @@
     row.querySelector('[data-share-to="x"]').addEventListener('click', event => {
       event.currentTarget.href = 'https://x.com/intent/post?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title());
     });
-    row.querySelector('[data-share-to="copy"]').addEventListener('click', () => copy(L('リンクをコピーしました。', 'Link copied.')));
     row.querySelector('[data-share-to="instagram"]').addEventListener('click', async () => {
       if (navigator.share) { try { await navigator.share({ title: title(), url }); } catch (e) {} return; }
       copy(L('リンクをコピーしました。Instagramのストーリーやプロフィールに貼り付けてください。', 'Link copied. Paste it into an Instagram story or your profile.'));

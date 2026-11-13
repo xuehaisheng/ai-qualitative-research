@@ -280,10 +280,10 @@ button.tag[aria-pressed="true"] { background: #111; color: #fff; border-color: #
 html[lang="en"] .lang-ja { display: none !important; }
 html:not([lang="en"]) .lang-en { display: none !important; }
 
-/* Share buttons: text-only pills, filled black on hover/press. */
-.share-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 18px; }
+/* Share buttons: round logo buttons in the site's black and white, filled black on hover/press. */
+.share-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 18px; }
 .share-row.share-end { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--reader-line); }
-.share-label { font-size: .82rem; color: var(--reader-muted); margin-right: 4px; }
-.share-btn { display: inline-flex; align-items: center; height: 30px; padding: 0 13px; border: 1px solid #111; border-radius: 999px; background: #fff; color: #111 !important; font: inherit; font-size: .8rem; font-weight: 600; text-decoration: none !important; cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,.06); transition: background-color .15s, color .15s; }
+.share-btn { display: inline-grid; place-items: center; width: 38px; height: 38px; padding: 0; border: 1px solid #111; border-radius: 50%; background: #fff; color: #111 !important; cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,.08); transition: background-color .15s, color .15s; }
+.share-btn svg { width: 17px; height: 17px; display: block; }
 .share-btn:hover, .share-btn:focus-visible, .share-btn:active { background: #111; color: #fff !important; }
 .share-note { font-size: .78rem; color: var(--reader-muted); margin-left: 4px; }

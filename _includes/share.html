@@ -3,9 +3,7 @@
 {%- assign share_ja = include.title | default: page.title -%}
 {%- assign share_en = include.title_en | default: page.title_en | default: page.en | default: share_ja -%}
 <div class="share-row{% if include.class %} {{ include.class }}{% endif %}" data-share data-url="{{ share_url }}" data-title-ja="{{ share_ja | escape }}｜AI × 質的研究" data-title-en="{{ share_en | escape }} | AI × Qualitative Research">
-  <span class="share-label">{% include t.html ja=include.label en=include.label_en %}</span>
-  <a class="share-btn" data-share-to="x" href="https://x.com/intent/post?url={{ share_url | cgi_escape }}&amp;text={{ share_ja | cgi_escape }}" target="_blank" rel="noopener">X</a>
-  <a class="share-btn" data-share-to="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ share_url | cgi_escape }}" target="_blank" rel="noopener">Facebook</a>
-  <button class="share-btn" type="button" data-share-to="instagram">Instagram</button>
-  <button class="share-btn" type="button" data-share-to="copy">{% include t.html ja="リンクをコピー" en="Copy link" %}</button>
+  <a class="share-btn" data-share-to="x" href="https://x.com/intent/post?url={{ share_url | cgi_escape }}&amp;text={{ share_ja | cgi_escape }}" target="_blank" rel="noopener" aria-label="Xでシェア" data-aria-ja="Xでシェア" data-aria-en="Share on X">{% include icons/x.svg %}</a>
+  <a class="share-btn" data-share-to="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ share_url | cgi_escape }}" target="_blank" rel="noopener" aria-label="Facebookでシェア" data-aria-ja="Facebookでシェア" data-aria-en="Share on Facebook">{% include icons/facebook.svg %}</a>
+  <button class="share-btn" type="button" data-share-to="instagram" aria-label="Instagramでシェア" data-aria-ja="Instagramでシェア" data-aria-en="Share on Instagram">{% include icons/instagram.svg %}</button>
 </div>
