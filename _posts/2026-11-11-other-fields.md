@@ -11,8 +11,6 @@ summary_ja: "研究テーマが一夜で消えたNLP。反対の声は残るの�
 topic: "AIの理解"
 related_notes: ["qualitative-reactions", "predictions", "understanding"]
 updated: "2026-11-12 00:00:00 +0900"
-change_note: "出典リンクを追加。"
-change_note_en: "Added source links."
 sort_date: 20261112
 ---
 
