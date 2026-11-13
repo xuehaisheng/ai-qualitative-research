@@ -302,3 +302,8 @@ html:not([lang="en"]) .lang-en { display: none !important; }
   .site-footer .footer-block strong, .site-footer .footer-block span, .site-footer .footer-links, .site-footer .footer-share { grid-column: 1; grid-row: auto; justify-self: start; }
   .site-footer .footer-links { margin-top: 6px; }
 }
+.post-meta-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; }
+.post-meta-row .post-byline { margin: 0; }
+.share-row.share-top { margin: 0; gap: 8px; }
+.share-top .share-btn { width: 34px; height: 34px; }
+.share-top .share-btn svg { width: 15px; height: 15px; }
