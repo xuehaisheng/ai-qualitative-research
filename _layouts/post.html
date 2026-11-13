@@ -14,7 +14,7 @@ body_class: post-page
 </div></div></section>
 <section class="page-section"><div class="container">
 <div class="reading-layout">
-<article class="post-shell"><div class="post-body"><div class="lang-ja">{{ parts[0] }}</div>{% if parts[1] %}<div class="lang-en" lang="en">{{ parts[1] }}</div>{% endif %}</div>{% include share.html class="share-end" %}</article>
+<article class="post-shell"><div class="post-body"><div class="lang-ja">{{ parts[0] }}</div>{% if parts[1] %}<div class="lang-en" lang="en">{{ parts[1] }}</div>{% endif %}</div></article>
 <details class="reading-toc" data-reading-toc open><summary>{% include t.html ja="この記事の目次" en="Contents" %}</summary><ol></ol></details>
 </div>
 {% if page.wiki %}<aside class="post-terms"><h2>{% include t.html ja="この記事に出てくる用語" en="Terms in this note" %}</h2><p>{% for key in page.wiki %}{% assign term = site.wiki | where: 'key', key | first %}{% if term %}<a href="{{ term.url | relative_url }}">{% include t.html ja=term.title en=term.en %}</a>{% endif %}{% endfor %}</p></aside>{% endif %}

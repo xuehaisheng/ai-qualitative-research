@@ -110,6 +110,7 @@
         <nav class="footer-links" aria-label="Footer navigation">
           <a href="{{ '/articles/' | relative_url }}" data-bilingual data-ja="研究ノート" data-en="Notes">研究ノート</a><a href="{{ '/papers/' | relative_url }}" data-bilingual data-ja="文献" data-en="Literature">文献</a><a href="{{ '/literacy/' | relative_url }}" data-bilingual data-ja="AIリテラシー" data-en="AI Literacy">AIリテラシー</a><a href="{{ '/' | relative_url }}#contact" data-bilingual data-ja="お問い合わせ" data-en="Contact">お問い合わせ</a>
         </nav>
+        {% include share.html class="footer-share" %}
       </div>
       <small class="ai-credit" style="display:block;margin-top:16px;padding-top:12px;border-top:1px solid #dfe3de;font-size:0.75rem;line-height:1.8;color:#71766f">
         <span data-bilingual data-ja="協力（AI）：GPT（OpenAI）・Claude（Anthropic）" data-en="Contributors (AI): GPT (OpenAI) / Claude (Anthropic)">協力（AI）：GPT（OpenAI）・Claude（Anthropic）</span>

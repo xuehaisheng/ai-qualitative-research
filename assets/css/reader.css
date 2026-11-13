@@ -287,3 +287,18 @@ html:not([lang="en"]) .lang-en { display: none !important; }
 .share-btn svg { width: 17px; height: 17px; display: block; }
 .share-btn:hover, .share-btn:focus-visible, .share-btn:active { background: #111; color: #fff !important; }
 .share-note { font-size: .78rem; color: var(--reader-muted); margin-left: 4px; }
+
+/* Footer: two rows on both sides. Left: site name / tagline. Right (aligned right): links / share logos. */
+.site-footer .footer-shell { display: grid !important; grid-template-columns: 1fr auto; column-gap: 24px; row-gap: 12px; align-items: center !important; }
+.site-footer .footer-block { display: contents; }
+.site-footer .footer-block strong { grid-column: 1; grid-row: 1; }
+.site-footer .footer-block span { grid-column: 1; grid-row: 2; }
+.site-footer .footer-links { grid-column: 2; grid-row: 1; justify-self: end; }
+.site-footer .footer-share { grid-column: 2; grid-row: 2; justify-self: end; margin: 0; gap: 8px; }
+.footer-share .share-btn { width: 30px; height: 30px; box-shadow: none; }
+.footer-share .share-btn svg { width: 14px; height: 14px; }
+@media (max-width: 600px) {
+  .site-footer .footer-shell { grid-template-columns: 1fr; }
+  .site-footer .footer-block strong, .site-footer .footer-block span, .site-footer .footer-links, .site-footer .footer-share { grid-column: 1; grid-row: auto; justify-self: start; }
+  .site-footer .footer-links { margin-top: 6px; }
+}
