@@ -271,10 +271,15 @@ This site aims to become more than an announcement page: a place where qualitati
 .shelf-viewport { position: relative; min-width: 0; width: 100%; box-sizing: border-box; overflow-x: auto; padding: 14px 0 36px; scrollbar-width: thin; overscroll-behavior-x: contain; }
 .shelf-ready .shelf-viewport { overflow: hidden; cursor: grab; }
 /* Blur only the two side slices with two fixed overlays, instead of filtering every moving card. */
-.card-shelf::before, .card-shelf::after { content: none; position: absolute; top: 0; bottom: 0; z-index: 1; width: var(--peek, 48px); pointer-events: none; -webkit-backdrop-filter: blur(1.6px); backdrop-filter: blur(1.6px); }
+.card-shelf::before, .card-shelf::after { content: none; position: absolute; top: 0; bottom: 0; z-index: 1; width: calc(var(--peek, 48px) + 24px); pointer-events: none; -webkit-backdrop-filter: blur(1.6px); backdrop-filter: blur(1.6px); }
 .shelf-ready.card-shelf::before, .shelf-ready.card-shelf::after { content: ""; }
-.card-shelf::before { left: 0; background: linear-gradient(to right, rgba(255,255,255,.72), rgba(255,255,255,.38)); }
-.card-shelf::after { right: 0; background: linear-gradient(to left, rgba(255,255,255,.72), rgba(255,255,255,.38)); }
+/* The blur and the white wash both fade out toward the centre card and at the top and bottom, so the overlay has no visible edge. */
+.card-shelf::before { left: 0; background: linear-gradient(to right, rgba(255,255,255,.72), rgba(255,255,255,.38) calc(100% - 56px), rgba(255,255,255,0));
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 56px), transparent), linear-gradient(to bottom, transparent, #000 16px, #000 calc(100% - 40px), transparent);
+  -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, #000 calc(100% - 56px), transparent), linear-gradient(to bottom, transparent, #000 16px, #000 calc(100% - 40px), transparent); mask-composite: intersect; }
+.card-shelf::after { right: 0; background: linear-gradient(to left, rgba(255,255,255,.72), rgba(255,255,255,.38) calc(100% - 56px), rgba(255,255,255,0));
+  -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 56px), transparent), linear-gradient(to bottom, transparent, #000 16px, #000 calc(100% - 40px), transparent);
+  -webkit-mask-composite: source-in; mask-image: linear-gradient(to left, #000 calc(100% - 56px), transparent), linear-gradient(to bottom, transparent, #000 16px, #000 calc(100% - 40px), transparent); mask-composite: intersect; }
 .shelf-ready .shelf-viewport:active { cursor: grabbing; }
 .shelf-track { will-change: transform; display: flex; width: 100%; gap: 0; align-items: stretch; touch-action: pan-y pinch-zoom; }
 .home-page .shelf-track > .card { flex: 0 0 var(--card-w, calc((100% - 68px) / 4.4)); min-width: 0; margin: 0 var(--gap, 20px) 0 0; padding: 22px !important; border: 0 !important; background: #fff !important; border-radius: 0 !important; box-shadow: var(--reader-shadow) !important; outline-color: #111; transition: box-shadow .2s; }
