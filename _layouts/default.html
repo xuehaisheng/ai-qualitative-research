@@ -202,7 +202,32 @@
     }
 
     menuToggle.setAttribute("aria-expanded", "false");
-    mobilePanel.hidden = true;
+    hidePanel();
+  }
+
+  // Open and close the menu panel with a short fade and slide, not an instant jump.
+  const easeOut = "cubic-bezier(.25,.8,.25,1)";
+  function showPanel() {
+    mobilePanel.hidden = false;
+    if (mobilePanel.animate) {
+      mobilePanel.animate([{ opacity: 0, transform: "translateY(-8px)" }, { opacity: 1, transform: "none" }], { duration: 220, easing: easeOut });
+    }
+  }
+
+  function hidePanel() {
+    if (mobilePanel.hidden) {
+      return;
+    }
+    if (!mobilePanel.animate) {
+      mobilePanel.hidden = true;
+      return;
+    }
+    const out = mobilePanel.animate([{ opacity: 1, transform: "none" }, { opacity: 0, transform: "translateY(-6px)" }], { duration: 150, easing: "ease-in" });
+    out.onfinish = function () {
+      if (menuToggle.getAttribute("aria-expanded") !== "true") {
+        mobilePanel.hidden = true;
+      }
+    };
   }
 
   function toggleMenu() {
@@ -212,7 +237,11 @@
 
     const open = menuToggle.getAttribute("aria-expanded") === "true";
     menuToggle.setAttribute("aria-expanded", String(!open));
-    mobilePanel.hidden = open;
+    if (open) {
+      hidePanel();
+    } else {
+      showPanel();
+    }
   }
 
   langButtons.forEach((button) => {

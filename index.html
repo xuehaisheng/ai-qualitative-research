@@ -259,6 +259,10 @@ This site aims to become more than an announcement page: a place where qualitati
 .hero-share .share-btn svg { width: 15px; height: 15px; }
 @media (max-width: 600px) { .masthead-on.home-page .hero-main h1 { margin-bottom: 20px !important; } .home-page .hero-main { grid-template-columns: 1fr; } .home-page .hero-main .hero-share { justify-self: start; margin-top: 12px; } }
 .masthead-sda .site-header::after { animation: mh-show linear both; animation-timeline: scroll(root); animation-range: calc(var(--mh-dist) - 2px) var(--mh-dist); }
+/* Menu-open state. No !important on transform: an !important value would override the short open/close animation. */
+body.masthead-on.mh-menu:not(.masthead-docked):not(.mh-measure) .site-header .brand-copy strong { animation: none; transform: translate(0, -50%) scale(var(--mh-s)); }
+body.masthead-on.mh-menu:not(.masthead-docked):not(.mh-measure) .site-header .desktop-nav, body.masthead-on.mh-menu:not(.masthead-docked):not(.mh-measure) .site-header .header-tools { animation: none; transform: none; }
+.mh-menu .site-header::after { animation: none !important; opacity: 1; transition: opacity .24s; }
 @keyframes mh-brand { from { transform: translate(0, calc(-50% + var(--mh-y))) scale(1); } to { transform: translate(0, -50%) scale(var(--mh-s)); } }
 @keyframes mh-nav { from { transform: translateY(var(--mh-y)); } to { transform: none; } }
 @keyframes mh-fade { to { opacity: 0; } }
@@ -507,13 +511,13 @@ SOFTWARE.
   let lastWidth = 0;
   function measure() {
     lastWidth = innerWidth;
-    // Measure the plain layout: switch off the scroll-driven animation first, or its transform would be measured too
-    // and every second measurement would move the title (Safari re-measures often while its toolbar shrinks).
-    body.classList.remove('masthead-sda');
+    // Measure the plain layout. The title is measured with offset values, which ignore transforms, so the running
+    // scroll animation is neither measured nor interrupted.
     body.classList.add('mh-measure');
     brand.style.transform = ''; movers.forEach(m => m.style.transform = '');
     root.setProperty('--mh-header', header.offsetHeight + 'px');
-    const b = brand.getBoundingClientRect();
+    const op = brand.offsetParent ? brand.offsetParent.getBoundingClientRect() : {left: 0, top: 0};
+    const b = {left: op.left + brand.offsetLeft, top: op.top + brand.offsetTop, width: brand.offsetWidth, height: brand.offsetHeight};
     small = parseFloat(getComputedStyle(brand).fontSize);
     size = parseFloat(getComputedStyle(h1).fontSize);
     // Keep the big title clear of the navigation on narrow screens.
@@ -528,7 +532,9 @@ SOFTWARE.
     root.setProperty('--mh-y', dy + 'px');
     root.setProperty('--mh-s', String(small / size));
     root.setProperty('--mh-dist', dist + 'px');
-    body.classList.remove('mh-measure');
+    // Read the big title's width in its big state, even if the page is already scrolled past the shrink or the menu is open
+    // (otherwise the end scale would come out as 1 and the title would stop shrinking). update() restores the classes.
+    body.classList.remove('mh-measure', 'masthead-docked', 'mh-menu');
     // Exact end scale from the two rendered widths, so the hand-over to the docked title does not jump.
     const bigWidth = brand.offsetWidth;
     if (bigWidth) { small = size * b.width / bigWidth; root.setProperty('--mh-s', String(b.width / bigWidth)); }
@@ -537,8 +543,11 @@ SOFTWARE.
   }
   function update() {
     queued = false;
-    const docked = scrollY >= dist || (toggle && toggle.getAttribute('aria-expanded') === 'true');
+    const docked = scrollY >= dist;
+    // With the mobile menu open, the title takes its small end state (without a layout change, so it can animate).
+    const menu = !docked && !!toggle && toggle.getAttribute('aria-expanded') === 'true';
     body.classList.toggle('masthead-docked', docked);
+    body.classList.toggle('mh-menu', menu);
     if (sda || docked) { brand.style.transform = ''; movers.forEach(m => m.style.transform = ''); if (!sda && sub) sub.style.opacity = '0'; if (!sda && heroShare) heroShare.style.opacity = '0'; return; }
     const p = Math.max(0, scrollY / dist), q = 1 - p;
     brand.style.transform = `translate(0, calc(-50% + ${dy * q}px)) scale(${q + p * small / size})`;
@@ -548,7 +557,17 @@ SOFTWARE.
   }
   addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, {passive: true});
   // With the mobile menu open, show the compact header so the big title does not overlap the menu.
-  if (toggle) new MutationObserver(update).observe(toggle, {attributes: true, attributeFilter: ['aria-expanded']});
+  // Animate between the two states briefly instead of jumping.
+  function onMenu() {
+    const els = [brand, ...movers];
+    const from = els.map(e => getComputedStyle(e).transform);
+    update();
+    els.forEach((e, i) => {
+      const to = getComputedStyle(e).transform;
+      if (from[i] !== to && e.animate) e.animate([{transform: from[i]}, {transform: to}], {duration: 240, easing: 'cubic-bezier(.25,.8,.25,1)'});
+    });
+  }
+  if (toggle) new MutationObserver(onMenu).observe(toggle, {attributes: true, attributeFilter: ['aria-expanded']});
   // Re-measure only when the width changes. On iPhone the toolbar changes only the height while scrolling.
   addEventListener('resize', () => { if (innerWidth !== lastWidth) measure(); });
   document.addEventListener('site-lang', () => setTimeout(measure, 0));
