@@ -14,6 +14,7 @@ body_class: home-page
 <span class="typing-target">AI時代の質的研究を、人とAIの協働から考え直すためのプラットフォーム</span>
 <span aria-hidden="true" class="cursor"></span>
 </p>
+{% include share.html path="/" class="hero-share" %}
 </div></div></div></section>
 
 <section class="page-section">
@@ -224,6 +225,7 @@ This site aims to become more than an announcement page: a place where qualitati
 <p data-bilingual="" data-en="For workshop or training requests, questions about our research, collaboration, or corrections to this site, please use the Google Form. We will reply to the email address you enter." data-ja="講習会・研修のご依頼、研究についてのご質問、共同研究のご相談、サイトの内容への訂正やご意見は、Googleフォームからお寄せください。ご入力いただいたメールアドレスにご連絡します。">講習会・研修のご依頼、研究についてのご質問、共同研究のご相談、サイトの内容への訂正やご意見は、Googleフォームからお寄せください。ご入力いただいたメールアドレスにご連絡します。</p>
 <a class="btn btn-primary contact-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdhIVuPwF8vNkgLbdL26EpNcEVokmeYoXH4ME0bqhOIe6wMoA/viewform" target="_blank" rel="noopener"><span data-bilingual="" data-en="Open the contact form" data-ja="お問い合わせフォームを開く">お問い合わせフォームを開く</span>{% include external.html %}</a>
 </div>
+{% include share.html path="/" title="AI × 質的研究" title_en="AI × Qualitative Research" class="share-end" %}
 </div>
 </div>
 </section>
@@ -246,7 +248,14 @@ This site aims to become more than an announcement page: a place where qualitati
 /* Where supported, the shrink is a scroll-driven animation that runs with the scroll itself (smooth even in Low Power Mode). */
 .masthead-sda:not(.masthead-docked) .site-header .brand-copy strong { animation: mh-brand linear both; animation-timeline: scroll(root); animation-range: 0px var(--mh-dist); }
 .masthead-sda:not(.masthead-docked) .site-header .desktop-nav, .masthead-sda:not(.masthead-docked) .site-header .header-tools { animation: mh-nav linear both; animation-timeline: scroll(root); animation-range: 0px var(--mh-dist); }
-.masthead-sda .hero .tagline { animation: mh-fade linear both; animation-timeline: scroll(root); animation-range: 0px calc(var(--mh-dist) * .7); }
+.masthead-sda .hero .tagline, .masthead-sda .hero .hero-share { animation: mh-fade linear both; animation-timeline: scroll(root); animation-range: 0px calc(var(--mh-dist) * .7); }
+/* Hero: tagline on the left, share logos on the right of the same row; both fade out as the page scrolls. */
+.home-page .hero-main { display: grid; grid-template-columns: 1fr auto; column-gap: 24px; align-items: center; }
+.home-page .hero-main > h1 { grid-column: 1 / -1; }
+.home-page .hero-main .hero-share { margin: 0; justify-self: end; gap: 8px; }
+.hero-share .share-btn { width: 32px; height: 32px; }
+.hero-share .share-btn svg { width: 15px; height: 15px; }
+@media (max-width: 600px) { .home-page .hero-main { grid-template-columns: 1fr; } .home-page .hero-main .hero-share { justify-self: start; margin-top: 12px; } }
 .masthead-sda .site-header::after { animation: mh-show linear both; animation-timeline: scroll(root); animation-range: calc(var(--mh-dist) - 2px) var(--mh-dist); }
 @keyframes mh-brand { from { transform: translate(0, calc(-50% + var(--mh-y))) scale(1); } to { transform: translate(0, -50%) scale(var(--mh-s)); } }
 @keyframes mh-nav { from { transform: translateY(var(--mh-y)); } to { transform: none; } }
@@ -477,6 +486,7 @@ SOFTWARE.
 (() => {
   const h1 = document.querySelector('.hero-main h1');
   const sub = document.querySelector('.hero .tagline');
+  const heroShare = document.querySelector('.hero .hero-share');
   const header = document.querySelector('.site-header');
   const brand = document.querySelector('.site-header .brand-copy strong');
   const shell = document.querySelector('.hero-shell');
@@ -517,11 +527,12 @@ SOFTWARE.
     queued = false;
     const docked = scrollY >= dist || (toggle && toggle.getAttribute('aria-expanded') === 'true');
     body.classList.toggle('masthead-docked', docked);
-    if (sda || docked) { brand.style.transform = ''; movers.forEach(m => m.style.transform = ''); if (!sda && sub) sub.style.opacity = '0'; return; }
+    if (sda || docked) { brand.style.transform = ''; movers.forEach(m => m.style.transform = ''); if (!sda && sub) sub.style.opacity = '0'; if (!sda && heroShare) heroShare.style.opacity = '0'; return; }
     const p = Math.max(0, scrollY / dist), q = 1 - p;
     brand.style.transform = `translate(0, calc(-50% + ${dy * q}px)) scale(${q + p * small / size})`;
     movers.forEach(m => m.style.transform = `translateY(${dy * q}px)`);
     if (sub) sub.style.opacity = String(Math.max(0, 1 - p / .7));
+    if (heroShare) heroShare.style.opacity = String(Math.max(0, 1 - p / .7));
   }
   addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, {passive: true});
   // With the mobile menu open, show the compact header so the big title does not overlap the menu.
