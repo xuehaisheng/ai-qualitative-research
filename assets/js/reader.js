@@ -224,4 +224,29 @@
       if (panel && !panel.hidden) { panel.hidden = true; toggle.setAttribute('aria-expanded','false'); toggle.focus(); }
     }
   });
+
+  // Share buttons. X uses the title in the current language; Instagram has no web share link,
+  // so it opens the phone's share sheet (Instagram is listed there) or copies the link.
+  document.querySelectorAll('[data-share]').forEach(row => {
+    const url = row.dataset.url;
+    const title = () => document.documentElement.lang === 'en' ? row.dataset.titleEn : row.dataset.titleJa;
+    const copy = async message => {
+      try { await navigator.clipboard.writeText(url); } catch (e) { window.prompt(L('このリンクをコピーしてください', 'Copy this link'), url); return; }
+      shareNote(row, message);
+    };
+    row.querySelector('[data-share-to="x"]').addEventListener('click', event => {
+      event.currentTarget.href = 'https://x.com/intent/post?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title());
+    });
+    row.querySelector('[data-share-to="copy"]').addEventListener('click', () => copy(L('リンクをコピーしました。', 'Link copied.')));
+    row.querySelector('[data-share-to="instagram"]').addEventListener('click', async () => {
+      if (navigator.share) { try { await navigator.share({ title: title(), url }); } catch (e) {} return; }
+      copy(L('リンクをコピーしました。Instagramのストーリーやプロフィールに貼り付けてください。', 'Link copied. Paste it into an Instagram story or your profile.'));
+    });
+  });
+  function shareNote(row, message) {
+    let note = row.querySelector('.share-note');
+    if (!note) { note = document.createElement('span'); note.className = 'share-note'; note.setAttribute('role', 'status'); row.appendChild(note); }
+    note.textContent = message;
+    clearTimeout(note._t); note._t = setTimeout(() => { note.textContent = ''; }, 4000);
+  }
 })();
