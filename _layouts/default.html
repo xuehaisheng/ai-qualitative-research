@@ -22,7 +22,7 @@
   <meta name="description" content="{{ desc_ja | escape }}">
   <title>{{ title_ja | escape }}</title>
 {% include site-style.html %}
-  <link rel="stylesheet" href="{{ '/assets/css/reader.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/reader.css' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}">
   <link rel="alternate" type="application/rss+xml" title="AI × 質的研究" href="{{ '/feed.xml' | absolute_url }}">
   <link rel="icon" type="image/svg+xml" href="{{ '/assets/img/brand/ai-qualitative-mark.svg' | relative_url }}">
   <link rel="icon" type="image/x-icon" sizes="16x16 32x32 48x48 64x64" href="{{ '/assets/img/brand/favicon.ico' | relative_url }}">
@@ -32,7 +32,7 @@
   <meta property="og:description" content="{{ desc_ja | escape }}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
   <meta property="og:type" content="{% if page.key %}article{% else %}website{% endif %}">
-  <script defer src="{{ '/assets/js/reader.js' | relative_url }}"></script>
+  <script defer src="{{ '/assets/js/reader.js' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}"></script>
 </head>
 <body
   class="{{ page.body_class | default: layout.body_class | default: 'inner-page' }}"
