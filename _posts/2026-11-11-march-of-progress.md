@@ -12,8 +12,6 @@ topic: "AIの理解"
 related_notes: ["understanding", "ai-history", "qualitative-reactions"]
 sort_date: 20261112
 updated: "2026-11-12 00:00:00 +0900"
-change_note: "出典リンクを追加。"
-change_note_en: "Added source links."
 ---
 
 ちょっと余談から始めたい。「猿から人へ」の進化の図は、皆さんも一度は見たことがあると思う。左端の猿が少しずつ背筋を伸ばし、右端で人間になる。この図には、実は結構大きな誤解がある。そして、同じことがAIのモデルにも起きているように思う。

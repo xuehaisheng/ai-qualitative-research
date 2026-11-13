@@ -11,8 +11,6 @@ summary_ja: "流暢に話せることと、考えられることは同じなの�
 topic: "AIの理解"
 related_notes: ["qualitative-reactions", "march-of-progress", "ai-history"]
 updated: "2026-11-12 00:00:00 +0900"
-change_note: "講習会で紹介したほかの研究（説明と過程のずれ、測定されているときのふるまい、タイム・ホライズン、使うときの三つの癖）の要点を追加。出典リンクと写真・番組画像も追加。"
-change_note_en: "Added the main points of other studies introduced at the workshop (the gap between explanation and process, behavior when being measured, time horizons, three quirks in use). Also added source links, photos and program images."
 sort_date: 20261112
 ---
 

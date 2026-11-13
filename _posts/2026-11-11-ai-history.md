@@ -11,8 +11,6 @@ summary_ja: "ChatGPTもClaudeもGeminiも、2017年の一本の論文から始�
 topic: "AIの理解"
 related_notes: ["understanding", "other-fields", "march-of-progress"]
 updated: "2026-11-12 00:00:00 +0900"
-change_note: "余談「育児室」に出典（The Ezra Klein Show、2026年10月7日配信）を追加。愛着と守秘義務の節、出典リンクと写真・番組画像も追加。"
-change_note_en: "Added a source for the digression on the “nursery” (The Ezra Klein Show, October 7, 2026). Also added the section on attachment and confidentiality, source links, photos and program images."
 sort_date: 20261112
 ---
 

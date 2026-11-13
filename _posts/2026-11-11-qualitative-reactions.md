@@ -11,8 +11,6 @@ summary_ja: "「言葉が分かるなら、分析にも使えるはず」とい�
 topic: "質的研究"
 related_notes: ["meta-synthesis-with-ai", "understanding", "other-fields"]
 updated: "2026-11-12 00:00:00 +0900"
-change_note: "出典リンクの追加と、Qualitative PsychologyのAI利用方針の記述を修正。"
-change_note_en: "Added source links and corrected the description of Qualitative Psychology's AI policy."
 sort_date: 20261112
 ---
 

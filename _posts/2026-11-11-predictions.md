@@ -11,8 +11,6 @@ summary_ja: "ヒントンの「放射線科医を育てるのをやめるべき�
 topic: "AIの理解"
 related_notes: ["other-fields", "ai-history", "understanding"]
 updated: "2026-11-12 00:00:00 +0900"
-change_note: "アルトマンの発言の変化、ナビエ–ストークス方程式をめぐる争いの節を追加。出典リンクと写真・番組画像を追加。"
-change_note_en: "Added sections on Altman's shifting statements and the dispute over the Navier–Stokes equations. Added source links, photos and program images."
 sort_date: 20261112
 ---
 
