@@ -9,7 +9,7 @@ body_class: post-page
 <section class="page-hero"><div class="container"><div class="section-panel page-heading">
 <div class="eyebrow"><a href="{{ '/articles/' | relative_url }}">{% include t.html ja="研究ノート" en="Research notes" %}</a>{% if page.topic %} ／ {% include t.html ja=page.topic en=topic_en %}{% endif %}</div>
 <h1>{% include t.html ja=page.title en=page.title_en %}</h1>
-<p class="post-byline"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y.%m.%d' }}</time>{% if page.author %}　{% include t.html ja=page.author en=author_en %}{% endif %}{% if page.updated %}<span class="updated-label">{% include t.html ja="更新" en="Updated" %} {{ page.updated | date: '%Y.%m.%d' }}</span>{% endif %}</p>
+<div class="post-meta-row"><p class="post-byline"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y.%m.%d' }}</time>{% if page.author %}　{% include t.html ja=page.author en=author_en %}{% endif %}{% if page.updated %}<span class="updated-label">{% include t.html ja="更新" en="Updated" %} {{ page.updated | date: '%Y.%m.%d' }}</span>{% endif %}</p>{% include share.html class="share-top" %}</div>
 {% if page.change_note %}<p class="post-change">{% include t.html ja=page.change_note en=page.change_note_en %}</p>{% endif %}
 </div></div></section>
 <section class="page-section"><div class="container">
