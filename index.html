@@ -255,7 +255,7 @@ This site aims to become more than an announcement page: a place where qualitati
 .home-page .hero-main .hero-share { margin: 0; justify-self: end; gap: 8px; }
 .hero-share .share-btn { width: 32px; height: 32px; }
 .hero-share .share-btn svg { width: 15px; height: 15px; }
-@media (max-width: 600px) { .home-page .hero-main { grid-template-columns: 1fr; } .home-page .hero-main .hero-share { justify-self: start; margin-top: 12px; } }
+@media (max-width: 600px) { .masthead-on.home-page .hero-main h1 { margin-bottom: 20px !important; } .home-page .hero-main { grid-template-columns: 1fr; } .home-page .hero-main .hero-share { justify-self: start; margin-top: 12px; } }
 .masthead-sda .site-header::after { animation: mh-show linear both; animation-timeline: scroll(root); animation-range: calc(var(--mh-dist) - 2px) var(--mh-dist); }
 @keyframes mh-brand { from { transform: translate(0, calc(-50% + var(--mh-y))) scale(1); } to { transform: translate(0, -50%) scale(var(--mh-s)); } }
 @keyframes mh-nav { from { transform: translateY(var(--mh-y)); } to { transform: none; } }
@@ -497,7 +497,12 @@ SOFTWARE.
   const sda = window.CSS && CSS.supports('animation-timeline: scroll()');
   body.classList.add('masthead-on');
   let dist = 1, small = 1, size = 1, dy = 0, queued = false;
+  let lastWidth = 0;
   function measure() {
+    lastWidth = innerWidth;
+    // Measure the plain layout: switch off the scroll-driven animation first, or its transform would be measured too
+    // and every second measurement would move the title (Safari re-measures often while its toolbar shrinks).
+    body.classList.remove('masthead-sda');
     body.classList.add('mh-measure');
     brand.style.transform = ''; movers.forEach(m => m.style.transform = '');
     root.setProperty('--mh-header', header.offsetHeight + 'px');
@@ -537,7 +542,8 @@ SOFTWARE.
   addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, {passive: true});
   // With the mobile menu open, show the compact header so the big title does not overlap the menu.
   if (toggle) new MutationObserver(update).observe(toggle, {attributes: true, attributeFilter: ['aria-expanded']});
-  addEventListener('resize', measure);
+  // Re-measure only when the width changes. On iPhone the toolbar changes only the height while scrolling.
+  addEventListener('resize', () => { if (innerWidth !== lastWidth) measure(); });
   document.addEventListener('site-lang', () => setTimeout(measure, 0));
   if (document.fonts) document.fonts.ready.then(measure);
   measure();
