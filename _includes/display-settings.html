@@ -1,0 +1,16 @@
+<div class="display-panel" id="display-panel" role="group" aria-labelledby="display-title" hidden>
+  <p class="display-title" id="display-title" data-bilingual data-ja="表示設定" data-en="Display settings">表示設定</p>
+  <div class="display-row" role="group" aria-labelledby="display-size-label">
+    <span id="display-size-label" data-bilingual data-ja="文字の大きさ" data-en="Text size">文字の大きさ</span>
+    <span class="display-sizes">
+      <button type="button" data-text-size="" aria-pressed="true" data-bilingual data-ja="標準" data-en="Default">標準</button>
+      <button type="button" data-text-size="l" aria-pressed="false" data-bilingual data-ja="大" data-en="Large">大</button>
+      <button type="button" data-text-size="xl" aria-pressed="false" data-bilingual data-ja="特大" data-en="Larger">特大</button>
+    </span>
+  </div>
+  <label class="display-check"><input type="checkbox" data-display="contrast"><span data-bilingual data-ja="文字の色を濃くする" data-en="Darker text">文字の色を濃くする</span></label>
+  <label class="display-check"><input type="checkbox" data-display="underline"><span data-bilingual data-ja="リンクに下線を付ける" data-en="Underline links">リンクに下線を付ける</span></label>
+  <label class="display-check"><input type="checkbox" data-display="motion"><span data-bilingual data-ja="動きを減らす" data-en="Reduce motion">動きを減らす</span></label>
+  <label class="display-check"><input type="checkbox" data-display="cardnav"><span data-bilingual data-ja="カードを送るボタンを表示する" data-en="Show buttons to move the cards">カードを送るボタンを表示する</span></label>
+  <button class="display-reset" type="button" data-display-reset data-bilingual data-ja="標準に戻す" data-en="Reset">標準に戻す</button>
+</div>
