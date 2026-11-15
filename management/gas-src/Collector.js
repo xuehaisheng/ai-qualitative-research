@@ -33,4 +33,4 @@ function verifyCollector() {
   console.log('Collector sheet verified. Deploy as USER_DEPLOYING / ANYONE_ANONYMOUS.');
 }
 
-function pruneCollector_(sheet){var last=sheet.getLastRow();if(last<2)return;var cutoff=day_(new Date(Date.now()-AIQ_RETENTION*86400000)),dates=sheet.getRange(2,5,last-1,1).getValues(),count=0;while(count<dates.length&&String(dates[count][0])<cutoff)count++;if(count)sheet.deleteRows(2,count);}
+function pruneCollector_(sheet){var last=sheet.getLastRow();if(last<2)return;var cutoff=day_(new Date(Date.now()-AIQ_RETENTION*86400000)),dates=sheet.getRange(2,5,last-1,1).getValues(),count=0;while(count<dates.length&&(Object.prototype.toString.call(dates[count][0])==='[object Date]'?day_(dates[count][0]):String(dates[count][0]))<cutoff)count++;if(count)sheet.deleteRows(2,count);}
