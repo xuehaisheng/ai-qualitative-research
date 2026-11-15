@@ -1,153 +1,47 @@
 # AI × 質的研究
 
-新增内容管理后台：见 [management/README.md](management/README.md)。支持笔记、知识点、活动、成员、持久化草稿与阅读统计；正式统计需独立 Node 服务。
+面向 AI 与质性研究的日英双语网站。公开页面由 Jekyll 构建，通过 GitHub Pages 发布；管理后台采用 Google Apps Script，草稿保存到 Drive，访客记录保存到 Sheets。
 
-这是一个适合放到 GitHub Pages 的静态站点骨架，已经从“单一 HTML 文件”整理成了更适合长期维护的结构。
+## 编辑与发布
 
-你现在可以把它理解成三层：
+后台部署和初始化说明见 [management/README.md](management/README.md)。管理项目只允许站长本人访问；匿名统计使用另一个独立项目。
 
-- 页面骨架：`index.html`、`articles.html`、`_layouts/`
-- 样式和交互：`assets/css/main.css`、`assets/js/main.js`
-- 内容数据：`_data/` 和 `_posts/`
+- 后台可以新增、编辑、归档研究笔记、知识点、活动和成员。
+- 保存草稿不会改动公开网站；点击发布后更新 GitHub main，Pages 构建完成后生效。
+- 已发表文章的地址保持不变，发布前检查原文是否被其他地方改过。
+- 统计从接入后开始，未接入时不会显示演示数据。
 
-## 以后怎么更新
+## 内容位置
 
-### 1. 改首页文案和按钮
+| 内容 | 文件 |
+| --- | --- |
+| 研究笔记 | `_posts/YYYY-MM-DD-slug.md` |
+| 知识点 | `_wiki/slug.md` |
+| 活动 | `_data/events.json` |
+| 成员 | `_data/members.json` |
+| 文献 | `_data/papers.yml` 等现有文献文件 |
+| 统计接收地址 | `_data/analytics.json` |
+| 首页 | `index.html` |
+| 共用页面布局 | `_layouts/`、`_includes/` |
 
-编辑：
+活动与成员的日英字段共用同一份数据，首页与活动列表自动读取；首页仅展示三条过去记录。原有文献内容和文章正文不因后台部署自动改写。
 
-- `_data/site.yml`
+## 本地验证
 
-这个文件里放了：
-
-- 站点标题、副标题
-- 导航文字
-- 首页各区块文案
-- 联系方式区块
-
-如果你只想改“趣旨”“AIリテラシー”“联系方式”这些内容，主要改这个文件就够了。
-
-### 2. 改成员信息
-
-编辑：
-
-- `_data/members.yml`
-
-每个成员可以填写：
-
-- `name`
-- `role`
-- `affiliation`
-- `bio`
-- `profile_url`
-
-现在放的是示例内容，之后直接替换成真实信息即可。
-
-### 3. 改活动信息
-
-编辑：
-
-- `_data/events.yml`
-
-里面分成：
-
-- `upcoming`
-- `archive`
-
-你可以分别维护“即将举行”和“过往记录”。
-
-### 4. 发文章 / 研究笔记
-
-编辑或新增：
-
-- `_posts/YYYY-MM-DD-slug.md`
-
-例如：
-
-- `_posts/2026-04-10-first-note.md`
-
-文章头部格式参考现在这个示例文件：
-
-- `_posts/2026-04-02-site-launch.md`
-
-最少可以保留这些字段：
-
-```md
----
-title: "文章标题"
-title_en: "English title"
-summary_ja: "首页和列表页显示的摘要"
-summary_en: "English summary"
----
-```
-
-正文直接用 Markdown 写就可以。
-
-## GitHub Pages 怎么部署
-
-如果你准备把它放到 GitHub Pages，建议这样做：
-
-1. 新建一个 GitHub 仓库。
-2. 把这个目录里的文件全部上传上去。
-3. 到 GitHub 的 `Settings > Pages`。
-4. 选择 `Deploy from a branch`。
-5. 选择你的分支，一般是 `main`，目录选根目录 `/`。
-6. 保存后等待 GitHub 构建完成。
-
-### 关于 `baseurl`
-
-如果你的仓库名不是 `你的用户名.github.io`，而是普通项目仓库，比如：
-
-- `https://github.com/你的用户名/ai-qualitative-site`
-
-那就需要把 `_config.yml` 里的这两项改一下：
-
-```yml
-url: "https://你的用户名.github.io"
-baseurl: "/ai-qualitative-site"
-```
-
-如果你的仓库名就是 `你的用户名.github.io`，通常可以保持：
-
-```yml
-url: ""
-baseurl: ""
-```
-
-## 本地预览
-
-这个项目已经带了 `Gemfile`。如果你的电脑安装了 Ruby，可以在项目目录运行：
+前台需要 Ruby / Bundler：
 
 ```bash
 bundle install
 bundle exec jekyll serve
 ```
 
-然后打开本地地址预览。
+后台源码构建和测试需要本地 Node（仅用于开发，不需要租用 Node 主机）：
 
-如果你暂时不想折腾本地环境，也可以直接先传到 GitHub Pages 上看效果。
+```bash
+cd management
+npm ci
+npm run build:gas
+npm test
+```
 
-## 关于“后台联动”
-
-GitHub Pages 本身是静态托管，不提供真正的服务器后台，所以常见做法是：
-
-- 表单提交：接 Google Forms、Formspree、Basin 之类
-- 数据库型内容：接 Supabase、Firebase、Airtable
-- 研究资料管理：接 Notion、Google Sheets、Airtable
-- 成员或活动列表：先继续放在 `_data/*.yml`，最省事
-
-也就是说：
-
-- “文章更新”这件事，现在已经可以靠 Markdown 解决
-- “成员/活动/链接更新”这件事，现在已经可以靠 YAML 数据文件解决
-- “真正的后台”如果以后需要，再接外部服务就可以
-
-## 你下一步最适合做什么
-
-我建议你先做这三件事：
-
-1. 把 `_data/members.yml` 换成真实成员信息。
-2. 把 `_data/site.yml` 里的邮箱和链接换掉。
-3. 再写 1 到 2 篇 `_posts/` 里的真实文章。
-
-这样你就会很快从“网页原型”进入“能持续更新的网站”阶段。
+Apps Script 的直接部署文件已生成在 `management/apps-script/`。运行中的 Google 项目凭据、项目属性和草稿不应提交到公开仓库。
