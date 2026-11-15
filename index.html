@@ -271,6 +271,28 @@ body.masthead-on.mh-menu:not(.masthead-docked):not(.mh-measure) .site-header .de
 /* Full central cards with additional side previews. Embla v8 loop pattern. */
 #about .reader-entries { margin-top: 32px; }
 .home-page #ai-qualitative, .home-page #literacy { grid-template-columns: minmax(0,1fr); }
+/* Preserve the single shrinking masthead on phones; reserve space for its controls. */
+.home-page:not(.masthead-static) .site-header .header-shell { flex-wrap: nowrap !important; padding-block: 0 !important; gap: 12px; }
+.home-page:not(.masthead-static) .site-header .brand { flex-basis: auto; }
+.home-page.masthead-on .site-header .brand-copy strong { white-space: nowrap !important; font-size: var(--mh-compact-size, 1.18rem) !important; }
+.home-page.masthead-on:not(.masthead-docked):not(.mh-measure) .site-header .brand-copy strong { font-size: var(--mh-size) !important; }
+.masthead-stacked.masthead-sda:not(.masthead-docked) .site-header .brand-copy strong { animation-name: mh-brand-stacked; }
+@keyframes mh-brand-stacked {
+  from { transform: translate(0, calc(-50% + var(--mh-y))) scale(1); }
+  50% { transform: translate(0, calc(-50% + var(--mh-y) * .5)) scale(var(--mh-s)); }
+  to { transform: translate(0, -50%) scale(var(--mh-s)); }
+}
+.masthead-stacked.home-page .hero { padding-top: calc(var(--mh-header, 72px) + 14px) !important; }
+.masthead-stacked:not(.masthead-docked) .site-header :is(.desktop-nav,.header-tools) { animation: none !important; transform: none !important; }
+/* Reduced motion / very large text still show the title once, without animation. */
+.masthead-static .hero-main h1 { position: absolute; width: 1px; height: 1px; padding: 0; margin: 0 !important; overflow: hidden; clip-path: inset(50%); }
+@media (max-width:600px) {
+  .home-page:not(.masthead-static) .site-header .header-tools { gap: 6px !important; }
+  .home-page:not(.masthead-static) .site-header .lang-btn { min-width: 28px; padding-inline: 2px !important; }
+  .home-page:not(.masthead-static) .site-header .display-toggle { width: 32px; }
+  .home-page:not(.masthead-static) .site-header .menu-toggle { width: 40px; height: 44px; }
+}
+
 .card-shelf { position: relative; min-width: 0; margin: 0 -24px; container-type: inline-size; }
 .shelf-viewport { position: relative; min-width: 0; width: 100%; box-sizing: border-box; overflow-x: auto; padding: 14px 0 36px; scrollbar-width: thin; overscroll-behavior-x: contain; }
 .shelf-ready .shelf-viewport { overflow: hidden; cursor: grab; }
@@ -517,27 +539,39 @@ SOFTWARE.
     lastWidth = innerWidth;
     const calm = document.documentElement.hasAttribute('data-reduce-motion');
     const large = document.documentElement.hasAttribute('data-large-text');
-    const narrowHeader = innerWidth <= 600;
-    if (calm || large || narrowHeader) {
+    if (calm || large) {
+      body.classList.add('masthead-static');
+      body.classList.remove('masthead-stacked');
+      root.removeProperty('--mh-compact-size');
       body.classList.remove('masthead-on', 'masthead-sda', 'masthead-docked', 'mh-menu');
       brand.style.transform = ''; movers.forEach(m => m.style.transform = '');
       if (sub) sub.style.opacity = ''; if (heroShare) heroShare.style.opacity = '';
       return;
     }
+    body.classList.remove('masthead-static', 'masthead-stacked');
     body.classList.add('masthead-on');
+    root.removeProperty('--mh-compact-size');
     // Measure the plain layout. The title is measured with offset values, which ignore transforms, so the running
     // scroll animation is neither measured nor interrupted.
     body.classList.add('mh-measure');
     brand.style.transform = ''; movers.forEach(m => m.style.transform = '');
     root.setProperty('--mh-header', header.offsetHeight + 'px');
     const op = brand.offsetParent ? brand.offsetParent.getBoundingClientRect() : {left: 0, top: 0};
-    const b = {left: op.left + brand.offsetLeft, top: op.top + brand.offsetTop, width: brand.offsetWidth, height: brand.offsetHeight};
+    const left = op.left + brand.offsetLeft;
+    const tools = movers.map(m => m.getBoundingClientRect()).filter(r => r.width).map(r => r.left);
+    const room = Math.max(1, (tools.length ? Math.min(...tools) : innerWidth) - left - 12);
+    const naturalFont = parseFloat(getComputedStyle(brand).fontSize);
+    const naturalWidth = Math.max(brand.offsetWidth, brand.scrollWidth);
+    // Keep the original #38 animation. If the long English title cannot share a
+    // narrow row, give its large state the full hero width; the controls stay above.
+    const stacked = naturalWidth > room;
+    body.classList.toggle('masthead-stacked', stacked);
+    if (stacked) root.setProperty('--mh-compact-size', (naturalFont * room / naturalWidth) + 'px');
+    const b = {left, top: op.top + brand.offsetTop, width: brand.offsetWidth, height: brand.offsetHeight};
     small = parseFloat(getComputedStyle(brand).fontSize);
     size = parseFloat(getComputedStyle(h1).fontSize);
-    // Keep the big title clear of the navigation on narrow screens.
-    const tools = movers.map(m => m.getBoundingClientRect()).filter(r => r.width).map(r => r.left);
-    const room = (tools.length ? Math.min(...tools) : innerWidth) - b.left - 16;
-    size = Math.max(small, Math.min(size, small * room / b.width));
+    const titleRoom = stacked ? document.querySelector('.hero-main').clientWidth : room;
+    size = Math.max(small, Math.min(size, small * titleRoom / b.width));
     const a = h1.getBoundingClientRect();
     dy = (a.top + scrollY + a.height / 2) - (b.top + b.height / 2);
     // Shrink while the box's bottom line rises to the header.
@@ -565,7 +599,8 @@ SOFTWARE.
     body.classList.toggle('mh-menu', menu);
     if (sda || docked) { brand.style.transform = ''; movers.forEach(m => m.style.transform = ''); if (!sda && sub) sub.style.opacity = '0'; if (!sda && heroShare) heroShare.style.opacity = '0'; return; }
     const p = Math.max(0, scrollY / dist), q = 1 - p;
-    brand.style.transform = `translate(0, calc(-50% + ${dy * q}px)) scale(${q + p * small / size})`;
+    const scale = body.classList.contains('masthead-stacked') ? 1 - (1 - small / size) * Math.min(1, p * 2) : q + p * small / size;
+    brand.style.transform = `translate(0, calc(-50% + ${dy * q}px)) scale(${scale})`;
     movers.forEach(m => m.style.transform = `translateY(${dy * q}px)`);
     if (sub) sub.style.opacity = String(Math.max(0, 1 - p / .7));
     if (heroShare) heroShare.style.opacity = String(Math.max(0, 1 - p / .7));
