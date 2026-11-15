@@ -76,6 +76,7 @@
             <button class="lang-btn active" type="button" data-lang="ja" aria-pressed="true">JA</button>
             <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
           </div>
+          <button class="display-toggle" type="button" aria-expanded="false" aria-controls="display-panel" aria-label="表示設定" data-aria-ja="表示設定" data-aria-en="Display settings">{% include icons/display.svg %}</button>
           <button aria-label="メニューを開く" data-aria-ja="メニューを開く" data-aria-en="Open menu" class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-panel">
             <span></span>
             <span></span>
@@ -84,6 +85,7 @@
         </div>
       </div>
 
+{% include display-settings.html %}
       <div class="mobile-panel glass-panel" id="mobile-panel" hidden>
         <div class="mobile-panel-inner">
           <nav class="mobile-nav" aria-label="Mobile navigation">
