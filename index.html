@@ -257,7 +257,7 @@ This site aims to become more than an announcement page: a place where qualitati
 .home-page .hero-main .hero-share { margin: 0; justify-self: end; gap: 8px; }
 .hero-share .share-btn { width: 32px; height: 32px; }
 .hero-share .share-btn svg { width: 15px; height: 15px; }
-@media (max-width: 600px) { .masthead-on.home-page .hero-main h1 { margin-bottom: 20px !important; } .home-page .hero-main { grid-template-columns: 1fr; } .home-page .hero-main .hero-share { justify-self: start; margin-top: 12px; } }
+@media (max-width: 600px) { .home-page .hero-main { grid-template-columns: 1fr; } .home-page .hero-main .hero-share { justify-self: start; margin-top: 12px; } }
 .masthead-sda .site-header::after { animation: mh-show linear both; animation-timeline: scroll(root); animation-range: calc(var(--mh-dist) - 2px) var(--mh-dist); }
 /* Menu-open state. No !important on transform: an !important value would override the short open/close animation. */
 body.masthead-on.mh-menu:not(.masthead-docked):not(.mh-measure) .site-header .brand-copy strong { animation: none; transform: translate(0, -50%) scale(var(--mh-s)); }
@@ -287,6 +287,16 @@ body.masthead-on.mh-menu:not(.masthead-docked):not(.mh-measure) .site-header .de
 /* Reduced motion / very large text still show the title once, without animation. */
 .masthead-static .hero-main h1 { position: absolute; width: 1px; height: 1px; padding: 0; margin: 0 !important; overflow: hidden; clip-path: inset(50%); }
 @media (max-width:600px) {
+  /* Keep the control row and the hero compact without changing the desktop masthead. */
+  .home-page .site-header .header-shell { min-height: 56px !important; }
+  .masthead-stacked.home-page .hero { padding-top: calc(var(--mh-header, 56px) + 8px) !important; }
+  .home-page .hero { padding-bottom: 8px !important; }
+  .home-page .hero-main { padding-bottom: 24px !important; }
+  .masthead-on.home-page .hero-main h1 { height: var(--mh-title-height, auto); margin-bottom: 12px !important; }
+  .home-page .hero + .page-section { padding-top: 24px !important; }
+  .home-page #about { row-gap: 16px; }
+  .home-page #about .section-heading { margin-bottom: 0 !important; }
+  .home-page #about .section-heading h2 { margin-bottom: 0 !important; }
   .home-page .site-header .header-tools { gap: 2px !important; }
   .home-page .site-header .lang-btn { min-width: 24px; padding-inline: 2px !important; }
   .home-page .site-header .display-toggle { width: 28px; }
@@ -581,6 +591,10 @@ SOFTWARE.
     size = desiredSize;
     const titleRoom = stacked ? document.querySelector('.hero-main').clientWidth : room;
     size = Math.max(small, Math.min(size, small * titleRoom / b.width));
+    // The visible mobile title stays on one line. Reserve its actual height rather
+    // than the wrapped, invisible h1's height, so the tagline follows it closely.
+    if (mobile) root.setProperty('--mh-title-height', (size * 1.2) + 'px');
+    else root.removeProperty('--mh-title-height');
     const a = h1.getBoundingClientRect();
     dy = (a.top + scrollY + a.height / 2) - (b.top + b.height / 2);
     // Shrink while the box's bottom line rises to the header.
