@@ -97,7 +97,7 @@ What happens when you judge without knowing? Here is one extreme example.
 
 On April 23, 2020, there was a White House press briefing on the novel coronavirus. After a report on research showing that disinfectant kills the virus quickly, President Trump (as he then was) said, in effect, that it might be interesting to check whether something like injecting disinfectant into the body could be done. The next day, Reckitt Benckiser, maker of the disinfectants Lysol and Dettol, issued a statement saying that under no circumstance should its disinfectant products be put into the human body (Freking, 2020).
 
-<figure class="editorial-figure" id="trump-disinfectant">
+<figure class="editorial-figure" id="trump-disinfectant-en">
   <a href="https://www.youtube.com/watch?v=zicGxU5MfwE" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/zicGxU5MfwE/maxresdefault.jpg" alt="President Trump speaking about disinfectant at the press briefing on April 23, 2020. Video thumbnail from NBC New York." width="1280" height="720" loading="lazy" decoding="async"></a>
   <figcaption>The White House press briefing of April 23, 2020, where injecting disinfectant was mentioned.<span class="editorial-credit">Source: thumbnail of the official NBC New York video. <a href="https://www.youtube.com/watch?v=zicGxU5MfwE" target="_blank" rel="noopener">Video ↗</a> · <a href="https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-vice-president-pence-members-coronavirus-task-force-press-briefing-31/" target="_blank" rel="noopener">White House transcript ↗</a></span></figcaption>
 </figure>
