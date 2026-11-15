@@ -1,4 +1,3 @@
-  <style>
 :root {
   --bg-1: #f7f3ec;
   --bg-2: #f5f1e8;
@@ -1520,9 +1519,6 @@ body {
     margin-top: 56px !important;
   }
 }
-
-</style>
-<style>
 /* Blog: article list and article pages */
 .page-main .page-hero { padding: 96px 0 24px !important; }
 .page-heading h1 { max-width: 22ch; }
@@ -1637,4 +1633,3 @@ body {
   .wiki-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
   .wiki-side { position: static; }
 }
-</style>
