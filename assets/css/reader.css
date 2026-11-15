@@ -311,3 +311,7 @@ html:not([lang="en"]) .lang-en { display: none !important; }
 .share-row.share-top { margin: 0; gap: 8px; }
 .share-top .share-btn { width: 34px; height: 34px; }
 .share-top .share-btn svg { width: 15px; height: 15px; }
+
+/* JA / EN: a larger tap area. The buttons look the same. */
+.lang-btn { position: relative; }
+.lang-btn::after { content: ""; position: absolute; inset: -12px -3px; }

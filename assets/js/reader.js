@@ -54,13 +54,14 @@
     if ([...group.options].some(o => o.value === query.get('group'))) group.value = query.get('group');
     if ([...topic.options].some(o => o.value === query.get('topic'))) topic.value = query.get('topic');
     if ([...sort.options].some(o => o.value === query.get('sort'))) sort.value = query.get('sort');
+    const shown = p => matches([p.title, p.title_ja, p.apa, p.summary, p.summary_en, ...p.themes].join(' '), input.value)
+      && (!group.value || p.stance === group.value)
+      && (!topic.value || p.themes.includes(topic.value));
     function apply(updateURL = true) {
       let count = 0;
       items.forEach(item => {
         const p = byId.get(item.id);
-        const visible = matches([p.title, p.title_ja, p.apa, p.summary, p.summary_en, ...p.themes].join(' '), input.value)
-          && (!group.value || p.stance === group.value)
-          && (!topic.value || p.themes.includes(topic.value));
+        const visible = shown(p);
         item.hidden = !visible;
         if (visible) count++;
         item.querySelectorAll('[data-tag]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.tag === topic.value)));
@@ -110,9 +111,11 @@
     }
     function bibtex(p) {
       const escape = value => clean(value).replace(/\\/g, '\\textbackslash{}').replace(/[{}]/g, '\\$&');
+      // & % # stop LaTeX when left bare. Links are kept as they are.
+      const escapeText = value => escape(value).replace(/[&%#]/g, '\\$&');
       const b = p.bib;
       const fields = { title: b.title, author: b.authors.join(' and '), year: p.year, journal: b.journal, volume: b.volume, number: b.issue, pages: b.pages ? b.pages.replace(/–/g, '--') : '', doi: p.doi && p.doi.includes('doi.org/') ? p.doi.split('doi.org/')[1] : '', url: p.doi, note: p.apa };
-      return `@article{${p.id},\n${Object.entries(fields).filter(([,v]) => v).map(([k,v]) => `  ${k} = {${escape(v)}}`).join(',\n')}\n}\n`;
+      return `@article{${p.id},\n${Object.entries(fields).filter(([,v]) => v).map(([k,v]) => `  ${k} = {${k === 'url' || k === 'doi' ? escape(v) : escapeText(v)}}`).join(',\n')}\n}\n`;
     }
     [input, group, topic, sort].forEach(el => el.addEventListener(el === input ? 'input' : 'change', () => apply()));
     document.querySelectorAll('[data-reset-papers]').forEach(button => button.addEventListener('click', () => { input.value = ''; group.value = ''; topic.value = ''; sort.value = 'author'; apply(); input.focus(); }));
@@ -129,7 +132,9 @@
       download(`ai-qualitative-research.${isRIS ? 'ris' : 'bib'}`, visible.map(isRIS ? ris : bibtex).join('\n'), 'text/plain;charset=utf-8');
       toast(L('引用情報を書き出しました。', 'References exported.'));
     }));
-    if (location.hash && byId.has(location.hash.slice(1))) {
+    // A link to one paper must show that paper. Drop the filters from the address only if they would hide it.
+    const linked = location.hash && byId.get(location.hash.slice(1));
+    if (linked && !shown(linked)) {
       input.value = ''; group.value = ''; topic.value = '';
     }
     apply(false);

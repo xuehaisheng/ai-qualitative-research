@@ -1,5 +1,6 @@
 {%- assign fig_src = '/assets/img/figures/' | append: include.src | relative_url -%}
+{%- assign fig_size = site.data.figure_sizes[include.src] -%}
 <figure class="slide-fig">
-  <a href="{{ fig_src }}" target="_blank" rel="noopener"><img src="{{ fig_src }}" alt="{{ include.alt | default: include.cap | strip_html | escape }}" loading="lazy"></a>
+  <a href="{{ fig_src }}" target="_blank" rel="noopener"><img src="{{ fig_src }}" alt="{{ include.alt | default: include.cap | strip_html | escape }}"{% if fig_size %} width="{{ fig_size.w }}" height="{{ fig_size.h }}"{% endif %} loading="lazy"></a>
   {%- if include.cap %}<figcaption>{{ include.cap }}</figcaption>{% endif %}
 </figure>

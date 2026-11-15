@@ -1,0 +1,25 @@
+# Pixel sizes of the figures in assets/img/figures, read by _includes/figure.html.
+# With width and height on the image, the text below no longer jumps while the image loads.
+# A figure without an entry here still works; it just has no reserved space.
+"fig-attention-en.jpg": { w: 2400, h: 636 }
+"fig-attention.jpg": { w: 2400, h: 737 }
+"fig-chatgpt-stages-en.jpg": { w: 2400, h: 810 }
+"fig-chatgpt-stages.jpg": { w: 2400, h: 809 }
+"fig-depth-en.jpg": { w: 1500, h: 642 }
+"fig-depth.jpg": { w: 1500, h: 642 }
+"fig-labor-radar.jpg": { w: 1400, h: 1400 }
+"fig-march-of-progress-en.jpg": { w: 2400, h: 864 }
+"fig-march-of-progress.jpg": { w: 2400, h: 865 }
+"fig-nips-poster.jpg": { w: 1342, h: 748 }
+"fig-poster-results-en.jpg": { w: 2086, h: 1310 }
+"fig-poster-results.jpg": { w: 2086, h: 1376 }
+"fig-resolution-en.jpg": { w: 1500, h: 510 }
+"fig-resolution.jpg": { w: 1500, h: 509 }
+"fig-review-v2-en.jpg": { w: 1600, h: 818 }
+"fig-review-v2.jpg": { w: 1600, h: 818 }
+"fig-review-v3-en.jpg": { w: 1596, h: 690 }
+"fig-review-v3.jpg": { w: 1596, h: 818 }
+"fig-screening-sheet-en.jpg": { w: 1210, h: 578 }
+"fig-screening-sheet.jpg": { w: 1210, h: 578 }
+"fig-vector-plots-en.jpg": { w: 2088, h: 922 }
+"fig-vector-plots.jpg": { w: 2088, h: 922 }
