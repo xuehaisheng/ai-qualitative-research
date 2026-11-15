@@ -13,6 +13,8 @@
 {%- endif -%}
 {%- if page.title_en -%}
   {%- assign title_en = page.title_en | append: " | AI × Qualitative Research" -%}
+{%- elsif page.en -%}
+  {%- assign title_en = page.en | append: " | AI × Qualitative Research" -%}
 {%- else -%}
   {%- assign title_en = page.seo_title_en | default: title_ja -%}
 {%- endif -%}
