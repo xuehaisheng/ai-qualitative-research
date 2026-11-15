@@ -332,14 +332,6 @@ html[data-underline-links] .text-link { text-decoration: underline !important; t
 html[data-reduce-motion] { scroll-behavior: auto !important; }
 html[data-reduce-motion] *, html[data-reduce-motion] *::before, html[data-reduce-motion] *::after { transition-duration: .01ms !important; }
 
-/* Buttons to move the card rows on the home page. Shown only when the option is on. */
-.shelf-nav { display: none; justify-content: flex-end; gap: 10px; margin: -18px 0 0; }
-html[data-card-buttons] .shelf-nav { display: flex; }
-.shelf-nav-btn { display: inline-grid; place-items: center; width: 36px; height: 36px; padding: 0; border: 1px solid #111; border-radius: 50%; background: #fff; color: #111; cursor: pointer; }
-.shelf-nav-btn:hover, .shelf-nav-btn:focus-visible { background: #111; color: #fff; }
-.shelf-nav-btn .link-icon { margin: 0; }
-.shelf-nav-btn.is-prev .link-icon { transform: scaleX(-1); }
-
 /* Header space follows available width and the reader's font size. */
 .site-header > .container { container: site-header / inline-size; }
 .site-header .header-shell { gap: 18px; }
@@ -410,4 +402,40 @@ html[data-high-contrast] .card-shelf::before, html[data-high-contrast] .card-she
 html[data-reduce-transparency] .card-shelf::before, html[data-reduce-transparency] .card-shelf::after { content: none !important; }
 @media (forced-colors: active) {
   .menu-toggle span { background: ButtonText !important; forced-color-adjust: none; }
+}
+
+/* Display settings: a small button next to JA / EN, and its panel. Nothing here changes the page until an option is on. */
+.site-header > .container { position: relative; }
+.display-toggle { position: relative; display: inline-grid; place-items: center; width: 28px; height: 28px; padding: 0; border: 0; background: none; color: #111; cursor: pointer; }
+.display-toggle::after { content: ""; position: absolute; inset: -8px -4px; }
+.display-toggle svg { display: block; }
+.display-panel { position: absolute; right: 0; top: 100%; z-index: 40; width: min(300px, 100%); padding: 18px 20px 16px; border: 1px solid var(--reader-line); background: #fff; box-shadow: var(--reader-shadow-strong); color: var(--reader-ink); font-size: .86rem; line-height: 1.6; }
+.display-title { margin: 0 0 12px; font-size: .78rem; font-weight: 700; letter-spacing: .08em; }
+.display-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.display-sizes { display: inline-flex; border: 1px solid #111; }
+.display-sizes button { min-width: 44px; min-height: 32px; padding: 4px 10px; border: 0; border-left: 1px solid #111; background: #fff; color: #111; font: inherit; cursor: pointer; }
+.display-sizes button:first-child { border-left: 0; }
+.display-sizes button[aria-pressed="true"] { background: #111; color: #fff; }
+.display-check { display: flex; align-items: center; gap: 10px; min-height: 36px; cursor: pointer; }
+.display-check input { flex: none; width: 18px; height: 18px; margin: 0; accent-color: #111; }
+.display-reset { min-height: 28px; margin-top: 10px; padding: 0; border: 0; background: none; color: #111; font: inherit; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+
+/* Text size */
+html[data-text-size="l"] { font-size: 112.5%; }
+html[data-text-size="xl"] { font-size: 125%; }
+
+
+/* Let the settings panel reflow with enlarged text. */
+.display-toggle { flex: none; width: 44px; height: 44px; }
+.display-toggle::after { content: none; }
+.display-panel { width: min(24rem,100%); max-height: calc(100dvh - 1rem); overflow-y: auto; overflow-wrap: anywhere; }
+.display-row { flex-wrap: wrap; }
+.display-sizes { flex-wrap: wrap; }
+.display-sizes button { min-height: 44px; }
+.display-check { min-height: 44px; }
+html[data-large-text] .display-panel { position: static; margin-block: 8px; max-height: none; }
+@media (max-width:600px) {
+  .site-header .header-shell { flex-wrap: wrap; padding-block: 10px !important; gap: 4px; }
+  .site-header .brand { flex-basis: 100%; }
+  .site-header .brand-copy strong { white-space: normal !important; line-height: 1.35; }
 }
