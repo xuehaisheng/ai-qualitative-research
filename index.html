@@ -361,24 +361,7 @@ SOFTWARE.
     const viewport = shelf.querySelector('.shelf-viewport');
     if (typeof EmblaCarousel !== 'function') return;
     // Respect the system motion preference.
-    const calm = () => reduced.matches || document.documentElement.hasAttribute('data-reduce-motion');
-    // Optional card controls stay hidden in the default presentation.
-    let go = () => {};
-    const nav = document.createElement('div');
-    nav.className = 'shelf-nav';
-    [[-1, '前のカード', 'Previous card'], [1, '次のカード', 'Next card']].forEach(([direction, ja, en]) => {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'shelf-nav-btn' + (direction < 0 ? ' is-prev' : '');
-      button.setAttribute('aria-label', ja);
-      button.setAttribute('data-aria-ja', ja);
-      button.setAttribute('data-aria-en', en);
-      if (viewport.id) button.setAttribute('aria-controls', viewport.id);
-      button.innerHTML = '<svg class="link-icon" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><path d="M2.5 8h10M9 4.5 12.5 8 9 11.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-      button.addEventListener('click', () => go(direction));
-      nav.append(button);
-    });
-    shelf.after(nav);
+    const calm = () => document.documentElement.hasAttribute('data-reduce-motion');
     // Always n full cards plus a visible, blurred slice of the next card on each side.
     const geo = {full: 3, gap: 20, peek: 80};
     function layout() {
@@ -455,9 +438,8 @@ SOFTWARE.
         event.preventDefault();
         viewport.scrollBy({left: (event.key === 'ArrowLeft' ? -1 : 1) * step(), behavior: calm() ? 'auto' : 'smooth'});
       });
-      go = direction => viewport.scrollBy({left: direction * step(), behavior: calm() ? 'auto' : 'smooth'});
     }
-    const api = EmblaCarousel(viewport, {loop: true, align: () => geo.peek + geo.gap, startIndex: 0, dragThreshold: 5, duration: reduced.matches ? 0 : 22});
+    const api = EmblaCarousel(viewport, {loop: true, align: () => geo.peek + geo.gap, startIndex: 0, dragThreshold: 5, duration: calm() ? 0 : 22});
     let lastWidth = viewport.clientWidth;
     new ResizeObserver(() => {
       if (Math.abs(viewport.clientWidth - lastWidth) < 1) return;
@@ -476,7 +458,6 @@ SOFTWARE.
       const index = (api.selectedScrollSnap() + direction + cards.length) % cards.length;
       api.scrollTo(index,calm());
     }
-    go = move;
     function hover(direction,delay = 200) {
       cancelHover();
       if (!fine.matches || calm()) return;
@@ -510,7 +491,7 @@ SOFTWARE.
       const now = performance.now();
       if (Math.abs(event.deltaX)>1 && now-lastWheel>180) {move(event.deltaX<0?-1:1);lastWheel=now;}
     },{passive:false});
-    reduced.addEventListener('change',() => {cancelHover();api.reInit({duration:reduced.matches?0:25});});
+    document.addEventListener('site-display',() => {cancelHover();api.reInit({duration:calm()?0:22});});
     api.on('select',update).on('reInit',update);
     shelf.classList.add('shelf-ready');update();
   });
@@ -536,8 +517,8 @@ SOFTWARE.
     lastWidth = innerWidth;
     const calm = document.documentElement.hasAttribute('data-reduce-motion');
     const large = document.documentElement.hasAttribute('data-large-text');
-    const narrowEnglish = innerWidth <= 600 && document.documentElement.lang === 'en';
-    if (calm || large || narrowEnglish) {
+    const narrowHeader = innerWidth <= 600;
+    if (calm || large || narrowHeader) {
       body.classList.remove('masthead-on', 'masthead-sda', 'masthead-docked', 'mh-menu');
       brand.style.transform = ''; movers.forEach(m => m.style.transform = '');
       if (sub) sub.style.opacity = ''; if (heroShare) heroShare.style.opacity = '';
