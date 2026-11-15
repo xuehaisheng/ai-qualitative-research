@@ -110,9 +110,11 @@
     }
     function bibtex(p) {
       const escape = value => clean(value).replace(/\\/g, '\\textbackslash{}').replace(/[{}]/g, '\\$&');
+      // & % # stop LaTeX when left bare. Links are kept as they are.
+      const escapeText = value => escape(value).replace(/[&%#]/g, '\\$&');
       const b = p.bib;
       const fields = { title: b.title, author: b.authors.join(' and '), year: p.year, journal: b.journal, volume: b.volume, number: b.issue, pages: b.pages ? b.pages.replace(/–/g, '--') : '', doi: p.doi && p.doi.includes('doi.org/') ? p.doi.split('doi.org/')[1] : '', url: p.doi, note: p.apa };
-      return `@article{${p.id},\n${Object.entries(fields).filter(([,v]) => v).map(([k,v]) => `  ${k} = {${escape(v)}}`).join(',\n')}\n}\n`;
+      return `@article{${p.id},\n${Object.entries(fields).filter(([,v]) => v).map(([k,v]) => `  ${k} = {${k === 'url' || k === 'doi' ? escape(v) : escapeText(v)}}`).join(',\n')}\n}\n`;
     }
     [input, group, topic, sort].forEach(el => el.addEventListener(el === input ? 'input' : 'change', () => apply()));
     document.querySelectorAll('[data-reset-papers]').forEach(button => button.addEventListener('click', () => { input.value = ''; group.value = ''; topic.value = ''; sort.value = 'author'; apply(); input.focus(); }));
