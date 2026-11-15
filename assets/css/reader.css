@@ -316,26 +316,6 @@ html:not([lang="en"]) .lang-en { display: none !important; }
 .lang-btn { position: relative; }
 .lang-btn::after { content: ""; position: absolute; inset: -12px -3px; }
 
-/* Display settings: a small button next to JA / EN, and its panel. Nothing here changes the page until an option is on. */
-.site-header > .container { position: relative; }
-.display-toggle { position: relative; display: inline-grid; place-items: center; width: 28px; height: 28px; padding: 0; border: 0; background: none; color: #111; cursor: pointer; }
-.display-toggle::after { content: ""; position: absolute; inset: -8px -4px; }
-.display-toggle svg { display: block; }
-.display-panel { position: absolute; right: 0; top: 100%; z-index: 40; width: min(300px, 100%); padding: 18px 20px 16px; border: 1px solid var(--reader-line); background: #fff; box-shadow: var(--reader-shadow-strong); color: var(--reader-ink); font-size: .86rem; line-height: 1.6; }
-.display-title { margin: 0 0 12px; font-size: .78rem; font-weight: 700; letter-spacing: .08em; }
-.display-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
-.display-sizes { display: inline-flex; border: 1px solid #111; }
-.display-sizes button { min-width: 44px; min-height: 32px; padding: 4px 10px; border: 0; border-left: 1px solid #111; background: #fff; color: #111; font: inherit; cursor: pointer; }
-.display-sizes button:first-child { border-left: 0; }
-.display-sizes button[aria-pressed="true"] { background: #111; color: #fff; }
-.display-check { display: flex; align-items: center; gap: 10px; min-height: 36px; cursor: pointer; }
-.display-check input { flex: none; width: 18px; height: 18px; margin: 0; accent-color: #111; }
-.display-reset { min-height: 28px; margin-top: 10px; padding: 0; border: 0; background: none; color: #111; font: inherit; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
-
-/* Text size */
-html[data-text-size="l"] { font-size: 112.5%; }
-html[data-text-size="xl"] { font-size: 125%; }
-
 /* Darker text: every grey used for text reaches at least 4.5:1 on white. */
 html[data-high-contrast] { --minimal-muted: #4d4d4d; --reader-muted: #4d4d4d; --muted: #4d4d4d; --muted-soft: #595959; }
 html[data-high-contrast] :is(.card-meta, .entry-date, .eyebrow, .eyebrow a, .updated-label, .post-nav span, .topic-nav a span, .wiki-item-en, .view-all-count, .step-en) { color: #595959 !important; }
@@ -359,3 +339,75 @@ html[data-card-buttons] .shelf-nav { display: flex; }
 .shelf-nav-btn:hover, .shelf-nav-btn:focus-visible { background: #111; color: #fff; }
 .shelf-nav-btn .link-icon { margin: 0; }
 .shelf-nav-btn.is-prev .link-icon { transform: scaleX(-1); }
+
+/* Header space follows available width and the reader's font size. */
+.site-header > .container { container: site-header / inline-size; }
+.site-header .header-shell { gap: 18px; }
+.site-header .brand { flex: 1 1 auto; min-width: 0; }
+.site-header .brand-copy strong { overflow-wrap: anywhere; }
+.site-header .desktop-nav, .site-header .header-tools { flex: 0 0 auto; }
+.site-header .header-tools { margin-left: auto; }
+.site-header .lang-switch { flex: none; padding: 0; border: 0; background: none; gap: 0 !important; }
+.site-header .lang-btn { min-height: 44px; min-width: 34px; }
+.site-header .lang-btn::after { content: none; }
+.site-header .lang-btn:not(.active) { color: #737373 !important; }
+@container site-header (max-width: 66rem) {
+  .site-header .desktop-nav { display: none !important; }
+  .site-header .menu-toggle { display: flex !important; flex: none; }
+}
+@media (max-width: 360px) {
+  .site-header .header-shell { gap: 8px; }
+  .site-header .header-tools { gap: 4px !important; }
+}
+/* Reflow instead of clipping when text grows. */
+:where(.page-heading, .post-body, .paper-item, .wiki-main, .reader-note, .footer-shell) { min-width: 0; overflow-wrap: anywhere; }
+.section-heading.with-action, .home-page .section-heading.with-action { flex-wrap: wrap; }
+.view-all, .reader-link { white-space: normal; }
+html[data-large-text] .site-header { position: relative !important; }
+html[data-large-text] .site-header .brand-copy strong { white-space: normal !important; }
+html[data-large-text] .reader-entries, html[data-large-text] .reader-note-grid { grid-template-columns: minmax(0, 1fr); }
+html[data-large-text] .reading-layout { display: flex; flex-direction: column; }
+html[data-large-text] .reading-toc { position: static; max-height: none; width: 100%; }
+html[data-large-text] .home-page .shelf-track > .card { height: auto !important; min-height: var(--card-h, 400px); }
+html[data-large-text] .home-page .shelf-track > .card :is(h3, p) { display: block; -webkit-line-clamp: unset !important; max-height: none !important; overflow: visible; overflow-wrap: anywhere; }
+html[data-large-text] .home-page .hero-main { grid-template-columns: minmax(0, 1fr); }
+html[data-large-text] .home-page .hero-main .hero-share { justify-self: start; }
+html[data-large-text] .reading-steps { grid-template-columns: minmax(0, 1fr); }
+html[data-large-text] .site-footer .footer-shell { grid-template-columns: minmax(0, 1fr); }
+html[data-large-text] .site-footer .footer-share { grid-column: 1; grid-row: auto; justify-self: start; }
+/* The system's contrast choice also removes decorative haze from text. */
+html[data-high-contrast] { --reader-line: #767676; --minimal-line: #767676; }
+html[data-high-contrast] :is(.shelf-viewport, .card-shelf) { mask-image: none !important; -webkit-mask-image: none !important; }
+html[data-high-contrast] .shelf-track > .card { filter: none !important; opacity: 1 !important; border: 1px solid currentColor !important; }
+html[data-reduce-transparency] :is(.glass-panel, .glass-card, .site-header) { background: #fff !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+html[data-reduce-motion] *, html[data-reduce-motion] *::before, html[data-reduce-motion] *::after { animation: none !important; scroll-behavior: auto !important; }
+@media (prefers-contrast: more) {
+  :root { --reader-muted: #4d4d4d; --minimal-muted: #4d4d4d; --reader-line: #767676; }
+}
+@media (forced-colors: active) {
+  :is(.glass-panel, .glass-card, .site-header) { background: Canvas !important; backdrop-filter: none !important; }
+  .shelf-track > .card { border: 1px solid CanvasText !important; }
+  :is(a, button, input, select):focus-visible { outline: 2px solid Highlight !important; }
+  .lang-btn.active { text-decoration: underline; }
+}
+.site-header .lang-btn { min-width: 44px; padding: 0 .25rem !important; }
+html[data-large-text] .site-header .header-shell { flex-wrap: wrap; padding-block: 12px !important; gap: 4px; }
+html[data-large-text] .site-header .brand { flex-basis: 100%; }
+html[data-large-text] .site-header .header-tools { margin-left: auto; }
+html[data-large-text] .hero-main h1 { overflow-wrap: anywhere; }
+html[data-large-text] .entry-item { min-width: 0; overflow-wrap: anywhere; }
+html[data-large-text] .site-footer .footer-links { grid-column: 1; grid-row: auto; justify-self: start; }
+html[data-large-text] .entry-item { grid-template-columns: minmax(0,1fr) !important; grid-template-areas: 'date' 'title' 'place' 'summary' 'link' !important; }
+html[data-large-text] .site-footer .footer-shell { grid-template-columns: minmax(0,1fr) !important; }
+.reader-field { min-width: 0; max-width: 100%; }
+.reader-field :is(input, select) { width: 100%; min-width: 0; max-width: 100%; }
+@media (max-width: 600px) {
+  html[lang="en"] .site-header .header-shell { flex-wrap: wrap; padding-block: 10px !important; gap: 4px; }
+  html[lang="en"] .site-header .brand { flex-basis: 100%; }
+  html[lang="en"] .site-header .brand-copy strong { white-space: normal !important; line-height: 1.35; }
+}
+html[data-high-contrast] .card-shelf::before, html[data-high-contrast] .card-shelf::after,
+html[data-reduce-transparency] .card-shelf::before, html[data-reduce-transparency] .card-shelf::after { content: none !important; }
+@media (forced-colors: active) {
+  .menu-toggle span { background: ButtonText !important; forced-color-adjust: none; }
+}
