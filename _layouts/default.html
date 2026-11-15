@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <script>try{var l=localStorage.getItem("site-lang");if(l!=="ja"&&l!=="en")l=(navigator.language||"").toLowerCase().indexOf("ja")===0?"ja":"en";document.documentElement.lang=l;}catch(e){}</script>
-  <script>(function(){var r=document.documentElement,s={};try{s=JSON.parse(localStorage.getItem("site-display"))||{}}catch(e){}function m(q){try{return matchMedia(q).matches}catch(e){return false}}if(s.contrast==null)s.contrast=m("(prefers-contrast: more)");if(s.motion==null)s.motion=m("(prefers-reduced-motion: reduce)");if(s.text==="l"||s.text==="xl")r.setAttribute("data-text-size",s.text);var a={contrast:"data-high-contrast",underline:"data-underline-links",motion:"data-reduce-motion",cardnav:"data-card-buttons"};for(var k in a){if(s[k])r.setAttribute(a[k],"")}})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {%- if page.seo_title_ja -%}
   {%- assign title_ja = page.seo_title_ja -%}
@@ -39,7 +38,7 @@
   <meta property="og:image" content="{{ '/assets/img/brand/apple-touch-icon.png' | absolute_url }}">
   <meta name="twitter:card" content="summary">
   <script defer src="{{ '/assets/js/reader.js' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}"></script>
-  <script defer src="{{ '/assets/js/display.js' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}"></script>
+  <script src="{{ '/assets/js/display.js' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}"></script>
 </head>
 <body
   class="{{ page.body_class | default: layout.body_class | default: 'inner-page' }}"
@@ -77,7 +76,6 @@
             <button class="lang-btn active" type="button" data-lang="ja" aria-pressed="true">JA</button>
             <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
           </div>
-          <button class="display-toggle" type="button" aria-expanded="false" aria-controls="display-panel" aria-label="表示設定" data-aria-ja="表示設定" data-aria-en="Display settings">{% include icons/display.svg %}</button>
           <button aria-label="メニューを開く" data-aria-ja="メニューを開く" data-aria-en="Open menu" class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-panel">
             <span></span>
             <span></span>
@@ -86,13 +84,8 @@
         </div>
       </div>
 
-{% include display-settings.html %}
       <div class="mobile-panel glass-panel" id="mobile-panel" hidden>
         <div class="mobile-panel-inner">
-          <div class="lang-switch mobile-lang" role="group" aria-label="Language switch">
-            <button class="lang-btn active" type="button" data-lang="ja" aria-pressed="true">JA</button>
-            <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
-          </div>
           <nav class="mobile-nav" aria-label="Mobile navigation">
 <a href="{{ '/#about' | relative_url }}" data-bilingual data-ja="趣旨" data-en="About">趣旨</a>
 <a href="{{ '/articles/' | relative_url }}" data-bilingual data-ja="研究ノート" data-en="Notes">研究ノート</a>
