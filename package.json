@@ -1,0 +1,10 @@
+{
+  "name": "ai-qualitative-research",
+  "private": true,
+  "scripts": {
+    "dev": "node management/server.mjs",
+    "admin": "node management/server.mjs",
+    "test:admin": "npm test --prefix management",
+    "build:gas": "npm run build:gas --prefix management"
+  }
+}

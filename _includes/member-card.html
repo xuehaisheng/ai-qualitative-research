@@ -1,0 +1,7 @@
+{% assign member = include.member %}<article class="card glass-card member-card">
+<div class="card-meta" data-bilingual data-ja="{{ member.role.ja | escape }}" data-en="{{ member.role.en | escape }}">{{ member.role.ja | escape }}</div>
+<h3 data-bilingual data-ja="{{ member.name.ja | escape }}" data-en="{{ member.name.en | escape }}">{{ member.name.ja | escape }}</h3>
+<div class="member-affiliation" data-bilingual data-ja="{{ member.affiliation.ja | escape }}" data-en="{{ member.affiliation.en | escape }}">{{ member.affiliation.ja | escape }}</div>
+{% if member.bio.ja != '' %}<p data-bilingual data-ja="{{ member.bio.ja | escape }}" data-en="{{ member.bio.en | escape }}">{{ member.bio.ja | escape }}</p>{% endif %}
+{% if member.profile_url != '' %}<a class="text-link" href="{{ member.profile_url | escape }}" target="_blank" rel="noopener">researchmap</a>{% endif %}
+</article>

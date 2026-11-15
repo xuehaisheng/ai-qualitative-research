@@ -156,30 +156,14 @@ This site aims to become more than an announcement page: a place where qualitati
 </div>
 <div class="split-grid">
 <div class="list-shell glass-card">
-<h3 data-bilingual="" data-en="Upcoming" data-ja="今後の予定">今後の予定</h3>
-<p data-bilingual="" data-en="New events will be announced here." data-ja="次の企画が決まりしだい、ここでお知らせする。">次の企画が決まりしだい、ここでお知らせする。</p>
+<h3 data-bilingual data-ja="今後の予定" data-en="Upcoming">今後の予定</h3>
+{% assign upcoming = site.data.events | where: 'status', 'upcoming' | sort: 'date' %}
+{% if upcoming.size > 0 %}<div class="entry-list">{% for event in upcoming %}{% include event-card.html event=event %}{% endfor %}</div>
+{% else %}<p data-bilingual data-ja="次の企画が決まりしだい、ここでお知らせする。" data-en="New events will be announced here.">次の企画が決まりしだい、ここでお知らせする。</p>{% endif %}
 </div>
 <div class="list-shell glass-card">
-<h3 data-bilingual="" data-en="Archive" data-ja="過去の記録">過去の記録</h3>
-<div class="entry-list"><article class="entry-item">
-<div class="entry-date">2026-10-31</div>
-<h4 data-bilingual="" data-en="How Do Qualitative Researchers Discuss Generative AI? A New Attempt at Qualitative Meta-Synthesis" data-ja="質的研究者は生成AIをどう論じるか――質的メタ統合の新たな試みを通して――">質的研究者は生成AIをどう論じるか――質的メタ統合の新たな試みを通して――</h4>
-<div class="entry-place" data-bilingual="" data-en="JAQP 23rd Annual Meeting, poster presentation (Hongo Campus, The University of Tokyo)" data-ja="日本質的心理学会第23回大会 ポスター発表（東京大学本郷キャンパス）">日本質的心理学会第23回大会 ポスター発表（東京大学本郷キャンパス）</div>
-<p data-bilingual="" data-en="A poster by Xue, Kajiwara, and Toyoda. Using qualitative meta-synthesis, it examined how qualitative researchers have written about generative AI." data-ja="薛海升、梶原佐保、豐田隼によるポスター発表。質的研究者が生成AIをどう論じてきたかを、質的メタ統合で調べた。">薛海升、梶原佐保、豐田隼によるポスター発表。質的研究者が生成AIをどう論じてきたかを、質的メタ統合で調べた。</p>
-<a class="text-link" data-bilingual="" data-en="How we did it (note)" data-ja="研究の進め方（研究ノート）" href="{{ '/articles/meta-synthesis-with-ai/' | relative_url }}">研究の進め方（研究ノート）</a> <a class="text-link" data-bilingual="" data-en="Findings (PDF, in Japanese)" data-ja="結果の概要（PDF）" href="{{ '/assets/pdf/2026-10-31_ai-qualitative-meta-synthesis-poster.pdf' | relative_url }}" rel="noopener" target="_blank">結果の概要（PDF）</a>
-</article><article class="entry-item">
-<div class="entry-date">2026-10-30</div>
-<h4 data-bilingual="" data-en="AI Literacy for Qualitative Researchers" data-ja="質的研究者のためのAIリテラシー">質的研究者のためのAIリテラシー</h4>
-<div class="entry-place" data-bilingual="" data-en="JAQP 23rd Annual Meeting, pre-conference workshop (Faculty of Education Building, The University of Tokyo / hybrid)" data-ja="日本質的心理学会第23回大会 前日講習会（東京大学教育学部棟・ハイブリッド開催）">日本質的心理学会第23回大会 前日講習会（東京大学教育学部棟・ハイブリッド開催）</div>
-<p data-bilingual="" data-en="A workshop by Haisheng Xue (The University of Tokyo) covering how AI works and how it developed, how to understand it, debates among qualitative researchers, and practical use in research." data-ja="薛海升（東京大学）による講習会。AIの仕組みと歴史、AIをどう理解するか、質的研究者のあいだの議論、研究での実際の使い方を扱った。">薛海升（東京大学）による講習会。AIの仕組みと歴史、AIをどう理解するか、質的研究者のあいだの議論、研究での実際の使い方を扱った。</p>
-{% comment %}スライドは一時的に非公開。戻すときはこのコメントを外し、_config.yml の exclude からも PDF を外す。<a class="text-link" data-bilingual="" data-en="Slides (PDF, in Japanese)" data-ja="スライド（PDF）" href="{{ '/assets/pdf/2026-10-30_ai-literacy-workshop.pdf' | relative_url }}" rel="noopener" target="_blank">スライド（PDF・約27MB）</a>{% endcomment %}
-</article><article class="entry-item">
-<div class="entry-date">2026-04</div>
-<h4 data-bilingual="" data-en="Collaboration between AI and qualitative research: Focusing on researchers' reflexivity" data-ja="AIと質的研究の協働――研究者の反省性に着目して――">AIと質的研究の協働――研究者の反省性に着目して――</h4>
-<div class="entry-place" data-bilingual="" data-en="Paper, Bulletin of the Clinical Psychology Course, Graduate School of Education, The University of Tokyo, Vol. 49, pp. 9–16" data-ja="論文　東京大学大学院教育学研究科臨床心理学コース紀要 第49巻 9–16頁">論文　東京大学大学院教育学研究科臨床心理学コース紀要 第49巻 9–16頁</div>
-<p data-bilingual="" data-en="A paper by Xue, Inada, Toyoda, and Nochi." data-ja="薛海升、稲田真子、豐田隼、能智正博による論文。">薛海升、稲田真子、豐田隼、能智正博による論文。</p>
-<a class="text-link" data-bilingual="" data-en="researchmap" data-ja="researchmap" href="https://researchmap.jp/XUEHaisheng/published_papers" rel="noopener" target="_blank">researchmap</a>
-</article></div>
+<h3 data-bilingual data-ja="過去の記録" data-en="Past events">過去の記録</h3>
+<div class="entry-list">{% assign past = site.data.events | where: 'status', 'past' | sort: 'date' | reverse %}{% for event in past limit:3 %}{% include event-card.html event=event %}{% endfor %}</div>
 </div>
 </div>
 </div>
@@ -192,25 +176,7 @@ This site aims to become more than an announcement page: a place where qualitati
 <h2 data-bilingual="" data-en="Members" data-ja="メンバー">メンバー</h2>
 </div>
 <div class="card-grid card-grid-3">
-<article class="card glass-card member-card">
-<div class="card-meta" data-bilingual="" data-en="Organizer" data-ja="運営">運営</div>
-<h3 data-bilingual="" data-en="Haisheng XUE" data-ja="薛 海升">薛 海升</h3>
-<div class="member-affiliation" data-bilingual="" data-en="Graduate School of Education, The University of Tokyo" data-ja="東京大学 大学院教育学研究科 総合教育科学専攻（臨床心理学コース）">東京大学 大学院教育学研究科 総合教育科学専攻（臨床心理学コース）</div>
-<p data-bilingual="" data-en="His research keywords include psychotherapy localization, qualitative research, and generative AI. He has continuously organized and presented symposia on how AI may change qualitative research." data-ja="心理療法のローカライゼーション、質的研究、生成AIを研究キーワードとし、AIが質的研究をどう変えていくかをめぐるシンポジウムを継続的に企画・発表している。">心理療法のローカライゼーション、質的研究、生成AIを研究キーワードとし、AIが質的研究をどう変えていくかをめぐるシンポジウムを継続的に企画・発表している。</p>
-<a class="text-link" data-bilingual="" data-en="researchmap" data-ja="researchmap" href="https://researchmap.jp/XUEHaisheng" rel="noopener" target="_blank">researchmap</a>
-</article>
-<article class="card glass-card member-card">
-<div class="card-meta" data-bilingual="" data-en="Co-researcher" data-ja="共同研究者">共同研究者</div>
-<h3 data-bilingual data-ja="梶原佐保" data-en="Saho KAJIWARA">梶原佐保</h3>
-<p class="member-affiliation" data-bilingual data-ja="東京大学 大学院教育学研究科 総合教育科学専攻（臨床心理学コース） 特任研究員" data-en="Project Researcher, Graduate School of Education (Clinical Psychology), The University of Tokyo">東京大学 大学院教育学研究科 総合教育科学専攻（臨床心理学コース） 特任研究員</p>
-<a class="text-link" href="https://researchmap.jp/sahokajiwara" rel="noopener" target="_blank" aria-label="梶原佐保のresearchmap" data-aria-ja="梶原佐保のresearchmap" data-aria-en="Saho Kajiwara on researchmap">researchmap</a>
-</article>
-<article class="card glass-card member-card">
-<div class="card-meta" data-bilingual="" data-en="Co-researcher" data-ja="共同研究者">共同研究者</div>
-<h3 data-bilingual data-ja="豐田隼" data-en="Hayato TOYODA">豐田隼</h3>
-<p class="member-affiliation" data-bilingual data-ja="東京大学 大学院教育学研究科 特任研究員／日本学術振興会 特別研究員（PD）" data-en="Project Researcher, Graduate School of Education, The University of Tokyo / JSPS Research Fellow (PD)">東京大学 大学院教育学研究科 特任研究員／日本学術振興会 特別研究員（PD）</p>
-<a class="text-link" href="https://researchmap.jp/toyoda.h" rel="noopener" target="_blank" aria-label="豐田隼のresearchmap" data-aria-ja="豐田隼のresearchmap" data-aria-en="Hayato Toyoda on researchmap">researchmap</a>
-</article>
+{% assign members = site.data.members | sort: 'order' %}{% for member in members %}{% include member-card.html member=member %}{% endfor %}
 </div>
 </div>
 </div>

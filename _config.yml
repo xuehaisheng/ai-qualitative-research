@@ -34,3 +34,4 @@ exclude:
   - node_modules
   - .openai
   - assets/pdf/2026-10-30_ai-literacy-workshop.pdf
+  - management

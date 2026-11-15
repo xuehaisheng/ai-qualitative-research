@@ -4,3 +4,7 @@ _site/
 dist/
 .openai/
 node_modules/
+management/.admin-data/
+management/.env
+management/.gas-deploy.json
+management/.clasp.json
