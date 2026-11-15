@@ -287,10 +287,14 @@ body.masthead-on.mh-menu:not(.masthead-docked):not(.mh-measure) .site-header .de
 /* Reduced motion / very large text still show the title once, without animation. */
 .masthead-static .hero-main h1 { position: absolute; width: 1px; height: 1px; padding: 0; margin: 0 !important; overflow: hidden; clip-path: inset(50%); }
 @media (max-width:600px) {
-  .home-page:not(.masthead-static) .site-header .header-tools { gap: 6px !important; }
-  .home-page:not(.masthead-static) .site-header .lang-btn { min-width: 28px; padding-inline: 2px !important; }
-  .home-page:not(.masthead-static) .site-header .display-toggle { width: 32px; }
-  .home-page:not(.masthead-static) .site-header .menu-toggle { width: 40px; height: 44px; }
+  .home-page .site-header .header-tools { gap: 2px !important; }
+  .home-page .site-header .lang-btn { min-width: 24px; padding-inline: 2px !important; }
+  .home-page .site-header .display-toggle { width: 28px; }
+  .home-page .site-header .menu-toggle { width: 40px; height: 44px; }
+  .home-page.masthead-on .site-header .brand-copy strong { align-self: flex-start; width: max-content; }
+  .home-page.masthead-static .site-header .brand-copy strong { font-size: 1.75rem !important; }
+  html[data-large-text] .home-page.masthead-on .site-header { position: sticky !important; }
+  .home-page .section-panel[id] { scroll-margin-top: calc(var(--mobile-header-height, 72px) + 20px); }
 }
 
 .card-shelf { position: relative; min-width: 0; margin: 0 -24px; container-type: inline-size; }
@@ -538,8 +542,10 @@ SOFTWARE.
   function measure() {
     lastWidth = innerWidth;
     const calm = document.documentElement.hasAttribute('data-reduce-motion');
+    const mobile = innerWidth <= 600;
     const large = document.documentElement.hasAttribute('data-large-text');
-    if (calm || large) {
+    const veryLarge = large && (!mobile || parseFloat(getComputedStyle(document.documentElement).fontSize) >= 24);
+    if (calm || veryLarge) {
       body.classList.add('masthead-static');
       body.classList.remove('masthead-stacked');
       root.removeProperty('--mh-compact-size');
@@ -565,12 +571,14 @@ SOFTWARE.
     const naturalWidth = Math.max(brand.offsetWidth, brand.scrollWidth);
     // Keep the original #38 animation. If the long English title cannot share a
     // narrow row, give its large state the full hero width; the controls stay above.
-    const stacked = naturalWidth > room;
+    const sectionSize = mobile ? parseFloat(getComputedStyle(document.querySelector('#about h2')).fontSize) : 0;
+    const desiredSize = Math.max(parseFloat(getComputedStyle(h1).fontSize), sectionSize * 1.6);
+    const stacked = naturalWidth > room || (mobile && desiredSize * naturalWidth / naturalFont > room);
     body.classList.toggle('masthead-stacked', stacked);
-    if (stacked) root.setProperty('--mh-compact-size', (naturalFont * room / naturalWidth) + 'px');
+    if (stacked) root.setProperty('--mh-compact-size', (naturalFont * Math.min(1, room / naturalWidth)) + 'px');
     const b = {left, top: op.top + brand.offsetTop, width: brand.offsetWidth, height: brand.offsetHeight};
     small = parseFloat(getComputedStyle(brand).fontSize);
-    size = parseFloat(getComputedStyle(h1).fontSize);
+    size = desiredSize;
     const titleRoom = stacked ? document.querySelector('.hero-main').clientWidth : room;
     size = Math.max(small, Math.min(size, small * titleRoom / b.width));
     const a = h1.getBoundingClientRect();
@@ -625,5 +633,53 @@ SOFTWARE.
   document.addEventListener('site-display', () => setTimeout(measure, 0));
   if (document.fonts) document.fonts.ready.then(measure);
   measure();
+})();
+</script>
+
+<script>
+// Use the closed mobile header's real height for section links, including larger
+// text and reduced-motion layouts. An open menu must never inflate this offset.
+(() => {
+  const phone = matchMedia('(max-width:600px)');
+  const header = document.querySelector('.site-header');
+  const shell = header.querySelector('.header-shell');
+  const root = document.documentElement;
+  function sync() {
+    if (!phone.matches) return;
+    const height = shell.getBoundingClientRect().bottom - header.getBoundingClientRect().top + parseFloat(getComputedStyle(header).borderBottomWidth || 0);
+    root.style.setProperty('--mobile-header-height', Math.ceil(height) + 'px');
+  }
+  new ResizeObserver(sync).observe(shell);
+  addEventListener('resize', sync);
+  document.addEventListener('site-display', sync);
+  document.addEventListener('site-lang', () => requestAnimationFrame(sync));
+  sync();
+  function repairHash() {
+    sync();
+    if (!phone.matches || location.hash !== '#about') return;
+    const target = document.getElementById('about');
+    const heading = target.querySelector('h2');
+    const top = parseFloat(root.style.getPropertyValue('--mobile-header-height')) + 20;
+    const y = heading.getBoundingClientRect().top;
+    if (y > -top && y < top) target.scrollIntoView({block:'start',behavior:'instant'});
+  }
+  let pending = false, settleTimer;
+  function queueRepair() {
+    if (!phone.matches || location.hash !== '#about') return;
+    pending = true;
+    clearTimeout(settleTimer);
+    settleTimer = setTimeout(() => { if (pending) repairHash(); pending = false; }, 800);
+  }
+  addEventListener('hashchange', queueRepair);
+  addEventListener('scrollend', () => { if (pending) repairHash(); });
+  // Never pull the reader back after they deliberately start scrolling away.
+  ['wheel','touchstart','pointerdown','keydown'].forEach(type => addEventListener(type, () => { pending = false; }, {passive:true}));
+  function afterLoad() {
+    queueRepair();
+    const fonts = document.fonts ? document.fonts.ready : Promise.resolve();
+    fonts.then(() => requestAnimationFrame(() => requestAnimationFrame(() => { if (pending) repairHash(); })));
+  }
+  if (document.readyState === 'complete') afterLoad();
+  else addEventListener('load', afterLoad, {once:true});
 })();
 </script>
