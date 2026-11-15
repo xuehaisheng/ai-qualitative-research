@@ -196,13 +196,16 @@
     updateMeta(lang);
   }
 
-  function closeMenu() {
+  function closeMenu(done) {
     if (!menuToggle || !mobilePanel) {
+      if (done) {
+        done();
+      }
       return;
     }
 
     menuToggle.setAttribute("aria-expanded", "false");
-    hidePanel();
+    hidePanel(done);
   }
 
   // Open and close the menu panel with a short fade and slide, not an instant jump.
@@ -214,12 +217,19 @@
     }
   }
 
-  function hidePanel() {
+  // done runs once the panel has left the layout (or at once if it was already closed).
+  function hidePanel(done) {
     if (mobilePanel.hidden) {
+      if (done) {
+        done();
+      }
       return;
     }
     if (!mobilePanel.animate) {
       mobilePanel.hidden = true;
+      if (done) {
+        done();
+      }
       return;
     }
     const out = mobilePanel.animate([{ opacity: 1, transform: "none" }, { opacity: 0, transform: "translateY(-6px)" }], { duration: 150, easing: "ease-in" });
@@ -227,7 +237,22 @@
       if (menuToggle.getAttribute("aria-expanded") !== "true") {
         mobilePanel.hidden = true;
       }
+      if (done) {
+        done();
+      }
     };
+  }
+
+  // A menu link to a section of the page that is already open.
+  function samePageTarget(link) {
+    if (!link.hash || link.pathname !== window.location.pathname) {
+      return null;
+    }
+    try {
+      return document.getElementById(decodeURIComponent(link.hash.slice(1)));
+    } catch (error) {
+      return null;
+    }
   }
 
   function toggleMenu() {
@@ -253,7 +278,26 @@
   if (menuToggle && mobilePanel) {
     menuToggle.addEventListener("click", toggleMenu);
     mobileLinks.forEach((link) => {
-      link.addEventListener("click", closeMenu);
+      link.addEventListener("click", function (event) {
+        const target = samePageTarget(link);
+        const plainClick = event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
+
+        if (!target || !plainClick) {
+          closeMenu();
+          return;
+        }
+
+        // The open panel pushes the page down. Close it first and scroll afterwards,
+        // so the jump lands on the section and not past it.
+        event.preventDefault();
+        closeMenu(function () {
+          if (window.location.hash !== link.hash) {
+            window.location.hash = link.hash;
+          } else {
+            target.scrollIntoView();
+          }
+        });
+      });
     });
   }
 
