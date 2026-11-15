@@ -360,9 +360,9 @@ SOFTWARE.
   document.querySelectorAll('[data-card-shelf]').forEach(shelf => {
     const viewport = shelf.querySelector('.shelf-viewport');
     if (typeof EmblaCarousel !== 'function') return;
-    // Less motion: the system setting, or the option in the display settings.
+    // Respect the system motion preference.
     const calm = () => reduced.matches || document.documentElement.hasAttribute('data-reduce-motion');
-    // Previous / next buttons. Hidden unless the option in the display settings is on.
+    // Optional card controls stay hidden in the default presentation.
     let go = () => {};
     const nav = document.createElement('div');
     nav.className = 'shelf-nav';
@@ -383,7 +383,8 @@ SOFTWARE.
     const geo = {full: 3, gap: 20, peek: 80};
     function layout() {
       const w = viewport.clientWidth;
-      geo.full = w < 640 ? 1 : w < 1060 ? 2 : 3;
+      const readableWidth = w / Math.max(1, parseFloat(getComputedStyle(document.documentElement).fontSize) / 16);
+      geo.full = readableWidth < 640 ? 1 : readableWidth < 1060 ? 2 : 3;
       geo.gap = w < 640 ? 14 : 20;
       geo.peek = Math.round(Math.min(120, Math.max(w < 640 ? 34 : 56, w * .075)));
       const card = (w - 2 * geo.peek - (geo.full + 1) * geo.gap) / geo.full;
@@ -411,7 +412,7 @@ SOFTWARE.
     function watchTitles() { shelf.querySelectorAll('.fit-card h3').forEach(h => titleWatch.observe(h)); }
     watchTitles();
     if (document.fonts) document.fonts.ready.then(fitSummaries);
-    document.addEventListener('site-display', fitSummaries);
+    document.addEventListener('site-display', () => { layout(); });
     layout();
     if (touch.matches) { nativeShelf(); return; }
     // Touch: native scroll-snap, with copies on both sides so it never reaches an end.
@@ -533,6 +534,16 @@ SOFTWARE.
   let lastWidth = 0;
   function measure() {
     lastWidth = innerWidth;
+    const calm = document.documentElement.hasAttribute('data-reduce-motion');
+    const large = document.documentElement.hasAttribute('data-large-text');
+    const narrowEnglish = innerWidth <= 600 && document.documentElement.lang === 'en';
+    if (calm || large || narrowEnglish) {
+      body.classList.remove('masthead-on', 'masthead-sda', 'masthead-docked', 'mh-menu');
+      brand.style.transform = ''; movers.forEach(m => m.style.transform = '');
+      if (sub) sub.style.opacity = ''; if (heroShare) heroShare.style.opacity = '';
+      return;
+    }
+    body.classList.add('masthead-on');
     // Measure the plain layout. The title is measured with offset values, which ignore transforms, so the running
     // scroll animation is neither measured nor interrupted.
     body.classList.add('mh-measure');
@@ -565,6 +576,7 @@ SOFTWARE.
   }
   function update() {
     queued = false;
+    if (!body.classList.contains('masthead-on')) return;
     const docked = scrollY >= dist;
     // With the mobile menu open, the title takes its small end state (without a layout change, so it can animate).
     const menu = !docked && !!toggle && toggle.getAttribute('aria-expanded') === 'true';
@@ -586,7 +598,7 @@ SOFTWARE.
     update();
     els.forEach((e, i) => {
       const to = getComputedStyle(e).transform;
-      if (from[i] !== to && e.animate) e.animate([{transform: from[i]}, {transform: to}], {duration: 240, easing: 'cubic-bezier(.25,.8,.25,1)'});
+      if (!document.documentElement.hasAttribute('data-reduce-motion') && from[i] !== to && e.animate) e.animate([{transform: from[i]}, {transform: to}], {duration: 240, easing: 'cubic-bezier(.25,.8,.25,1)'});
     });
   }
   if (toggle) new MutationObserver(onMenu).observe(toggle, {attributes: true, attributeFilter: ['aria-expanded']});
