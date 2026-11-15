@@ -54,13 +54,14 @@
     if ([...group.options].some(o => o.value === query.get('group'))) group.value = query.get('group');
     if ([...topic.options].some(o => o.value === query.get('topic'))) topic.value = query.get('topic');
     if ([...sort.options].some(o => o.value === query.get('sort'))) sort.value = query.get('sort');
+    const shown = p => matches([p.title, p.title_ja, p.apa, p.summary, p.summary_en, ...p.themes].join(' '), input.value)
+      && (!group.value || p.stance === group.value)
+      && (!topic.value || p.themes.includes(topic.value));
     function apply(updateURL = true) {
       let count = 0;
       items.forEach(item => {
         const p = byId.get(item.id);
-        const visible = matches([p.title, p.title_ja, p.apa, p.summary, p.summary_en, ...p.themes].join(' '), input.value)
-          && (!group.value || p.stance === group.value)
-          && (!topic.value || p.themes.includes(topic.value));
+        const visible = shown(p);
         item.hidden = !visible;
         if (visible) count++;
         item.querySelectorAll('[data-tag]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.tag === topic.value)));
@@ -131,7 +132,9 @@
       download(`ai-qualitative-research.${isRIS ? 'ris' : 'bib'}`, visible.map(isRIS ? ris : bibtex).join('\n'), 'text/plain;charset=utf-8');
       toast(L('引用情報を書き出しました。', 'References exported.'));
     }));
-    if (location.hash && byId.has(location.hash.slice(1))) {
+    // A link to one paper must show that paper. Drop the filters from the address only if they would hide it.
+    const linked = location.hash && byId.get(location.hash.slice(1));
+    if (linked && !shown(linked)) {
       input.value = ''; group.value = ''; topic.value = '';
     }
     apply(false);
