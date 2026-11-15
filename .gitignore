@@ -4,3 +4,5 @@ _site/
 dist/
 .openai/
 node_modules/
+management/.admin-data/
+management/.env

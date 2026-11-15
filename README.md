@@ -1,5 +1,7 @@
 # AI × 質的研究
 
+新增内容管理后台：见 [management/README.md](management/README.md)。支持笔记、知识点、活动、成员、持久化草稿与阅读统计；正式统计需独立 Node 服务。
+
 这是一个适合放到 GitHub Pages 的静态站点骨架，已经从“单一 HTML 文件”整理成了更适合长期维护的结构。
 
 你现在可以把它理解成三层：
