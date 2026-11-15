@@ -34,6 +34,9 @@
   <meta property="og:description" content="{{ desc_ja | escape }}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
   <meta property="og:type" content="{% if page.key %}article{% else %}website{% endif %}">
+  <meta property="og:site_name" content="{{ site.title | escape }}">
+  <meta property="og:image" content="{{ '/assets/img/brand/apple-touch-icon.png' | absolute_url }}">
+  <meta name="twitter:card" content="summary">
   <script defer src="{{ '/assets/js/reader.js' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}"></script>
 </head>
 <body
