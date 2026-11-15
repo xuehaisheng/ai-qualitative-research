@@ -1,0 +1,65 @@
+[
+  {
+    "id": "xue",
+    "order": 0,
+    "name": {
+      "ja": "薛 海升",
+      "en": "Haisheng XUE"
+    },
+    "role": {
+      "ja": "運営",
+      "en": "Organizer"
+    },
+    "affiliation": {
+      "ja": "東京大学 大学院教育学研究科 総合教育科学専攻（臨床心理学コース）",
+      "en": "Graduate School of Education, The University of Tokyo"
+    },
+    "bio": {
+      "ja": "心理療法のローカライゼーション、質的研究、生成AIを研究キーワードとし、AIが質的研究をどう変えていくかをめぐるシンポジウムを継続的に企画・発表している。",
+      "en": "His research keywords include psychotherapy localization, qualitative research, and generative AI. He has continuously organized and presented symposia on how AI may change qualitative research."
+    },
+    "profile_url": "https://researchmap.jp/XUEHaisheng"
+  },
+  {
+    "id": "kajiwara",
+    "order": 1,
+    "name": {
+      "ja": "梶原佐保",
+      "en": "Saho KAJIWARA"
+    },
+    "role": {
+      "ja": "共同研究者",
+      "en": "Co-researcher"
+    },
+    "affiliation": {
+      "ja": "東京大学 大学院教育学研究科 総合教育科学専攻（臨床心理学コース） 特任研究員",
+      "en": "Project Researcher, Graduate School of Education (Clinical Psychology), The University of Tokyo"
+    },
+    "bio": {
+      "ja": "",
+      "en": ""
+    },
+    "profile_url": "https://researchmap.jp/sahokajiwara"
+  },
+  {
+    "id": "toyoda",
+    "order": 2,
+    "name": {
+      "ja": "豐田隼",
+      "en": "Hayato TOYODA"
+    },
+    "role": {
+      "ja": "共同研究者",
+      "en": "Co-researcher"
+    },
+    "affiliation": {
+      "ja": "東京大学 大学院教育学研究科 特任研究員／日本学術振興会 特別研究員（PD）",
+      "en": "Project Researcher, Graduate School of Education, The University of Tokyo / JSPS Research Fellow (PD)"
+    },
+    "bio": {
+      "ja": "",
+      "en": ""
+    },
+    "profile_url": "https://researchmap.jp/toyoda.h"
+  }
+]
