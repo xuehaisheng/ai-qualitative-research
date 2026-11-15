@@ -39,6 +39,9 @@
   <meta name="twitter:card" content="summary">
   <script defer src="{{ '/assets/js/reader.js' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}"></script>
   <script src="{{ '/assets/js/display.js' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}"></script>
+{% if site.data.analytics.endpoint != '' and site.data.analytics.endpoint %}
+  <script defer src="{{ '/assets/js/analytics.js' | relative_url }}" data-endpoint="{{ site.data.analytics.endpoint | escape }}"></script>
+{% endif %}
 </head>
 <body
   class="{{ page.body_class | default: layout.body_class | default: 'inner-page' }}"
