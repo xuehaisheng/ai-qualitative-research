@@ -44,7 +44,7 @@ function report_(rows,days,now) {
   var total={views:0,visitors:0,sessions:0,reads:0,averageSeconds:0,returning:0,returnRate:0},visitors={},sessions={},pages={},sources={},devices={},languages={},trend={},first=null,seconds=0;
   for(var i=0;i<days;i++){var d=day_(new Date(now.getTime()-(days-1-i)*86400000));trend[d]={day:d,views:0,visitors:0,reads:0,_v:{}};}
   rows.forEach(function(r){
-    if(!r.id)return;var date=String(r.day);if(!first||date<first)first=date;if(date<start||date>end)return;
+    if(!r.id)return;var date=Object.prototype.toString.call(r.day)==='[object Date]'?day_(r.day):String(r.day);if(!first||date<first)first=date;if(date<start||date>end)return;
     total.views++;total.reads+=Number(r.qualified)||0;seconds+=Number(r.seconds)||0;visitors[r.visitor]=visitors[r.visitor]||{};visitors[r.visitor][r.session]=true;sessions[r.session]=true;
     var p=pages[r.path]||(pages[r.path]={path:r.path,views:0,visitors:0,reads:0,seconds:0,depth:0,_v:{}});p.views++;p._v[r.visitor]=true;p.reads+=Number(r.qualified)||0;p.seconds+=Number(r.seconds)||0;p.depth+=Number(r.depth)||0;
     [sources,devices,languages].forEach(function(map,j){var key=[r.referrer,r.device,r.language][j]||'其他';map[key]=(map[key]||0)+1;});
