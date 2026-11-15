@@ -316,11 +316,14 @@
         // so the jump lands on the section and not past it.
         event.preventDefault();
         closeMenu(function () {
-          if (window.location.hash !== link.hash) {
-            window.location.hash = link.hash;
-          } else {
-            target.scrollIntoView();
-          }
+          // One frame later, so the page has settled after the panel left.
+          window.requestAnimationFrame(function () {
+            if (window.location.hash !== link.hash) {
+              window.location.hash = link.hash;
+            } else {
+              target.scrollIntoView();
+            }
+          });
         });
       });
     });
