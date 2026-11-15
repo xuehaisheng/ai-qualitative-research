@@ -284,7 +284,20 @@
     });
   });
 
+  // The button's label says what it will do: open when closed, close when open.
+  function syncMenuLabel() {
+    const open = menuToggle.getAttribute("aria-expanded") === "true";
+    const lang = document.documentElement.lang === "en" ? "en" : "ja";
+
+    menuToggle.setAttribute("data-aria-ja", open ? "メニューを閉じる" : "メニューを開く");
+    menuToggle.setAttribute("data-aria-en", open ? "Close menu" : "Open menu");
+    menuToggle.setAttribute("aria-label", menuToggle.getAttribute("data-aria-" + lang));
+  }
+
   if (menuToggle && mobilePanel) {
+    if (window.MutationObserver) {
+      new MutationObserver(syncMenuLabel).observe(menuToggle, { attributes: true, attributeFilter: ["aria-expanded"] });
+    }
     menuToggle.addEventListener("click", toggleMenu);
     mobileLinks.forEach((link) => {
       link.addEventListener("click", function (event) {
