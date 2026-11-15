@@ -439,3 +439,19 @@ html[data-large-text] .display-panel { position: static; margin-block: 8px; max-
   .site-header .brand { flex-basis: 100%; }
   .site-header .brand-copy strong { white-space: normal !important; line-height: 1.35; }
 }
+
+/* Consistent, compact page openings; override older page-specific 96px rules. */
+.page-main > .page-hero { padding: 32px 0 16px !important; }
+.page-main > .page-hero .page-heading { padding-bottom: 16px !important; }
+.page-main > .page-hero + .page-section { padding-top: 24px !important; }
+.events-page .event-upcoming { margin-bottom: 32px; }
+.events-page .event-upcoming h2, .events-page .event-archive-title { font-size: 1.35rem; margin: 0 0 12px; }
+.contact-page .contact-card { margin-top: 0; }
+html[lang="en"] .home-page:not(.masthead-static) .site-header .header-shell { gap: 28px; }
+@media (max-width:600px) {
+  .page-main > .page-hero { padding-top: 24px !important; }
+  html[lang="en"] .home-page:not(.masthead-static) .site-header .header-shell { gap: 16px; }
+}
+.page-main > .page-hero .page-heading { gap: 8px; }
+.page-main > .page-hero .page-heading h1 { margin: 4px 0 8px !important; }
+.page-main > .page-hero .page-heading p { margin: 0 !important; }

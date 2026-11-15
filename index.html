@@ -559,7 +559,8 @@ SOFTWARE.
     const op = brand.offsetParent ? brand.offsetParent.getBoundingClientRect() : {left: 0, top: 0};
     const left = op.left + brand.offsetLeft;
     const tools = movers.map(m => m.getBoundingClientRect()).filter(r => r.width).map(r => r.left);
-    const room = Math.max(1, (tools.length ? Math.min(...tools) : innerWidth) - left - 12);
+    const titleGap = document.documentElement.lang === 'en' ? 32 : 12;
+    const room = Math.max(1, (tools.length ? Math.min(...tools) : innerWidth) - left - titleGap);
     const naturalFont = parseFloat(getComputedStyle(brand).fontSize);
     const naturalWidth = Math.max(brand.offsetWidth, brand.scrollWidth);
     // Keep the original #38 animation. If the long English title cannot share a
