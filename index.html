@@ -242,6 +242,7 @@ This site aims to become more than an announcement page: a place where qualitati
 .masthead-on .site-header .brand-copy strong { font-weight: 800 !important; letter-spacing: -.03em !important; white-space: nowrap; }
 .masthead-on:not(.masthead-docked):not(.mh-measure) .site-header .brand-copy strong { position: absolute; left: 0; top: 50%; font-size: var(--mh-size) !important; line-height: 1.2; transform-origin: left center; transform: translate(0, calc(-50% + var(--mh-y))); }
 .masthead-on.home-page .hero { margin-top: calc(-1 * var(--mh-header, 72px)) !important; padding-top: 14px !important; }
+.masthead-on.mh-fit .site-header .brand-copy strong { font-size: var(--mh-small) !important; }
 .masthead-on .hero-main h1 { opacity: 0; }
 .masthead-on .site-header { border-bottom-color: transparent !important; }
 .masthead-on .site-header::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--reader-line); opacity: 0; pointer-events: none; }
@@ -360,9 +361,9 @@ SOFTWARE.
   document.querySelectorAll('[data-card-shelf]').forEach(shelf => {
     const viewport = shelf.querySelector('.shelf-viewport');
     if (typeof EmblaCarousel !== 'function') return;
-    // Less motion: the system setting, or the option in the display settings.
-    const calm = () => reduced.matches || document.documentElement.hasAttribute('data-reduce-motion');
-    // Previous / next buttons. Hidden unless the option in the display settings is on.
+    // Less motion: the system setting "Reduce motion".
+    const calm = () => reduced.matches;
+    // Previous / next buttons. The stylesheet shows them only with "Increase contrast" or "Reduce motion" on in the system.
     let go = () => {};
     const nav = document.createElement('div');
     nav.className = 'shelf-nav';
@@ -411,7 +412,6 @@ SOFTWARE.
     function watchTitles() { shelf.querySelectorAll('.fit-card h3').forEach(h => titleWatch.observe(h)); }
     watchTitles();
     if (document.fonts) document.fonts.ready.then(fitSummaries);
-    document.addEventListener('site-display', fitSummaries);
     layout();
     if (touch.matches) { nativeShelf(); return; }
     // Touch: native scroll-snap, with copies on both sides so it never reaches an end.
@@ -536,15 +536,27 @@ SOFTWARE.
     // Measure the plain layout. The title is measured with offset values, which ignore transforms, so the running
     // scroll animation is neither measured nor interrupted.
     body.classList.add('mh-measure');
+    body.classList.remove('mh-fit');
     brand.style.transform = ''; movers.forEach(m => m.style.transform = '');
     root.setProperty('--mh-header', header.offsetHeight + 'px');
     const op = brand.offsetParent ? brand.offsetParent.getBoundingClientRect() : {left: 0, top: 0};
-    const b = {left: op.left + brand.offsetLeft, top: op.top + brand.offsetTop, width: brand.offsetWidth, height: brand.offsetHeight};
+    const box = () => ({left: op.left + brand.offsetLeft, top: op.top + brand.offsetTop, width: brand.offsetWidth, height: brand.offsetHeight});
+    let b = box();
     small = parseFloat(getComputedStyle(brand).fontSize);
     size = parseFloat(getComputedStyle(h1).fontSize);
-    // Keep the big title clear of the navigation on narrow screens.
     const tools = movers.map(m => m.getBoundingClientRect()).filter(r => r.width).map(r => r.left);
-    const room = (tools.length ? Math.min(...tools) : innerWidth) - b.left - 16;
+    const edge = tools.length ? Math.min(...tools) : innerWidth;
+    // With large text, or a long title on a narrow screen, even the small title can run under the buttons.
+    // Make it just small enough to fit.
+    const fit = edge - b.left - 8;
+    if (fit > 40 && b.width > fit) {
+      root.setProperty('--mh-small', (small * fit / b.width) + 'px');
+      body.classList.add('mh-fit');
+      b = box();
+      small = parseFloat(getComputedStyle(brand).fontSize);
+    }
+    // Keep the big title clear of the navigation on narrow screens.
+    const room = edge - b.left - 16;
     size = Math.max(small, Math.min(size, small * room / b.width));
     const a = h1.getBoundingClientRect();
     dy = (a.top + scrollY + a.height / 2) - (b.top + b.height / 2);
@@ -593,7 +605,6 @@ SOFTWARE.
   // Re-measure only when the width changes. On iPhone the toolbar changes only the height while scrolling.
   addEventListener('resize', () => { if (innerWidth !== lastWidth) measure(); });
   document.addEventListener('site-lang', () => setTimeout(measure, 0));
-  document.addEventListener('site-display', () => setTimeout(measure, 0));
   if (document.fonts) document.fonts.ready.then(measure);
   measure();
 })();

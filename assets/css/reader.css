@@ -316,46 +316,45 @@ html:not([lang="en"]) .lang-en { display: none !important; }
 .lang-btn { position: relative; }
 .lang-btn::after { content: ""; position: absolute; inset: -12px -3px; }
 
-/* Display settings: a small button next to JA / EN, and its panel. Nothing here changes the page until an option is on. */
-.site-header > .container { position: relative; }
-.display-toggle { position: relative; display: inline-grid; place-items: center; width: 28px; height: 28px; padding: 0; border: 0; background: none; color: #111; cursor: pointer; }
-.display-toggle::after { content: ""; position: absolute; inset: -8px -4px; }
-.display-toggle svg { display: block; }
-.display-panel { position: absolute; right: 0; top: 100%; z-index: 40; width: min(300px, 100%); padding: 18px 20px 16px; border: 1px solid var(--reader-line); background: #fff; box-shadow: var(--reader-shadow-strong); color: var(--reader-ink); font-size: .86rem; line-height: 1.6; }
-.display-title { margin: 0 0 12px; font-size: .78rem; font-weight: 700; letter-spacing: .08em; }
-.display-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
-.display-sizes { display: inline-flex; border: 1px solid #111; }
-.display-sizes button { min-width: 44px; min-height: 32px; padding: 4px 10px; border: 0; border-left: 1px solid #111; background: #fff; color: #111; font: inherit; cursor: pointer; }
-.display-sizes button:first-child { border-left: 0; }
-.display-sizes button[aria-pressed="true"] { background: #111; color: #fff; }
-.display-check { display: flex; align-items: center; gap: 10px; min-height: 36px; cursor: pointer; }
-.display-check input { flex: none; width: 18px; height: 18px; margin: 0; accent-color: #111; }
-.display-reset { min-height: 28px; margin-top: 10px; padding: 0; border: 0; background: none; color: #111; font: inherit; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+/* Follows the settings of the reader's own device. Nothing below applies unless that setting is on in the system. */
 
-/* Text size */
-html[data-text-size="l"] { font-size: 112.5%; }
-html[data-text-size="xl"] { font-size: 125%; }
+/* "Increase contrast": every grey used for text reaches at least 4.5:1 on white, and links inside text are underlined. */
+@media (prefers-contrast: more) {
+  :root, body { --minimal-muted: #4d4d4d; --reader-muted: #4d4d4d; --muted: #4d4d4d; --muted-soft: #595959; }
+  :is(.card-meta, .entry-date, .eyebrow, .eyebrow a, .updated-label, .post-nav span, .topic-nav a span, .wiki-item-en, .view-all-count, .step-en) { color: #595959 !important; }
+  .lang-btn:not(.active) { color: #595959 !important; }
+  .lang-btn.active { text-decoration: underline; text-underline-offset: 4px; }
+  :is(input[type="search"], select) { border-color: #767676 !important; }
+  .card-title-link { text-decoration-color: #111; }
+  :is(.post-body, .paper-ref, .wiki-sources, .post-terms, .post-next, .wiki-side, .lit-src, .contact-card p) a,
+  .text-link { text-decoration: underline !important; text-decoration-thickness: 1px !important; text-underline-offset: 3px; }
+}
 
-/* Darker text: every grey used for text reaches at least 4.5:1 on white. */
-html[data-high-contrast] { --minimal-muted: #4d4d4d; --reader-muted: #4d4d4d; --muted: #4d4d4d; --muted-soft: #595959; }
-html[data-high-contrast] :is(.card-meta, .entry-date, .eyebrow, .eyebrow a, .updated-label, .post-nav span, .topic-nav a span, .wiki-item-en, .view-all-count, .step-en) { color: #595959 !important; }
-html[data-high-contrast] .lang-btn:not(.active) { color: #595959 !important; }
-html[data-high-contrast] .lang-btn.active { text-decoration: underline; text-underline-offset: 4px; }
-html[data-high-contrast] :is(input[type="search"], select) { border-color: #767676 !important; }
-html[data-high-contrast] .card-title-link { text-decoration-color: #111; }
+/* "Reduce motion": no smooth scrolling and no transitions. The card rows already stop moving on their own. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after { transition-duration: .01ms !important; }
+}
 
-/* Underlined links, for links that sit inside text. */
-html[data-underline-links] :is(.post-body, .paper-ref, .wiki-sources, .post-terms, .post-next, .wiki-side, .lit-src, .contact-card p) a,
-html[data-underline-links] .text-link { text-decoration: underline !important; text-decoration-thickness: 1px !important; text-underline-offset: 3px; }
+/* Contrast themes on Windows: the system sets the colours. Drop the soft wash over the card rows and mark the chosen language. */
+@media (forced-colors: active) {
+  .card-shelf::before, .card-shelf::after { display: none !important; }
+  .lang-btn.active { text-decoration: underline; text-underline-offset: 4px; }
+}
 
-/* Less motion */
-html[data-reduce-motion] { scroll-behavior: auto !important; }
-html[data-reduce-motion] *, html[data-reduce-motion] *::before, html[data-reduce-motion] *::after { transition-duration: .01ms !important; }
-
-/* Buttons to move the card rows on the home page. Shown only when the option is on. */
+/* Buttons to move the card rows on the home page. Shown only with "Increase contrast" or "Reduce motion". */
 .shelf-nav { display: none; justify-content: flex-end; gap: 10px; margin: -18px 0 0; }
-html[data-card-buttons] .shelf-nav { display: flex; }
+@media (prefers-contrast: more), (prefers-reduced-motion: reduce) { .shelf-nav { display: flex; } }
 .shelf-nav-btn { display: inline-grid; place-items: center; width: 36px; height: 36px; padding: 0; border: 1px solid #111; border-radius: 50%; background: #fff; color: #111; cursor: pointer; }
 .shelf-nav-btn:hover, .shelf-nav-btn:focus-visible { background: #111; color: #fff; }
 .shelf-nav-btn .link-icon { margin: 0; }
 .shelf-nav-btn.is-prev .link-icon { transform: scaleX(-1); }
+
+/* Large text (font size turned up in the browser or the system). No effect at the default size. */
+/* The switch to the menu button is measured in em, so it follows the text size: 67.5em is 1080px at the default size. */
+@media (max-width: 67.5em) { .desktop-nav { display: none !important; } .menu-toggle { display: flex !important; } }
+/* Search fields and selects shrink with the screen and no longer push the page sideways. */
+.reader-field { min-width: 0; }
+.reader-field input, .reader-field select { min-width: 0; width: 100%; }
+/* A heading and its "view all" link go on two lines when they no longer fit on one. */
+.section-heading.with-action { flex-wrap: wrap; row-gap: 8px; }
