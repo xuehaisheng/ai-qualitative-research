@@ -86,7 +86,7 @@ export class ContentStore {
       const media=this.db.prepare('SELECT * FROM media WHERE published=0').all();for(const m of media){const full=path.join(temp,m.path);await fs.mkdir(path.dirname(full),{recursive:true});await fs.copyFile(m.local_path,full);await git(['add','--',m.path],temp);}
       await git(['-c','user.name=AI × Q editor','-c','user.email=editor@users.noreply.github.com','commit','-m',message||'Update site content from the editorial dashboard'],temp);
       const sha=await git(['rev-parse','HEAD'],temp);await git(['push','origin','HEAD:refs/heads/main'],temp);
-      this.db.exec('BEGIN');try{this.db.prepare('DELETE FROM drafts').run();this.db.prepare('UPDATE media SET published=1').run();this.audit('publish','','',sha);this.db.exec('COMMIT');}catch(e){this.db.exec('ROLLBACK');throw e;}
+      this.db.exec('BEGIN');try{this.db.prepare('DELETE FROM drafts').run();for(const m of media)this.db.prepare('UPDATE media SET published=1 WHERE id=?').run(m.id);this.audit('publish','','',sha);this.db.exec('COMMIT');}catch(e){this.db.exec('ROLLBACK');throw e;}
       let syncWarning='';try{await git(['merge','--ff-only',sha]);}catch{syncWarning='发布已成功，但本地副本需要 git pull --ff-only 后再编辑。';}
       return {sha,files:changes.size,warning:syncWarning,url:'https://github.com/xuehaisheng/ai-qualitative-research/actions'};
     }finally{if(temp){await exec('git',['worktree','remove','--force',temp],{cwd:this.repo}).catch(()=>{});await fs.rm(temp,{recursive:true,force:true});}this.publishing=false;}
