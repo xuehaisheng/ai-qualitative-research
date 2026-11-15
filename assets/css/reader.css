@@ -452,3 +452,6 @@ html[lang="en"] .home-page:not(.masthead-static) .site-header .header-shell { ga
   .page-main > .page-hero { padding-top: 24px !important; }
   html[lang="en"] .home-page:not(.masthead-static) .site-header .header-shell { gap: 16px; }
 }
+.page-main > .page-hero .page-heading { gap: 8px; }
+.page-main > .page-hero .page-heading h1 { margin: 4px 0 8px !important; }
+.page-main > .page-hero .page-heading p { margin: 0 !important; }
