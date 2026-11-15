@@ -133,7 +133,12 @@
   let typingTimer = null;
 
   function getPreferredLanguage() {
-    const saved = window.localStorage.getItem(storageKey);
+    let saved = null;
+
+    // Storage can be blocked (private mode, strict settings). The page then follows the browser language.
+    try {
+      saved = window.localStorage.getItem(storageKey);
+    } catch (error) {}
 
     if (saved === "ja" || saved === "en") {
       return saved;
@@ -178,7 +183,9 @@
 
   function applyLanguage(lang) {
     document.documentElement.lang = lang;
-    window.localStorage.setItem(storageKey, lang);
+    try {
+      window.localStorage.setItem(storageKey, lang);
+    } catch (error) {}
 
     bilingualNodes.forEach((node) => setNodeText(node, lang));
     document.querySelectorAll("[data-ph-" + lang + "]").forEach((node) => { node.placeholder = node.getAttribute("data-ph-" + lang); });
