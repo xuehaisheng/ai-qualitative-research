@@ -10,9 +10,11 @@
     let s=JSON.parse(sessionStorage.getItem('aiq-session')||'null');if(!s||s.last<now-30*60000)s={id:uuid()};s.last=now;sessionStorage.setItem('aiq-session',JSON.stringify(s));session=s.id;
   }catch{visitor=uuid();session=uuid();}
   const id=uuid(),path=location.pathname,language=document.documentElement.lang||'ja';
+  const googleCollector=/^https:\/\/script\.google\.com\/macros\/s\//.test(endpoint);
+  const device=/ipad|tablet/i.test(navigator.userAgent)?'平板':/mobile|android|iphone/i.test(navigator.userAgent)?'手机':'电脑';
   let active=0,started=document.visibilityState==='visible'?performance.now():null,depth=0,viewSent=false;
-  const payload=type=>({type,id,visitor,session,path,language,...(type==='view'?{referrer:document.referrer}:{seconds:Math.floor((active+(started===null?0:performance.now()-started))/1000),depth})});
-  const send=(type,beacon=false)=>{try{const body=JSON.stringify(payload(type));if(beacon&&navigator.sendBeacon){navigator.sendBeacon(endpoint,new Blob([body],{type:'text/plain;charset=UTF-8'}));return Promise.resolve(true);}return fetch(endpoint,{method:'POST',body,headers:{'Content-Type':'text/plain;charset=UTF-8'},credentials:'omit',keepalive:true}).then(r=>r.ok).catch(()=>false);}catch{return Promise.resolve(false);}};
+  const payload=type=>({type,id,visitor,session,path,language,device,site:location.origin+'/ai-qualitative-research',...(type==='view'?{referrer:document.referrer}:{seconds:Math.floor((active+(started===null?0:performance.now()-started))/1000),depth})});
+  const send=(type,beacon=false)=>{try{const body=JSON.stringify(payload(type));if((beacon||googleCollector)&&navigator.sendBeacon){return Promise.resolve(navigator.sendBeacon(endpoint,new Blob([body],{type:'text/plain;charset=UTF-8'})));}return fetch(endpoint,{method:'POST',body,headers:{'Content-Type':'text/plain;charset=UTF-8'},credentials:'omit',mode:googleCollector?'no-cors':'cors',keepalive:true}).then(r=>googleCollector||r.ok).catch(()=>false);}catch{return Promise.resolve(false);}};
   const measure=()=>{const article=document.querySelector('.post-body')||document.querySelector('main');if(!article)return;const rect=article.getBoundingClientRect();const visible=Math.max(0,Math.min(rect.height,innerHeight-rect.top));depth=Math.max(depth,Math.min(100,Math.round(visible/Math.max(1,rect.height)*100)));};
   measure();addEventListener('scroll',measure,{passive:true});
   send('view').then(ok=>viewSent=ok);
