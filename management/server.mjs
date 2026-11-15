@@ -62,7 +62,7 @@ export async function createApp(options={}){
    }
    if(route==='/api/preview'&&req.method==='POST'){
     const data=await read(req);const source=String(data.body||'').replace(/{{\s*'([^']+)'\s*\|\s*relative_url\s*}}/g,(_,p)=>siteOrigin+siteBase.replace(/\/$/,'')+p);
-    const rendered=sanitize(md.render(source),{allowedTags:sanitize.defaults.allowedTags.concat(['img','figure','figcaption','details','summary']),allowedAttributes:{...sanitize.defaults.allowedAttributes,img:['src','alt','width','height','loading'],a:['href','title','target','rel'], '*':['class','id']},allowedSchemes:['https','http','mailto'],transformTags:{a:sanitize.simpleTransform('a',{rel:'noopener noreferrer',target:'_blank'})}});
+    const rendered=sanitize(md.render(source),{allowedTags:sanitize.defaults.allowedTags.concat(['img','figure','figcaption','details','summary']),allowedAttributes:{...sanitize.defaults.allowedAttributes,img:['src','alt','width','height','loading'],a:['href','title','target','rel'], '*':['class','id']},allowedSchemes:['https','http','mailto'],transformTags:{a:sanitize.simpleTransform('a',{rel:'noopener noreferrer',target:'_blank'}),img:(tagName,attribs)=>{const media=db.prepare('SELECT id,path FROM media').all().find(m=>attribs.src===siteOrigin+siteBase.replace(/\/$/,'')+'/'+m.path);return {tagName,attribs:media?{...attribs,src:'/media/'+media.id}:attribs};}}});
     json(res,200,{html:rendered,hasTemplates:/{%|{{/.test(source)});return;
    }
    if(route==='/api/media'&&req.method==='POST'){
