@@ -82,5 +82,27 @@
       "en": ""
     },
     "profile_url": "https://researchmap.jp/xinyu_zhao"
+  },
+  {
+    "id": "hao",
+    "order": 4,
+    "name": {
+      "ja": "Tianshi HAO",
+      "en": "Tianshi HAO"
+    },
+    "role": {
+      "ja": "コラボレーター",
+      "en": "Collaborator"
+    },
+    "affiliation": {
+      "ja": "広島大学 外国語教育研究センター 特任助教",
+      "en": "Assistant Professor (Special Appointment), Institute for Foreign Language Research and Education, Hiroshima University"
+    },
+    "bio": {
+      "ja": "",
+      "en": ""
+    },
+    "profile_url": "https://scholar.google.com/citations?user=WKM1Nq8AAAAJ",
+    "profile_label": "Google Scholar"
   }
 ]
