@@ -47,7 +47,7 @@ body_class: wiki-page
           </ul>
         </div>
         {%- endif %}
-        {%- if page.articles %}
+        {%- if page.articles and page.articles.size > 0 %}
         <div class="wiki-box">
           <h2>{% include t.html ja="この項目が出てくる研究ノート" en="Research notes that use this term" %}</h2>
           <ul>
