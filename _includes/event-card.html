@@ -1,4 +1,4 @@
-{% assign event = include.event %}<article class="entry-item">
+{% assign event = include.event %}<article class="entry-item" id="{{ event.id | escape }}">
 <div class="entry-date">{{ event.date | escape }}</div>
 <h4 data-bilingual data-ja="{{ event.title.ja | escape }}" data-en="{{ event.title.en | escape }}">{{ event.title.ja | escape }}</h4>
 <div class="entry-place" data-bilingual data-ja="{{ event.place.ja | escape }}" data-en="{{ event.place.en | escape }}">{{ event.place.ja | escape }}</div>
