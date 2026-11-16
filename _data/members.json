@@ -146,5 +146,26 @@
       "en": ""
     },
     "profile_url": "https://researchmap.jp/omiyas"
+  },
+  {
+    "id": "nochi",
+    "order": 7,
+    "name": {
+      "ja": "能智 正博",
+      "en": "Masahiro NOCHI"
+    },
+    "role": {
+      "ja": "コラボレーター",
+      "en": "Collaborator"
+    },
+    "affiliation": {
+      "ja": "東京大学 大学院教育学研究科 臨床心理学コース 教授",
+      "en": "Professor, Clinical Psychology Course, Graduate School of Education, The University of Tokyo"
+    },
+    "bio": {
+      "ja": "",
+      "en": ""
+    },
+    "profile_url": "https://researchmap.jp/read0061460"
   }
 ]
