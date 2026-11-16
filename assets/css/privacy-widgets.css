@@ -135,3 +135,4 @@
 .pv-ttft-label { position: relative; z-index: 1; display: block; padding: 0 8px; font-size: .74rem; line-height: 22px; color: #fff; mix-blend-mode: difference; }
 .pv-tab:disabled { color: #b5b5b5; border-color: #ececec; background: #fafafa; cursor: not-allowed; }
 .pv-tab[aria-selected="true"]:disabled { background: #9a9a9a; border-color: #9a9a9a; color: #fff; }
+.pv-speed .pv-tabrow { margin-top: 10px; }
