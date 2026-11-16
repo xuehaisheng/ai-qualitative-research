@@ -148,16 +148,16 @@
     ],
     "details": [
       {
-        "ja": "2023年（立命館大学）、2024年（成城大学）に続く3回目のシンポジウム。話題提供が三つあり、樫田美雄と尾見康博が指定討論を務めた。",
-        "en": "The third symposium in the series, following 2023 (Ritsumeikan University) and 2024 (Seijo University). There were three talks, and Yoshio Kashida and Yasuhiro Omi served as discussants."
+        "ja": "2023年（立命館大学）、2024年（成城大学）に続く3回目の企画。前年はマルチモーダルなモデル、この年は自律的にタスクをこなすAIエージェントが話題になった。質的研究者がAIに抱く期待、戸惑い、不信感をふまえ、質的研究でのAIの使い方を批判的に見直し、実際の研究例をもとに議論した。指定討論は樫田美雄と尾見康博。",
+        "en": "The third symposium, following 2023 (Ritsumeikan University) and 2024 (Seijo University). The year before, multimodal models were the topic; this year it was AI agents that carry out tasks on their own. With the hopes, confusion, and distrust qualitative researchers feel toward AI in mind, we took a critical look at how AI is used in qualitative research and discussed actual research examples. Discussants were Yoshio Kashida and Yasuhiro Omi."
       },
       {
-        "ja": "話題提供1（薛海升）は、AIをめぐる最近の議論を紹介したうえで、AI×質的研究の論文では、分析の自動化など、効率化のための利用が目立つと指摘した。データの収集や分析を自動化すると、研究者が現場もデータもよく知らないまま研究が進んでしまう。これを質的研究における「human out of the loop（脱人間化）」の問題と呼び、研究者が考える過程の中にAIを組み込む使い方を提案した。",
-        "en": "Talk 1 (Haisheng Xue) reviewed recent debates about AI and pointed out that papers on AI and qualitative research mostly use AI for efficiency, such as automating analysis. When data collection and analysis are automated, research can go ahead without the researcher really knowing the field or the data. He called this the \"human out of the loop\" problem in qualitative research, and proposed ways of using AI inside the researcher's own thinking process."
+        "ja": "話題提供1（薛海升）は、AIの最新動向をふまえて、質的研究でのAI活用の現状と課題を概観した。いまの使い方は仮説生成やデータ処理の自動化といった効率化が中心だが、データの収集や分析を自動化すると、研究者が現場もデータもよく知らないまま研究が進んでしまう。これを質的研究における「human out of the loop（脱人間化）」の問題と呼び、AIを研究者の考える過程に深く組み込む、より創造的で内省的な使い方を提案した。",
+        "en": "Talk 1 (Haisheng Xue) surveyed the current state and problems of AI use in qualitative research in light of recent developments. Current use centers on efficiency, such as generating hypotheses and automating data processing, but when data collection and analysis are automated, research can go ahead without the researcher really knowing the field or the data. He called this the \"human out of the loop\" problem in qualitative research, and proposed more creative and reflective uses that bring AI deep into the researcher's thinking."
       },
       {
-        "ja": "話題提供2（豐田隼・稲田真子）は、話題提供者3名の語り合いを逐語データにして、AIにすべて任せようとする使い方と、AIと協働して分析する使い方を比べた。指示を細かくしても、AIの出力は使う人によっても、試すたびにも揺れること、論文の形でレポートを書かせると、方法や内容に事実でない記述が混じることが報告された。話題提供3（中田友貴）は、AIによるインタビューの実施を扱った。",
-        "en": "Talk 2 (Hayato Toyoda and Mako Inada) used a transcript of a conversation among the three presenters to compare two approaches: leaving everything to AI, and analyzing together with AI. Even with detailed instructions, the output varied between users and between attempts, and when AI was asked to write a paper-style report, it included statements about the method and content that were not true. Talk 3 (Yuki Nakata) dealt with conducting interviews with AI."
+        "ja": "話題提供2（豐田隼・稲田真子）は、分析の流れから人間をできるだけ外してAIに任せる（ポスト）実証主義的な使い方と、AIを対話的な思考のパートナーにする構成主義的な使い方を、同じ逐語データで試した。指示を細かくしても出力は使う人や試行ごとに揺れ、論文の形でレポートを書かせると事実でない記述が混じることが報告された。話題提供3（中田友貴）は、インタビューにLLMを使う研究をプロンプトの観点から整理し、一貫性の欠如や深掘りの偏りといった課題への対応を、実際のインタビュー結果をもとに示した。",
+        "en": "Talk 2 (Hayato Toyoda and Mako Inada) tried, on the same transcript, a (post)positivist approach that removes humans from the analysis as far as possible and leaves it to AI, and a constructivist approach that treats AI as a partner in dialogic thinking. Even with detailed instructions, the output varied between users and attempts, and paper-style reports written by AI contained untrue statements. Talk 3 (Yuki Nakata) reviewed studies using LLMs for interviews from the viewpoint of prompt design, and, based on actual interview results, showed ways of dealing with problems such as inconsistency and uneven probing."
       }
     ]
   },
@@ -312,8 +312,12 @@
     ],
     "details": [
       {
-        "ja": "薛海升は、生成AIの基本的な仕組みと、質的研究での文献レビューやデータ分析にAIを使った先行研究を紹介した。堀内多恵・大橋英永は、心理教育プログラムの作成にAIを使った経験から、AIは仕事を助けるのか、それとも心理援助そのものを担えるのかを問うた。中田友貴は、ChatGPTに半構造化インタビューを行わせ、会話は流暢で具体的な話も引き出すが、掘り下げは浅く、得られる情報は表面的で限られていたと報告した。",
-        "en": "Haisheng Xue introduced how generative AI basically works and earlier studies that used AI for literature reviews and data analysis in qualitative research. Tae Horiuchi and Hidenaga Ohashi, drawing on their experience of using AI to create psychoeducation programs, asked whether AI helps with the work or can take over psychological support itself. Yuki Nakata had ChatGPT conduct semi-structured interviews and reported that the conversation was fluent and drew out concrete stories, but did not go deep, so the information gathered was superficial and limited."
+        "ja": "前年に続く2回目の企画。この1年で、音声や画像も扱えるGPT-4oや、推論能力の高いClaude 3.5 Sonnetなどが次々に登場した。質的研究者がこうした技術をどう使ってきたか、今後どうなるかを議論した。指定討論は尾見康博と川野健治。",
+        "en": "The second symposium, following the previous year. In that one year, models such as GPT-4o, which handles voice and images, and Claude 3.5 Sonnet, with strong reasoning, appeared one after another. We discussed how qualitative researchers have been using these technologies and where things are heading. Discussants were Yasuhiro Omi and Kenji Kawano."
+      },
+      {
+        "ja": "薛海升は、AIによって質的研究の対象（人間とAIの相互作用やAIそのもの）が変わり、データ収集・分析・論文執筆でAIの補助が一般的になると論じ、身体性や倫理といったAIの限界にも触れた。堀内多恵・大橋英永は、生成AIを使った心理教育プログラムの授業設計やAIカウンセリングを例に、「仕事を奪うAI」と「仕事を助けるAI」を対比した。中田友貴は、学生へのAIによるキャリアインタビューで調査者や協力者が感じた違和感から、インタビューという方法を考え直した。",
+        "en": "Haisheng Xue argued that AI will change what qualitative research studies, such as human–AI interaction and AI itself, and that AI assistance in data collection, analysis, and writing will become common; he also discussed AI's limits, such as embodiment and ethics. Tae Horiuchi and Hidenaga Ohashi contrasted \"AI that takes jobs\" with \"AI that helps with jobs,\" using examples such as designing psychoeducation classes with generative AI and AI counseling services. Yuki Nakata reconsidered the interview as a method, starting from the discomfort that researchers and participants felt in AI-led career interviews with students."
       }
     ]
   },
@@ -345,6 +349,16 @@
     "members": [
       "xue",
       "omi"
+    ],
+    "details": [
+      {
+        "ja": "ChatGPTは公開から5日で100万人、数か月で1億人の利用者に達し、教育、芸術、金融、メディアなどに影響が広がった。言葉を扱う分野ほど影響を受けやすく、質的研究もその一つになる。この企画では、質的研究者がこの変革期の好機と危機をどう捉えるかを考えた。司会は中田友貴、指定討論は能智正博と尾見康博。",
+        "en": "ChatGPT reached one million users five days after its release and 100 million within a few months, affecting fields such as education, art, finance, and media. The more a field deals with language, the more it is affected, and qualitative research is one of them. This symposium asked how qualitative researchers see the opportunities and risks of this period of change. Chaired by Yuki Nakata; discussants were Masahiro Nochi and Yasuhiro Omi."
+      },
+      {
+        "ja": "中田友貴は、生成AIの基盤である深層学習と大規模言語モデルの原理を解説し、大学や産業での活用の動向と、心理学研究に使うときの利点・限界・倫理の問題を提起した。薛海升は、AIの専門家でもプログラマーでもない質的研究者として、AIを分析に取り入れてきた経験を一種のエスノグラフィーとして語り、AIと質的研究の今後の見通しを述べた。大橋英永は、AIチャット相談のサービスを実際に使った事例を紹介し、臨床実践と質的研究に与える影響を考えた。",
+        "en": "Yuki Nakata explained the principles of deep learning and large language models behind generative AI, reviewed how they are being used in universities and industry, and raised the benefits, limits, and ethical problems of using them in psychological research. Haisheng Xue, as a qualitative researcher who is neither an AI expert nor a programmer, described his experience of bringing AI into analysis as a kind of ethnography, and offered his outlook on AI and qualitative research. Hidenaga Ohashi introduced AI chat counseling services he had actually used, and considered their impact on clinical practice and qualitative research."
+      }
     ]
   }
 ]
