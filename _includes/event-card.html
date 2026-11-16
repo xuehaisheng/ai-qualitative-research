@@ -3,5 +3,6 @@
 <h4 data-bilingual data-ja="{{ event.title.ja | escape }}" data-en="{{ event.title.en | escape }}">{{ event.title.ja | escape }}</h4>
 <div class="entry-place" data-bilingual data-ja="{{ event.place.ja | escape }}" data-en="{{ event.place.en | escape }}">{{ event.place.ja | escape }}</div>
 <p data-bilingual data-ja="{{ event.summary.ja | escape }}" data-en="{{ event.summary.en | escape }}">{{ event.summary.ja | escape }}</p>
+{% if include.full and event.details %}<div class="event-details">{% for para in event.details %}<p data-bilingual data-ja="{{ para.ja | escape }}" data-en="{{ para.en | escape }}">{{ para.ja | escape }}</p>{% endfor %}</div>{% endif %}
 {% for link in event.links %}{% assign first = link.url | slice: 0 %}<a class="text-link" data-bilingual data-ja="{{ link.label.ja | escape }}" data-en="{{ link.label.en | escape }}" href="{% if first == '/' %}{{ link.url | relative_url }}{% else %}{{ link.url | escape }}{% endif %}"{% if first != '/' or link.url contains '.pdf' %} target="_blank" rel="noopener"{% endif %}>{{ link.label.ja | escape }}</a> {% endfor %}
 </article>

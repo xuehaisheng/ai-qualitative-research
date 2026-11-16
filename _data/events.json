@@ -35,6 +35,16 @@
       "xue",
       "kajiwara",
       "toyoda"
+    ],
+    "details": [
+      {
+        "ja": "生成AIが質的研究をどう変えるのかについて、質的研究者自身はどう論じてきたのか。方法論的な論考を検索し、522件から28篇にしぼって、質的メタ統合を行った。",
+        "en": "How have qualitative researchers themselves written about the changes generative AI brings to qualitative research? We searched for methodological papers, narrowed 522 records down to 28, and carried out a qualitative meta-synthesis."
+      },
+      {
+        "ja": "研究者がAIを語るときの見方は、四つのメタファー（似姿・レンズ・手・秤）にまとめられた。検索からポスター作成まで、作業の多くはAIと一緒に進め、何を問い、何を選び、どうまとめるかは研究者が決めた。その進め方は研究ノートに記録している。",
+        "en": "The ways researchers talk about AI could be grouped into four metaphors: likeness, lens, hand, and scale. From the search to the poster, much of the work was done together with AI, while the researchers decided what to ask, what to include, and how to synthesize. The research note describes how we did it."
+      }
     ]
   },
   {
@@ -81,11 +91,24 @@
           "en": "researchmap"
         },
         "url": "https://researchmap.jp/XUEHaisheng/published_papers"
+      },
+      {
+        "label": {
+          "ja": "全文（UTokyo Repository）",
+          "en": "Full text (UTokyo Repository)"
+        },
+        "url": "https://doi.org/10.15083/0002015245"
       }
     ],
     "members": [
       "xue",
       "toyoda"
+    ],
+    "details": [
+      {
+        "ja": "AIと質的研究の協働について、研究者の反省性（研究者自身の立場や関わり方が研究にどう影響しているかをふり返ること）に着目して論じた論文。全文は東京大学学術機関リポジトリで読める。",
+        "en": "A paper on collaboration between AI and qualitative research, focusing on researchers' reflexivity, that is, reflecting on how the researcher's own position and involvement shape the research. The full text (in Japanese) is available in the UTokyo Repository."
+      }
     ]
   },
   {
@@ -118,6 +141,20 @@
       "toyoda",
       "kashida",
       "omi"
+    ],
+    "details": [
+      {
+        "ja": "2023年（立命館大学）、2024年（成城大学）に続く3回目のシンポジウム。話題提供が三つあり、樫田美雄と尾見康博が指定討論を務めた。",
+        "en": "The third symposium in the series, following 2023 (Ritsumeikan University) and 2024 (Seijo University). There were three talks, and Yoshio Kashida and Yasuhiro Omi served as discussants."
+      },
+      {
+        "ja": "話題提供1（薛海升）は、AIをめぐる最近の議論を紹介したうえで、AI×質的研究の論文では、分析の自動化など、効率化のための利用が目立つと指摘した。データの収集や分析を自動化すると、研究者が現場もデータもよく知らないまま研究が進んでしまう。これを質的研究における「human out of the loop（脱人間化）」の問題と呼び、研究者が考える過程の中にAIを組み込む使い方を提案した。",
+        "en": "Talk 1 (Haisheng Xue) reviewed recent debates about AI and pointed out that papers on AI and qualitative research mostly use AI for efficiency, such as automating analysis. When data collection and analysis are automated, research can go ahead without the researcher really knowing the field or the data. He called this the \"human out of the loop\" problem in qualitative research, and proposed ways of using AI inside the researcher's own thinking process."
+      },
+      {
+        "ja": "話題提供2（豐田隼・稲田真子）は、話題提供者3名の語り合いを逐語データにして、AIにすべて任せようとする使い方と、AIと協働して分析する使い方を比べた。指示を細かくしても、AIの出力は使う人によっても、試すたびにも揺れること、論文の形でレポートを書かせると、方法や内容に事実でない記述が混じることが報告された。話題提供3（中田友貴）は、AIによるインタビューの実施を扱った。",
+        "en": "Talk 2 (Hayato Toyoda and Mako Inada) used a transcript of a conversation among the three presenters to compare two approaches: leaving everything to AI, and analyzing together with AI. Even with detailed instructions, the output varied between users and between attempts, and when AI was asked to write a paper-style report, it included statements about the method and content that were not true. Talk 3 (Yuki Nakata) dealt with conducting interviews with AI."
+      }
     ]
   },
   {
@@ -158,11 +195,29 @@
       "ja": "Tianshi HAO（Pepperdine University）とXinyu ZHAO（大阪大学、当時）による発表。生成AIの使用が博士課程の論文出版の文化をどう変えるかを、エピステミック・ネットワーク分析を用いて論じた。発表は英語で、討論では通訳をつけた。",
       "en": "A talk by Tianshi Hao (Pepperdine University) and Xinyu Zhao (Osaka University at the time) on how generative AI is changing the publishing culture of doctoral students, using epistemic network analysis. The talk was in English, with interpretation during the discussion."
     },
-    "links": [],
+    "links": [
+      {
+        "label": {
+          "ja": "当日のスライド（PDF、日本語版）",
+          "en": "Slides (PDF, Japanese version)"
+        },
+        "url": "/assets/pdf/2025-02-22_generative-ai-and-doctoral-publication.pdf"
+      }
+    ],
     "members": [
       "xue",
       "hao",
       "zhao"
+    ],
+    "details": [
+      {
+        "ja": "世界6か国の博士課程の学生36名にオンラインでインタビューし、研究や論文発表に生成AIをどう使っているかを尋ねた。発話をコード化し、エピステミック・ネットワーク分析（ENA：コード同士のつながり方を図にして比べる方法）を使って、分野（社会科学とSTEM）や地域（米国・中国・日本）による違いを調べた。",
+        "en": "The study interviewed 36 doctoral students in six countries online about how they use generative AI in research and publishing. The answers were coded and compared using epistemic network analysis (ENA), a method that maps how codes are connected, to look at differences by field (social sciences vs. STEM) and region (US, China, Japan)."
+      },
+      {
+        "ja": "社会科学の学生では、AIへの肯定的な態度が、文法や表現の修正といった言語面の支援と強く結びついていた。STEMの学生では、AIの技術的な限界への否定的な見方と結びつく傾向が強かった。地域のあいだに統計的に有意な差は見られなかったが、中国の学生では技術的な限界への懸念、日本の学生ではハルシネーション（AIがもっともらしい誤りを出すこと）への懸念が目立った。",
+        "en": "Among social science students, positive attitudes toward AI were closely tied to language support such as grammar and wording. STEM students more often tied AI to negative views of its technical limits. No statistically significant regional differences were found, but concerns about technical limits stood out among Chinese students, and concerns about hallucination (AI producing plausible but wrong output) among Japanese students."
+      }
     ]
   },
   {
@@ -214,6 +269,12 @@
     ],
     "members": [
       "xue"
+    ],
+    "details": [
+      {
+        "ja": "あわせて、この集まりを月1回ほどのペースで続け、読書会、論文紹介、研究発表、AIの使い方の共有などを行うことを提案した。これが「AI×質的研究」の研究会の始まりになった。",
+        "en": "We also proposed continuing to meet about once a month for reading groups, paper introductions, research talks, and sharing how we use AI. This was the start of the AI × Qualitative Research study meetings."
+      }
     ]
   },
   {
@@ -244,6 +305,12 @@
     "members": [
       "xue",
       "omi"
+    ],
+    "details": [
+      {
+        "ja": "薛海升は、生成AIの基本的な仕組みと、質的研究での文献レビューやデータ分析にAIを使った先行研究を紹介した。堀内多恵・大橋英永は、心理教育プログラムの作成にAIを使った経験から、AIは仕事を助けるのか、それとも心理援助そのものを担えるのかを問うた。中田友貴は、ChatGPTに半構造化インタビューを行わせ、会話は流暢で具体的な話も引き出すが、掘り下げは浅く、得られる情報は表面的で限られていたと報告した。",
+        "en": "Haisheng Xue introduced how generative AI basically works and earlier studies that used AI for literature reviews and data analysis in qualitative research. Tae Horiuchi and Hidenaga Ohashi, drawing on their experience of using AI to create psychoeducation programs, asked whether AI helps with the work or can take over psychological support itself. Yuki Nakata had ChatGPT conduct semi-structured interviews and reported that the conversation was fluent and drew out concrete stories, but did not go deep, so the information gathered was superficial and limited."
+      }
     ]
   },
   {

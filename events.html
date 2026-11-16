@@ -16,5 +16,5 @@ permalink: /events/
 {% if upcoming.size > 0 %}<div class="entry-list">{% for event in upcoming %}{% include event-card.html event=event %}{% endfor %}</div>
 {% else %}<p data-bilingual data-ja="次の企画が決まりしだい、ここでお知らせする。" data-en="New events will be announced here.">次の企画が決まりしだい、ここでお知らせする。</p>{% endif %}</div>
 <h2 class="event-archive-title" data-bilingual data-ja="過去の記録" data-en="Past events">過去の記録</h2>
-<div class="entry-list event-archive">{% assign past = site.data.events | where: 'status', 'past' | sort: 'date' | reverse %}{% for event in past %}{% include event-card.html event=event %}{% endfor %}</div></div></section></main>
+<div class="entry-list event-archive">{% assign past = site.data.events | where: 'status', 'past' | sort: 'date' | reverse %}{% for event in past %}{% include event-card.html event=event full=true %}{% endfor %}</div></div></section></main>
 <style>.event-archive{max-width:none;margin:16px 0 0}.event-archive .entry-item{padding:28px 0;border-bottom:1px solid #ddd}.event-archive h4{font-size:1.15rem;line-height:1.6;margin:10px 0}</style>
