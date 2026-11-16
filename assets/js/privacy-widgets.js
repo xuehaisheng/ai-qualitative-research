@@ -469,62 +469,90 @@
       ? 'The interviewee describes moving to Tokyo for work and how, at first, she spoke to no one at the office. Over the following months she began to eat lunch with a colleague from the same prefecture, and this, she says, was when the city started to feel like hers.'
       : '語り手は、仕事のために東京に移ったころ、職場で誰とも話さなかったと振り返る。数か月たって、同じ県の出身の同僚と昼食をとるようになり、そのころから東京が自分の街だと感じられるようになった、と語っている。';
     var ttft = root.getAttribute('data-mode') === 'ttft';
-    var rows = ttft ? [
-      { name: 'Mac mini (M5 Pro)', bw: en ? '64GB, 20-core GPU' : '64GB・GPU 20コア', rate: 17, wait: 4 },
-      { name: 'Mac Studio (M5 Max)', bw: en ? '64GB, 40-core GPU' : '64GB・GPU 40コア', rate: 34, wait: 2 }
+    // Measured figures: MacStories (Viticci, 2026), Qwen3.8 27B, 4-bit. RTX 5090 = GGUF Q4_K_M in LM Studio; M5 Ultra = MLX.
+    var scenarios = ttft ? [
+      { id: 'short', label: en ? 'About 6,000 tokens in' : '入力 約6,000トークン', scale: 1,
+        rows: [{ name: 'RTX 5090', spec: en ? '32GB, 1,792GB/s' : '32GB・1,792GB/s', wait: 2.0, rate: 59 },
+               { name: 'Mac Studio (M5 Ultra)', spec: en ? '256GB, 1.2TB/s' : '256GB・1.2TB/s', wait: 4.0, rate: 48 }] },
+      { id: 'long', label: en ? 'About 63,000 tokens in' : '入力 約63,000トークン', scale: 0.1,
+        rows: [{ name: 'RTX 5090', spec: en ? '32GB, 1,792GB/s' : '32GB・1,792GB/s', wait: 26.4, rate: 49.6 },
+               { name: 'Mac Studio (M5 Ultra)', spec: en ? '256GB, 1.2TB/s' : '256GB・1.2TB/s', wait: 42.8, rate: 38.9 }] }
     ] : [
-      { name: 'Mac mini (M5 Pro)', bw: '307GB/s', rate: 17, wait: 0 },
-      { name: 'RTX 5090', bw: '1,792GB/s', rate: 100, wait: 0 }
+      { id: 'bw', scale: 1,
+        rows: [{ name: 'Mac mini (M5 Pro)', spec: '307GB/s', wait: 0, rate: 17 },
+               { name: 'RTX 5090', spec: '1,792GB/s', wait: 0, rate: 100 }] }
     ];
+    var cur = scenarios[0], timer = null, started = false;
     root.textContent = '';
-    root.appendChild(h('p', 'pv-opt-where', ttft
-      ? (en ? 'The bar shows the time spent reading a long transcript before the first word, assuming 4 seconds for the Mac mini; the ratio is what matters. Writing then runs at the bandwidth limit for a model of about 18 GB.'
-            : '棒は、長い逐語録を読み込んで最初の一文字が出るまでの時間。Mac miniを仮に4秒とし、比を再現した。そのあとは約18GBのモデルで、帯域幅から決まる上限の速さで書き出す。')
-      : (en ? 'Writing speed with a model of about 18 GB, at the upper limit set by bandwidth (one token shown as one character).'
-            : '約18GBのモデルで、帯域幅から決まる上限の速さで書き出した場合（1トークンを1文字として表示）。')));
-    var outs = rows.map(function (r) {
-      var row = h('div', 'pv-speed-row');
-      var head = h('div', 'pv-speed-head');
-      var left = h('span'); left.appendChild(h('strong', null, r.name)); left.appendChild(document.createTextNode(' ' + r.bw));
-      head.appendChild(left);
-      head.appendChild(h('span', null, (en ? 'about ' : '1秒に約') + r.rate + (en ? ' tokens/s' : 'トークン')));
-      row.appendChild(head);
-      var bar = null, fill = null;
-      if (r.wait) {
-        bar = h('div', 'pv-ttft-bar'); fill = h('span', 'pv-ttft-fill'); bar.appendChild(fill);
-        bar.appendChild(h('span', 'pv-ttft-label', ''));
-        row.appendChild(bar);
-      }
-      var out = h('div', 'pv-speed-out');
-      row.appendChild(out);
-      root.appendChild(row);
-      return { el: out, rate: r.rate, wait: r.wait, fill: fill, label: bar && bar.lastChild };
-    });
+    var intro = h('p', 'pv-opt-where');
+    root.appendChild(intro);
+    if (ttft) {
+      var tabRow = tabs(en ? 'Input' : '入力の長さ', scenarios.map(function (x) { return { id: x.id, label: x.label }; }), cur.id, function (id) {
+        cur = scenarios.filter(function (x) { return x.id === id; })[0]; build(); run();
+      });
+      root.appendChild(tabRow);
+    }
+    var box = h('div');
+    root.appendChild(box);
     var btn = h('button', 'pv-tab pv-speed-btn', en ? 'Run again' : 'もう一度');
     btn.type = 'button';
     root.appendChild(btn);
-    var timer = null, started = false;
+    var outs = [];
+
+    function build() {
+      intro.textContent = ttft
+        ? (cur.scale < 1
+            ? (en ? 'Measured time to first token and writing speed for Qwen3.8 27B (4-bit). The reading bar runs at 10× speed; the seconds shown are the real ones.'
+                  : 'Qwen3.8 27B（4ビット）での実測値。読み込みの棒は10倍速で動かしている（表示の秒数は実際の値）。')
+            : (en ? 'Measured time to first token and writing speed for Qwen3.8 27B (4-bit), shown in real time (one token shown as one character).'
+                  : 'Qwen3.8 27B（4ビット）での、最初の一文字までの時間と書き出す速さの実測値。実際の速さで再現している（1トークンを1文字として表示）。'))
+        : (en ? 'Writing speed with a model of about 18 GB, at the upper limit set by bandwidth (one token shown as one character).'
+              : '約18GBのモデルで、帯域幅から決まる上限の速さで書き出した場合（1トークンを1文字として表示）。');
+      box.textContent = '';
+      var maxWait = Math.max.apply(null, cur.rows.map(function (r) { return r.wait; }));
+      outs = cur.rows.map(function (r) {
+        var row = h('div', 'pv-speed-row');
+        var head = h('div', 'pv-speed-head');
+        var left = h('span'); left.appendChild(h('strong', null, r.name)); left.appendChild(document.createTextNode(' ' + r.spec));
+        head.appendChild(left);
+        head.appendChild(h('span', null, (en ? 'about ' : '1秒に約') + r.rate + (en ? ' tokens/s' : 'トークン')));
+        row.appendChild(head);
+        var o = { rate: r.rate, wait: r.wait, maxWait: maxWait };
+        if (r.wait) {
+          var bar = h('div', 'pv-ttft-bar'); o.fill = h('span', 'pv-ttft-fill'); bar.appendChild(o.fill);
+          o.label = h('span', 'pv-ttft-label', ''); bar.appendChild(o.label);
+          row.appendChild(bar);
+        }
+        o.el = h('div', 'pv-speed-out');
+        row.appendChild(o.el);
+        box.appendChild(row);
+        return o;
+      });
+    }
     function run() {
       if (timer) clearInterval(timer);
-      var t0 = performance.now();
+      var t0 = performance.now(), scale = cur.scale;
       timer = setInterval(function () {
-        var sec = (performance.now() - t0) / 1000, done = true;
+        var real = (performance.now() - t0) / 1000, done = true;
         outs.forEach(function (o) {
+          // The reading phase is compressed by "scale"; writing always runs in real time.
+          var readReal = o.wait * scale;
           if (o.wait) {
-            var p = Math.min(1, sec / o.wait);
-            o.fill.style.width = (p * 100) + '%';
-            o.label.textContent = p < 1
-              ? (en ? 'Reading the transcript\u2026 ' : '逐語録を読み込み中\u2026 ') + sec.toFixed(1) + (en ? ' s' : '秒')
+            var simWait = Math.min(o.wait, real / scale);
+            o.fill.style.width = (simWait / o.maxWait * 100) + '%';
+            o.label.textContent = simWait < o.wait
+              ? (en ? 'Reading… ' : '読み込み中… ') + simWait.toFixed(1) + (en ? ' s' : '秒')
               : (en ? 'First word after ' : '最初の一文字まで ') + o.wait.toFixed(1) + (en ? ' s' : '秒');
-            if (p < 1) { o.el.textContent = ''; done = false; return; }
+            if (simWait < o.wait) { o.el.textContent = ''; done = false; return; }
           }
-          var n = Math.min(text.length, Math.floor((sec - o.wait) * o.rate));
+          var n = Math.min(text.length, Math.floor((real - readReal) * o.rate));
           o.el.textContent = text.slice(0, n);
           if (n < text.length) done = false;
         });
         if (done) { clearInterval(timer); timer = null; }
       }, 30);
     }
+    build();
     btn.addEventListener('click', run);
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (es, ob) {
@@ -532,6 +560,7 @@
       }, { threshold: 0.4 }).observe(root);
     } else run();
   }
+
 
   function boot() {
     document.querySelectorAll('.pv-flow').forEach(initFlow);

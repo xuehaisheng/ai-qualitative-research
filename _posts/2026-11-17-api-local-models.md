@@ -103,11 +103,13 @@ Macは台所の作りが違う。Apple Siliconを使ったMacでは、CPUとGPU�
 
 ## 最初の一文字が出るまで
 
-計算力の違いは、長い逐語録を渡したとき、最初の一文字が出るまでの待ち時間に表れる。メモリの容量が同じ二台で比べてみる。どちらもメモリを64GBにしたMac mini（M5 Pro、GPUは20コア）とMac Studio（M5 Max、GPUは40コア）である。同じ世代のGPUなら、計算力はおおよそコアの数に比例するので、Mac Studioの計算力はMac miniの約2倍になる。冷蔵庫の大きさは同じで、料理人の数が2倍、という関係である。
-
-どちらにも同じモデルが入るので、動かせるモデルは変わらない。違うのは、注文を読み終えるまでの時間である。下の図では、Mac miniが逐語録を読み終えるのにかかる時間を仮に4秒として、時間の比を再現した。Mac Studioは帯域幅も614GB/sと2倍あるので、書き出す速さも2倍になる。
+では、RTX 5090と、大きなメモリを積んだMac Studioでは、どちらが速いのか。MacStoriesのフェデリコ・ヴィティッチが、同じQwen3.8 27B（4ビット）を、RTX 5090のPCとMac Studio（M5 Ultra、メモリ256GB）で動かして測っている。実行するソフトと量子化の形式が違うので、チップ同士ではなく、機械全体での比較である。
 
 {% include gpu-visual.html part="ttft" lang="ja" %}
+
+約6,000トークンの入力では、最初の一文字が出るまで、RTX 5090は2.0秒、Mac Studioは4.0秒だった。計算力の差がそのまま待ち時間の差になっている。書き出す速さも、帯域幅の広いRTX 5090の方が速い（1秒に59トークンと48トークン）。約63,000トークンまで長くすると、待ち時間は26.4秒と42.8秒に延びるが、順位は変わらない。モデルが32GBに収まっている限り、Mac Studioが後から追い抜くことはなく、どちらの段階でもRTX 5090が少し速い。
+
+逆転が起きるのは、冷蔵庫が足りなくなったときである。入力が長くなるほど、読んだ内容を覚えておく作業台（KVキャッシュ）も広くなる。上のRTX 5090の数字は、この作業台の数字を8ビットに縮めて、32GBに収めたうえでのものである。収まりきらずに本体のメモリにあふれた設定では、入力が約6万、13万、26万トークンのとき、書き出す速さは1秒に4.6、2.9、1.5トークンまで落ちた。同じ長さで、Mac Studioは1秒に38.9、32.4、24.3トークンを保っている。少し速いが冷蔵庫の小さいRTX 5090か、少し遅いが冷蔵庫の大きいMac Studioか。長い逐語録をまとめて読ませるなら、冷蔵庫の大きさが効いてくる。
 
 ## どのくらいのPCが必要か
 
@@ -155,6 +157,7 @@ Windowsで組む場合、GPUのほかに本体やメモリの費用もかかる�
 - TechSpot. (n.d.). *[Nvidia GeForce RTX 5060 Ti 16GB](https://www.techspot.com/specs/gpu/307872-nvidia-geforce-rtx-5060-ti-16gb.html)* [Specifications].
 - Tom's Hardware. (2025). *[Nvidia GeForce RTX 5090 review](https://www.tomshardware.com/pc-components/gpus/nvidia-geforce-rtx-5090-review)*.
 - Tsukumo. (n.d.). *[GeForce RTX 5060シリーズ](https://shop.tsukumo.co.jp/features/rtx-5060series/)*.
+- Viticci, F. (2026, September). *[M5 Ultra Mac Studio review: The dream Mac for local AI agents](https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/)*. MacStories.
 - xAI. (n.d.). *[Enterprise FAQs](https://x.ai/legal/faq-enterprise)*.
 - Yodobashi Camera. (n.d.). *[Mac mini M5 Pro カスタマイズ構成](https://www.yodobashi.com/product/100000001010196007/)*.
 
@@ -250,11 +253,13 @@ For compute, the RTX 5060 Ti 16GB delivers about 24 TFLOPS in FP32 and the RTX 5
 
 ## Waiting for the first word
 
-Differences in compute show up in how long you wait for the first word after handing over a long transcript. Take two machines with the same memory: a Mac mini (M5 Pro, 20-core GPU) and a Mac Studio (M5 Max, 40-core GPU), both with 64 GB. Within the same GPU generation, compute is roughly proportional to the number of cores, so the Mac Studio has about twice the Mac mini's compute. Same fridge, twice as many cooks.
-
-The same model fits in both, so what you can run does not change. What changes is the time it takes to read the order. The demo below assumes, for illustration, that the Mac mini takes 4 seconds to read the transcript and keeps the ratio between the two. The Mac Studio also has twice the bandwidth (614 GB/s), so it writes twice as fast too.
+So which is faster: an RTX 5090, or a Mac Studio with a lot of memory? Federico Viticci of MacStories ran the same Qwen3.8 27B model (4-bit) on a PC with an RTX 5090 and on a Mac Studio (M5 Ultra, 256 GB) and measured both. The software and quantisation formats differ, so this compares whole machines rather than chips.
 
 {% include gpu-visual.html part="ttft" lang="en" %}
+
+With an input of about 6,000 tokens, the first word appeared after 2.0 seconds on the RTX 5090 and 4.0 seconds on the Mac Studio. The difference in compute shows up directly as waiting time. The RTX 5090, with its wider bandwidth, also writes faster (59 against 48 tokens a second). Stretch the input to about 63,000 tokens and the waits grow to 26.4 and 42.8 seconds, but the order stays the same. As long as the model fits in 32 GB, the Mac Studio does not catch up later on; the RTX 5090 is a little faster at both stages.
+
+The order flips when the fridge runs out. The longer the input, the bigger the work surface needed to hold what has been read (the KV cache). The RTX 5090 figures above were obtained by shrinking the numbers on that work surface to 8 bits so that everything fitted in 32 GB. In a setup where it did not fit and overflowed into main memory, writing speed fell to 4.6, 2.9 and 1.5 tokens a second for inputs of about 60,000, 130,000 and 260,000 tokens. At the same lengths, the Mac Studio held at 38.9, 32.4 and 24.3. A slightly faster RTX 5090 with a small fridge, or a slightly slower Mac Studio with a big one: when you feed in long transcripts in one go, the size of the fridge starts to matter.
 
 ## How much PC do you need?
 
@@ -300,4 +305,5 @@ Local models are not as capable as the latest cloud models, and the benchmark sc
 - Qwen. (2026). *[Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B)* [Model card]. Hugging Face.
 - TechSpot. (n.d.). *[Nvidia GeForce RTX 5060 Ti 16GB](https://www.techspot.com/specs/gpu/307872-nvidia-geforce-rtx-5060-ti-16gb.html)* [Specifications].
 - Tom's Hardware. (2025). *[Nvidia GeForce RTX 5090 review](https://www.tomshardware.com/pc-components/gpus/nvidia-geforce-rtx-5090-review)*.
+- Viticci, F. (2026, September). *[M5 Ultra Mac Studio review: The dream Mac for local AI agents](https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/)*. MacStories.
 - xAI. (n.d.). *[Enterprise FAQs](https://x.ai/legal/faq-enterprise)*.
