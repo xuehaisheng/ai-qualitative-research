@@ -464,3 +464,10 @@ html[lang="en"] .home-page:not(.masthead-static) .site-header .header-shell { ga
 .member-grid .member-affiliation { color: var(--reader-muted); font-size: .9rem; line-height: 1.75; }
 .member-grid .member-card p { margin: 14px 0 0; font-size: .9rem; line-height: 1.85; }
 .member-grid .member-card .text-link { margin-top: auto !important; padding-top: 18px; align-self: flex-start; }
+.member-events { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--reader-line); }
+.member-events-label { margin-bottom: 8px; color: var(--reader-muted); font-size: .76rem; letter-spacing: .08em; }
+.member-events ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.member-events a { display: block; color: var(--reader-ink); font-size: .86rem; line-height: 1.6; text-decoration: none; }
+.member-events a:hover span[data-bilingual] { text-decoration: underline; text-underline-offset: 3px; }
+.member-event-date { display: block; color: var(--reader-muted); font-size: .74rem; font-variant-numeric: tabular-nums; }
+.events-page .entry-item { scroll-margin-top: 96px; }
