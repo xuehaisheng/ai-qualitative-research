@@ -1,0 +1,492 @@
+# AIリテラシーのページの「人物」。notes/terms は、その人が登場する研究ノートと用語ページ（本文の検索で作成）。
+- id: hinton
+  category: ai
+  name: ヒントン
+  name_en: Geoffrey Hinton
+  desc: 深層学習の基礎を築き、2024年にノーベル物理学賞。AIのリスクと意識について発言を続ける。
+  desc_en: Laid foundations of deep learning; 2024 Nobel Prize in Physics. Speaks often on AI risk and consciousness.
+  notes:
+  - ai-history
+  - predictions
+  - understanding
+  terms: []
+- id: hopfield
+  category: ai
+  name: ホップフィールド
+  name_en: John Hopfield
+  desc: ニューラルネットワークの研究で、ヒントンとともに2024年のノーベル物理学賞。
+  desc_en: Shared the 2024 Nobel Prize in Physics with Hinton for work on neural networks.
+  notes:
+  - ai-history
+  terms: []
+- id: bengio
+  category: ai
+  name: ベンジオ
+  name_en: Yoshua Bengio
+  desc: 自分で目標を追うエージェントは危険だとして、「科学者AI」を提案する。
+  desc_en: Argues that agents pursuing their own goals are dangerous and proposes “Scientist AI.”
+  notes:
+  - understanding
+  terms:
+  - agent
+- id: lecun
+  category: ai
+  name: ルカン
+  name_en: Yann LeCun
+  desc: 言葉の予測だけでは足りないとして世界モデルを唱える。「まず猫のレベルに」。
+  desc_en: 'Argues that predicting language is not enough and advocates world models: “first reach cat level.”'
+  notes:
+  - understanding
+  - sutton-continual-learning
+  terms:
+  - world-model
+- id: sutton
+  category: ai
+  name: サットン
+  name_en: Richard Sutton
+  desc: 強化学習の基礎を築いた。「苦い教訓」の著者。使われながら学ばない今のAIを批判する。
+  desc_en: A founder of reinforcement learning and author of “The Bitter Lesson”; criticizes AI that does not learn while in use.
+  notes:
+  - understanding
+  - sutton-continual-learning
+  terms:
+  - continual-learning
+  - step-size-optimization
+- id: silver
+  category: ai
+  name: シルバー
+  name_en: David Silver
+  desc: サットンとともに、AIは人間のデータより経験から伸びる「経験の時代」を論じた。
+  desc_en: With Sutton, argued for an “era of experience” in which AI grows from experience rather than human data.
+  notes:
+  - understanding
+  terms: []
+- id: javed
+  category: ai
+  name: ジャヴェド
+  name_en: Khurram Javed
+  desc: サットンの教え子で、Oak Labの共同創業者。忘れずに学び続ける方法を研究する。
+  desc_en: Sutton's former student and Oak Lab cofounder; works on learning continually without forgetting.
+  notes:
+  - sutton-continual-learning
+  terms:
+  - step-size-optimization
+- id: hassabis
+  category: ai
+  name: ハサビス
+  name_en: Demis Hassabis
+  desc: Google DeepMindの共同創業者。AlphaFoldで2024年のノーベル化学賞。
+  desc_en: Cofounder of Google DeepMind; 2024 Nobel Prize in Chemistry for AlphaFold.
+  notes:
+  - ai-history
+  - predictions
+  terms: []
+- id: jumper
+  category: ai
+  name: ジャンパー
+  name_en: John Jumper
+  desc: AlphaFoldでハサビスとともにノーベル化学賞。2026年にAnthropicへ移った。
+  desc_en: Shared the Chemistry Nobel with Hassabis for AlphaFold; moved to Anthropic in 2026.
+  notes:
+  - ai-history
+  - predictions
+  terms: []
+- id: dean
+  category: ai
+  name: ジェフ・ディーン
+  name_en: Jeff Dean
+  desc: Googleのチーフサイエンティスト。2026年に退社した。
+  desc_en: Google's chief scientist; left in 2026.
+  notes:
+  - predictions
+  terms: []
+- id: vaswani
+  category: ai
+  name: ヴァスワニ
+  name_en: Ashish Vaswani
+  desc: Transformerを提案した論文「Attention Is All You Need」の筆頭著者。
+  desc_en: First author of “Attention Is All You Need,” which proposed the Transformer.
+  notes:
+  - ai-history
+  terms:
+  - transformer
+- id: uszkoreit
+  category: ai
+  name: ウスコライト
+  name_en: Jakob Uszkoreit
+  desc: 同じ論文の著者の一人で、「Transformer」という名前をつけた。
+  desc_en: A coauthor of the same paper, who named the “Transformer.”
+  notes:
+  - ai-history
+  terms:
+  - transformer
+- id: karpathy
+  category: ai
+  name: カルパシー
+  name_en: Andrej Karpathy
+  desc: 2025年に「バイブコーディング」という言葉を広めた。
+  desc_en: Popularized the term “vibe coding” in 2025.
+  notes: []
+  terms:
+  - vibe-coding
+- id: bubeck
+  category: ai
+  name: ブベック
+  name_en: Bubeck
+  desc: OpenAIの研究者。数学の未解決問題の証明をめぐる論文化の経緯に登場する。
+  desc_en: OpenAI researcher, part of the story of how an AI proof of an open math problem became a paper.
+  notes:
+  - predictions
+  terms: []
+- id: alpage
+  category: ai
+  name: アルペゲ
+  name_en: Alpage
+  desc: Anthropicの研究者。バックマスターと同じ数学の問題に取り組んでいた。
+  desc_en: Anthropic researcher who had worked on the same math problem with Buckmaster.
+  notes:
+  - predictions
+  terms: []
+- id: robinson
+  category: ai
+  name: ロビンソン
+  name_en: David Robinson
+  desc: OpenAIの安全チームの元メンバー。退職後、社内の様子を語った。
+  desc_en: Former member of OpenAI's safety team who spoke about the company after leaving.
+  notes:
+  - ai-history
+  terms: []
+- id: dou
+  category: ai
+  name: ドウら
+  name_en: Dou et al.
+  desc: CL-benchを作り、AIが資料から新しい規則を学んで使えるかを測った。
+  desc_en: Built CL-bench to measure whether AI can learn and apply new rules from given material.
+  notes: []
+  terms:
+  - context-learning
+- id: altman
+  category: biz
+  name: アルトマン
+  name_en: Sam Altman
+  desc: OpenAIのCEO。2023年に一度解任され、復帰した。発言の変化も注目される。
+  desc_en: CEO of OpenAI; briefly ousted in 2023 and reinstated. His changing statements draw attention.
+  notes:
+  - ai-history
+  - predictions
+  terms: []
+- id: amodei
+  category: biz
+  name: アモデイ
+  name_en: Dario Amodei
+  desc: AnthropicのCEO。安全性をめぐる考えの違いからOpenAIを離れた。「失業率10〜20%」。
+  desc_en: CEO of Anthropic; left OpenAI over safety. Predicted “10–20% unemployment.”
+  notes:
+  - predictions
+  terms: []
+- id: musk
+  category: biz
+  name: マスク
+  name_en: Elon Musk
+  desc: AIが人類を滅ぼす確率を10〜20%と見積もった。
+  desc_en: Put the chance that AI destroys humanity at 10–20%.
+  notes:
+  - ai-history
+  - predictions
+  - why-ai-literacy
+  terms: []
+- id: huang
+  category: biz
+  name: フアン
+  name_en: Jensen Huang
+  desc: NVIDIAのCEO。AIによる絶滅の確率という計算は「でっち上げ」だと言う。
+  desc_en: CEO of NVIDIA; calls estimates of extinction by AI “made up.”
+  notes:
+  - predictions
+  - why-ai-literacy
+  terms: []
+- id: tao
+  category: other
+  name: テレンス・タオ
+  name_en: Terence Tao
+  desc: 数学者。AIが量産した未検証の原稿を「有毒な廃棄物」と呼んだ。
+  desc_en: Mathematician who called unchecked AI-generated manuscripts “toxic waste.”
+  notes:
+  - other-fields
+  terms: []
+- id: fefferman
+  category: other
+  name: フェファーマン
+  name_en: Charles Fefferman
+  desc: 数学者。AIが解いた問題の公式の説明文を書いた。
+  desc_en: Mathematician who wrote the official description of a problem AI solved.
+  notes:
+  - predictions
+  terms: []
+- id: buckmaster
+  category: other
+  name: バックマスター
+  name_en: Buckmaster
+  desc: ニューヨーク大学の数学者。AIによる証明の論文化の経緯を明らかにした。
+  desc_en: NYU mathematician who described how an AI proof was turned into a paper.
+  notes:
+  - predictions
+  terms: []
+- id: wood
+  category: other
+  name: ウッド
+  name_en: Wood
+  desc: AI生成の数学の結果を受け付けるアーカイブHexagonの助言グループの一員。
+  desc_en: Advisory group member of Hexagon, an archive for AI-generated mathematical results.
+  notes:
+  - other-fields
+  terms: []
+- id: callison-burch
+  category: other
+  name: カリソン＝バーチ
+  name_en: Callison-Burch
+  desc: ペンシルベニア大学。GPT-3以後のNLPの学生の状況を「キャリアの存在危機」と呼んだ。
+  desc_en: University of Pennsylvania; called the situation of NLP students after GPT-3 a “career existential crisis.”
+  notes:
+  - other-fields
+  terms: []
+- id: pavlick
+  category: other
+  name: パヴリック
+  name_en: Pavlick
+  desc: ブラウン大学。LLMが現れたときのNLP研究者の受け止めをふり返った。
+  desc_en: Brown University; recalled how NLP researchers first reacted to LLMs.
+  notes:
+  - other-fields
+  terms: []
+- id: mooney
+  category: other
+  name: ムーニー
+  name_en: Mooney
+  desc: テキサス大学。当時のLLMの考え方を「概念的に間違っている」と思ったという。
+  desc_en: University of Texas; says he thought the LLM approach was “conceptually wrong.”
+  notes:
+  - other-fields
+  terms: []
+- id: bowman
+  category: other
+  name: ボウマン
+  name_en: Bowman
+  desc: NLPの分野が「完全に向きを変えた」と感じたと語る。
+  desc_en: Says he felt the NLP field “completely changed direction.”
+  notes:
+  - other-fields
+  terms: []
+- id: dagan
+  category: other
+  name: ダガン
+  name_en: Dagan
+  desc: 2023年末には、NLPが「AI」の分野のように感じられたと語る。
+  desc_en: Says that by late 2023 NLP felt like the field of “AI.”
+  notes:
+  - other-fields
+  terms: []
+- id: chomsky
+  category: other
+  name: チョムスキー
+  name_en: Noam Chomsky
+  desc: 言語学者。LLMを「統計的なトリックにすぎない」と見る。ヒントンはこれを強く批判する。
+  desc_en: Linguist who sees LLMs as “just a statistical trick,” a view Hinton strongly criticizes.
+  notes:
+  - understanding
+  terms: []
+- id: fedorenko
+  category: other
+  name: フェドレンコ
+  name_en: Evelina Fedorenko
+  desc: 神経科学者。言語は主に思考ではなく伝達の道具だと論じた。
+  desc_en: Neuroscientist who argued that language is mainly a tool for communication, not thought.
+  notes:
+  - understanding
+  terms: []
+- id: butlin
+  category: other
+  name: バトリンら
+  name_en: Butlin et al.
+  desc: 意識の科学の理論から、AIに意識があるかを検討した。
+  desc_en: Examined whether AI could be conscious using scientific theories of consciousness.
+  notes:
+  - understanding
+  terms: []
+- id: torvalds
+  category: other
+  name: トーバルズ
+  name_en: Linus Torvalds
+  desc: Linuxの作者。バイブコーディングは保守の点で「恐ろしい考えかもしれない」と言う。
+  desc_en: Creator of Linux; says vibe coding may be “a horrible idea” for maintenance.
+  notes:
+  - other-fields
+  - sutton-continual-learning
+  terms:
+  - vibe-coding
+- id: turing
+  category: other
+  name: チューリング
+  name_en: Alan Turing
+  desc: 「計算機械と知能」で、機械は考えられるかという問いを試せる形にした。
+  desc_en: In “Computing Machinery and Intelligence,” turned “can machines think?” into a testable question.
+  notes:
+  - qualitative-reactions
+  terms: []
+- id: darwin
+  category: other
+  name: ダーウィン
+  name_en: Charles Darwin
+  desc: 進化の図の話で、ノートに描いた枝分かれの図が登場する。
+  desc_en: His branching sketch from a notebook appears in a note on images of evolution.
+  notes:
+  - march-of-progress
+  terms: []
+- id: mondrian
+  category: other
+  name: モンドリアン
+  name_en: Piet Mondrian
+  desc: 画家。ポスターの構成のヒントになった。
+  desc_en: Painter whose compositions inspired the layout of a poster.
+  notes:
+  - meta-synthesis-with-ai
+  terms: []
+- id: braun-clarke
+  category: qual
+  name: ブラウンとクラーク
+  name_en: Braun & Clarke
+  desc: 再帰的テーマ分析を体系化した。AI利用への拒否声明の著者にも加わった。
+  desc_en: Systematized reflexive thematic analysis; among the authors of a statement rejecting AI use.
+  notes:
+  - qualitative-reactions
+  terms: []
+- id: jowsey
+  category: qual
+  name: ジョウジーら
+  name_en: Jowsey et al.
+  desc: AIでテーマ分析を試し、Copilotの引用の多くが捏造だったと報告した。
+  desc_en: Tested thematic analysis with AI and found many of Copilot's quotes were fabricated.
+  notes:
+  - qualitative-reactions
+  terms:
+  - hallucination
+  - lost-in-the-middle
+- id: hill
+  category: qual
+  name: ヒルら
+  name_en: Hill et al.
+  desc: フォーカスグループのデータを、複数のAIと人間の分析者で比べた。
+  desc_en: Compared several AIs with human analysts on focus group data.
+  notes:
+  - qualitative-reactions
+  terms: []
+- id: berkmortel
+  category: qual
+  name: ファン・デン・ベルクモルテルら
+  name_en: van den Berkmortel et al.
+  desc: 新聞記事のコーディングを、AIと人間で比べた。
+  desc_en: Compared AI and human coding of newspaper articles.
+  notes:
+  - qualitative-reactions
+  terms: []
+- id: depaoli
+  category: qual
+  name: デ・パオリ
+  name_en: De Paoli
+  desc: AIによる質的分析をめぐる議論の哲学的な前提を問うた。
+  desc_en: Questioned the philosophical assumptions behind debates on AI qualitative analysis.
+  notes:
+  - qualitative-reactions
+  terms: []
+- id: sibeoni
+  category: qual
+  name: シベオニら
+  name_en: Sibeoni et al.
+  desc: 分野の反応を「喪の過程」にたとえた。
+  desc_en: Likened the field's reaction to the stages of grief.
+  notes:
+  - qualitative-reactions
+  terms: []
+- id: roberts
+  category: qual
+  name: ロバーツら
+  name_en: Roberts et al.
+  desc: AIの「人間らしさ」がもたらす問題（確信に満ちた口調、迎合など）を挙げた。
+  desc_en: Listed problems caused by AI's “humanness,” such as confident tone and sycophancy.
+  notes:
+  - qualitative-reactions
+  terms:
+  - sycophancy
+- id: friese
+  category: qual
+  name: フリーゼら
+  name_en: Friese et al.
+  desc: 研究者が主導すれば、生成AIもCAQDASと同じく正当な支援になると論じた。
+  desc_en: Argued that, led by researchers, generative AI can be a legitimate aid like CAQDAS.
+  notes:
+  - qualitative-reactions
+  terms:
+  - caqdas
+- id: matta
+  category: qual
+  name: マッタら
+  name_en: Matta et al.
+  desc: 拒否と受容のあいだの立場をとった。
+  desc_en: Took a middle position between rejection and adoption.
+  notes:
+  - qualitative-reactions
+  terms: []
+- id: mendoza
+  category: qual
+  name: メンドーサとキランタン
+  name_en: Mendoza & Quilantang
+  desc: AIによる媒介は、反省性の条件そのものだと論じた。
+  desc_en: Argued that mediation by AI is itself a condition of reflexivity.
+  notes:
+  - qualitative-reactions
+  terms: []
+- id: nguyen
+  category: qual
+  name: ネグエンとウェルチ
+  name_en: Nguyen & Welch
+  desc: AIを研究者と対象のあいだに置くと、知が生まれる条件が歪むと論じた。
+  desc_en: Argued that placing AI between researcher and subject distorts the conditions for knowledge.
+  notes:
+  - qualitative-reactions
+  terms: []
+- id: ibrahim
+  category: qual
+  name: イブラヒムら
+  name_en: Ibrahim et al.
+  desc: 生成AIは一枚岩ではないと論じた。
+  desc_en: Argued that generative AI is not monolithic.
+  notes:
+  - qualitative-reactions
+  terms: []
+- id: greenhalgh
+  category: qual
+  name: グリーンハル
+  name_en: Greenhalgh
+  desc: 全面拒否には反対し、「誰が解釈の権威をもつか」を問うべきだとした。
+  desc_en: Opposed blanket rejection and asked who holds interpretive authority.
+  notes:
+  - qualitative-reactions
+  terms: []
+- id: goh
+  category: qual
+  name: ゴー
+  name_en: Goh
+  desc: 拒否は理性ではなくアイデンティティの防衛だと批判した。
+  desc_en: Criticized rejection as defending identity rather than reason.
+  notes:
+  - qualitative-reactions
+  terms: []
+- id: duke
+  category: qual
+  name: デューク
+  name_en: Duke
+  desc: AIに頼ると「薄い記述」が十分とされ、分析の技能が失われると論じた。
+  desc_en: Argued that relying on AI makes “thin description” acceptable and erodes analytic skill.
+  notes:
+  - qualitative-reactions
+  terms: []
