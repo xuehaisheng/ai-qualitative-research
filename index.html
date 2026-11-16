@@ -172,8 +172,9 @@ This site aims to become more than an announcement page: a place where qualitati
 <section class="page-section">
 <div class="container">
 <div class="section-panel" id="members">
-<div class="section-heading">
+<div class="section-heading with-action">
 <h2 data-bilingual="" data-en="Members" data-ja="メンバー">メンバー</h2>
+{% include view-all.html path="/members/" count=site.data.members.size %}
 </div>
 <div class="card-shelf member-shelf" data-card-shelf role="region" aria-label="メンバー" data-aria-ja="メンバー" data-aria-en="Members"><div class="shelf-viewport" id="member-cards" tabindex="0"><div class="shelf-track">
 {% assign members = site.data.members | sort: 'order' %}{% for member in members %}{% include member-card.html member=member %}{% endfor %}{% comment %}With few members, a second, hidden set lets the shelf loop like the others.{% endcomment %}{% if members.size < 7 %}{% for member in members %}{% include member-card.html member=member copy=true %}{% endfor %}{% endif %}
