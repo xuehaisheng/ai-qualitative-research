@@ -7,19 +7,21 @@
     ja: {
       input: ['逐語録や資料', '質問を送る'], server: ['企業のサーバー', 'で回答を計算'], local: ['自分のPC', 'で回答を計算'], reply: ['回答が', '研究者へ戻る'],
       nodes: { answer: '回答の生成', store: '履歴・データの保存', train: 'モデルを改善する訓練', human: '監視と人による審査' },
-      state: { on: '使われる', off: '使われない', cond: '条件つき' },
+      state: { on: '使われる', off: '使われない', cond: '条件つき', meta: '基本的にメタデータのみ' },
+      stateSvg: { meta: 'メタデータのみ' },
       modes: { on: '改善がオン', off: '改善をオフ', temp: '履歴を残さないチャット', fb: 'フィードバックを送る' },
       companyLabel: 'サービス', modeLabel: '使い方',
-      legend: '黒い流れ：使われる　灰色の流れと点線の枠：条件つき　灰色の点線：使われない。各社の公開の説明をもとにした図で、内部の仕組みを再現したものではない。',
+      legend: '黒い流れ：使われる　灰色の流れと点線の枠：条件つき　灰色の枠と細い流れ：基本的にメタデータのみ　灰色の点線：使われない。各社の公開の説明をもとにした図で、内部の仕組みを再現したものではない。',
       src: '出典：各社のヘルプとプライバシーポリシー（2026年11月17日確認）。本文末の参考文献を参照。'
     },
     en: {
       input: ['Transcripts,', 'questions'], server: ['Company', 'servers reply'], local: ['Your own PC', 'replies'], reply: ['The reply', 'comes back'],
       nodes: { answer: 'Generating a reply', store: 'Storage', train: 'Model training', human: 'Monitoring, review' },
-      state: { on: 'Used', off: 'Not used', cond: 'Conditional' },
+      state: { on: 'Used', off: 'Not used', cond: 'Conditional', meta: 'Mostly metadata only' },
+      stateSvg: { meta: 'Metadata only' },
       modes: { on: 'Improvement on', off: 'Improvement off', temp: 'Chat without history', fb: 'Sending feedback' },
       companyLabel: 'Service', modeLabel: 'Situation',
-      legend: 'Black flow: used. Grey flow and dotted box: conditional. Grey dots: not used. Based on what the companies publish; it does not reproduce their internal systems.',
+      legend: 'Black flow: used. Grey flow and dotted box: conditional. Grey box and thin flow: mostly metadata only. Grey dots: not used. Based on what the companies publish; it does not reproduce their internal systems.',
       src: 'Sources: each company’s help pages and privacy policy (checked 17 November 2026). See the references at the end.'
     }
   };
@@ -143,7 +145,7 @@
       },
       zdr: {
         note: { ja: '申し込み：営業窓口に申請し、OpenAIの審査で承認された組織だけが使える。承認後、管理画面の「Settings → Organization → Data controls」に「Data Retention」のタブが現れ、組織やプロジェクトごとにZDRを選ぶ。', en: 'How to get it: apply through sales; only organisations approved by OpenAI can use it. Once approved, a Data Retention tab appears under Settings → Organization → Data controls, where ZDR is set per organisation or project.' },
-        store: s('cond', '内容は残さない。利用量などのメタデータは残る。Assistants、Files、ベクトルストアなどはZDRの対象外で、使えば削除するまで残る。', 'No content is kept; metadata such as usage remains. Assistants, Files, vector stores and some other features are not covered and keep data until deleted.'),
+        store: s('meta', '内容は残さない。利用量などのメタデータは残る。Assistants、Files、ベクトルストアなどはZDRの対象外で、使えば削除するまで残る。', 'No content is kept; metadata such as usage remains. Assistants, Files, vector stores and some other features are not covered and keep data until deleted.'),
         train: s('off', '使わない。', 'Not used.'),
         human: s('cond', '内容は監視ログに残らない。児童への性的虐待が疑われる画像やファイルだけは、人が確認するために保持される。', 'Content is excluded from monitoring logs. Images and files flagged as possible child sexual abuse material are kept for human review.')
       }
@@ -156,7 +158,7 @@
       },
       zdr: {
         note: { ja: '申し込み：Anthropicと個別にZDRの合意を結ぶ。ConsoleのAPI、Enterprise版のClaude Code、Bedrockなどのクラウド経由で使える。', en: 'How to get it: sign a ZDR agreement with Anthropic. It applies to the Console API, Claude Code in Enterprise, and cloud routes such as Bedrock.' },
-        store: s('cond', '内容は残さない。ただし2026年6月9日からは、Mythos級のモデル（Covered Models）はZDRでも30日保持する。', 'No content is kept. From 9 June 2026, however, Mythos-class models (Covered Models) keep prompts and outputs for 30 days even under ZDR.'),
+        store: s('meta', '内容は残さない。ただし2026年6月9日からは、Mythos級のモデル（Covered Models）はZDRでも30日保持する。', 'No content is kept. From 9 June 2026, however, Mythos-class models (Covered Models) keep prompts and outputs for 30 days even under ZDR.'),
         train: s('off', '使わない。', 'Not used.'),
         human: s('cond', 'Covered Modelsの30日分は、承認された少人数だけが記録つきで読める。違反の判定や法律上の必要がある場合も例外。', 'For Covered Models, only a small approved group can read the 30 days of data, with every access logged. Flagged content and legal requirements are also exceptions.')
       }
@@ -170,7 +172,7 @@
       },
       zdr: {
         note: { ja: '申し込み：Gemini APIでは監視ログを消せない。ZDRが必要ならGoogle CloudのVertex AIを使い、キャッシュを切り、保存する設定（store）をfalseにするなど、自分で設定を揃える。', en: 'How to get it: the Gemini API cannot drop its monitoring logs. For ZDR, use Vertex AI on Google Cloud and configure it yourself, e.g. turning off caching and setting store to false.' },
-        store: s('cond', '設定を揃えれば内容は残さない。検索のグラウンディングは最長3日、地図は30日保存され、止められない。', 'With the right settings, no content is kept. Search grounding keeps data for up to 3 days and Maps grounding for 30, and these cannot be turned off.'),
+        store: s('meta', '設定を揃えれば内容は残さない。検索のグラウンディングは最長3日、地図は30日保存され、止められない。', 'With the right settings, no content is kept. Search grounding keeps data for up to 3 days and Maps grounding for 30, and these cannot be turned off.'),
         train: s('off', '使わない。', 'Not used.'),
         human: s('cond', 'Google Cloudの規約で使う場合、不正利用の監視のための記録が残ることがある。', 'Under the Google Cloud terms, prompts may still be logged for abuse monitoring.')
       }
@@ -307,7 +309,7 @@
       root.setAttribute('data-mode', mode);
       NODES.forEach(function (k) {
         var v = r[k];
-        if (parts[k]) { parts[k].g.setAttribute('data-state', v.s); parts[k].st.textContent = t.state[v.s]; }
+        if (parts[k]) { parts[k].g.setAttribute('data-state', v.s); parts[k].st.textContent = (t.stateSvg[v.s] || t.state[v.s]); }
         var dt = h('dt', 'pv-dt');
         dt.setAttribute('data-state', v.s);
         dt.appendChild(h('span', 'pv-dt-name', t.nodes[k]));
