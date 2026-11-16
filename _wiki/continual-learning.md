@@ -17,7 +17,7 @@ sources:
     url: "https://doi.org/10.1073/pnas.1611835114"
 ---
 
-継続学習（continual learning）とは、AIが使われながら、新しい経験から学び続けることである。いまの大規模言語モデルは、大量のデータで一度に学習したあと、重みを固定して使われる。会話の中で教えたことは、その会話が終われば消える。メモリ機能も、外に保存したメモを読み込み直しているだけで、モデル自体は変わらない。強化学習の基礎を築いたサットンは、これを今のAIの大きな欠点と見ている（Silver & Sutton, 2025）。
+継続学習（continual learning）とは、AIが使われながら、新しい経験から学び続けることである。いまの大規模言語モデルは、大量のデータで一度に学習したあと、重みを固定して使われる。会話の中で教えたことは、その会話が終われば消える。メモリ機能も、外に保存したメモを読み込み直しているだけで、モデル自体は変わらない。つまり、今の生成AIには、心理学でいうワーキングメモリーしかない。強化学習の基礎を築いたサットンは、これを今のAIの大きな欠点と見ている（Silver & Sutton, 2025）。
 
 学び続けさせるのは難しい。新しいことを学ぶと古いことを忘れる（[破滅的忘却]({{ '/literacy/catastrophic-forgetting/' | relative_url }})）。学び続けるうちに、新しいことを学ぶ柔軟さそのものも失われていく（Dohare et al., 2024）。対策の中心は、すべての重みを同じように動かさないことである。前の知識にとって大事な重みほど変わりにくくする方法（Kirkpatrick et al., 2017）や、重みごとの動かしやすさをモデル自身に学ばせる方法（[ステップサイズの最適化]({{ '/literacy/step-size-optimization/' | relative_url }})）が研究されている。
 
@@ -25,7 +25,7 @@ sources:
 
 <!--EN-->
 
-Continual learning means that an AI keeps learning from new experience while it is being used. Today's large language models are trained once on large amounts of data and then used with fixed weights. What you teach a model in a conversation disappears when the conversation ends. Memory features only reload notes saved outside the model; the model itself does not change. Richard Sutton, one of the founders of reinforcement learning, sees this as a major weakness of today's AI (Silver & Sutton, 2025).
+Continual learning means that an AI keeps learning from new experience while it is being used. Today's large language models are trained once on large amounts of data and then used with fixed weights. What you teach a model in a conversation disappears when the conversation ends. Memory features only reload notes saved outside the model; the model itself does not change. In other words, today's generative AI has only what psychology calls working memory. Richard Sutton, one of the founders of reinforcement learning, sees this as a major weakness of today's AI (Silver & Sutton, 2025).
 
 Keeping a model learning is hard. Learning something new can make it forget what it knew ([catastrophic forgetting]({{ '/literacy/catastrophic-forgetting/' | relative_url }})), and with continued learning it can also lose the flexibility to learn new things at all (Dohare et al., 2024). The main remedy is not to change all weights in the same way. Researchers have made weights harder to change the more important they were for earlier knowledge (Kirkpatrick et al., 2017), and have had the model learn how easily each weight should move ([step-size optimization]({{ '/literacy/step-size-optimization/' | relative_url }})).
 
