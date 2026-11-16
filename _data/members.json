@@ -104,5 +104,26 @@
     },
     "profile_url": "https://scholar.google.com/citations?user=WKM1Nq8AAAAJ",
     "profile_label": "Google Scholar"
+  },
+  {
+    "id": "kashida",
+    "order": 5,
+    "name": {
+      "ja": "樫田 美雄",
+      "en": "Yoshio KASHIDA"
+    },
+    "role": {
+      "ja": "コラボレーター",
+      "en": "Collaborator"
+    },
+    "affiliation": {
+      "ja": "摂南大学 現代社会学部 現代社会学科 教授",
+      "en": "Professor, Department of Contemporary Sociology, Faculty of Contemporary Sociology, Setsunan University"
+    },
+    "bio": {
+      "ja": "",
+      "en": ""
+    },
+    "profile_url": "https://researchmap.jp/kashida-yoshio"
   }
 ]
