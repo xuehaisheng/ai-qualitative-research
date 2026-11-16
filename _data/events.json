@@ -103,6 +103,78 @@
     ]
   },
   {
+    "id": "event-2025-04-30",
+    "date": "2025-04-30",
+    "status": "past",
+    "title": {
+      "ja": "AIの使い方講義・交流会",
+      "en": "How to Use AI: Lecture and Discussion"
+    },
+    "place": {
+      "ja": "AI×質的研究 オンライン交流会（Zoom）",
+      "en": "AI × Qualitative Research online meeting (Zoom)"
+    },
+    "summary": {
+      "ja": "薛海升がこれまで使ってきたAIツール（主にChatGPT）を紹介し、質的研究でAIをどう活かすかを参加者と話し合った。コメンテーターは樫田美雄（摂南大学）。",
+      "en": "Haisheng Xue introduced the AI tools he has used (mainly ChatGPT), and participants discussed how to use AI in qualitative research. Commentator: Yoshio Kashida (Setsunan University)."
+    },
+    "links": []
+  },
+  {
+    "id": "event-2025-02-22",
+    "date": "2025-02-22",
+    "status": "past",
+    "title": {
+      "ja": "生成AIと博士課程の出版文化：エピステミック・ネットワーク分析を通じた“Publish or Perish”文化の航海",
+      "en": "Generative AI and Doctoral Publication: Navigating the Publish or Perish Culture through Epistemic Network Analysis"
+    },
+    "place": {
+      "ja": "AI×質的研究 研究会（Zoom）",
+      "en": "AI × Qualitative Research study meeting (Zoom)"
+    },
+    "summary": {
+      "ja": "Tianshi HAO（Pepperdine University）とXinyu ZHAO（大阪大学、当時）による発表。生成AIの使用が博士課程の論文出版の文化をどう変えるかを、エピステミック・ネットワーク分析を用いて論じた。発表は英語で、討論では通訳をつけた。",
+      "en": "A talk by Tianshi Hao (Pepperdine University) and Xinyu Zhao (Osaka University at the time) on how generative AI is changing the publishing culture of doctoral students, using epistemic network analysis. The talk was in English, with interpretation during the discussion."
+    },
+    "links": []
+  },
+  {
+    "id": "event-2024-12-18",
+    "date": "2024-12-18",
+    "status": "past",
+    "title": {
+      "ja": "ChatGPTと人間の要約比較の社会学的考察",
+      "en": "A Sociological Look at Summaries by ChatGPT and by People"
+    },
+    "place": {
+      "ja": "AI×質的研究 研究会（Zoom）",
+      "en": "AI × Qualitative Research study meeting (Zoom)"
+    },
+    "summary": {
+      "ja": "樫田美雄（摂南大学）による発表。ChatGPTと人間がそれぞれ書いた要約を比べ、生成AIの「ハルシネーション」を問題とする見方そのものを問い直した。",
+      "en": "A talk by Yoshio Kashida (Setsunan University). Comparing summaries written by ChatGPT and by people, he questioned the way generative AI's \"hallucinations\" are usually framed as a problem."
+    },
+    "links": []
+  },
+  {
+    "id": "event-2024-11-27",
+    "date": "2024-11-27",
+    "status": "past",
+    "title": {
+      "ja": "AI×質的研究 研究会（第1回）",
+      "en": "AI × Qualitative Research Study Meeting (1st)"
+    },
+    "place": {
+      "ja": "AI×質的研究 研究会（Zoom）",
+      "en": "AI × Qualitative Research study meeting (Zoom)"
+    },
+    "summary": {
+      "ja": "日本質的心理学会第21回大会のシンポジウムで時間が足りなかった質疑を続けるために開いた、最初のオンライン研究会。シンポジウムの振り返り、当日の質問やコメントを受けた議論、AI活用の実践例・課題・倫理を話し合った。",
+      "en": "The first online study meeting, held to continue the Q&A that ran out of time at the symposium at the JAQP 21st Annual Meeting. We reviewed the symposium, followed up on questions and comments, and discussed practical uses of AI, its problems, and ethics."
+    },
+    "links": []
+  },
+  {
     "id": "event-2024-10-19",
     "date": "2024-10-19",
     "status": "past",
