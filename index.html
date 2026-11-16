@@ -175,9 +175,9 @@ This site aims to become more than an announcement page: a place where qualitati
 <div class="section-heading">
 <h2 data-bilingual="" data-en="Members" data-ja="メンバー">メンバー</h2>
 </div>
-<div class="card-grid card-grid-3">
-{% assign members = site.data.members | sort: 'order' %}{% for member in members %}{% include member-card.html member=member %}{% endfor %}
-</div>
+<div class="card-shelf member-shelf" data-card-shelf role="region" aria-label="メンバー" data-aria-ja="メンバー" data-aria-en="Members"><div class="shelf-viewport" id="member-cards" tabindex="0"><div class="shelf-track">
+{% assign members = site.data.members | sort: 'order' %}{% for member in members %}{% include member-card.html member=member %}{% endfor %}{% comment %}With few members, a second, hidden set lets the shelf loop like the others.{% endcomment %}{% if members.size < 7 %}{% for member in members %}{% include member-card.html member=member copy=true %}{% endfor %}{% endif %}
+</div></div></div>
 </div>
 </div>
 </section>
@@ -323,6 +323,9 @@ body.masthead-on.mh-menu:not(.masthead-docked):not(.mh-measure) .site-header .de
 .event-archive .entry-item { padding: 28px 0; border-bottom: 1px solid #ddd; }
 .event-archive h4 { font-size: 1.15rem; line-height: 1.6; margin: 10px 0; }
 @media(max-width:600px) { .card-shelf { margin: 0 -20px; } }
+/* Member cards: researchmap link at the bottom so cards of different length line up. */
+.home-page .member-shelf .shelf-track > .member-card { display: flex !important; flex-direction: column; }
+.home-page .member-shelf .member-card .text-link { margin-top: auto !important; padding-top: 14px; align-self: flex-start; }
 @media(prefers-reduced-motion:reduce) { .shelf-track > .card { transition: none !important; } }
 @container (max-width:639px) { .home-page .shelf-track > .card { padding: 18px !important; } }
 </style>
