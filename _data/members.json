@@ -63,8 +63,29 @@
     "profile_url": "https://researchmap.jp/toyoda.h"
   },
   {
-    "id": "zhao",
+    "id": "nochi",
     "order": 3,
+    "name": {
+      "ja": "能智 正博",
+      "en": "Masahiro NOCHI"
+    },
+    "role": {
+      "ja": "共同研究者",
+      "en": "Co-researcher"
+    },
+    "affiliation": {
+      "ja": "東京大学 大学院教育学研究科 臨床心理学コース 教授",
+      "en": "Professor, Clinical Psychology Course, Graduate School of Education, The University of Tokyo"
+    },
+    "bio": {
+      "ja": "",
+      "en": ""
+    },
+    "profile_url": "https://researchmap.jp/read0061460"
+  },
+  {
+    "id": "zhao",
+    "order": 4,
     "name": {
       "ja": "趙 心語",
       "en": "Xinyu ZHAO"
@@ -85,7 +106,7 @@
   },
   {
     "id": "hao",
-    "order": 4,
+    "order": 5,
     "name": {
       "ja": "Tianshi HAO",
       "en": "Tianshi HAO"
@@ -107,7 +128,7 @@
   },
   {
     "id": "kashida",
-    "order": 5,
+    "order": 6,
     "name": {
       "ja": "樫田 美雄",
       "en": "Yoshio KASHIDA"
@@ -128,7 +149,7 @@
   },
   {
     "id": "omi",
-    "order": 6,
+    "order": 7,
     "name": {
       "ja": "尾見 康博",
       "en": "Yasuhiro OMI"
@@ -146,26 +167,5 @@
       "en": ""
     },
     "profile_url": "https://researchmap.jp/omiyas"
-  },
-  {
-    "id": "nochi",
-    "order": 7,
-    "name": {
-      "ja": "能智 正博",
-      "en": "Masahiro NOCHI"
-    },
-    "role": {
-      "ja": "コラボレーター",
-      "en": "Collaborator"
-    },
-    "affiliation": {
-      "ja": "東京大学 大学院教育学研究科 臨床心理学コース 教授",
-      "en": "Professor, Clinical Psychology Course, Graduate School of Education, The University of Tokyo"
-    },
-    "bio": {
-      "ja": "",
-      "en": ""
-    },
-    "profile_url": "https://researchmap.jp/read0061460"
   }
 ]
