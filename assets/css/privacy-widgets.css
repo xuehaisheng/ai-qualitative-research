@@ -125,3 +125,8 @@
 .pv-products figcaption strong { display: block; color: #111; font-size: .84rem; }
 @media (max-width: 560px) { .pv-products { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { .k-flow circle, .k-cooks circle, .pv-speed-out::after { animation: none; } }
+/* "mostly metadata only": a fainter, thin flow with a solid grey box */
+.pv-node[data-state="meta"] .pv-run { stroke: #9a9a9a; stroke-width: 1.6; stroke-dasharray: 1 10; animation-duration: 2.6s; }
+.pv-node[data-state="meta"] .pv-box { stroke: #9a9a9a; fill: #fafafa; }
+.pv-node[data-state="meta"] .pv-mark { fill: #fff; stroke: #9a9a9a; }
+.pv-node[data-state="meta"] .pv-state { fill: #5e5e5e; }
