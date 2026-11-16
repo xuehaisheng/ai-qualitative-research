@@ -26,6 +26,7 @@ permalink: /literacy/
           {%- for c in site.data.wiki_categories %}
           <a href="#{{ c.id }}">{% include t.html ja=c.title en=c.title_en %}</a>
           {%- endfor %}
+          <a href="#people">{% include t.html ja="人物" en="People" %}</a>
         </nav>
       </div>
     </div>
@@ -61,6 +62,34 @@ permalink: /literacy/
     </div>
   </section>
   {%- endfor %}
+
+  {%- comment %} People who appear in the notes and term pages. Data: _data/people.yml {% endcomment %}
+  <section class="page-section topic-section people-section" id="people">
+    <div class="container">
+      <div class="section-heading">
+        <h2>{% include t.html ja="人物" en="People" %}</h2>
+        <p>{% include t.html ja="研究ノートや用語ページに出てくる人物。下のリンクから、その人が出てくるページへ移れる。" en="People who appear in the research notes and term pages. The links below each name lead to the pages where they appear." %}</p>
+      </div>
+      {%- for g in site.data.people_groups %}
+      {%- assign members = site.data.people | where: "category", g.id %}
+      <div class="people-group">
+        <h3>{% include t.html ja=g.title en=g.title_en %}<span class="people-count">{{ members.size }}</span></h3>
+        <div class="people-grid">
+          {%- for p in members %}
+          <div class="person-item">
+            <div class="person-name"><strong>{% include t.html ja=p.name en=p.name_en %}</strong><span class="person-en lang-ja">{{ p.name_en }}</span></div>
+            <p class="person-desc">{% include t.html ja=p.desc en=p.desc_en %}</p>
+            <div class="person-links">
+              {%- for k in p.notes %}{% assign n = site.posts | where: "key", k | first %}{% if n %}{% assign short_ja = n.title | split: "：" | first %}{% assign short_en = n.title_en | split: ": " | first %}<a class="person-link person-note" href="{{ n.url | relative_url }}" title="{{ n.title | escape }}">{% include t.html ja=short_ja en=short_en %}</a>{% endif %}{% endfor %}
+              {%- for k in p.terms %}{% assign e = site.wiki | where: "key", k | first %}{% if e %}<a class="person-link person-term" href="{{ e.url | relative_url }}">{% include t.html ja=e.title en=e.en %}</a>{% endif %}{% endfor %}
+            </div>
+          </div>
+          {%- endfor %}
+        </div>
+      </div>
+      {%- endfor %}
+    </div>
+  </section>
 
 
 </main>

@@ -1,0 +1,13 @@
+# 「人物」の分類。この順に表示する。
+- id: ai
+  title: "AIを作る研究者"
+  title_en: "AI researchers"
+- id: biz
+  title: "AI企業の経営者"
+  title_en: "Leaders of AI companies"
+- id: other
+  title: "ほかの分野から"
+  title_en: "From other fields"
+- id: qual
+  title: "質的研究者（文献の著者）"
+  title_en: "Qualitative researchers (authors)"
