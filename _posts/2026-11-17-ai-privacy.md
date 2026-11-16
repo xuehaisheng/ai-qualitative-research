@@ -1,7 +1,7 @@
 ---
-title: "AIに書いたことは、どこへ行くのか：二つの事件、四社の規定、「すべての人のために」"
+title: "AIに入力したデータは、どこへ行くのか、誰にみられるのか：質的研究者のためのAIプライバシー入門"
 date: 2026-11-17 00:00:00 +0900
-title_en: "Where does what we tell AI go? Two cases, four companies' rules, and “for everyone”"
+title_en: "Where does the data we enter into AI go, and who sees it? An introduction to AI privacy for qualitative researchers"
 summary_en: "One case where OpenAI did not alert the police, and one where it did. Following those, this note looks at where our conversations go in ChatGPT, Claude, Gemini and Grok, what the Navier–Stokes episode showed about training on user data, and what it means that turning training off is framed as declining to help everyone."
 author: 薛海升
 key: ai-privacy
@@ -15,17 +15,17 @@ sort_date: 20261117
 
 2026年2月10日、カナダのブリティッシュコロンビア州の小さな町タンブラーリッジで、中等学校が銃撃された。
 
-その2週間後、OpenAIはカナダの大臣に宛てた書簡で、ある事実を明らかにした。犯人のアカウントは、事件の8か月前の2025年6月に、同社の自動システムに検知されていた。社員が会話を読み、アカウントを停止した。けれども警察には知らせなかった。当時の基準でいう「信頼できる、差し迫った計画」が見当たらなかったからだという。OpenAIはその後、通報の基準を見直した。いまの基準なら、このアカウントは通報していたと書いている。同じ人物の二つ目のアカウントも見つけ、こちらは警察に提供した。9月21日、ブリティッシュコロンビア州は、警察に知らせなかったことを問題にして、OpenAIを提訴すると発表した。
+その2週間後、OpenAIはカナダの大臣に宛てた書簡で、ある事実を明らかにした。犯人のアカウントは、事件の8か月前の2025年6月に、同社の自動システムに検知されていた。社内では議論され、アカウント停止の処分が行われた。けれども警察には知らせなかった。当時の基準でいう「信頼できる、差し迫った計画」が見当たらなかったからだという。OpenAIはその後、通報の基準を見直した。いまの基準なら、このアカウントは通報していたと書いている。同じ人物の二つ目のアカウントも見つけ、こちらは警察に提供した。9月21日、ブリティッシュコロンビア州は、警察に知らせなかったことを問題にして、OpenAIを提訴すると発表した。
 
-もう一つは、通報された例である。2026年3月、フロリダ州に住む25歳のダレン・ジョウは、ChatGPTに、元交際相手を殺すと書いた。ゴールドマン・サックスを解雇された元アナリストだった。OpenAIは5月にFBIへ通報し、FBIは2か月分の会話記録を地元の保安官事務所に渡した。ジョウは5月に逮捕され、6月に加重ストーカー行為や殺害予告の文書などの罪で起訴された。8月13日に罪を認め、8年の保護観察となった（Palm Beach Postが裁判記録と逮捕記録をもとに報じた）。
+一方、通報された例もある。2026年3月、フロリダ州に住む25歳のダレン・ジョウは、ChatGPTに、元交際相手を殺すと書いた。ゴールドマン・サックスを解雇された元アナリストだった。OpenAIは5月にFBIへ通報し、FBIは2か月分の会話記録を地元の保安官事務所に渡した。ジョウは5月に逮捕され、6月に加重ストーカー行為や殺害予告の文書などの罪で起訴された。8月13日に罪を認め、8年の保護観察となった（Palm Beach Postが裁判記録と逮捕記録をもとに報じた）。
 
-一方は通報しなかったことで訴えられ、もう一方は通報が逮捕につながった。並べると、どこで線を引くのが正しいのかを考えたくなる。ただ、私がまず引っかかったのは、二つの事件に共通する前提の方だった。ChatGPTに書いたことは、会社の人が読むことがある。場合によっては警察にも渡る。
+一方は通報しなかったことで訴えられ、もう一方は通報が逮捕につながった。並べると、どこで線を引くのが正しいのかを考えたくなる。ただ、私がまず引っかかったのは、二つの事件に共通する前提の方だった。ChatGPTに入力した内容は、人に読まれることがあり、場合によっては警察に渡されることもある。
 
-## 私たちのデータは、どこへ行くのか
+## 私たちのデータは、どこへ行くのか、そして、誰に読まれるのか
 
-私たちも、毎日AIに何かを書いている。質的研究者なら、インタビューの逐語録やフィールドノーツを貼りつけて、要約やコーディングを頼むこともあるだろう。その文章は、送ったあとどこへ行くのか。誰が読み、何に使われ、いつ消えるのか。
+私たちも、毎日AIに何かを書いている。質的研究者なら、インタビューの逐語録やフィールドノーツを貼りつけて、要約やコーディングを頼みたいこともあるだろう。その文章は、送ったあとどこへ行くのか。誰が読み、何に使われ、いつ消えるのか。
 
-送った文章は、まず会社のサーバーに届き、そこで回答が作られる。その先は、少なくとも三つの使い道に分かれる。一つ目は、履歴として保存されること。二つ目は、次のモデルを作るための訓練に使われること。三つ目は、不正利用がないかの監視で、ここでは人が読むこともある。冒頭の二つの事件は、三つ目の使い道の先で起きた。
+送った文章は、まず会社のサーバーに届き、そこで回答が作られる。その先は、少なくとも三つの使い道に分かれる。一つ目は、履歴として保存されること。二つ目は、次のモデルを作るための訓練に使われること。三つ目は、不正利用がないかの監視で、ここでは人に読まれることもある。冒頭の二つの事件は、三つ目の使い道の先で起きた。
 
 「学習されないようにしたい」と言うとき、多くの人が気にしているのは二つ目の訓練である。訓練に使うかどうかのスイッチは、どの会社にもある。ただ、このスイッチを切っても、保存と監視は止まらない。どこまで止まるかは、会社によって違う。
 
@@ -37,7 +37,7 @@ ChatGPT、Claude、Gemini、Grokの個人向けサービスについて、各社
 
 切り替えてみると、いくつかのことが分かる。
 
-まず、四社とも、最初の状態では会話を訓練に使う。ChatGPTはFree・Plus・Proで初期設定がオンで、Geminiも18歳以上ではオンになっている。お金を払っていれば訓練に使われない、ということはない。Claudeは2025年8月に方針を変え、利用者が許可した会話を訓練に使い、訓練用に最長5年保持するようになった。
+まず、四社とも、最初の状態では会話を訓練に使う。ChatGPTはFree・Plus・Proで初期設定がオンで、Geminiも18歳以上ではオンになっている。お金を払っていれば訓練に使われない、ということはない。安全性を掲げてきたClaudeも2025年8月に方針を変え、利用者が許可した会話を訓練に使い、訓練用に最長5年保持するようになった。
 
 次に、訓練をオフにしても、保存は続く。ChatGPT、Claude、Grokでは、履歴は自分で消すまで残り、消してから30日以内にサーバーから消える。Geminiは仕組みが違い、「アクティビティの保存」をオフにすると、訓練と履歴の両方が止まる。それでも会話は最長72時間保持される。
 
@@ -77,7 +77,7 @@ ChatGPTでは、このスイッチは「すべての人のためにモデルを�
 
 研究で同意を取るときのことを考えると、この書き方の偏りがはっきりする。研究参加の説明書には、参加しなくても、途中でやめても不利益はない、と書く。断ることが悪いことに見えないように、言葉を選ぶ。同意しない選択肢を「みんなへの協力を断る」と書いた説明書は、倫理審査を通らないと思う。
 
-ナビエ–ストークスの件を重ねると、「すべての人」という言葉は、さらに落ち着かなく聞こえる。バックマスターから見れば、改善されたモデルを最初に使ったのは、同じ問題を解こうとしていたOpenAI自身の研究チームだったのではないか、という疑いが出たのである。結果として方法は違っていた。それでも、「すべての人」には、利用者と競争する会社自身も入っている。
+ナビエ–ストークスの件を重ねると、「すべての人」という言葉は、さらに落ち着かなく聞こえる。バックマスターから見れば、改善されたモデルを最初に使ったのは、同じ問題を解こうとしていたOpenAI自身の研究チームだったのではないか、という疑いが出たのである。結果として方法は違っていたが、「すべての人」には、利用者と競争する会社自身も入っている。
 
 他社の言葉も見ておく。Claudeは英語で「Help improve our AI models」、日本語のヘルプでは「AIモデルの改善を支援する」である。これも協力を求める形だが、「私たちのAIモデル」と、改善されるのが会社のものであることは書いてある。Grokは「Improve the Model」と短い。Geminiの「アクティビティの保存」には、訓練という言葉が出てこない。履歴を残すかどうかのスイッチに見えて、実際には訓練に渡すかどうかも一緒に決めている。
 
@@ -93,7 +93,7 @@ ChatGPTでは、このスイッチは「すべての人のためにモデルを�
 
 ## オフにしたあとに残るもの
 
-スイッチをオフにしても、フィードバックと監視の二つは残る。研究資料を貼った会話で👍や👎を押せば、その会話は訓練に回りうる。履歴を残さないチャットも、監視の対象からは外れない。語り手にとって、どこまでのリスクなら引き受けられるのかを考えると、個人向けのサービスに逐語録をそのまま送ること自体を見直した方がよい場面もある。大学が契約している環境や、データを外に出さないローカルモデルという選択肢もあり、これは別のノートで扱いたい。
+スイッチをオフにしても、フィードバックと監視の二つは残る。研究資料を貼った会話で👍や👎を押せば、その会話は訓練に回りうる。履歴を残さないチャットも、監視の対象からは外れない。語り手にとって、どこまでのリスクなら引き受けられるのかを考えると、個人向けのサービスに逐語録をそのまま送ること自体を見直した方がよい場面もある。では、データを使われたくないときはどうすればよいのか。企業のAIをAPIで使う方法と、データを外に出さないローカルモデルについては、次のノート[データを渡したくないとき]({{ '/articles/api-local-models/' | relative_url }})にまとめた。
 
 ## 参考文献
 
@@ -122,15 +122,15 @@ ChatGPTでは、このスイッチは「すべての人のためにモデルを�
 
 On 10 February 2026, a secondary school in Tumbler Ridge, a small town in British Columbia, Canada, was attacked by a shooter.
 
-Two weeks later, OpenAI disclosed something in a letter to a Canadian minister. Eight months before the shooting, in June 2025, the shooter's account had been flagged by the company's automated systems. Staff read the conversations and banned the account. They did not tell the police, because they had not found what the company's criteria then called “credible and imminent planning.” OpenAI has since revised those criteria and writes that, under the current ones, it would have referred the account. It also found a second account belonging to the same person and passed it to the police. On 21 September, British Columbia announced it was suing OpenAI over the failure to notify police.
+Two weeks later, OpenAI disclosed something in a letter to a Canadian minister. Eight months before the shooting, in June 2025, the shooter's account had been flagged by the company's automated systems. The case was discussed inside the company and the account was banned. They did not tell the police, because they had not found what the company's criteria then called “credible and imminent planning.” OpenAI has since revised those criteria and writes that, under the current ones, it would have referred the account. It also found a second account belonging to the same person and passed it to the police. On 21 September, British Columbia announced it was suing OpenAI over the failure to notify police.
 
-The second case is one where OpenAI did report. In March 2026, Darren Zhou, a 25-year-old in Florida and a fired Goldman Sachs analyst, told ChatGPT he would kill his ex. OpenAI flagged him to the FBI in May, and the FBI gave two months of his chat logs to the local sheriff's office. He was arrested in May and charged in June with aggravated stalking, written threats to kill and other offences. On 13 August he pleaded guilty and received eight years of probation (reported by the Palm Beach Post from court and arrest records).
+There are also cases where the company did report. In March 2026, Darren Zhou, a 25-year-old in Florida and a fired Goldman Sachs analyst, told ChatGPT he would kill his ex. OpenAI flagged him to the FBI in May, and the FBI gave two months of his chat logs to the local sheriff's office. He was arrested in May and charged in June with aggravated stalking, written threats to kill and other offences. On 13 August he pleaded guilty and received eight years of probation (reported by the Palm Beach Post from court and arrest records).
 
-In one case the company was sued for not reporting; in the other, its report led to an arrest. Side by side, they invite the question of where the line should be. What struck me first was what the two cases take for granted. What you write to ChatGPT can be read by people at the company, and it can end up with the police.
+In one case the company was sued for not reporting; in the other, its report led to an arrest. Side by side, they invite the question of where the line should be. What struck me first was what the two cases take for granted. What you type into ChatGPT can be read by people, and it can sometimes be passed to the police.
 
-## Where does our data go?
+## Where does our data go, and who reads it?
 
-We all write things to AI every day. Qualitative researchers may paste in interview transcripts or field notes and ask for a summary or a first pass at coding. Where does that text go once it is sent? Who reads it, what is it used for, and when is it deleted?
+We all write things to AI every day. Qualitative researchers may want to paste in interview transcripts or field notes and ask for a summary or a first pass at coding. Where does that text go once it is sent? Who reads it, what is it used for, and when is it deleted?
 
 The text first reaches the company's servers, where the reply is generated. After that it goes at least three ways. It is stored as history. It may be used to train the next model. And it is monitored for abuse, which can mean a person reads it. The two cases above happened at the end of that third path.
 
@@ -144,7 +144,7 @@ The diagram below shows what the help pages and privacy policies of ChatGPT, Cla
 
 Switching between them shows a few things.
 
-First, all four use conversations for training by default. ChatGPT has the setting on by default for Free, Plus and Pro, and Gemini has it on for users aged 18 and over. Paying does not by itself keep your chats out of training. Claude changed its policy in August 2025: conversations from users who allow it are used for training and kept for up to five years for that purpose.
+First, all four use conversations for training by default. ChatGPT has the setting on by default for Free, Plus and Pro, and Gemini has it on for users aged 18 and over. Paying does not by itself keep your chats out of training. Even Claude, which has made safety its banner, changed its policy in August 2025: conversations from users who allow it are used for training and kept for up to five years for that purpose.
 
 Second, turning training off does not end storage. In ChatGPT, Claude and Grok, your history stays until you delete it and is removed from the servers within 30 days after that. Gemini works differently: turning off Keep Activity stops both training and history, but chats are still kept for up to 72 hours.
 
@@ -184,7 +184,7 @@ The label does not say what the switch actually does, which is to hand your conv
 
 Consent in research makes the slant clear. An information sheet tells participants they can decline or withdraw without any disadvantage. We choose words so that saying no does not look wrong. I doubt an information sheet that described not consenting as “declining to help everyone” would get through ethics review.
 
-Set beside the Navier–Stokes episode, “everyone” sounds even more uneasy. From Buckmaster's side, the suspicion was that the first user of the improved model had been OpenAI's own research team, working on the same problem as him. The methods turned out to be different. Still, “everyone” includes the company, which can be a competitor of its own users.
+Set beside the Navier–Stokes episode, “everyone” sounds even more uneasy. From Buckmaster's side, the suspicion was that the first user of the improved model had been OpenAI's own research team, working on the same problem as him. The methods turned out to be different, but “everyone” still includes the company, which can be a competitor of its own users.
 
 The other companies use different words. Claude says “Help improve our AI models” in English, and the Japanese help page uses a phrase meaning “support the improvement of AI models.” This also asks for help, but “our AI models” at least says whose models are being improved. Grok's “Improve the Model” is short. Gemini's “Keep Activity” does not mention training at all. It looks like a switch for keeping your history, but it also decides whether your chats go into training.
 
@@ -200,7 +200,7 @@ These are the steps given in each company's help pages as of 17 November 2026. U
 
 ## What remains after you turn it off
 
-With the switch off, feedback and monitoring remain. A thumbs up or down on a conversation containing research material can send it into training. Chats without history are still monitored. Thinking about how much risk the people we interviewed can be asked to bear, there are cases where sending transcripts to a consumer service at all should be reconsidered. Institutionally contracted services and local models that keep data on your own machine are other options; I plan to cover them in a separate note.
+With the switch off, feedback and monitoring remain. A thumbs up or down on a conversation containing research material can send it into training. Chats without history are still monitored. Thinking about how much risk the people we interviewed can be asked to bear, there are cases where sending transcripts to a consumer service at all should be reconsidered. So what can we do if we don't want our data used? Using companies' models through an API, and local models that keep data on your own machine, are covered in the next note, [When you don't want to hand over your data]({{ '/articles/api-local-models/' | relative_url }}).
 
 ## References
 
