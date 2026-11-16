@@ -15,6 +15,8 @@ sort_date: 20261116
 
 リチャード・サットンは、強化学習の基礎を築いた研究者で、2019年のエッセイ「苦い教訓」でも知られる。いまの生成AIブームに対して、彼はもっとも根本的な不満を述べてきた一人である。その不満を一言でまとめると、「いまのAIは、使われている間に学ばない」となる。ここでは、彼の最近の発言と論文から、その主張を整理する。
 
+{% include figure.html src="fig-sutton-podcast.jpg" cap="Sequoia Capitalのポッドキャスト「Training Data」の収録の様子。左から二人目がサットン。出典：Sequoia Capital（2026）。" alt="ポッドキャストの収録風景。緑の壁の部屋で、4人が丸いテーブルを囲んで話している。左から二人目がサットン。" %}
+
 ## 使われている間、AIは学ばない
 
 いまの大規模言語モデルは、大量のデータで学習したあと、重みを固定して使われる。会話の中で利用者について覚えたり、渡された資料を読んで答えたりはする。しかしサットンによれば、人と話している間も「重みはまったく変わらない」。そういうものから博士レベルの専門性を作れると考える方が変だ、と彼は言う。
@@ -66,6 +68,8 @@ sort_date: 20261116
 <!--EN-->
 
 Richard Sutton laid the foundations of reinforcement learning and is known for his 2019 essay “The Bitter Lesson.” Of the critics of today's generative AI boom, his complaint is one of the most fundamental. In one sentence: today's AI does not learn while it is being used. This note sets out that argument from his recent remarks and papers.
+
+{% include figure.html src="fig-sutton-podcast.jpg" cap="Recording of Sequoia Capital's podcast “Training Data.” Sutton is second from the left. Source: Sequoia Capital (2026)." alt="A podcast recording: four people talk around a round table in a room with green walls. Sutton is second from the left." %}
 
 ## AI does not learn while in use
 
