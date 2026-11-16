@@ -1,6 +1,6 @@
 ---
 title: "AIに書いたことは、どこへ行くのか：二つの事件、四社の規定、「すべての人のために」"
-date: 2026-11-17 09:00:00 +0900
+date: 2026-11-17 00:00:00 +0900
 title_en: "Where does what we tell AI go? Two cases, four companies' rules, and “for everyone”"
 summary_en: "One case where OpenAI did not alert the police, and one where it did. Following those, this note looks at where our conversations go in ChatGPT, Claude, Gemini and Grok, what the Navier–Stokes episode showed about training on user data, and what it means that turning training off is framed as declining to help everyone."
 author: 薛海升
