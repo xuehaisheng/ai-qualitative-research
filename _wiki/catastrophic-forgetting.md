@@ -6,7 +6,7 @@ category: quirks
 order: 8
 summary: "特定の分野のデータで追加学習させると、その分野には強くなるが、もともとできていた常識や推論を忘れてしまうことがある。"
 summary_en: "When a model is further trained on data from one field, it may get better in that field but forget common sense and reasoning it could handle before."
-related: [llm, open-weight, self-supervised, context-learning, hallucination]
+related: [continual-learning, llm, open-weight, self-supervised, context-learning, hallucination]
 articles: []
 sources:
   - text: "McCloskey, M., & Cohen, N. J. (1989). Catastrophic interference in connectionist networks: The sequential learning problem. Psychology of Learning and Motivation, 24, 109–165."
