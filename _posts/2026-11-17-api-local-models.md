@@ -287,7 +287,8 @@ Local models are not as capable as the latest cloud models, and the benchmark sc
 - Anthropic. (2026). *[Is my data used for model training?](https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training)* (commercial products). Anthropic Privacy Center.
 - Anthropic. (2026). *[Data retention practices for Covered Models](https://privacy.claude.com/en/articles/15425996-data-retention-practices-for-covered-models)*. Anthropic Privacy Center.
 - Apple. (2026, September 22). *[The new Mac mini and Mac Studio are available today](https://www.apple.com/newsroom/2026/09/the-new-mac-mini-and-mac-studio-are-available-today/)*.
-- Apple. (n.d.). *[Mac mini 仕様](https://www.apple.com/jp/mac-mini/specs/)* and *[Mac Studio 仕様](https://www.apple.com/jp/mac-studio/specs/)*.
+- Apple. (n.d.). *[Mac mini: Technical specifications](https://www.apple.com/mac-mini/specs/)*.
+- Apple. (n.d.). *[Mac Studio: Technical specifications](https://www.apple.com/mac-studio/specs/)*.
 - bit-tech. (2008). *[Mythbusters finish Nvision in style](https://bit-tech.net/news/mythbusters-finish-nvision-in-style/1)*.
 - Google. (n.d.). *[Abuse monitoring](https://ai.google.dev/gemini-api/docs/usage-policies)*. Gemini API.
 - Google. (n.d.). *[Zero data retention](https://ai.google.dev/gemini-api/docs/zdr)*. Gemini API.
