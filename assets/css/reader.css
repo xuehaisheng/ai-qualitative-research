@@ -489,3 +489,8 @@ html[lang="en"] .home-page:not(.masthead-static) .site-header .header-shell { ga
 .person-link { display: inline-block; padding: 2px 9px; border: 1px solid var(--reader-line); border-radius: 999px; color: var(--reader-ink); font-size: .74rem; line-height: 1.7; text-decoration: none; }
 .person-link.person-term { background: #f4f4f2; border-color: transparent; }
 .person-link:hover, .person-link:focus-visible { border-color: #111; text-decoration: underline; text-underline-offset: 3px; }
+.people-sort { display: inline-flex; margin: 4px 0 6px; border: 1px solid #111; }
+.people-sort-btn { padding: 7px 16px; border: 0; background: #fff; color: #111; font: inherit; font-size: .84rem; cursor: pointer; }
+.people-sort-btn + .people-sort-btn { border-left: 1px solid #111; }
+.people-sort-btn[aria-pressed="true"] { background: #111; color: #fff; }
+.people-sort-btn:focus-visible { outline: 2px solid #111; outline-offset: 2px; }

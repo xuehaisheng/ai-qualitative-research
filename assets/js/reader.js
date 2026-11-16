@@ -253,4 +253,52 @@
     note.textContent = message;
     clearTimeout(note._t); note._t = setTimeout(() => { note.textContent = ''; }, 4000);
   }
+
+  // AI literacy page, People: switch between grouping by category and a kana / A–Z index.
+  const peopleSection = document.getElementById('people');
+  if (peopleSection) {
+    const byCategory = peopleSection.querySelector('.people-by-category');
+    const byName = peopleSection.querySelector('.people-by-name');
+    const buttons = [...peopleSection.querySelectorAll('[data-people-sort]')];
+    const cards = [...byCategory.querySelectorAll('.person-item')];
+    const rows = [['ア','アイウエオヴァィゥェォ'],['カ','カキクケコガギグゲゴ'],['サ','サシスセソザジズゼゾ'],['タ','タチツテトダヂヅデド'],['ナ','ナニヌネノ'],['ハ','ハヒフヘホバビブベボパピプペポ'],['マ','マミムメモ'],['ヤ','ヤユヨャュョ'],['ラ','ラリルレロ'],['ワ','ワヲン']];
+    const kanaRow = name => { const c = name.charAt(0); const r = rows.find(([, set]) => set.includes(c)); return r ? r[0] + '行' : '他'; };
+    // English: sort by family name; for "X et al." or "A & B", by the first author's name.
+    const enKey = name => { const first = name.replace(/ et al\.?$/, '').split(' & ')[0].trim().split(' '); return first[first.length - 1]; };
+    const isEn = () => document.documentElement.lang === 'en';
+    let mode = 'category';
+    try { if (localStorage.getItem('people-sort') === 'name') mode = 'name'; } catch (e) {}
+    function renderByName() {
+      const en = isEn();
+      const items = cards.map(card => {
+        const label = en ? enKey(card.dataset.nameEn) : card.dataset.nameJa;
+        return {card, label, head: en ? label.charAt(0).toUpperCase() : kanaRow(label)};
+      }).sort((a, b) => a.label.localeCompare(b.label, en ? 'en' : 'ja'));
+      byName.replaceChildren();
+      let grid = null, current = null;
+      items.forEach(({card, head}) => {
+        if (head !== current) {
+          current = head;
+          const block = document.createElement('div'); block.className = 'people-group';
+          const h = document.createElement('h3'); h.textContent = head;
+          grid = document.createElement('div'); grid.className = 'people-grid';
+          block.append(h, grid); byName.append(block);
+        }
+        grid.append(card.cloneNode(true));
+      });
+    }
+    function apply() {
+      buttons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.peopleSort === mode)));
+      byCategory.hidden = mode !== 'category';
+      byName.hidden = mode !== 'name';
+      if (mode === 'name') renderByName();
+    }
+    buttons.forEach(b => b.addEventListener('click', () => {
+      mode = b.dataset.peopleSort;
+      try { localStorage.setItem('people-sort', mode); } catch (e) {}
+      apply();
+    }));
+    document.addEventListener('site-lang', () => { if (mode === 'name') renderByName(); });
+    apply();
+  }
 })();
