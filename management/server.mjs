@@ -4,6 +4,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import MarkdownIt from 'markdown-it';
+import {renderArticlePreview} from './public/article-preview.js';
 import sanitize from 'sanitize-html';
 import {database,collect,stats} from './lib/database.mjs';
 import {ContentStore,hash} from './lib/content.mjs';
@@ -61,9 +62,9 @@ export async function createApp(options={}){
     const report=stats(db,url.searchParams.get('days'));const cell=v=>'"'+String(v).replace(/"/g,'""').replace(/^[=+@-]/,"'$&")+'"';const csv='\uFEFF'+[['路径','访问量','访客数','有效阅读','平均活跃秒数','平均阅读深度'],...report.pages.map(r=>[r.path,r.views,r.visitors,r.reads,r.seconds,r.depth])].map(r=>r.map(cell).join(',')).join('\r\n');res.writeHead(200,{'Content-Type':'text/csv; charset=utf-8','Content-Disposition':'attachment; filename="reading-statistics.csv"'});res.end(csv);return;
    }
    if(route==='/api/preview'&&req.method==='POST'){
-    const data=await read(req);const source=String(data.body||'').replace(/{{\s*'([^']+)'\s*\|\s*relative_url\s*}}/g,(_,p)=>siteOrigin+siteBase.replace(/\/$/,'')+p);
-    const rendered=sanitize(md.render(source),{allowedTags:sanitize.defaults.allowedTags.concat(['img','figure','figcaption','details','summary']),allowedAttributes:{...sanitize.defaults.allowedAttributes,img:['src','alt','width','height','loading'],a:['href','title','target','rel'], '*':['class','id']},allowedSchemes:['https','http','mailto'],transformTags:{a:sanitize.simpleTransform('a',{rel:'noopener noreferrer',target:'_blank'}),img:(tagName,attribs)=>{const media=db.prepare('SELECT id,path FROM media').all().find(m=>attribs.src===siteOrigin+siteBase.replace(/\/$/,'')+'/'+m.path);return {tagName,attribs:media?{...attribs,src:'/media/'+media.id}:attribs};}}});
-    json(res,200,{html:rendered,hasTemplates:/{%|{{/.test(source)});return;
+    const data=await read(req);const preview=renderArticlePreview(String(data.body||''),{siteUrl:siteOrigin+siteBase,renderMarkdown:source=>md.render(source)});
+    const rendered=sanitize(preview.html,{allowedTags:sanitize.defaults.allowedTags.concat(['img','figure','figcaption','details','summary']),allowedAttributes:{...sanitize.defaults.allowedAttributes,img:['src','alt','width','height','loading'],a:['href','title','target','rel'], '*':['class','id']},allowedSchemes:['https','http','mailto'],transformTags:{a:sanitize.simpleTransform('a',{rel:'noopener noreferrer',target:'_blank'}),img:(tagName,attribs)=>{const media=db.prepare('SELECT id,path FROM media').all().find(m=>attribs.src===siteOrigin+siteBase.replace(/\/$/,'')+'/'+m.path);return {tagName,attribs:media?{...attribs,src:'/media/'+media.id}:attribs};}}});
+    json(res,200,{html:rendered,hasTemplates:preview.hasTemplates});return;
    }
    if(route==='/api/media'&&req.method==='POST'){
     const data=await read(req,15_000_000);if(!/^[\w., ()\u3000-\u9fff-]{1,150}$/.test(data.name||''))throw fail('文件名无效');const bytes=Buffer.from(data.base64||'','base64');if(bytes.length>10*1024*1024||!bytes.length)throw fail('文件需小于 10MB');
