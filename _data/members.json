@@ -125,5 +125,26 @@
       "en": ""
     },
     "profile_url": "https://researchmap.jp/kashida-yoshio"
+  },
+  {
+    "id": "omi",
+    "order": 6,
+    "name": {
+      "ja": "尾見 康博",
+      "en": "Yasuhiro OMI"
+    },
+    "role": {
+      "ja": "コラボレーター",
+      "en": "Collaborator"
+    },
+    "affiliation": {
+      "ja": "山梨大学 大学院総合研究部 教育学域 教授",
+      "en": "Professor, Faculty of Education, Graduate Faculty of Interdisciplinary Research, University of Yamanashi"
+    },
+    "bio": {
+      "ja": "",
+      "en": ""
+    },
+    "profile_url": "https://researchmap.jp/omiyas"
   }
 ]
