@@ -5,7 +5,7 @@
 
   var T = {
     ja: {
-      input: ['逐語録や資料', '質問を送る'], server: ['企業のサーバー', 'で回答を計算'], reply: ['回答が', '研究者へ戻る'],
+      input: ['逐語録や資料', '質問を送る'], server: ['企業のサーバー', 'で回答を計算'], local: ['自分のPC', 'で回答を計算'], reply: ['回答が', '研究者へ戻る'],
       nodes: { answer: '回答の生成', store: '履歴・データの保存', train: 'モデルを改善する訓練', human: '監視と人による審査' },
       state: { on: '使われる', off: '使われない', cond: '条件つき' },
       modes: { on: '改善がオン', off: '改善をオフ', temp: '履歴を残さないチャット', fb: 'フィードバックを送る' },
@@ -14,7 +14,7 @@
       src: '出典：各社のヘルプとプライバシーポリシー（2026年11月17日確認）。本文末の参考文献を参照。'
     },
     en: {
-      input: ['Transcripts,', 'questions'], server: ['Company', 'servers reply'], reply: ['The reply', 'comes back'],
+      input: ['Transcripts,', 'questions'], server: ['Company', 'servers reply'], local: ['Your own PC', 'replies'], reply: ['The reply', 'comes back'],
       nodes: { answer: 'Generating a reply', store: 'Storage', train: 'Model training', human: 'Monitoring, review' },
       state: { on: 'Used', off: 'Not used', cond: 'Conditional' },
       modes: { on: 'Improvement on', off: 'Improvement off', temp: 'Chat without history', fb: 'Sending feedback' },
@@ -125,6 +125,86 @@
     return out;
   }
 
+
+  /* ---- Opt-out vs API vs ZDR vs local (data-set="compare") ---- */
+  var LOCAL_ALL = {
+    answer: s('on', '入力は外に出ない。自分のPCの中で回答を作る。', 'Nothing leaves your machine. The reply is generated on your own PC.'),
+    store: s('off', '会社には送られない。保存先は自分のPCだけ。', 'Nothing is sent to a company. Data is stored only on your PC.'),
+    train: s('off', '会社の訓練には使われない。', 'Not used for any company’s training.'),
+    human: s('off', '会社の監視も、人による確認もない。', 'No company monitoring and no human review.'),
+    note: { ja: '検索のための変換、文字の読み取り、文字起こしまで手元で動いているかを確かめる。ネットを切って動けば確実。', en: 'Check that search indexing, text recognition and transcription also run locally. If it works with the network off, it is local.' }
+  };
+  var COMPARE = {
+    openai: {
+      api: {
+        store: s('cond', '不正利用の監視ログを最長30日保持。会話の状態を保存する機能を使えば30日、ファイルは削除するまで残る。', 'Abuse-monitoring logs are kept for up to 30 days. Features that store conversation state keep it for 30 days; files stay until deleted.'),
+        train: s('off', '初期設定では使わない。', 'Not used by default.'),
+        human: s('on', '最長30日のログが監視の対象になる。', 'The logs of up to 30 days are subject to monitoring.')
+      },
+      zdr: {
+        note: { ja: '申し込み：営業窓口に申請し、OpenAIの審査で承認された組織だけが使える。承認後、管理画面の「Settings → Organization → Data controls」に「Data Retention」のタブが現れ、組織やプロジェクトごとにZDRを選ぶ。', en: 'How to get it: apply through sales; only organisations approved by OpenAI can use it. Once approved, a Data Retention tab appears under Settings → Organization → Data controls, where ZDR is set per organisation or project.' },
+        store: s('cond', '内容は残さない。利用量などのメタデータは残る。Assistants、Files、ベクトルストアなどはZDRの対象外で、使えば削除するまで残る。', 'No content is kept; metadata such as usage remains. Assistants, Files, vector stores and some other features are not covered and keep data until deleted.'),
+        train: s('off', '使わない。', 'Not used.'),
+        human: s('cond', '内容は監視ログに残らない。児童への性的虐待が疑われる画像やファイルだけは、人が確認するために保持される。', 'Content is excluded from monitoring logs. Images and files flagged as possible child sexual abuse material are kept for human review.')
+      }
+    },
+    anthropic: {
+      api: {
+        store: s('cond', '入力と出力は30日以内に削除。違反と判定されると最長2年、判定のスコアは最長7年。Files APIのファイルは削除するまで。', 'Inputs and outputs are deleted within 30 days. If flagged, up to 2 years (scores up to 7). Files API files stay until deleted.'),
+        train: s('off', '初期設定では使わない。明示的に送ったフィードバックは別。', 'Not used by default, except feedback you explicitly send.'),
+        human: s('on', '30日の間、違反の検知の対象になる。', 'Subject to violation detection during those 30 days.')
+      },
+      zdr: {
+        note: { ja: '申し込み：Anthropicと個別にZDRの合意を結ぶ。ConsoleのAPI、Enterprise版のClaude Code、Bedrockなどのクラウド経由で使える。', en: 'How to get it: sign a ZDR agreement with Anthropic. It applies to the Console API, Claude Code in Enterprise, and cloud routes such as Bedrock.' },
+        store: s('cond', '内容は残さない。ただし2026年6月9日からは、Mythos級のモデル（Covered Models）はZDRでも30日保持する。', 'No content is kept. From 9 June 2026, however, Mythos-class models (Covered Models) keep prompts and outputs for 30 days even under ZDR.'),
+        train: s('off', '使わない。', 'Not used.'),
+        human: s('cond', 'Covered Modelsの30日分は、承認された少人数だけが記録つきで読める。違反の判定や法律上の必要がある場合も例外。', 'For Covered Models, only a small approved group can read the 30 days of data, with every access logged. Flagged content and legal requirements are also exceptions.')
+      }
+    },
+    google: {
+      api: {
+        note: { ja: 'Gemini APIの無料枠は、改善に使われ、人が読むこともある。以下は有料の場合。', en: 'The free tier of the Gemini API is used for improvement and may be read by people. The values below are for paid use.' },
+        store: s('cond', '不正利用の監視のため、入力と出力を55日保持。Google検索でのグラウンディングを使うと30日保存され、止められない。', 'Prompts and outputs are kept for 55 days for abuse monitoring. Grounding with Google Search stores data for 30 days and cannot be turned off.'),
+        train: s('off', '有料なら製品の改善に使わない。', 'Paid use is not used to improve products.'),
+        human: s('on', '55日の間、監視の対象になる。ポリシー違反を見つけるモデルの訓練には使われうる。', 'Monitored during those 55 days, and may be used to train models that enforce policy.')
+      },
+      zdr: {
+        note: { ja: '申し込み：Gemini APIでは監視ログを消せない。ZDRが必要ならGoogle CloudのVertex AIを使い、キャッシュを切り、保存する設定（store）をfalseにするなど、自分で設定を揃える。', en: 'How to get it: the Gemini API cannot drop its monitoring logs. For ZDR, use Vertex AI on Google Cloud and configure it yourself, e.g. turning off caching and setting store to false.' },
+        store: s('cond', '設定を揃えれば内容は残さない。検索のグラウンディングは最長3日、地図は30日保存され、止められない。', 'With the right settings, no content is kept. Search grounding keeps data for up to 3 days and Maps grounding for 30, and these cannot be turned off.'),
+        train: s('off', '使わない。', 'Not used.'),
+        human: s('cond', 'Google Cloudの規約で使う場合、不正利用の監視のための記録が残ることがある。', 'Under the Google Cloud terms, prompts may still be logged for abuse monitoring.')
+      }
+    },
+    xai: {
+      api: {
+        store: s('cond', '入力と出力は30日以内に自動で削除。', 'Inputs and outputs are deleted automatically within 30 days.'),
+        train: s('off', '使わない。無料クレジットと引き換えに許可した場合は別。', 'Not used, unless you allow it in exchange for free credits.'),
+        human: s('cond', '規約違反の疑いがあるときや法律上必要なときは保持する。', 'Kept when content is flagged for violations or when the law requires it.')
+      },
+      zdr: {
+        note: { ja: '申し込み：公開の文書にはZDRという名前の制度はない。保持期間を変えるには、エンタープライズ窓口を通じて書面で個別に合意する。', en: 'How to get it: the public documents describe no programme called ZDR. Changing retention requires a separate written agreement through the enterprise team.' },
+        store: s('cond', '書面の合意で決めた期間による。', 'Depends on the period set in the written agreement.'),
+        train: s('off', '使わない。', 'Not used.'),
+        human: s('cond', '規約違反の疑いや法律上の必要がある場合は例外。', 'Exceptions for flagged content and legal requirements.')
+      }
+    }
+  };
+  var CONSUMER_OF = { openai: 'chatgpt', anthropic: 'claude', google: 'gemini', xai: 'grok' };
+  var API_ANSWER = s('on', '入力は会社のサーバーに送られ、そこで回答が作られる。', 'Your input is sent to the company’s servers, where the reply is generated.');
+  var COMPARE_CFG = {
+    companies: [{ id: 'openai', label: 'OpenAI' }, { id: 'anthropic', label: 'Anthropic' }, { id: 'google', label: 'Google' }, { id: 'xai', label: 'xAI' }],
+    modes: {
+      ja: [{ id: 'optout', label: '個人向け（改善オフ）' }, { id: 'api', label: 'API' }, { id: 'zdr', label: 'API＋ZDR' }, { id: 'local', label: 'ローカルモデル' }],
+      en: [{ id: 'optout', label: 'Consumer (opted out)' }, { id: 'api', label: 'API' }, { id: 'zdr', label: 'API + ZDR' }, { id: 'local', label: 'Local model' }]
+    },
+    resolve: function (c, m) {
+      if (m === 'optout') return resolve(CONSUMER_OF[c], 'off');
+      if (m === 'local') return LOCAL_ALL;
+      var d = COMPARE[c][m];
+      return { answer: API_ANSWER, store: d.store, train: d.train, human: d.human, note: d.note || null };
+    }
+  };
+
   var NS = 'http://www.w3.org/2000/svg';
   function el(tag, attrs, parent) {
     var e = document.createElementNS(NS, tag);
@@ -163,7 +243,14 @@
 
   function initFlow(root) {
     var lang = root.getAttribute('data-lang') === 'en' ? 'en' : 'ja';
-    var t = T[lang], company = 'chatgpt', mode = 'on';
+    var t = T[lang];
+    var cfg = root.getAttribute('data-set') === 'compare' ? COMPARE_CFG : {
+      companies: COMPANIES.map(function (c) { return { id: c, label: FLOW[c].name }; }),
+      modes: MODES.map(function (m) { return { id: m, label: t.modes[m] }; }),
+      resolve: resolve
+    };
+    if (cfg === COMPARE_CFG) cfg = { companies: cfg.companies, modes: cfg.modes[lang], resolve: cfg.resolve };
+    var company = cfg.companies[0].id, mode = cfg.modes[0].id;
     root.textContent = '';
 
     // Same layout as the source figure "入力した資料は どの用途に分かれるのか": input -> server -> reply, with three branches.
@@ -183,7 +270,7 @@
     wire('M98 150 L130 150', g0, true);
     wire('M185 178 L185 262', g0, true);
     box(4, 122, 94, 56, t.input, 'pv-in', g0);
-    box(130, 122, 110, 56, t.server, 'pv-box', g0);
+    var serverText = box(130, 122, 110, 56, t.server, 'pv-box', g0);
     box(130, 262, 110, 50, t.reply, 'pv-box pv-reply', g0);
     var Y = { train: 14, store: 122, human: 230 };
     ['train', 'store', 'human'].forEach(function (k) {
@@ -207,14 +294,17 @@
     root.appendChild(h('p', 'pv-legend', t.legend));
 
     var controls = h('div', 'pv-controls');
-    controls.appendChild(tabs(t.companyLabel, COMPANIES.map(function (c) { return { id: c, label: FLOW[c].name }; }), company, function (id) { company = id; render(); }));
-    controls.appendChild(tabs(t.modeLabel, MODES.map(function (m) { return { id: m, label: t.modes[m] }; }), mode, function (id) { mode = id; render(); }));
+    controls.appendChild(tabs(t.companyLabel, cfg.companies, company, function (id) { company = id; render(); }));
+    controls.appendChild(tabs(t.modeLabel, cfg.modes, mode, function (id) { mode = id; render(); }));
     root.appendChild(controls);
     root.appendChild(h('p', 'pv-src', t.src));
 
     function render() {
-      var r = resolve(company, mode);
+      var r = cfg.resolve(company, mode);
       list.textContent = '';
+      var sl = mode === 'local' ? t.local : t.server;
+      Array.prototype.forEach.call(serverText.childNodes, function (n, i) { n.textContent = sl[i] || ''; });
+      root.setAttribute('data-mode', mode);
       NODES.forEach(function (k) {
         var v = r[k];
         if (parts[k]) { parts[k].g.setAttribute('data-state', v.s); parts[k].st.textContent = t.state[v.s]; }
@@ -353,9 +443,62 @@
     render();
   }
 
+
+  /* ---- Writing-speed demo ---- */
+  function initSpeed(root) {
+    var en = root.getAttribute('data-lang') === 'en';
+    var text = en
+      ? 'The interviewee describes moving to Tokyo for work and how, at first, she spoke to no one at the office. Over the following months she began to eat lunch with a colleague from the same prefecture, and this, she says, was when the city started to feel like hers.'
+      : '語り手は、仕事のために東京に移ったころ、職場で誰とも話さなかったと振り返る。数か月たって、同じ県の出身の同僚と昼食をとるようになり、そのころから東京が自分の街だと感じられるようになった、と語っている。';
+    var rows = [
+      { name: 'Mac mini (M5 Pro)', bw: '307GB/s', rate: 17 },
+      { name: 'RTX 5090', bw: '1,792GB/s', rate: 100 }
+    ];
+    root.textContent = '';
+    root.appendChild(h('p', 'pv-opt-where', en
+      ? 'Writing speed with a model of about 18 GB, at the upper limit set by bandwidth (one token shown as one character).'
+      : '約18GBのモデルで、帯域幅から決まる上限の速さで書き出した場合（1トークンを1文字として表示）。'));
+    var outs = rows.map(function (r) {
+      var row = h('div', 'pv-speed-row');
+      var head = h('div', 'pv-speed-head');
+      var left = h('span'); left.appendChild(h('strong', null, r.name)); left.appendChild(document.createTextNode(' ' + r.bw));
+      head.appendChild(left);
+      head.appendChild(h('span', null, (en ? 'about ' : '1秒に約') + r.rate + (en ? ' tokens/s' : 'トークン')));
+      row.appendChild(head);
+      var out = h('div', 'pv-speed-out');
+      row.appendChild(out);
+      root.appendChild(row);
+      return { el: out, rate: r.rate };
+    });
+    var btn = h('button', 'pv-tab pv-speed-btn', en ? 'Run again' : 'もう一度');
+    btn.type = 'button';
+    root.appendChild(btn);
+    var timer = null, started = false;
+    function run() {
+      if (timer) clearInterval(timer);
+      var t0 = performance.now();
+      timer = setInterval(function () {
+        var sec = (performance.now() - t0) / 1000, done = true;
+        outs.forEach(function (o) {
+          var n = Math.min(text.length, Math.floor(sec * o.rate));
+          o.el.textContent = text.slice(0, n);
+          if (n < text.length) done = false;
+        });
+        if (done) { clearInterval(timer); timer = null; }
+      }, 30);
+    }
+    btn.addEventListener('click', run);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es, ob) {
+        es.forEach(function (e) { if (e.isIntersecting && !started) { started = true; run(); ob.disconnect(); } });
+      }, { threshold: 0.4 }).observe(root);
+    } else run();
+  }
+
   function boot() {
     document.querySelectorAll('.pv-flow').forEach(initFlow);
     document.querySelectorAll('.pv-optout').forEach(initOptout);
+    document.querySelectorAll('.pv-speed').forEach(initSpeed);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();
