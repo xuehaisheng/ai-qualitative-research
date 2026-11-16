@@ -9,7 +9,7 @@ order: 9
 wiki: [llm, lean]
 summary_ja: "OpenAIが警察に知らせなかった事件と、知らせた事件。そこから、ChatGPT、Claude、Gemini、Grokに書いた会話がどこへ行くのかを、各社の規定で確かめる。ナビエ–ストークス方程式をめぐる騒ぎとその逆転、そして訓練をオフにすることが「すべての人への協力を断る」ように見える設定の言葉を考える。"
 topic: "研究の実践"
-related_notes: ["predictions", "meta-synthesis-with-ai"]
+related_notes: ["api-local-models", "predictions", "meta-synthesis-with-ai"]
 sort_date: 20261117
 ---
 
@@ -93,7 +93,7 @@ ChatGPTでは、このスイッチは「すべての人のためにモデルを�
 
 ## オフにしたあとに残るもの
 
-スイッチをオフにしても、フィードバックと監視の二つは残る。研究資料を貼った会話で👍や👎を押せば、その会話は訓練に回りうる。履歴を残さないチャットも、監視の対象からは外れない。語り手にとって、どこまでのリスクなら引き受けられるのかを考えると、個人向けのサービスに逐語録をそのまま送ること自体を見直した方がよい場面もある。では、データを使われたくないときはどうすればよいのか。企業のAIをAPIで使う方法と、データを外に出さないローカルモデルについては、次のノート[データを渡したくないとき]({{ '/articles/api-local-models/' | relative_url }})にまとめた。
+スイッチをオフにしても、フィードバックと監視の二つは残る。研究資料を貼った会話で👍や👎を押せば、その会話は訓練に回りうる。履歴を残さないチャットも、監視の対象からは外れない。語り手にとって、どこまでのリスクなら引き受けられるのかを考えると、個人向けのサービスに逐語録をそのまま送ること自体を見直した方がよい場面もある。では、データを使われたくないときはどうすればよいのか。API、ゼロデータ保持（ZDR）、データを外に出さないローカルモデルについては、応用編として次のノートにまとめた（下の「あわせて読む」から読める）。
 
 ## 参考文献
 
@@ -200,7 +200,7 @@ These are the steps given in each company's help pages as of 17 November 2026. U
 
 ## What remains after you turn it off
 
-With the switch off, feedback and monitoring remain. A thumbs up or down on a conversation containing research material can send it into training. Chats without history are still monitored. Thinking about how much risk the people we interviewed can be asked to bear, there are cases where sending transcripts to a consumer service at all should be reconsidered. So what can we do if we don't want our data used? Using companies' models through an API, and local models that keep data on your own machine, are covered in the next note, [When you don't want to hand over your data]({{ '/articles/api-local-models/' | relative_url }}).
+With the switch off, feedback and monitoring remain. A thumbs up or down on a conversation containing research material can send it into training. Chats without history are still monitored. Thinking about how much risk the people we interviewed can be asked to bear, there are cases where sending transcripts to a consumer service at all should be reconsidered. So what can we do if we don't want our data used? APIs, Zero Data Retention and local models that keep data on your own machine are covered in the follow-up note, listed under Read next below.
 
 ## References
 

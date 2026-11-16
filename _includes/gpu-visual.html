@@ -1,0 +1,66 @@
+{%- assign en = false -%}{%- if include.lang == 'en' -%}{%- assign en = true -%}{%- endif -%}
+{%- if include.part == 'kitchen' -%}
+<figure class="pv-widget pv-visual">
+<svg class="pv-kitchen" viewBox="0 0 460 250" role="img" aria-label="{% if en %}A kitchen metaphor: the supermarket is main memory, the fridge is GPU memory, the corridor is bandwidth, the cooks are compute.{% else %}台所のたとえ。スーパーが本体のメモリ、冷蔵庫がGPUのメモリ、通路が帯域幅、料理人が計算力。{% endif %}">
+  <!-- supermarket -->
+  <rect x="6" y="70" width="78" height="62" rx="4" class="k-far"/>
+  <path d="M6 70 L45 48 L84 70" class="k-far-roof"/>
+  <text x="45" y="98" text-anchor="middle" class="k-t">{% if en %}Store{% else %}スーパー{% endif %}</text>
+  <text x="45" y="116" text-anchor="middle" class="k-s">{% if en %}main RAM{% else %}本体のメモリ{% endif %}</text>
+  <path d="M84 101 L132 101" class="k-slow"/>
+  <text x="109" y="120" text-anchor="middle" class="k-s"><tspan x="109">{% if en %}far,{% else %}遠くて{% endif %}</tspan><tspan x="109" dy="13">{% if en %}slow{% else %}遅い{% endif %}</tspan></text>
+  <!-- fridge -->
+  <rect x="134" y="40" width="96" height="124" rx="6" class="k-fridge"/>
+  <line x1="134" y1="84" x2="230" y2="84" class="k-line"/>
+  <g class="k-food"><rect x="146" y="96" width="20" height="14" rx="2"/><rect x="172" y="96" width="20" height="14" rx="2"/><rect x="198" y="96" width="20" height="14" rx="2"/><rect x="146" y="116" width="20" height="14" rx="2"/><rect x="172" y="116" width="20" height="14" rx="2"/><rect x="198" y="116" width="20" height="14" rx="2"/><rect x="146" y="136" width="20" height="14" rx="2"/><rect x="172" y="136" width="20" height="14" rx="2"/></g>
+  <text x="182" y="60" text-anchor="middle" class="k-t">{% if en %}Fridge{% else %}冷蔵庫{% endif %}</text>
+  <text x="182" y="76" text-anchor="middle" class="k-s">{% if en %}GPU memory{% else %}GPUのメモリ{% endif %}</text>
+  <!-- corridor -->
+  <rect x="230" y="88" width="76" height="40" class="k-corridor"/>
+  <g class="k-flow"><circle cx="0" cy="98" r="4"/><circle cx="0" cy="108" r="4"/><circle cx="0" cy="118" r="4"/></g>
+  <!-- stove and cooks -->
+  <rect x="306" y="40" width="148" height="124" rx="6" class="k-stove"/>
+  <text x="380" y="60" text-anchor="middle" class="k-t">{% if en %}Counter{% else %}調理台{% endif %}</text>
+  <text x="380" y="76" text-anchor="middle" class="k-s">{% if en %}compute units{% else %}計算ユニット{% endif %}</text>
+  <g class="k-cooks"><circle cx="324" cy="100" r="5"/><circle cx="340" cy="100" r="5"/><circle cx="356" cy="100" r="5"/><circle cx="372" cy="100" r="5"/><circle cx="388" cy="100" r="5"/><circle cx="404" cy="100" r="5"/><circle cx="420" cy="100" r="5"/><circle cx="436" cy="100" r="5"/><circle cx="324" cy="120" r="5"/><circle cx="340" cy="120" r="5"/><circle cx="356" cy="120" r="5"/><circle cx="372" cy="120" r="5"/><circle cx="388" cy="120" r="5"/><circle cx="404" cy="120" r="5"/><circle cx="420" cy="120" r="5"/><circle cx="436" cy="120" r="5"/><circle cx="324" cy="140" r="5"/><circle cx="340" cy="140" r="5"/><circle cx="356" cy="140" r="5"/><circle cx="372" cy="140" r="5"/><circle cx="388" cy="140" r="5"/><circle cx="404" cy="140" r="5"/><circle cx="420" cy="140" r="5"/><circle cx="436" cy="140" r="5"/></g>
+  <!-- labels -->
+  <text x="182" y="186" text-anchor="middle" class="k-k">{% if en %}Size = capacity{% else %}大きさ＝容量{% endif %}</text>
+  <text x="182" y="202" text-anchor="middle" class="k-s">{% if en %}what fits{% else %}何が入るか{% endif %}</text>
+  <text x="268" y="170" text-anchor="middle" class="k-k">{% if en %}Width{% else %}通路の幅{% endif %}</text>
+  <text x="268" y="186" text-anchor="middle" class="k-k">{% if en %}= bandwidth{% else %}＝帯域幅{% endif %}</text>
+  <text x="268" y="202" text-anchor="middle" class="k-s">{% if en %}writing speed{% else %}書き出す速さ{% endif %}</text>
+  <text x="380" y="186" text-anchor="middle" class="k-k">{% if en %}Cooks = compute{% else %}料理人＝計算力{% endif %}</text>
+  <text x="380" y="202" text-anchor="middle" class="k-s">{% if en %}reading speed, training{% else %}読み込む速さ、学習{% endif %}</text>
+  {% if en %}<text x="230" y="230" text-anchor="middle" class="k-s"><tspan x="230">Ingredients = the model's weights.</tspan><tspan x="230" dy="14">Every token means carrying all of them to the counter once.</tspan></text>{% else %}<text x="230" y="238" text-anchor="middle" class="k-s">材料＝モデルの重み。1トークン作るたびに、材料を全部いったん調理台へ運ぶ。</text>{% endif %}
+</svg>
+</figure>
+{%- elsif include.part == 'sizes' -%}
+<figure class="pv-widget pv-visual">
+<svg class="pv-sizes" viewBox="0 0 460 236" role="img" aria-label="{% if en %}Bar chart of model sizes against memory capacities.{% else %}モデルの大きさとメモリの容量を比べた棒グラフ。{% endif %}">
+  <!-- scale: 0-64GB over x=110..468 (5.6px per GB) -->
+  <g class="z-grid">
+    <line x1="110" y1="20" x2="110" y2="150"/><text x="110" y="166" text-anchor="middle">0</text>
+    <line x1="199.6" y1="20" x2="199.6" y2="150"/><text x="199.6" y="166" text-anchor="middle">16</text>
+    <line x1="289.2" y1="20" x2="289.2" y2="150"/><text x="289.2" y="166" text-anchor="middle">32</text>
+    <line x1="378.8" y1="20" x2="378.8" y2="150"/><text x="378.8" y="166" text-anchor="middle">48</text>
+    <line x1="455" y1="20" x2="455" y2="150"/><text x="448" y="166" text-anchor="middle">GB</text>
+  </g>
+  <text x="104" y="44" text-anchor="end" class="z-l">{% if en %}27B, 16-bit{% else %}27B・16ビット{% endif %}</text>
+  <rect x="110" y="32" width="302.4" height="18" class="z-bar z-big"/><text x="418" y="46" class="z-v">54GB</text>
+  <text x="104" y="84" text-anchor="end" class="z-l">{% if en %}27B, 4-bit{% else %}27B・4ビット{% endif %}</text>
+  <rect x="110" y="72" width="100.8" height="18" class="z-bar"/><text x="216" y="86" class="z-v">{% if en %}~18GB{% else %}約18GB{% endif %}</text>
+  <text x="104" y="124" text-anchor="end" class="z-l">{% if en %}9B, 4-bit{% else %}9B・4ビット{% endif %}</text>
+  <rect x="110" y="112" width="33.6" height="18" class="z-bar"/><text x="150" y="126" class="z-v">{% if en %}~6GB{% else %}約6GB{% endif %}</text>
+  <g class="z-dev">
+    <line x1="199.6" y1="182" x2="199.6" y2="196"/><text x="199.6" y="210" text-anchor="middle">RTX 5060 Ti</text><text x="199.6" y="224" text-anchor="middle">16GB</text>
+    <line x1="289.2" y1="182" x2="289.2" y2="196"/><text x="289.2" y="210" text-anchor="middle">RTX 5090</text><text x="289.2" y="224" text-anchor="middle">32GB</text>
+    <line x1="378.8" y1="182" x2="378.8" y2="196"/><text x="378.8" y="210" text-anchor="middle">Mac mini</text><text x="378.8" y="224" text-anchor="middle">{% if en %}48GB option{% else %}48GB構成{% endif %}</text>
+  </g>
+</svg>
+<figcaption>{% if en %}Model sizes against memory capacities. The 4-bit 27B figure is Ollama's quantised Qwen3.8; the 9B figure is a rough calculation. The working area for long inputs comes on top.{% else %}モデルの大きさとメモリの容量。27Bの4ビットはOllamaで配布されているQwen3.8の量子化版、9Bは計算上の目安。長い入力を読むための作業領域が、これに上乗せされる。{% endif %}</figcaption>
+</figure>
+{%- elsif include.part == 'speed' -%}
+<div class="pv-widget pv-speed" data-lang="{% if en %}en{% else %}ja{% endif %}"><p>{% if en %}This demo needs JavaScript.{% else %}このデモの表示にはJavaScriptが必要です。{% endif %}</p></div>
+{%- endif %}
+<link rel="stylesheet" href="{{ '/assets/css/privacy-widgets.css' | relative_url }}">
+<script src="{{ '/assets/js/privacy-widgets.js' | relative_url }}" defer></script>

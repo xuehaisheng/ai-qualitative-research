@@ -79,3 +79,49 @@
   .pv-run { animation: none; }
   .pv-step, .pv-step * { transition: none !important; }
 }
+
+/* GPU visuals */
+.pv-visual { margin: 28px 0; padding: 16px; }
+.pv-visual svg { display: block; width: 100%; max-width: 620px; height: auto; margin: 0 auto; font-family: inherit; }
+.post-body .pv-visual figcaption, .pv-visual figcaption { margin-top: 10px; color: var(--reader-muted, #5e5e5e); font-size: .76rem; line-height: 1.8; }
+.k-far { fill: #f3f3f3; stroke: #9a9a9a; stroke-width: 1.2; }
+.k-far-roof { fill: none; stroke: #9a9a9a; stroke-width: 1.2; }
+.k-slow { stroke: #9a9a9a; stroke-width: 2; stroke-dasharray: 2 6; fill: none; }
+.k-fridge { fill: #fff; stroke: #111; stroke-width: 1.6; }
+.k-line { stroke: #111; stroke-width: 1; }
+.k-food rect { fill: #d9d9d9; }
+.k-corridor { fill: #f3f3f3; stroke: #111; stroke-width: 1; }
+.k-flow circle { fill: #111; animation: k-move 1.2s linear infinite; }
+.k-flow circle:nth-child(2) { animation-delay: -.4s; }
+.k-flow circle:nth-child(3) { animation-delay: -.8s; }
+@keyframes k-move { from { transform: translateX(236px); } to { transform: translateX(300px); } }
+.k-stove { fill: #fff; stroke: #111; stroke-width: 1.6; }
+.k-cooks circle { fill: #111; animation: k-cook 1.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.k-cooks circle:nth-child(3n) { animation-delay: -.5s; }
+.k-cooks circle:nth-child(3n+1) { animation-delay: -1s; }
+@keyframes k-cook { 0%, 100% { transform: scale(1); } 50% { transform: scale(.6); } }
+.k-t { font-size: 14px; font-weight: 700; fill: #111; }
+.k-k { font-size: 12.5px; font-weight: 600; fill: #111; }
+.k-s { font-size: 11px; fill: #5e5e5e; }
+.z-grid line { stroke: #e2e2e2; stroke-width: 1; }
+.z-grid text, .z-dev text { font-size: 11px; fill: #5e5e5e; }
+.z-dev line { stroke: #111; stroke-width: 1.5; }
+.z-l { font-size: 12px; fill: #111; }
+.z-v { font-size: 12px; font-weight: 600; fill: #111; }
+.z-bar { fill: #111; }
+.z-big { fill: #bdbdbd; }
+.pv-speed-row { margin-top: 12px; }
+.pv-speed-head { display: flex; justify-content: space-between; gap: 10px; font-size: .78rem; color: var(--reader-muted, #5e5e5e); }
+.pv-speed-head strong { color: #111; }
+.pv-speed-out { min-height: 5.4em; margin-top: 4px; padding: 10px 12px; background: var(--reader-tint, #f5f5f5); font-size: .86rem; line-height: 1.8; }
+.pv-speed-out::after { content: "\258D"; animation: pv-blink 1s steps(1) infinite; }
+@keyframes pv-blink { 50% { opacity: 0; } }
+.pv-speed-btn { margin-top: 12px; }
+/* Product photos with prices */
+.pv-products { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 28px 0; }
+.pv-products figure { margin: 0; }
+.pv-products img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: #f5f5f7; border: 1px solid var(--reader-line, #e2e2e2); }
+.post-body .pv-products figcaption, .pv-products figcaption { margin-top: 8px; font-size: .78rem; line-height: 1.7; color: var(--reader-muted, #5e5e5e); }
+.pv-products figcaption strong { display: block; color: #111; font-size: .84rem; }
+@media (max-width: 560px) { .pv-products { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .k-flow circle, .k-cooks circle, .pv-speed-out::after { animation: none; } }
