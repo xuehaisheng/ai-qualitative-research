@@ -9,7 +9,7 @@ order: 6
 wiki: [hallucination, continual-learning, interpretability, persona-vectors, emotion-concepts, world-model, agent, time-horizon, evaluation-awareness, lost-in-the-middle, multi-turn, nondeterminism]
 summary_ja: "流暢に話せることと、考えられることは同じなのか。言語と思考を分けて考える神経科学の議論、AIの意識をめぐるヒントンとバトリンらの立場、AIの内部をのぞく研究、AI研究の中心人物たちの五つの見方を紹介する。"
 topic: "AIの理解"
-related_notes: ["qualitative-reactions", "march-of-progress", "ai-history"]
+related_notes: ["sutton-continual-learning", "qualitative-reactions", "march-of-progress"]
 updated: "2026-11-12 00:00:00 +0900"
 sort_date: 20261112
 ---
