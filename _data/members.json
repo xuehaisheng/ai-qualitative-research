@@ -61,5 +61,26 @@
       "en": ""
     },
     "profile_url": "https://researchmap.jp/toyoda.h"
+  },
+  {
+    "id": "zhao",
+    "order": 3,
+    "name": {
+      "ja": "趙 心語",
+      "en": "Xinyu ZHAO"
+    },
+    "role": {
+      "ja": "共同研究者",
+      "en": "Co-researcher"
+    },
+    "affiliation": {
+      "ja": "名古屋大学 大学院教育発達科学研究科 特任助教",
+      "en": "Designated Assistant Professor, Graduate School of Education and Human Development, Nagoya University"
+    },
+    "bio": {
+      "ja": "",
+      "en": ""
+    },
+    "profile_url": "https://researchmap.jp/xinyu_zhao"
   }
 ]
