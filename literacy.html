@@ -70,13 +70,18 @@ permalink: /literacy/
         <h2>{% include t.html ja="人物" en="People" %}</h2>
         <p>{% include t.html ja="研究ノートや用語ページに出てくる人物。下のリンクから、その人が出てくるページへ移れる。" en="People who appear in the research notes and term pages. The links below each name lead to the pages where they appear." %}</p>
       </div>
+      <div class="people-sort" role="group" aria-label="並べ方" data-aria-ja="並べ方" data-aria-en="Sort order">
+        <button type="button" class="people-sort-btn" data-people-sort="category" aria-pressed="true">{% include t.html ja="カテゴリー別" en="By category" %}</button>
+        <button type="button" class="people-sort-btn" data-people-sort="name" aria-pressed="false">{% include t.html ja="五十音順" en="A–Z" %}</button>
+      </div>
+      <div class="people-by-category">
       {%- for g in site.data.people_groups %}
       {%- assign members = site.data.people | where: "category", g.id %}
       <div class="people-group">
         <h3>{% include t.html ja=g.title en=g.title_en %}<span class="people-count">{{ members.size }}</span></h3>
         <div class="people-grid">
           {%- for p in members %}
-          <div class="person-item">
+          <div class="person-item" data-name-ja="{{ p.name | escape }}" data-name-en="{{ p.name_en | escape }}">
             <div class="person-name"><strong>{% include t.html ja=p.name en=p.name_en %}</strong><span class="person-en lang-ja">{{ p.name_en }}</span></div>
             <p class="person-desc">{% include t.html ja=p.desc en=p.desc_en %}</p>
             <div class="person-links">
@@ -88,6 +93,8 @@ permalink: /literacy/
         </div>
       </div>
       {%- endfor %}
+      </div>
+      <div class="people-by-name" hidden></div>
     </div>
   </section>
 
