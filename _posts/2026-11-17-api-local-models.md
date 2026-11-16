@@ -37,7 +37,7 @@ APIは、プログラムやアプリから企業のAIに文章を送り、回答
 
 **Google**　Gemini APIでは、有料にしても不正利用の監視のためのログは消せない。Googleは、ZDRが必要ならGoogle CloudのVertex AIを使うように案内している。Vertex AIでは、キャッシュを切る、会話を保存する設定（store）を使わない、といった設定を自分で揃えることでZDRに近づける。それでも、Google検索で答えを補う機能（グラウンディング）を使うと最長3日、地図の機能では30日保存され、これは止められない。
 
-**xAI**　公開されている文書には、ZDRという名前の制度は見当たらない。APIの入力と出力は30日以内に自動で削除される。保持期間を変えたいときは、エンタープライズ窓口を通じて、書面で個別に合意する。
+**xAI**　公開されている文書には、ZDRという名前の制度は見当たらない。APIの入力と出力は30日以内に自動で削除される。保持期間を変えたいときは、エンタープライズ窓口を通じて、書面で個別に合意する。そのため、上の図ではxAIのZDRは選べないようにした。
 
 どの会社のZDRも、組織として契約することが前提になっている。個人の研究者が一人で申し込むのは難しく、大学や研究室単位での契約を考えることになる。ZDRのAPIを使うアプリの側が、別のクラウドにデータを送っていないかも確かめておきたい。研究用のアプリが、検索のための変換や文字の読み取りだけを別のサービスに送っていることがある。
 
@@ -75,7 +75,7 @@ GPUの性能表には、いくつもの数字が並んでいる。ローカル�
 
 このレストランでは、料理を一皿出すたびに、冷蔵庫の材料を全部いったん調理台まで運ばなければならない。材料がモデルの重みで、一皿がAIの書き出す一つのトークンである。変な決まりだが、AIが文章を書くときに実際にしていることはこれに近い。トークンを一つ出すたびに、重みを全部一度読み直している。
 
-**冷蔵庫の大きさ＝メモリの容量（GB）**　GPUには専用のメモリがあり、VRAMと呼ばれる。これが調理台のすぐ隣にある冷蔵庫である。材料が全部入らなければ、足りない分は遠くのスーパー、つまりPC本体のメモリまで取りに行くことになり、料理はとても遅くなる。容量で決まるのは、どの大きさのモデルを、どれくらいの長さの入力で動かせるかである。容量が大きいから速くなるわけではない。
+**冷蔵庫の大きさ＝メモリの容量（GB）**　GPUには専用のメモリがあり、VRAMと呼ばれる。これが調理台のすぐ隣にある冷蔵庫である。材料が全部入らなければ、足りない分は遠くのスーパー、つまりPC本体のメモリまで取りに行くことになり、料理はとても遅くなる。容量で決まるのは、どの大きさのモデルを動かせるかである。小さなモデルなら少ない容量でも動くが、分析に使えるくらいの力を持ったモデルは大きい。実用になるモデルを動かしたいなら、大きな容量はほぼ欠かせない。長い入力を読ませるときも、その分の容量が要る。ただし、容量が大きいから速くなるわけではない。
 
 **通路の幅＝メモリの帯域幅（GB/s）**　冷蔵庫から調理台へ、1秒間にどれだけの材料を運べるか。一皿ごとに材料を全部運ぶので、AIが文章を書き出す速さは、料理人の腕よりこの通路の幅で決まる。
 
@@ -99,7 +99,15 @@ Macは台所の作りが違う。Apple Siliconを使ったMacでは、CPUとGPU�
 
 {% include gpu-visual.html part="speed" lang="ja" %}
 
-計算力の方は、RTX 5060 Ti 16GBのFP32の演算性能が約24TFLOPS、RTX 5090が約105TFLOPSである。RTX 5090なら、長い逐語録を読み込む待ち時間も短くなる。
+計算力の方は、RTX 5060 Ti 16GBのFP32の演算性能が約24TFLOPS、RTX 5090が約105TFLOPSである。
+
+## 最初の一文字が出るまで
+
+計算力の違いは、長い逐語録を渡したとき、最初の一文字が出るまでの待ち時間に表れる。メモリの容量が同じ二台で比べてみる。どちらもメモリを64GBにしたMac mini（M5 Pro、GPUは20コア）とMac Studio（M5 Max、GPUは40コア）である。同じ世代のGPUなら、計算力はおおよそコアの数に比例するので、Mac Studioの計算力はMac miniの約2倍になる。冷蔵庫の大きさは同じで、料理人の数が2倍、という関係である。
+
+どちらにも同じモデルが入るので、動かせるモデルは変わらない。違うのは、注文を読み終えるまでの時間である。下の図では、Mac miniが逐語録を読み終えるのにかかる時間を仮に4秒として、時間の比を再現した。Mac Studioは帯域幅も614GB/sと2倍あるので、書き出す速さも2倍になる。
+
+{% include gpu-visual.html part="ttft" lang="ja" %}
 
 ## どのくらいのPCが必要か
 
@@ -133,6 +141,7 @@ Windowsで組む場合、GPUのほかに本体やメモリの費用もかかる�
 - Anthropic. (2026). *[Data retention practices for Covered Models](https://privacy.claude.com/en/articles/15425996-data-retention-practices-for-covered-models)*. Anthropic Privacy Center.
 - Apple. (2026, September 22). *[新しいMac miniとMac Studio、本日より販売開始](https://www.apple.com/jp/newsroom/2026/09/the-new-mac-mini-and-mac-studio-are-available-today/)*.
 - Apple. (n.d.). *[Mac mini 仕様](https://www.apple.com/jp/mac-mini/specs/)*.
+- Apple. (n.d.). *[Mac Studio 仕様](https://www.apple.com/jp/mac-studio/specs/)*.
 - bit-tech. (2008). *[Mythbusters finish Nvision in style](https://bit-tech.net/news/mythbusters-finish-nvision-in-style/1)*.
 - Dospara. (n.d.). *[Palit GeForce RTX 5090 GameRock 32GB](https://www.dospara.co.jp/SBR1892/IC518917.html)*.
 - Google. (n.d.). *[Abuse monitoring](https://ai.google.dev/gemini-api/docs/usage-policies)*. Gemini API.
@@ -175,7 +184,7 @@ Zero Data Retention removes that “for a while.” Using an API does not give y
 
 **Google**　The Gemini API cannot drop its abuse-monitoring logs, even on the paid tier. Google points those who need ZDR to Vertex AI on Google Cloud. There, you get close to ZDR by configuring things yourself, for example turning off caching and not using the setting that stores conversations (store). Even then, grounding answers with Google Search stores data for up to 3 days and the Maps feature for 30, and these cannot be turned off.
 
-**xAI**　The public documents describe no programme called ZDR. API inputs and outputs are deleted automatically within 30 days. To change the retention period, you make a separate written agreement through the enterprise team.
+**xAI**　The public documents describe no programme called ZDR. API inputs and outputs are deleted automatically within 30 days. To change the retention period, you make a separate written agreement through the enterprise team. For that reason, ZDR cannot be selected for xAI in the diagram above.
 
 Every company's ZDR assumes an organisational contract. An individual researcher will find it hard to apply alone, so this means thinking about a contract at the level of a university or a lab. It is also worth checking that the app using a ZDR API does not send data to another cloud service: research apps sometimes send just one step, such as converting text for search or reading text from images, somewhere else.
 
@@ -213,7 +222,7 @@ Spec sheets for GPUs list many numbers. Three matter most for local models, and 
 
 In this restaurant, every time a dish goes out, all the ingredients in the fridge have to be carried to the counter once. The ingredients are the model's weights, and a dish is one token the AI writes. It is a strange rule, but it is close to what an AI does when it writes: for every token it produces, it reads all of its weights once.
 
-**Fridge size = memory capacity (GB)**　A GPU has its own memory, called VRAM. This is the fridge right next to the counter. If the ingredients don't all fit, the rest has to be fetched from the supermarket far away, the PC's main memory, and cooking slows to a crawl. Capacity decides which size of model you can run, and with how long an input. More capacity does not by itself make things faster.
+**Fridge size = memory capacity (GB)**　A GPU has its own memory, called VRAM. This is the fridge right next to the counter. If the ingredients don't all fit, the rest has to be fetched from the supermarket far away, the PC's main memory, and cooking slows to a crawl. Capacity decides how large a model you can run. Small models run with little memory, but models capable enough for real analysis are large, so running a usable model more or less requires a lot of capacity. Long inputs need room too. More capacity does not by itself make things faster, though.
 
 **Corridor width = memory bandwidth (GB/s)**　How much can be carried from the fridge to the counter each second. Since every dish needs all the ingredients carried over, how fast the AI writes depends on the width of this corridor more than on the cooks' skill.
 
@@ -237,7 +246,15 @@ Here is what corridor width means in real numbers. Dividing the bandwidth by the
 
 {% include gpu-visual.html part="speed" lang="en" %}
 
-For compute, the RTX 5060 Ti 16GB delivers about 24 TFLOPS in FP32 and the RTX 5090 about 105. With an RTX 5090, the wait while it reads a long transcript is shorter too.
+For compute, the RTX 5060 Ti 16GB delivers about 24 TFLOPS in FP32 and the RTX 5090 about 105.
+
+## Waiting for the first word
+
+Differences in compute show up in how long you wait for the first word after handing over a long transcript. Take two machines with the same memory: a Mac mini (M5 Pro, 20-core GPU) and a Mac Studio (M5 Max, 40-core GPU), both with 64 GB. Within the same GPU generation, compute is roughly proportional to the number of cores, so the Mac Studio has about twice the Mac mini's compute. Same fridge, twice as many cooks.
+
+The same model fits in both, so what you can run does not change. What changes is the time it takes to read the order. The demo below assumes, for illustration, that the Mac mini takes 4 seconds to read the transcript and keeps the ratio between the two. The Mac Studio also has twice the bandwidth (614 GB/s), so it writes twice as fast too.
+
+{% include gpu-visual.html part="ttft" lang="en" %}
 
 ## How much PC do you need?
 
@@ -270,6 +287,7 @@ Local models are not as capable as the latest cloud models, and the benchmark sc
 - Anthropic. (2026). *[Is my data used for model training?](https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training)* (commercial products). Anthropic Privacy Center.
 - Anthropic. (2026). *[Data retention practices for Covered Models](https://privacy.claude.com/en/articles/15425996-data-retention-practices-for-covered-models)*. Anthropic Privacy Center.
 - Apple. (2026, September 22). *[The new Mac mini and Mac Studio are available today](https://www.apple.com/newsroom/2026/09/the-new-mac-mini-and-mac-studio-are-available-today/)*.
+- Apple. (n.d.). *[Mac mini 仕様](https://www.apple.com/jp/mac-mini/specs/)* and *[Mac Studio 仕様](https://www.apple.com/jp/mac-studio/specs/)*.
 - bit-tech. (2008). *[Mythbusters finish Nvision in style](https://bit-tech.net/news/mythbusters-finish-nvision-in-style/1)*.
 - Google. (n.d.). *[Abuse monitoring](https://ai.google.dev/gemini-api/docs/usage-policies)*. Gemini API.
 - Google. (n.d.). *[Zero data retention](https://ai.google.dev/gemini-api/docs/zdr)*. Gemini API.

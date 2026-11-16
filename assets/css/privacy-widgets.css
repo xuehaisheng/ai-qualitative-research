@@ -130,3 +130,8 @@
 .pv-node[data-state="meta"] .pv-box { stroke: #9a9a9a; fill: #fafafa; }
 .pv-node[data-state="meta"] .pv-mark { fill: #fff; stroke: #9a9a9a; }
 .pv-node[data-state="meta"] .pv-state { fill: #5e5e5e; }
+.pv-ttft-bar { position: relative; height: 22px; margin-top: 6px; background: #ececec; overflow: hidden; }
+.pv-ttft-fill { position: absolute; inset: 0 auto 0 0; width: 0; background: #111; }
+.pv-ttft-label { position: relative; z-index: 1; display: block; padding: 0 8px; font-size: .74rem; line-height: 22px; color: #fff; mix-blend-mode: difference; }
+.pv-tab:disabled { color: #b5b5b5; border-color: #ececec; background: #fafafa; cursor: not-allowed; }
+.pv-tab[aria-selected="true"]:disabled { background: #9a9a9a; border-color: #9a9a9a; color: #fff; }
