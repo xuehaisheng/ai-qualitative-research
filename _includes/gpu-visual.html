@@ -59,6 +59,8 @@
 </svg>
 <figcaption>{% if en %}Model sizes against memory capacities. The 4-bit 27B figure is Ollama's quantised Qwen3.8; the 9B figure is a rough calculation. The working area for long inputs comes on top.{% else %}モデルの大きさとメモリの容量。27Bの4ビットはOllamaで配布されているQwen3.8の量子化版、9Bは計算上の目安。長い入力を読むための作業領域が、これに上乗せされる。{% endif %}</figcaption>
 </figure>
+{%- elsif include.part == 'ttft' -%}
+<div class="pv-widget pv-speed" data-mode="ttft" data-lang="{% if en %}en{% else %}ja{% endif %}"><p>{% if en %}This demo needs JavaScript.{% else %}このデモの表示にはJavaScriptが必要です。{% endif %}</p></div>
 {%- elsif include.part == 'speed' -%}
 <div class="pv-widget pv-speed" data-lang="{% if en %}en{% else %}ja{% endif %}"><p>{% if en %}This demo needs JavaScript.{% else %}このデモの表示にはJavaScriptが必要です。{% endif %}</p></div>
 {%- endif %}

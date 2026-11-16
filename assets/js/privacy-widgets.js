@@ -199,6 +199,8 @@
       ja: [{ id: 'optout', label: '個人向け（改善オフ）' }, { id: 'api', label: 'API' }, { id: 'zdr', label: 'API＋ZDR' }, { id: 'local', label: 'ローカルモデル' }],
       en: [{ id: 'optout', label: 'Consumer (opted out)' }, { id: 'api', label: 'API' }, { id: 'zdr', label: 'API + ZDR' }, { id: 'local', label: 'Local model' }]
     },
+    // xAI publishes no ZDR programme, so that combination cannot be chosen.
+    unavailable: function (c, m) { return c === 'xai' && m === 'zdr'; },
     resolve: function (c, m) {
       if (m === 'optout') return resolve(CONSUMER_OF[c], 'off');
       if (m === 'local') return LOCAL_ALL;
@@ -230,6 +232,7 @@
     items.forEach(function (it) {
       var b = h('button', 'pv-tab', it.label);
       b.type = 'button';
+      b.setAttribute('data-id', it.id);
       b.setAttribute('role', 'tab');
       b.setAttribute('aria-selected', it.id === current ? 'true' : 'false');
       b.addEventListener('click', function () {
@@ -251,7 +254,7 @@
       modes: MODES.map(function (m) { return { id: m, label: t.modes[m] }; }),
       resolve: resolve
     };
-    if (cfg === COMPARE_CFG) cfg = { companies: cfg.companies, modes: cfg.modes[lang], resolve: cfg.resolve };
+    if (cfg === COMPARE_CFG) cfg = { companies: cfg.companies, modes: cfg.modes[lang], resolve: cfg.resolve, unavailable: cfg.unavailable };
     var company = cfg.companies[0].id, mode = cfg.modes[0].id;
     root.textContent = '';
 
@@ -296,12 +299,25 @@
     root.appendChild(h('p', 'pv-legend', t.legend));
 
     var controls = h('div', 'pv-controls');
-    controls.appendChild(tabs(t.companyLabel, cfg.companies, company, function (id) { company = id; render(); }));
-    controls.appendChild(tabs(t.modeLabel, cfg.modes, mode, function (id) { mode = id; render(); }));
+    var companyRow = tabs(t.companyLabel, cfg.companies, company, function (id) { company = id; render(); });
+    var modeRow = tabs(t.modeLabel, cfg.modes, mode, function (id) { mode = id; render(); });
+    controls.appendChild(companyRow);
+    controls.appendChild(modeRow);
+    function select(row, id) {
+      row.querySelectorAll('.pv-tab').forEach(function (b) { b.setAttribute('aria-selected', b.getAttribute('data-id') === id ? 'true' : 'false'); });
+    }
+    function disable(row, test) {
+      row.querySelectorAll('.pv-tab').forEach(function (b) { b.disabled = test(b.getAttribute('data-id')); });
+    }
     root.appendChild(controls);
     root.appendChild(h('p', 'pv-src', t.src));
 
     function render() {
+      if (cfg.unavailable && cfg.unavailable(company, mode)) { mode = 'api'; select(modeRow, mode); }
+      if (cfg.unavailable) {
+        disable(modeRow, function (m) { return cfg.unavailable(company, m); });
+        disable(companyRow, function () { return mode === 'local'; });
+      }
       var r = cfg.resolve(company, mode);
       list.textContent = '';
       var sl = mode === 'local' ? t.local : t.server;
@@ -452,14 +468,20 @@
     var text = en
       ? 'The interviewee describes moving to Tokyo for work and how, at first, she spoke to no one at the office. Over the following months she began to eat lunch with a colleague from the same prefecture, and this, she says, was when the city started to feel like hers.'
       : '語り手は、仕事のために東京に移ったころ、職場で誰とも話さなかったと振り返る。数か月たって、同じ県の出身の同僚と昼食をとるようになり、そのころから東京が自分の街だと感じられるようになった、と語っている。';
-    var rows = [
-      { name: 'Mac mini (M5 Pro)', bw: '307GB/s', rate: 17 },
-      { name: 'RTX 5090', bw: '1,792GB/s', rate: 100 }
+    var ttft = root.getAttribute('data-mode') === 'ttft';
+    var rows = ttft ? [
+      { name: 'Mac mini (M5 Pro)', bw: en ? '64GB, 20-core GPU' : '64GB・GPU 20コア', rate: 17, wait: 4 },
+      { name: 'Mac Studio (M5 Max)', bw: en ? '64GB, 40-core GPU' : '64GB・GPU 40コア', rate: 34, wait: 2 }
+    ] : [
+      { name: 'Mac mini (M5 Pro)', bw: '307GB/s', rate: 17, wait: 0 },
+      { name: 'RTX 5090', bw: '1,792GB/s', rate: 100, wait: 0 }
     ];
     root.textContent = '';
-    root.appendChild(h('p', 'pv-opt-where', en
-      ? 'Writing speed with a model of about 18 GB, at the upper limit set by bandwidth (one token shown as one character).'
-      : '約18GBのモデルで、帯域幅から決まる上限の速さで書き出した場合（1トークンを1文字として表示）。'));
+    root.appendChild(h('p', 'pv-opt-where', ttft
+      ? (en ? 'The bar shows the time spent reading a long transcript before the first word, assuming 4 seconds for the Mac mini; the ratio is what matters. Writing then runs at the bandwidth limit for a model of about 18 GB.'
+            : '棒は、長い逐語録を読み込んで最初の一文字が出るまでの時間。Mac miniを仮に4秒とし、比を再現した。そのあとは約18GBのモデルで、帯域幅から決まる上限の速さで書き出す。')
+      : (en ? 'Writing speed with a model of about 18 GB, at the upper limit set by bandwidth (one token shown as one character).'
+            : '約18GBのモデルで、帯域幅から決まる上限の速さで書き出した場合（1トークンを1文字として表示）。')));
     var outs = rows.map(function (r) {
       var row = h('div', 'pv-speed-row');
       var head = h('div', 'pv-speed-head');
@@ -467,10 +489,16 @@
       head.appendChild(left);
       head.appendChild(h('span', null, (en ? 'about ' : '1秒に約') + r.rate + (en ? ' tokens/s' : 'トークン')));
       row.appendChild(head);
+      var bar = null, fill = null;
+      if (r.wait) {
+        bar = h('div', 'pv-ttft-bar'); fill = h('span', 'pv-ttft-fill'); bar.appendChild(fill);
+        bar.appendChild(h('span', 'pv-ttft-label', ''));
+        row.appendChild(bar);
+      }
       var out = h('div', 'pv-speed-out');
       row.appendChild(out);
       root.appendChild(row);
-      return { el: out, rate: r.rate };
+      return { el: out, rate: r.rate, wait: r.wait, fill: fill, label: bar && bar.lastChild };
     });
     var btn = h('button', 'pv-tab pv-speed-btn', en ? 'Run again' : 'もう一度');
     btn.type = 'button';
@@ -482,7 +510,15 @@
       timer = setInterval(function () {
         var sec = (performance.now() - t0) / 1000, done = true;
         outs.forEach(function (o) {
-          var n = Math.min(text.length, Math.floor(sec * o.rate));
+          if (o.wait) {
+            var p = Math.min(1, sec / o.wait);
+            o.fill.style.width = (p * 100) + '%';
+            o.label.textContent = p < 1
+              ? (en ? 'Reading the transcript\u2026 ' : '逐語録を読み込み中\u2026 ') + sec.toFixed(1) + (en ? ' s' : '秒')
+              : (en ? 'First word after ' : '最初の一文字まで ') + o.wait.toFixed(1) + (en ? ' s' : '秒');
+            if (p < 1) { o.el.textContent = ''; done = false; return; }
+          }
+          var n = Math.min(text.length, Math.floor((sec - o.wait) * o.rate));
           o.el.textContent = text.slice(0, n);
           if (n < text.length) done = false;
         });
