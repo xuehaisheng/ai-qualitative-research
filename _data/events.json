@@ -69,8 +69,8 @@
     ]
   },
   {
-    "id": "event-2026-04",
-    "date": "2026-04",
+    "id": "event-2026-07",
+    "date": "2026-07",
     "status": "past",
     "title": {
       "ja": "AIと質的研究の協働――研究者の反省性に着目して――",
@@ -106,8 +106,12 @@
     ],
     "details": [
       {
-        "ja": "AIと質的研究の協働について、研究者の反省性（研究者自身の立場や関わり方が研究にどう影響しているかをふり返ること）に着目して論じた論文。全文は東京大学学術機関リポジトリで読める。",
-        "en": "A paper on collaboration between AI and qualitative research, focusing on researchers' reflexivity, that is, reflecting on how the researcher's own position and involvement shape the research. The full text (in Japanese) is available in the UTokyo Repository."
+        "ja": "AIの最近の動向を踏まえて、AI時代の質的研究者が持つべき反省的な姿勢を提案した論文。生成AIの仕組みをふまえたうえで、ハルシネーション、非決定性（同じ指示でも毎回出力が変わること）、迎合といった性質を、「合理的な機械」の欠陥ではなく、「人間のように振る舞う機械」の特徴として捉え直した。",
+        "en": "A paper proposing the reflexive stance qualitative researchers need in the age of AI, in light of recent developments. Building on how generative AI works, it reframes hallucination, non-determinism (different output for the same prompt), and sycophancy not as defects of a \"rational machine\" but as features of a machine that behaves like a human."
+      },
+      {
+        "ja": "生成AIは、分類やラベリングのような small q 的な作業では効率を上げやすい。しかし「Publish or Perish」の圧力のもとでは、量産しやすい研究に傾き、Big Q が求める探索や反省性が失われるおそれがある。そこで、AIに研究を「外注する」のではなく、AIと「協働する」ことを提案し、データから離れないこと、効率性の誘惑を断ち切ること、AIを欠陥のある協働者とみなして自分の立場を問い直す相手にすることを挙げた。",
+        "en": "Generative AI easily speeds up small-q tasks such as classification and labeling. Under \"publish or perish\" pressure, however, research may drift toward what can be mass-produced, and the exploration and reflexivity that Big Q requires may be lost. The paper therefore proposes collaborating with AI rather than outsourcing research to it: staying close to the data, resisting the pull of efficiency, and treating AI as a flawed collaborator that helps researchers question their own position."
       }
     ]
   },
