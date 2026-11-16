@@ -19,13 +19,13 @@ sort_date: 20261117
 
 一方、通報された例もある。2026年3月、フロリダ州に住む25歳のダレン・ジョウは、ChatGPTに、元交際相手を殺すと書いた。ゴールドマン・サックスを解雇された元アナリストだった。OpenAIは5月にFBIへ通報し、FBIは2か月分の会話記録を地元の保安官事務所に渡した。ジョウは5月に逮捕され、6月に加重ストーカー行為や殺害予告の文書などの罪で起訴された。8月13日に罪を認め、8年の保護観察となった（Palm Beach Postが裁判記録と逮捕記録をもとに報じた）。
 
-一方は通報しなかったことで訴えられ、もう一方は通報が逮捕につながった。並べると、どこで線を引くのが正しいのかを考えたくなる。ただ、私がまず引っかかったのは、二つの事件に共通する前提の方だった。ChatGPTに入力した内容は、人に読まれることがあり、場合によっては警察に渡されることもある。
+一方は通報しなかったことで訴えられ、もう一方は通報が逮捕につながった。並べると、どこで線を引くのが正しいのかを考えたくなる。ただ、私がまず引っかかったのは、二つの事件に共通する前提の方だった。ChatGPTに入力した内容は、人に読まれることがあり、場合によっては警察にも渡される。
 
 ## 私たちのデータは、どこへ行くのか、そして、誰に読まれるのか
 
 私たちも、毎日AIに何かを書いている。質的研究者なら、インタビューの逐語録やフィールドノーツを貼りつけて、要約やコーディングを頼みたいこともあるだろう。その文章は、送ったあとどこへ行くのか。誰が読み、何に使われ、いつ消えるのか。
 
-送った文章は、まず会社のサーバーに届き、そこで回答が作られる。その先は、少なくとも三つの使い道に分かれる。一つ目は、履歴として保存されること。二つ目は、次のモデルを作るための訓練に使われること。三つ目は、不正利用がないかの監視で、ここでは人に読まれることもある。冒頭の二つの事件は、三つ目の使い道の先で起きた。
+送った文章は、まず会社のサーバーに届き、そこで回答が作られる。その先は、少なくとも三つの使い道に分かれる。一つ目は、履歴として保存されること。二つ目は、次のモデルを作るための訓練に使われること。三つ目は、不正利用がないかを調べる監視で、このとき人に読まれることもある。冒頭の二つの事件は、三つ目の使い道の先で起きた。
 
 「学習されないようにしたい」と言うとき、多くの人が気にしているのは二つ目の訓練である。訓練に使うかどうかのスイッチは、どの会社にもある。ただ、このスイッチを切っても、保存と監視は止まらない。どこまで止まるかは、会社によって違う。
 
@@ -49,7 +49,7 @@ ChatGPT、Claude、Gemini、Grokの個人向けサービスについて、各社
 
 ## ナビエ–ストークス方程式の件
 
-訓練に使われるとはどういうことかを、具体的に考えさせる出来事が、2026年9月にあった。
+ここまでは主に保存と監視の話だった。もう一つの使い道、訓練について考えさせる出来事が、2026年9月にあった。
 
 9月8日、OpenAIは、ナビエ–ストークス方程式の問題を解いたと発表した。水や空気の流れを表すこの方程式は、クレイ数学研究所が賞金100万ドルをかけた七つの難問の一つである。ところが、この問題には、ニューヨーク大学の数学者トリスタン・バックマスターが、Anthropicのレヴェント・アルペゲと一緒に取り組んでいた。バックマスターは研究の途中で、OpenAIのCodexも使っていた。
 
@@ -69,31 +69,31 @@ OpenAIの最初の発表には、こういう一文があった。研究者た�
 
 ## 「すべての人のために」を断ると
 
-ここで、訓練に使うかどうかのスイッチの名前を見てみたい。
+ナビエ–ストークスの件で問われたのは、利用者の入力が訓練に使われたかどうかだった。では、訓練に使うかどうかを決めるスイッチは、どんな言葉で書かれているのか。
 
 ChatGPTでは、このスイッチは「すべての人のためにモデルを改善する」と書かれている。英語では「Improve the model for everyone」である。その下には、内容を訓練に使うことで、ChatGPTが「あなたと、使う人みんなにとって」良くなる、という説明が添えられている。同じスイッチが、Codexでの作業にも効く。Codexに研究フォルダを読ませれば、送られるものはチャット欄に貼った文章よりずっと多い。
+
+{% include figure.html src="fig-openai-data-controls.png" cap="ChatGPTの「データコントロール」で、「Improve the model for everyone」を開いたところ（英語の画面）。スイッチの下に、ChatGPTが「あなたと、使う人みんなにとって」良くなるという説明がある。音声モードの録音と録画は、別のスイッチになっている。出典：OpenAI Help Center「Data Controls FAQ」。" alt="ChatGPTの設定画面。Model improvementの小さな窓に、Improve the model for everyoneのスイッチと説明文、その下にVoice modeの二つのスイッチ、右下にDoneボタンがある。" %}
 
 この名前には、スイッチが実際にしていること、つまり自分の会話を会社の訓練用データとして渡すことが書かれていない。書かれているのは、渡した結果として起きるとされる良いことだけである。そのため、オフにする操作は、「すべての人のための改善」から自分だけ降りる操作に見える。初期設定はオンなので、何もしない人は協力していることになり、わざわざオフにした人だけが、みんなへの協力を断った人になる。オフにするとき、少し悪いことをしているような気持ちになるのは、この作りのせいである。
 
 研究で同意を取るときのことを考えると、この書き方の偏りがはっきりする。研究参加の説明書には、参加しなくても、途中でやめても不利益はない、と書く。断ることが悪いことに見えないように、言葉を選ぶ。同意しない選択肢を「みんなへの協力を断る」と書いた説明書は、倫理審査を通らないと思う。
 
-ナビエ–ストークスの件を重ねると、「すべての人」という言葉は、さらに落ち着かなく聞こえる。バックマスターから見れば、改善されたモデルを最初に使ったのは、同じ問題を解こうとしていたOpenAI自身の研究チームだったのではないか、という疑いが出たのである。結果として方法は違っていたが、「すべての人」には、利用者と競争する会社自身も入っている。
+ナビエ–ストークスの件を思い出すと、「すべての人」という言葉にはもう一つ引っかかるところがある。バックマスターが疑ったのは、改善されたモデルを最初に使ったのが、同じ問題に取り組んでいたOpenAI自身の研究チームだったのではないか、ということだった。結果として方法は違っていたが、「すべての人」には、利用者と競争する会社自身も入っている。
 
-他社の言葉も見ておく。Claudeは英語で「Help improve our AI models」、日本語のヘルプでは「AIモデルの改善を支援する」である。これも協力を求める形だが、「私たちのAIモデル」と、改善されるのが会社のものであることは書いてある。Grokは「Improve the Model」と短い。Geminiの「アクティビティの保存」には、訓練という言葉が出てこない。履歴を残すかどうかのスイッチに見えて、実際には訓練に渡すかどうかも一緒に決めている。
+他社の言葉も見ておく。Claudeは英語で「Help improve our AI models」、日本語のヘルプでは「AIモデルの改善を支援する」である。これも協力を求める書き方だが、英語では「私たちのAIモデル」と、改善されるのが会社のモデルであることは書いてある。Grokは「Improve the Model」と短い。Geminiの「アクティビティの保存」には、訓練という言葉が出てこない。履歴を残すかどうかのスイッチに見えて、実際には訓練に渡すかどうかも一緒に決めている。
 
 逐語録の場合、語ってくれた人は、自分の言葉がAI企業の訓練に使われることに同意していない。研究者が「みんなのため」と思っても、その判断を語り手の代わりにすることはできない。スイッチをオフにするのは、研究参加者との約束を守るための、ごく普通の操作である。
 
 ## オフにする手順
 
-各社のヘルプで確認した、2026年11月17日時点の手順である。上のタブで会社を切り替えられる。日本語の画面と英語の画面での表示を並べた。
+では、実際にスイッチを切るにはどうすればよいのか。各社のヘルプで確認した、2026年11月17日時点の手順を並べた。上のタブで会社を切り替えられる。日本語の画面と英語の画面での表示を並べた。
 
 {% include privacy-optout-flow.html lang="ja" %}
 
-{% include figure.html src="fig-openai-data-controls.png" cap="ChatGPTの「データコントロール」で、「Improve the model for everyone」を開いたところ（英語の画面）。音声モードの録音と録画を訓練に使うかどうかは、別のスイッチになっている。出典：OpenAI Help Center「Data Controls FAQ」。" alt="ChatGPTの設定画面。Model improvementの小さな窓に、Improve the model for everyoneのスイッチと説明文、その下にVoice modeの二つのスイッチ、右下にDoneボタンがある。" %}
-
 ## オフにしたあとに残るもの
 
-スイッチをオフにしても、フィードバックと監視の二つは残る。研究資料を貼った会話で👍や👎を押せば、その会話は訓練に回りうる。履歴を残さないチャットも、監視の対象からは外れない。語り手にとって、どこまでのリスクなら引き受けられるのかを考えると、個人向けのサービスに逐語録をそのまま送ること自体を見直した方がよい場面もある。では、データを使われたくないときはどうすればよいのか。API、ゼロデータ保持（ZDR）、データを外に出さないローカルモデルについては、応用編として次のノートにまとめた（下の「あわせて読む」から読める）。
+スイッチをオフにしても、フィードバックと監視の二つは残る。研究資料を貼った会話で👍や👎を押せば、その会話は訓練に回りうる。履歴を残さないチャットも、監視の対象からは外れない。語り手にどこまでのリスクを負わせてよいかを考えると、個人向けのサービスに逐語録をそのまま送ること自体を見直した方がよい場面もある。では、データを使われたくないときはどうすればよいのか。API、ゼロデータ保持（ZDR）、データを外に出さないローカルモデルについては、応用編として次のノートにまとめた（下の「あわせて読む」から読める）。
 
 ## 参考文献
 
@@ -120,21 +120,21 @@ ChatGPTでは、このスイッチは「すべての人のためにモデルを�
 
 <!--EN-->
 
-On 10 February 2026, a secondary school in Tumbler Ridge, a small town in British Columbia, Canada, was attacked by a shooter.
+On 10 February 2026, a gunman opened fire at a secondary school in Tumbler Ridge, a small town in British Columbia, Canada.
 
-Two weeks later, OpenAI disclosed something in a letter to a Canadian minister. Eight months before the shooting, in June 2025, the shooter's account had been flagged by the company's automated systems. The case was discussed inside the company and the account was banned. They did not tell the police, because they had not found what the company's criteria then called “credible and imminent planning.” OpenAI has since revised those criteria and writes that, under the current ones, it would have referred the account. It also found a second account belonging to the same person and passed it to the police. On 21 September, British Columbia announced it was suing OpenAI over the failure to notify police.
+About two weeks later, in a letter to a Canadian government minister, OpenAI revealed that it had known about the shooter. In June 2025, eight months before the attack, the company's automated systems had flagged the shooter's account. Staff discussed the case and banned the account, but did not tell the police, because they had not found what the company's criteria then called “credible and imminent planning.” OpenAI has since revised those criteria and writes that, under the current ones, it would have referred the account. It also found a second account belonging to the same person and passed it to the police. On 21 September, British Columbia announced it was suing OpenAI over the failure to notify police.
 
-There are also cases where the company did report. In March 2026, Darren Zhou, a 25-year-old in Florida and a fired Goldman Sachs analyst, told ChatGPT he would kill his ex. OpenAI flagged him to the FBI in May, and the FBI gave two months of his chat logs to the local sheriff's office. He was arrested in May and charged in June with aggravated stalking, written threats to kill and other offences. On 13 August he pleaded guilty and received eight years of probation (reported by the Palm Beach Post from court and arrest records).
+In other cases, OpenAI has gone to the authorities. In March 2026, Darren Zhou, a 25-year-old in Florida and a fired Goldman Sachs analyst, told ChatGPT he would kill his ex. OpenAI flagged him to the FBI in May, and the FBI gave two months of his chat logs to the local sheriff's office. He was arrested in May and charged in June with aggravated stalking, written threats to kill and other offences. On 13 August he pleaded guilty and received eight years of probation (reported by the Palm Beach Post from court and arrest records).
 
-In one case the company was sued for not reporting; in the other, its report led to an arrest. Side by side, they invite the question of where the line should be. What struck me first was what the two cases take for granted. What you type into ChatGPT can be read by people, and it can sometimes be passed to the police.
+In one case the company was sued for not reporting; in the other, its report led to an arrest. Side by side, they invite the question of where the line should be drawn. What caught my attention first, though, was an assumption the two cases share: what you type into ChatGPT can be read by people, and can end up with the police.
 
 ## Where does our data go, and who reads it?
 
-We all write things to AI every day. Qualitative researchers may want to paste in interview transcripts or field notes and ask for a summary or a first pass at coding. Where does that text go once it is sent? Who reads it, what is it used for, and when is it deleted?
+Most of us type something into an AI every day. Qualitative researchers may want to paste in interview transcripts or field notes and ask for a summary or a first pass at coding. Where does that text go once it is sent? Who reads it, what is it used for, and when is it deleted?
 
-The text first reaches the company's servers, where the reply is generated. After that it goes at least three ways. It is stored as history. It may be used to train the next model. And it is monitored for abuse, which can mean a person reads it. The two cases above happened at the end of that third path.
+The text first reaches the company's servers, where the reply is generated. After that it can go in at least three directions. It is stored as history. It may be used to train the next model. And it is monitored for abuse, which can mean a person reads it. The two cases above happened at the end of that third path.
 
-When people say they don't want AI to “learn from” their data, they usually mean the second use, training. Every company has a switch for it. Turning that switch off does not stop storage or monitoring, and how much it does stop differs from company to company.
+When people say they don't want AI to “learn from” their data, they usually mean the second use, training. Every company has a switch for it. Turning it off does not stop storage or monitoring, and what it does stop differs from company to company.
 
 ## What the four companies say
 
@@ -144,7 +144,7 @@ The diagram below shows what the help pages and privacy policies of ChatGPT, Cla
 
 Switching between them shows a few things.
 
-First, all four use conversations for training by default. ChatGPT has the setting on by default for Free, Plus and Pro, and Gemini has it on for users aged 18 and over. Paying does not by itself keep your chats out of training. Even Claude, which has made safety its banner, changed its policy in August 2025: conversations from users who allow it are used for training and kept for up to five years for that purpose.
+First, all four use conversations for training by default. ChatGPT has the setting on by default for Free, Plus and Pro, and Gemini has it on for users aged 18 and over. Paying does not by itself keep your chats out of training. Even Anthropic, which has built its reputation on safety, changed Claude's policy in August 2025: conversations from users who allow it are now used for training and kept for up to five years for that purpose.
 
 Second, turning training off does not end storage. In ChatGPT, Claude and Grok, your history stays until you delete it and is removed from the servers within 30 days after that. Gemini works differently: turning off Keep Activity stops both training and history, but chats are still kept for up to 72 hours.
 
@@ -156,7 +156,7 @@ Qualitative research sometimes deals with accounts of violence, victimisation or
 
 ## The Navier–Stokes episode
 
-In September 2026, an episode made the question of training on user data concrete.
+So far this has mostly been about storage and monitoring. An episode in September 2026 made the other use, training, concrete.
 
 On 8 September, OpenAI announced that it had solved the Navier–Stokes problem. The equations describe the flow of water and air, and the problem is one of the seven for which the Clay Mathematics Institute offers a million-dollar prize. But Tristan Buckmaster, a mathematician at New York University, had been working on the same problem with Levent Alpöge of Anthropic, and Buckmaster had used OpenAI's Codex during that work.
 
@@ -176,31 +176,31 @@ The reversal seems to clear OpenAI. Even so, it was OpenAI that wrote “cannot 
 
 ## Declining to help “everyone”
 
-Now look at what the training switch is called.
+The Navier–Stokes episode turned on whether users' inputs had gone into training. So how is the switch that decides this actually worded?
 
 In ChatGPT it reads “Improve the model for everyone.” Underneath, a line explains that letting your content train the models makes ChatGPT better “for you and everyone who uses it.” The same switch covers work in Codex, and if you let Codex read a research folder, far more is sent than what you paste into a chat.
+
+{% include figure.html src="fig-openai-data-controls.png" cap="ChatGPT's Data controls with Improve the model for everyone opened. The line under the switch says the setting makes ChatGPT better for you and everyone who uses it. Voice Mode audio and video recordings have their own switches. Source: OpenAI Help Center, Data Controls FAQ." alt="ChatGPT settings. A small Model improvement window shows the Improve the model for everyone switch with its description, two Voice mode switches below, and a Done button." %}
 
 The label does not say what the switch actually does, which is to hand your conversations over as training data for the company. It names only the good that is supposed to follow. So turning it off looks like stepping out of an improvement meant for everyone. Because the default is on, people who do nothing are helping, and only those who make the effort to switch it off become the ones who declined to help everyone. If turning it off feels slightly like doing something wrong, that is how the setting is built.
 
 Consent in research makes the slant clear. An information sheet tells participants they can decline or withdraw without any disadvantage. We choose words so that saying no does not look wrong. I doubt an information sheet that described not consenting as “declining to help everyone” would get through ethics review.
 
-Set beside the Navier–Stokes episode, “everyone” sounds even more uneasy. From Buckmaster's side, the suspicion was that the first user of the improved model had been OpenAI's own research team, working on the same problem as him. The methods turned out to be different, but “everyone” still includes the company, which can be a competitor of its own users.
+The Navier–Stokes episode adds another problem with “everyone.” What Buckmaster suspected was that the first user of the improved model had been OpenAI's own research team, working on the same problem he was. The methods turned out to be different, but “everyone” still includes the company, which can be a competitor of its own users.
 
-The other companies use different words. Claude says “Help improve our AI models” in English, and the Japanese help page uses a phrase meaning “support the improvement of AI models.” This also asks for help, but “our AI models” at least says whose models are being improved. Grok's “Improve the Model” is short. Gemini's “Keep Activity” does not mention training at all. It looks like a switch for keeping your history, but it also decides whether your chats go into training.
+The other companies use different words. Claude's switch reads “Help improve our AI models.” This also asks for help, but “our AI models” at least says whose models are being improved. Grok's “Improve the Model” is short. Gemini's “Keep Activity” does not mention training at all. It looks like a switch for keeping your history, but it also decides whether your chats go into training.
 
 With transcripts, the people who told us their stories have not agreed to their words being used to train an AI company's models. Whatever a researcher thinks would be good for everyone, the researcher cannot make that choice on the speaker's behalf. Turning the switch off is an ordinary way of keeping our promises to participants.
 
 ## How to turn it off
 
-These are the steps given in each company's help pages as of 17 November 2026. Use the tabs at the top to switch between companies. The labels are shown as they appear in the Japanese and English interfaces.
+So how do you actually switch it off? These are the steps given in each company's help pages as of 17 November 2026. Use the tabs at the top to switch between companies. Labels are those of the English interface.
 
 {% include privacy-optout-flow.html lang="en" %}
 
-{% include figure.html src="fig-openai-data-controls.png" cap="ChatGPT's Data controls with Improve the model for everyone opened (English interface). Using Voice Mode audio and video recordings for training is a separate switch. Source: OpenAI Help Center, Data Controls FAQ." alt="ChatGPT settings. A small Model improvement window shows the Improve the model for everyone switch with its description, two Voice mode switches below, and a Done button." %}
-
 ## What remains after you turn it off
 
-With the switch off, feedback and monitoring remain. A thumbs up or down on a conversation containing research material can send it into training. Chats without history are still monitored. Thinking about how much risk the people we interviewed can be asked to bear, there are cases where sending transcripts to a consumer service at all should be reconsidered. So what can we do if we don't want our data used? APIs, Zero Data Retention and local models that keep data on your own machine are covered in the follow-up note, listed under Read next below.
+With the switch off, feedback and monitoring remain. A thumbs up or down on a conversation containing research material can send it into training. Chats without history are still monitored. Depending on how much risk we can fairly ask our interviewees to bear, it may be better not to send transcripts to a consumer service at all. So what can we do if we don't want our data used? APIs, Zero Data Retention and local models that keep data on your own machine are covered in the follow-up note, listed under Read next below.
 
 ## References
 

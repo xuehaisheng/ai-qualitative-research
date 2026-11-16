@@ -354,7 +354,7 @@
       ],
       first: { ja: '左下のアカウント名（プロフィール）を押して、メニューを開く。', en: 'Click your account name (profile) at the bottom left to open the menu.' },
       mobile: { ja: 'スマホのアプリ：サイドバー → プロフィールのアイコン → 「データコントロール」 → スイッチをオフ。', en: 'Mobile app: sidebar → profile icon → Data controls → switch it off.' },
-      extra: { ja: '同じアカウントのウェブとアプリ、Codexにもまとめて反映される。Free・Plus・Proでは初期設定がオン。日本語のヘルプには「すべてのユーザー向けにモデルを改善する」という表記も残っている。', en: 'The change applies to the web, the apps and Codex on the same account. It is on by default for Free, Plus and Pro. The Japanese help pages also use another translation of the label.' }
+      extra: { ja: '同じアカウントのウェブとアプリ、Codexにもまとめて反映される。Free・Plus・Proでは初期設定がオン。日本語のヘルプには「すべてのユーザー向けにモデルを改善する」という表記も残っている。', en: 'The change applies to the web, the apps and Codex on the same account. It is on by default for Free, Plus and Pro.' }
     },
     claude: {
       name: 'Claude',
@@ -366,7 +366,7 @@
       ],
       first: { ja: '左下の自分の名前を押して、メニューを開く。', en: 'Click your name at the bottom left to open the menu.' },
       mobile: { ja: 'スマホのアプリも同じ順番：設定 → プライバシー → スイッチをオフ。', en: 'Mobile apps follow the same order: Settings → Privacy → switch it off.' },
-      extra: { ja: 'Free・Pro・Maxと、個人のアカウントで使うClaude Codeが対象。日本語の画面では「AI モデルの改善に協力する」と表示されることもある。', en: 'This covers Free, Pro and Max, and Claude Code used with a personal account. On the Japanese screen the label may read differently from the Japanese help page.' }
+      extra: { ja: 'Free・Pro・Maxと、個人のアカウントで使うClaude Codeが対象。日本語の画面では「AI モデルの改善に協力する」と表示されることもある。', en: 'This covers Free, Pro and Max, and Claude Code used with a personal account.' }
     },
     gemini: {
       name: 'Gemini',
@@ -439,11 +439,14 @@
         li.appendChild(h('span', 'pv-step-no', String(i + 1)));
         li.appendChild(screen);
         var labels = h('p', 'pv-step-labels');
-        var a = h('span', null, (lang === 'ja' ? '日本語の画面：' : 'Japanese UI: ') + '「' + st.ja + '」');
-        var b = h('span', null, (lang === 'ja' ? '英語の画面：' : 'English UI: ') + st.en);
-        if (st.kind === 'toggle') b.appendChild(document.createTextNode(lang === 'ja' ? '　→ オフ' : ' → off'));
-        if (st.kind === 'toggle') a.appendChild(document.createTextNode(lang === 'ja' ? '　→ オフ' : ' → off'));
-        labels.appendChild(a); labels.appendChild(b);
+        if (lang === 'ja') {
+          var a = h('span', null, '日本語の画面：「' + st.ja + '」');
+          var b = h('span', null, '英語の画面：' + st.en);
+          if (st.kind === 'toggle') { a.appendChild(document.createTextNode('　→ オフ')); b.appendChild(document.createTextNode('　→ オフ')); }
+          labels.appendChild(a); labels.appendChild(b);
+        } else if (st.kind === 'toggle') {
+          labels.appendChild(h('span', null, 'Switch it off.'));
+        }
         li.appendChild(labels);
         ol.appendChild(li);
       });
