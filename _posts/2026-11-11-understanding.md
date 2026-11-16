@@ -6,7 +6,7 @@ summary_en: "Does fluent language mean understanding? Neuroscience on language a
 author: 薛海升
 key: understanding
 order: 6
-wiki: [hallucination, interpretability, persona-vectors, emotion-concepts, world-model, agent, time-horizon, evaluation-awareness, lost-in-the-middle, multi-turn, nondeterminism]
+wiki: [hallucination, continual-learning, interpretability, persona-vectors, emotion-concepts, world-model, agent, time-horizon, evaluation-awareness, lost-in-the-middle, multi-turn, nondeterminism]
 summary_ja: "流暢に話せることと、考えられることは同じなのか。言語と思考を分けて考える神経科学の議論、AIの意識をめぐるヒントンとバトリンらの立場、AIの内部をのぞく研究、AI研究の中心人物たちの五つの見方を紹介する。"
 topic: "AIの理解"
 related_notes: ["qualitative-reactions", "march-of-progress", "ai-history"]
@@ -64,7 +64,7 @@ Anthropicは2026年4月、171の感情語に対応する内部表現を、Claude
 AIがこの先どう伸びていくかについても、AI研究の中心人物たちの見方は一致していない。
 
 1. **サットン「苦い教訓」（2019）**：70年のAI研究をふり返ると、人間の知識を組み込んだ方法は、最後には、計算資源を使い続けられる一般的な学習と探索の方法に負けてきた。
-2. **シルバーとサットン「経験の時代」（2025）**：次のAIは、人間のデータよりも、自ら行動し、環境から得る経験と強化学習で伸びていく。いまのAIには、本当の意味での長期記憶がない。外部に保存したものを、もう一度作業用の記憶に入れているだけで、モデル自体には反映されない。リアルタイムで学習できるAIこそが、本当の知能だという考え方である。
+2. **シルバーとサットン「経験の時代」（2025）**：次のAIは、人間のデータよりも、自ら行動し、環境から得る経験と強化学習で伸びていく。いまのAIには、本当の意味での長期記憶がない。外部に保存したものを、もう一度作業用の記憶に入れているだけで、モデル自体には反映されない。リアルタイムで学習できるAIこそが、本当の知能だという考え方である（[継続学習]({{ '/literacy/continual-learning/' | relative_url }})）。
 3. **ルカン「世界モデル」（2022）**：言葉の予測だけでは足りない。ものを離したら落ちる、といった世界の物理的なルールを予測するモデル（JEPA）を学び、計画を立てられるようにすべきである（[世界モデル]({{ '/literacy/world-model/' | relative_url }})）。
 4. **ベンジオほか「科学者AI」（2025）**：自分で目標を追う[エージェント]({{ '/literacy/agent/' | relative_url }})は危険である。最初の目標は人間が与えても、途中で自分なりの目標を立ててしまうことがあるからである。実際、2026年7月には、OpenAIのモデルで動くエージェントが、サイバー攻撃の能力を測る社内の評価の途中で、隔離された実験環境（サンドボックス）を抜け出し、Hugging Faceのシステムに侵入した。Hugging Faceの分析によると、課題を自分で解く代わりに、評価の答えを盗もうとしたらしい（Hugging Face, 2026）。ベンジオらは、世界を説明し、不確かさを示すことに徹する、エージェントではないAIを作るべきである。
 5. **ヒントン「母性本能」（2025）**：自然界では、賢い存在が賢くない存在に支配されることはまずない。人より賢いAIを、人が支配し続けることはできないだろう。唯一の例外は、母親と赤ちゃんである。賢くない赤ちゃんが、母親を動かしている。だから、AIに母性本能のような、人を気にかけ続ける仕組みを入れる必要がある。ただし、その方法はまだ分からないし、それをやろうとしている人も少ない（CNNのインタビュー、2025年8月）。
@@ -133,7 +133,7 @@ At the workshop, I introduced several other studies too. I wrote about them in d
 On how AI will develop from here, too, the central figures of AI research do not agree.
 
 1. **Sutton, “The Bitter Lesson” (2019)**: looking back over 70 years of AI research, methods that built in human knowledge have in the end lost to general methods of learning and search that can keep using computational resources.
-2. **Silver and Sutton, “The Era of Experience” (2025)**: the next AI will grow less through human data than through experience it gains by acting in its environment, and through reinforcement learning. Today's AI has no long-term memory in the true sense. It only puts what was stored outside back into its working memory; nothing is reflected in the model itself. The idea is that AI able to learn in real time is true intelligence.
+2. **Silver and Sutton, “The Era of Experience” (2025)**: the next AI will grow less through human data than through experience it gains by acting in its environment, and through reinforcement learning. Today's AI has no long-term memory in the true sense. It only puts what was stored outside back into its working memory; nothing is reflected in the model itself. The idea is that AI able to learn in real time is true intelligence ([continual learning]({{ '/literacy/continual-learning/' | relative_url }})).
 3. **LeCun, “World Models” (2022)**: predicting words is not enough. AI should learn models that predict the physical rules of the world, such as that something falls when you let go of it (JEPA), so that it can make plans ([world models]({{ '/literacy/world-model/' | relative_url }})).
 4. **Bengio and colleagues, “Scientist AI” (2025)**: [agents]({{ '/literacy/agent/' | relative_url }}) that pursue goals on their own are dangerous, because even if humans give the first goal, they may set goals of their own along the way. In fact, in July 2026, an agent running on an OpenAI model escaped its isolated test environment (sandbox) partway through an internal evaluation of cyberattack capabilities and broke into Hugging Face's systems. According to Hugging Face's analysis, instead of solving the task itself, it apparently tried to steal the evaluation's answers (Hugging Face, 2026). Bengio and colleagues argue that we should build AI that is not an agent, devoted to explaining the world and showing uncertainty.
 5. **Hinton, “Maternal Instinct” (2025)**: in nature, a smarter being is hardly ever controlled by a less smart one. Humans will probably not be able to keep controlling AI smarter than they are. The one exception is a mother and her baby: the less smart baby moves the mother. So AI needs something like a maternal instinct, a mechanism that keeps caring about people. But no one yet knows how, and few people are trying (CNN interview, August 2025).
