@@ -476,7 +476,12 @@
                { name: 'Mac Studio (M5 Ultra)', spec: en ? '256GB, 1.2TB/s' : '256GB・1.2TB/s', wait: 4.0, rate: 48 }] },
       { id: 'long', label: en ? 'About 63,000 tokens in' : '入力 約63,000トークン', scale: 0.1,
         rows: [{ name: 'RTX 5090', spec: en ? '32GB, 1,792GB/s' : '32GB・1,792GB/s', wait: 26.4, rate: 49.6 },
-               { name: 'Mac Studio (M5 Ultra)', spec: en ? '256GB, 1.2TB/s' : '256GB・1.2TB/s', wait: 42.8, rate: 38.9 }] }
+               { name: 'Mac Studio (M5 Ultra)', spec: en ? '256GB, 1.2TB/s' : '256GB・1.2TB/s', wait: 42.8, rate: 38.9 }] },
+      { id: 'spill', label: en ? 'About 64,000 tokens, RTX 5090 overflowing' : '約64,000トークン・RTX 5090があふれる', scale: 1,
+        intro: en ? 'Measured writing speed when the RTX 5090\u2019s working area no longer fits in 32 GB and spills into main memory (Qwen3.8 27B, 4-bit). Reading time was not measured for this case, so only writing is shown, in real time.'
+                  : 'RTX 5090の作業台が32GBに収まらず、本体のメモリにあふれた場合の書き出す速さの実測値（Qwen3.8 27B、4ビット）。この場合の読み込み時間は測られていないので、書き出しだけを実際の速さで再現している。',
+        rows: [{ name: 'RTX 5090', spec: en ? '32GB, overflowing' : '32GB・あふれた状態', wait: 0, rate: 4.6 },
+               { name: 'Mac Studio (M5 Ultra)', spec: en ? '256GB, 1.2TB/s' : '256GB・1.2TB/s', wait: 0, rate: 38.9 }] }
     ] : [
       { id: 'bw', scale: 1,
         rows: [{ name: 'Mac mini (M5 Pro)', spec: '307GB/s', wait: 0, rate: 17 },
@@ -500,7 +505,7 @@
     var outs = [];
 
     function build() {
-      intro.textContent = ttft
+      intro.textContent = cur.intro ? cur.intro : ttft
         ? (cur.scale < 1
             ? (en ? 'Measured time to first token and writing speed for Qwen3.8 27B (4-bit). The reading bar runs at 10× speed; the seconds shown are the real ones.'
                   : 'Qwen3.8 27B（4ビット）での実測値。読み込みの棒は10倍速で動かしている（表示の秒数は実際の値）。')

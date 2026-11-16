@@ -109,7 +109,7 @@ Macは台所の作りが違う。Apple Siliconを使ったMacでは、CPUとGPU�
 
 約6,000トークンの入力では、最初の一文字が出るまで、RTX 5090は2.0秒、Mac Studioは4.0秒だった。計算力の差がそのまま待ち時間の差になっている。書き出す速さも、帯域幅の広いRTX 5090の方が速い（1秒に59トークンと48トークン）。約63,000トークンまで長くすると、待ち時間は26.4秒と42.8秒に延びるが、順位は変わらない。モデルが32GBに収まっている限り、Mac Studioが後から追い抜くことはなく、どちらの段階でもRTX 5090が少し速い。
 
-逆転が起きるのは、冷蔵庫が足りなくなったときである。入力が長くなるほど、読んだ内容を覚えておく作業台（KVキャッシュ）も広くなる。上のRTX 5090の数字は、この作業台の数字を8ビットに縮めて、32GBに収めたうえでのものである。収まりきらずに本体のメモリにあふれた設定では、入力が約6万、13万、26万トークンのとき、書き出す速さは1秒に4.6、2.9、1.5トークンまで落ちた。同じ長さで、Mac Studioは1秒に38.9、32.4、24.3トークンを保っている。少し速いが冷蔵庫の小さいRTX 5090か、少し遅いが冷蔵庫の大きいMac Studioか。長い逐語録をまとめて読ませるなら、冷蔵庫の大きさが効いてくる。
+逆転が起きるのは、冷蔵庫が足りなくなったときである。上のデモの三つ目のタブで、その様子を再現した。入力が長くなるほど、読んだ内容を覚えておく作業台（KVキャッシュ）も広くなる。上のRTX 5090の数字は、この作業台の数字を8ビットに縮めて、32GBに収めたうえでのものである。収まりきらずに本体のメモリにあふれた設定では、入力が約6万、13万、26万トークンのとき、書き出す速さは1秒に4.6、2.9、1.5トークンまで落ちた。同じ長さで、Mac Studioは1秒に38.9、32.4、24.3トークンを保っている。少し速いが冷蔵庫の小さいRTX 5090か、少し遅いが冷蔵庫の大きいMac Studioか。長い逐語録をまとめて読ませるなら、冷蔵庫の大きさが効いてくる。
 
 ## どのくらいのPCが必要か
 
@@ -259,7 +259,7 @@ So which is faster: an RTX 5090, or a Mac Studio with a lot of memory? Federico 
 
 With an input of about 6,000 tokens, the first word appeared after 2.0 seconds on the RTX 5090 and 4.0 seconds on the Mac Studio. The difference in compute shows up directly as waiting time. The RTX 5090, with its wider bandwidth, also writes faster (59 against 48 tokens a second). Stretch the input to about 63,000 tokens and the waits grow to 26.4 and 42.8 seconds, but the order stays the same. As long as the model fits in 32 GB, the Mac Studio does not catch up later on; the RTX 5090 is a little faster at both stages.
 
-The order flips when the fridge runs out. The longer the input, the bigger the work surface needed to hold what has been read (the KV cache). The RTX 5090 figures above were obtained by shrinking the numbers on that work surface to 8 bits so that everything fitted in 32 GB. In a setup where it did not fit and overflowed into main memory, writing speed fell to 4.6, 2.9 and 1.5 tokens a second for inputs of about 60,000, 130,000 and 260,000 tokens. At the same lengths, the Mac Studio held at 38.9, 32.4 and 24.3. A slightly faster RTX 5090 with a small fridge, or a slightly slower Mac Studio with a big one: when you feed in long transcripts in one go, the size of the fridge starts to matter.
+The order flips when the fridge runs out; the third tab of the demo above shows it. The longer the input, the bigger the work surface needed to hold what has been read (the KV cache). The RTX 5090 figures above were obtained by shrinking the numbers on that work surface to 8 bits so that everything fitted in 32 GB. In a setup where it did not fit and overflowed into main memory, writing speed fell to 4.6, 2.9 and 1.5 tokens a second for inputs of about 60,000, 130,000 and 260,000 tokens. At the same lengths, the Mac Studio held at 38.9, 32.4 and 24.3. A slightly faster RTX 5090 with a small fridge, or a slightly slower Mac Studio with a big one: when you feed in long transcripts in one go, the size of the fridge starts to matter.
 
 ## How much PC do you need?
 
