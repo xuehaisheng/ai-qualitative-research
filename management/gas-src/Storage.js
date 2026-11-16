@@ -12,8 +12,8 @@ function drafts_(){return driveFiles_("name contains 'draft--'").map(function(fi
 function draft_(kind,id){var file=namedFile_('draft--'+kind+'--'+id+'.json');if(!file)return null;var d=driveJson_(file.id);d.fileId=file.id;return d;}
 function audit_(action,kind,id,detail){var sheetId=properties_().getProperty('STATS_SHEET_ID');if(!sheetId)return;SpreadsheetApp.openById(sheetId).getSheetByName('Audit').appendRow([new Date().toISOString(),action,kind||'',id||'',detail||'']);}
 function audits_(){var id=properties_().getProperty('STATS_SHEET_ID');if(!id)return [];var s=SpreadsheetApp.openById(id).getSheetByName('Audit'),last=s.getLastRow();return last<2?[]:s.getRange(Math.max(2,last-11),1,Math.min(12,last-1),5).getValues().reverse().map(function(r){return {created:String(r[0]),action:r[1],kind:r[2],item_id:r[3],detail:r[4]};});}
-function record_(kind,id,snapshot){var d=draft_(kind,id),s=source_(kind,id,snapshot);assert_(d||s,'内容不存在');return d?Object.assign({},d.record,{kind:kind,id:id,draft:true,deleted:!!d.deleted,revision:d.revision,updated:d.updated}):Object.assign(publicRecord_(s),{draft:false,revision:s.sourceHash});}
-function records_(kind,snapshot){var map={};sources_(kind,snapshot).forEach(function(s){map[s.id]=Object.assign(publicRecord_(s),{draft:false,revision:s.sourceHash});});drafts_().filter(function(d){return d.kind===kind;}).forEach(function(d){map[d.id]=Object.assign({},d.record,{kind:kind,id:d.id,draft:true,deleted:!!d.deleted,revision:d.revision,updated:d.updated});});return Object.keys(map).map(function(id){return map[id];});}
+function record_(kind,id,snapshot){var d=draft_(kind,id),s=source_(kind,id,snapshot);assert_(d||s,'内容不存在');return d?Object.assign({},d.record,{kind:kind,id:id,draft:true,deleted:!!d.deleted,revision:d.revision,updated:d.updated,sourceChanged:(s?s.sourceHash:null)!==(d.baseHash||null)}):Object.assign(publicRecord_(s),{draft:false,revision:s.sourceHash});}
+function records_(kind,snapshot){var map={};sources_(kind,snapshot).forEach(function(s){map[s.id]=Object.assign(publicRecord_(s),{draft:false,revision:s.sourceHash});});drafts_().filter(function(d){return d.kind===kind;}).forEach(function(d){map[d.id]=Object.assign({},d.record,{kind:kind,id:d.id,draft:true,deleted:!!d.deleted,revision:d.revision,updated:d.updated,sourceChanged:(map[d.id]?map[d.id].sourceHash:null)!==(d.baseHash||null)});});return Object.keys(map).map(function(id){return map[id];});}
 function save_(kind,id,input,snapshot){
   var record=input.record;validateRecord_(kind,id,record);var previous=draft_(kind,id),source=source_(kind,id,snapshot),revision=previous?previous.revision:source?source.sourceHash:null;
   assert_((input.revision||null)===revision,'这条内容已在其他窗口修改，请重新载入再保存');
@@ -24,7 +24,7 @@ function save_(kind,id,input,snapshot){
   }
   var updated=new Date().toISOString(),d={kind:kind,id:id,record:cleanRecord_(record),baseHash:previous?previous.baseHash:source?source.sourceHash:null,revision:Utilities.getUuid(),updated:updated,deleted:false};
   if(kind!=='notes'&&kind!=='knowledge')d.record.id=id;
-  writeJson_('draft--'+kind+'--'+id+'.json',d);audit_('save',kind,id);return Object.assign({},d.record,{kind:kind,id:id,draft:true,revision:d.revision,updated:updated});
+  writeJson_('draft--'+kind+'--'+id+'.json',d);audit_('save',kind,id);return Object.assign({},d.record,{kind:kind,id:id,draft:true,revision:d.revision,updated:updated,sourceChanged:(source?source.sourceHash:null)!==(d.baseHash||null)});
 }
 function archive_(kind,id,input,snapshot){var current=record_(kind,id,snapshot);assert_(current.revision===input.revision,'内容版本已更新，请重新载入');if(!current.draft)save_(kind,id,{record:current,revision:current.revision},snapshot);var d=draft_(kind,id);d.deleted=true;d.revision=Utilities.getUuid();d.updated=new Date().toISOString();updateJson_(d.fileId,d);audit_('archive',kind,id);return record_(kind,id,snapshot);}
 function discard_(kind,id,revision){var d=draft_(kind,id);assert_(d,'草稿不存在');assert_(d.revision===revision,'草稿已在其他窗口更新，请重新载入后再撤回');Drive.Files.update({trashed:true},d.fileId);audit_('discard',kind,id);return {ok:true};}
@@ -45,3 +45,5 @@ function initialize_(){
   }catch(error){p.deleteProperty('WORKSPACE_FOLDER_ID');throw error;}
   audit_('initialize','','');return {ok:true,folderId:folder.id,statsSheetId:p.getProperty('STATS_SHEET_ID')};
 }
+
+function rebase_(input,snapshot){var kind=input.kind,id=input.id;assert_(['notes','knowledge','events','members'].includes(kind)&&/^[a-zA-Z0-9._-]+$/.test(id)&&!id.includes('..'),'内容标识无效');var draft=draft_(kind,id),source=source_(kind,id,snapshot);assert_(draft&&source,'请先保存草稿，并核对线上版本');assert_(draft.revision===input.revision,'草稿已更新，请重新对比');assert_(source.sourceHash===input.sourceRevision,'线上版本又有更新，请重新对比');validateRecord_(kind,id,input.record);if(kind==='notes'||kind==='knowledge')assert_(input.record.meta.key===source.meta.key,'文章地址不能更改');draft.record=cleanRecord_(input.record);draft.baseHash=source.sourceHash;draft.revision=Utilities.getUuid();draft.updated=new Date().toISOString();updateJson_(draft.fileId,draft);audit_('rebase',kind,id);return record_(kind,id,snapshot);}
