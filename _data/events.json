@@ -202,7 +202,15 @@
       "ja": "日本質的心理学会第21回大会のシンポジウムで時間が足りなかった質疑を続けるために開いた、最初のオンライン研究会。シンポジウムの振り返り、当日の質問やコメントを受けた議論、AI活用の実践例・課題・倫理を話し合った。",
       "en": "The first online study meeting, held to continue the Q&A that ran out of time at the symposium at the JAQP 21st Annual Meeting. We reviewed the symposium, followed up on questions and comments, and discussed practical uses of AI, its problems, and ethics."
     },
-    "links": [],
+    "links": [
+      {
+        "label": {
+          "ja": "当日のスライド（PDF）",
+          "en": "Slides (PDF, in Japanese)"
+        },
+        "url": "/assets/pdf/2024-11-27_ai-qualitative-study-meeting.pdf"
+      }
+    ],
     "members": [
       "xue"
     ]
