@@ -9,9 +9,11 @@
       nodes: { answer: '回答の生成', store: '履歴・データの保存', train: 'モデルを改善する訓練', human: '監視と人による審査' },
       state: { on: '使われる', off: '使われない', cond: '条件つき', meta: '基本的にメタデータのみ' },
       stateSvg: { meta: 'メタデータのみ' },
+      // Monitoring and human review is something that may happen, not something your data is "used" for.
+      human: { on: 'ありえる', cond: '限定的にありえる', off: 'ない', meta: 'ありえる' },
       modes: { on: '改善がオン', off: '改善をオフ', temp: '履歴を残さないチャット', fb: 'フィードバックを送る' },
       companyLabel: 'サービス', modeLabel: '使い方',
-      legend: '黒い流れ：使われる　灰色の流れと点線の枠：条件つき　灰色の枠と細い流れ：基本的にメタデータのみ　灰色の点線：使われない。各社の公開の説明をもとにした図で、内部の仕組みを再現したものではない。',
+      legend: '黒い流れ：使われる（監視と人による審査では「ありえる」）　灰色の流れと点線の枠：条件つき（監視では「限定的にありえる」）　灰色の枠と細い流れ：基本的にメタデータのみ　灰色の点線：使われない。各社の公開の説明をもとにした図で、内部の仕組みを再現したものではない。',
       src: '出典：各社のヘルプとプライバシーポリシー（2026年11月17日確認）。本文末の参考文献を参照。'
     },
     en: {
@@ -19,9 +21,11 @@
       nodes: { answer: 'Generating a reply', store: 'Storage', train: 'Model training', human: 'Monitoring, review' },
       state: { on: 'Used', off: 'Not used', cond: 'Conditional', meta: 'Mostly metadata only' },
       stateSvg: { meta: 'Metadata only' },
+      human: { on: 'Possible', cond: 'Possible in limited cases', off: 'None', meta: 'Possible' },
+      humanSvg: { cond: 'Limited cases' },
       modes: { on: 'Improvement on', off: 'Improvement off', temp: 'Chat without history', fb: 'Sending feedback' },
       companyLabel: 'Service', modeLabel: 'Situation',
-      legend: 'Black flow: used. Grey flow and dotted box: conditional. Grey box and thin flow: mostly metadata only. Grey dots: not used. Based on what the companies publish; it does not reproduce their internal systems.',
+      legend: 'Black flow: used (for monitoring and review: possible). Grey flow and dotted box: conditional (for monitoring: possible in limited cases). Grey box and thin flow: mostly metadata only. Grey dots: not used. Based on what the companies publish; it does not reproduce their internal systems.',
       src: 'Sources: each company’s help pages and privacy policy (checked 17 November 2026). See the references at the end.'
     }
   };
@@ -325,11 +329,13 @@
       root.setAttribute('data-mode', mode);
       NODES.forEach(function (k) {
         var v = r[k];
-        if (parts[k]) { parts[k].g.setAttribute('data-state', v.s); parts[k].st.textContent = (t.stateSvg[v.s] || t.state[v.s]); }
+        var label = k === 'human' ? t.human[v.s] : t.state[v.s];
+        var svgLabel = k === 'human' ? ((t.humanSvg && t.humanSvg[v.s]) || label) : (t.stateSvg[v.s] || label);
+        if (parts[k]) { parts[k].g.setAttribute('data-state', v.s); parts[k].st.textContent = svgLabel; }
         var dt = h('dt', 'pv-dt');
         dt.setAttribute('data-state', v.s);
         dt.appendChild(h('span', 'pv-dt-name', t.nodes[k]));
-        dt.appendChild(h('span', 'pv-dt-state', t.state[v.s]));
+        dt.appendChild(h('span', 'pv-dt-state', label));
         list.appendChild(dt);
         list.appendChild(h('dd', 'pv-dd', v[lang]));
       });
@@ -354,7 +360,7 @@
       ],
       first: { ja: '左下のアカウント名（プロフィール）を押して、メニューを開く。', en: 'Click your account name (profile) at the bottom left to open the menu.' },
       mobile: { ja: 'スマホのアプリ：サイドバー → プロフィールのアイコン → 「データコントロール」 → スイッチをオフ。', en: 'Mobile app: sidebar → profile icon → Data controls → switch it off.' },
-      extra: { ja: '同じアカウントのウェブとアプリ、Codexにもまとめて反映される。Free・Plus・Proでは初期設定がオン。日本語のヘルプには「すべてのユーザー向けにモデルを改善する」という表記も残っている。', en: 'The change applies to the web, the apps and Codex on the same account. It is on by default for Free, Plus and Pro. The Japanese help pages also use another translation of the label.' }
+      extra: { ja: '同じアカウントのウェブとアプリ、Codexにもまとめて反映される。Free・Plus・Proでは初期設定がオン。日本語のヘルプには「すべてのユーザー向けにモデルを改善する」という表記も残っている。', en: 'The change applies to the web, the apps and Codex on the same account. It is on by default for Free, Plus and Pro.' }
     },
     claude: {
       name: 'Claude',
@@ -366,7 +372,7 @@
       ],
       first: { ja: '左下の自分の名前を押して、メニューを開く。', en: 'Click your name at the bottom left to open the menu.' },
       mobile: { ja: 'スマホのアプリも同じ順番：設定 → プライバシー → スイッチをオフ。', en: 'Mobile apps follow the same order: Settings → Privacy → switch it off.' },
-      extra: { ja: 'Free・Pro・Maxと、個人のアカウントで使うClaude Codeが対象。日本語の画面では「AI モデルの改善に協力する」と表示されることもある。', en: 'This covers Free, Pro and Max, and Claude Code used with a personal account. On the Japanese screen the label may read differently from the Japanese help page.' }
+      extra: { ja: 'Free・Pro・Maxと、個人のアカウントで使うClaude Codeが対象。日本語の画面では「AI モデルの改善に協力する」と表示されることもある。', en: 'This covers Free, Pro and Max, and Claude Code used with a personal account.' }
     },
     gemini: {
       name: 'Gemini',
@@ -439,11 +445,14 @@
         li.appendChild(h('span', 'pv-step-no', String(i + 1)));
         li.appendChild(screen);
         var labels = h('p', 'pv-step-labels');
-        var a = h('span', null, (lang === 'ja' ? '日本語の画面：' : 'Japanese UI: ') + '「' + st.ja + '」');
-        var b = h('span', null, (lang === 'ja' ? '英語の画面：' : 'English UI: ') + st.en);
-        if (st.kind === 'toggle') b.appendChild(document.createTextNode(lang === 'ja' ? '　→ オフ' : ' → off'));
-        if (st.kind === 'toggle') a.appendChild(document.createTextNode(lang === 'ja' ? '　→ オフ' : ' → off'));
-        labels.appendChild(a); labels.appendChild(b);
+        if (lang === 'ja') {
+          var a = h('span', null, '日本語の画面：「' + st.ja + '」');
+          var b = h('span', null, '英語の画面：' + st.en);
+          if (st.kind === 'toggle') { a.appendChild(document.createTextNode('　→ オフ')); b.appendChild(document.createTextNode('　→ オフ')); }
+          labels.appendChild(a); labels.appendChild(b);
+        } else if (st.kind === 'toggle') {
+          labels.appendChild(h('span', null, 'Switch it off.'));
+        }
         li.appendChild(labels);
         ol.appendChild(li);
       });
