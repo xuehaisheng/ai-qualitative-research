@@ -6,7 +6,7 @@ var AIQ_COLUMNS = ['id','visitor','session','path','day','referrer','device','la
 function day_(date) { return Utilities.formatDate(date || new Date(), 'Asia/Tokyo', 'yyyy-MM-dd'); }
 function hash_(value) { return Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256, String(value), Utilities.Charset.UTF_8).map(function(b){return ('0'+((b+256)%256).toString(16)).slice(-2);}).join(''); }
 function assert_(condition, message) { if (!condition) throw new Error(message); }
-function cleanRecord_(record) { var result=JSON.parse(JSON.stringify(record));['kind','id','revision','draft','deleted','updated','sourceHash','fileSha','raw'].forEach(function(k){delete result[k];});return result; }
+function cleanRecord_(record) { var result=JSON.parse(JSON.stringify(record));['kind','id','revision','draft','deleted','updated','sourceHash','fileSha','raw','sourceChanged'].forEach(function(k){delete result[k];});return result; }
 function validateRecord_(kind,id,record) {
   assert_(['notes','knowledge','events','members'].indexOf(kind)>=0 && /^[a-zA-Z0-9][a-zA-Z0-9._-]{0,149}$/.test(id) && id.indexOf('..')<0,'内容标识无效');
   assert_(record && typeof record==='object' && !Array.isArray(record),'内容格式无效');
