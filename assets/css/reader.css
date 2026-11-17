@@ -510,5 +510,5 @@ html[lang="en"] .home-page:not(.masthead-static) .site-header .header-shell { ga
   html[data-large-text] .site-header .brand { flex-basis: 100%; }
 }
 
-/* Underlined links, per post (front matter: underline_links: true). */
+/* Underline links in the body of every research note. */
 .post-links-underlined .post-body a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
