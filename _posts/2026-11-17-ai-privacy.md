@@ -1,5 +1,5 @@
 ---
-title: "AIに入力したデータは、どこへ行くのか、誰にみられるのか：質的研究者のためのAIプライバシー入門"
+title: "AIに入力したデータは、どこへ行くのか、誰にみられるのか：質的研究者のためのAIプライバシー入門編"
 date: 2026-11-17 00:00:00 +0900
 title_en: "Where does the data we enter into AI go, and who sees it? An introduction to AI privacy for qualitative researchers"
 summary_en: "One case where OpenAI did not alert the police, and one where it did. Following those, this note looks at where our conversations go in ChatGPT, Claude, Gemini and Grok, what the Navier–Stokes episode showed about training on user data, and what it means that turning training off is framed as declining to help everyone."
