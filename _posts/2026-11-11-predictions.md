@@ -78,7 +78,7 @@ ICLRは、機械学習における最高峰の国際会議の一つである。O
 
 そのAnthropicは、2026年2月に、中国の3社（DeepSeek、月之暗面、MiniMax）が、[約2.4万の偽アカウントで1600万回以上のやりとりを行い](https://www.anthropic.com/news/detecting-and-preventing-distillation-attacks)、Claudeの能力を抽出したと告発した。同社は、この行為を「蒸留攻撃」と呼んでいる。
 
-Anthropicの説明は、書籍は購入したものである一方、中国企業の行為は、自ら同意した利用規約への違反であり、問題は著作権ではなく契約にあるというものである。これに疑問を呈する側は、書籍の著者は学習に同意していないと指摘する。そのうえで、何万もの偽アカウントによる規約違反と、著者の知らないところで書籍を裁断して学習に用いることには、倫理的にどれほどの違いがあるかを問うている。企業が公に示す姿勢と、その背後で行うことには、問題を感じる面もある。同じく他者から学ぶ行為の中で、何を正当とし、何を盗みとするかは、改めて考える必要がある。
+Anthropicの説明は、書籍は購入したものである一方、中国企業の行為は、自ら同意した利用規約への違反であり、問題は著作権ではなく契約にあるというものである。これに疑問を呈する側は、書籍の著者は学習に同意していないと指摘する。そのうえで、何万もの偽アカウントによる規約違反と、著者の知らないところで書籍を裁断して学習に用いることには、倫理的にどれほどの違いがあるかを問うている。いろいろアピールしているところもあれば、裏で汚いこともやっている。同じく他者から学ぶ行為の中で、何を正当とし、何を盗みとするかは、改めて考える必要がある。
 
 ## 三つの会社の気質
 
@@ -209,7 +209,7 @@ In the first place, AI companies have trained on human knowledge, text on the we
 
 In February 2026, that same Anthropic accused three Chinese companies (DeepSeek, Moonshot AI and MiniMax) of [more than 16 million exchanges from about 24,000 fake accounts](https://www.anthropic.com/news/detecting-and-preventing-distillation-attacks) to extract Claude's capabilities. Anthropic called this a “distillation attack”.
 
-Anthropic's argument is that it bought the books, while the Chinese companies violated terms of service they had agreed to: the issue is contract, not copyright. Skeptics ask: the authors never agreed to training, so is breaking the terms with tens of thousands of fake accounts really that different ethically from quietly cutting up books and training on them? What companies present in public and what they do out of sight do not always sit well together. Within the same act of learning from others, where the line falls between what is legitimate and what is theft needs to be thought through again.
+Anthropic's argument is that it bought the books, while the Chinese companies violated terms of service they had agreed to: the issue is contract, not copyright. Skeptics ask: the authors never agreed to training, so is breaking the terms with tens of thousands of fake accounts really that different ethically from quietly cutting up books and training on them? Some things are loudly advertised, while dirty things are done behind the scenes. Both are “learning from others”: what is legitimate, and what is theft?
 
 ## The temperaments of three companies
 
