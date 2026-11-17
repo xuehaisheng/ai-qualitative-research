@@ -209,7 +209,7 @@ In the first place, AI companies have trained on human knowledge, text on the we
 
 In February 2026, that same Anthropic accused three Chinese companies (DeepSeek, Moonshot AI and MiniMax) of [more than 16 million exchanges from about 24,000 fake accounts](https://www.anthropic.com/news/detecting-and-preventing-distillation-attacks) to extract Claude's capabilities. Anthropic called this a “distillation attack”.
 
-Anthropic's argument is that it bought the books, while the Chinese companies violated terms of service they had agreed to: the issue is contract, not copyright. Skeptics ask: the authors never agreed to training, so is breaking the terms with tens of thousands of fake accounts really that different ethically from quietly cutting up books and training on them? Some things are loudly advertised, while dirty things are done behind the scenes. Both are “learning from others”: what is legitimate, and what is theft?
+Anthropic's argument is that it bought the books, while the Chinese companies violated terms of service they had agreed to: the issue is contract, not copyright. Skeptics ask: the authors never agreed to training, so is breaking the terms with tens of thousands of fake accounts really that different ethically from quietly cutting up books and training on them? What companies present in public and what they do out of sight do not always sit well together. Within the same act of learning from others, where the line falls between what is legitimate and what is theft needs to be thought through again.
 
 ## The temperaments of three companies
 
