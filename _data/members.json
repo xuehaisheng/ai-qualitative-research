@@ -169,8 +169,29 @@
     "profile_url": "https://researchmap.jp/kashida-yoshio"
   },
   {
-    "id": "omi",
+    "id": "horiuchi",
     "order": 8,
+    "name": {
+      "ja": "堀内 多恵",
+      "en": "Tae HORIUCHI"
+    },
+    "role": {
+      "ja": "コラボレーター",
+      "en": "Collaborator"
+    },
+    "affiliation": {
+      "ja": "高千穂大学 兼任講師",
+      "en": "Part-time Lecturer, Takachiho University"
+    },
+    "bio": {
+      "ja": "",
+      "en": ""
+    },
+    "profile_url": "https://researchmap.jp/taehoriuchi"
+  },
+  {
+    "id": "omi",
+    "order": 9,
     "name": {
       "ja": "尾見 康博",
       "en": "Yasuhiro OMI"
