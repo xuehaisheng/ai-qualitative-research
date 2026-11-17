@@ -81,7 +81,7 @@ permalink: /literacy/
         <h3>{% include t.html ja=g.title en=g.title_en %}<span class="people-count">{{ members.size }}</span></h3>
         <div class="people-grid">
           {%- for p in members %}
-          <div class="person-item" data-name-ja="{{ p.name | escape }}" data-name-en="{{ p.name_en | escape }}">
+          <div class="person-item" id="person-{{ p.id }}" data-person="{{ p.id }}" data-name-ja="{{ p.name | escape }}" data-name-en="{{ p.name_en | escape }}">
             <div class="person-name"><strong>{% include t.html ja=p.name en=p.name_en %}</strong><span class="person-en lang-ja">{{ p.name_en }}</span></div>
             <p class="person-desc">{% include t.html ja=p.desc en=p.desc_en %}</p>
             <div class="person-links">

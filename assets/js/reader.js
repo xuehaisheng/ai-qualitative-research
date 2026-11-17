@@ -284,7 +284,7 @@
           grid = document.createElement('div'); grid.className = 'people-grid';
           block.append(h, grid); byName.append(block);
         }
-        grid.append(card.cloneNode(true));
+        const copy = card.cloneNode(true); copy.removeAttribute('id'); grid.append(copy);
       });
     }
     function apply() {
@@ -300,5 +300,17 @@
     }));
     document.addEventListener('site-lang', () => { if (mode === 'name') renderByName(); });
     apply();
+    // Links from notes and term pages point to #person-<id>; show that card in whichever view is open.
+    function focusPerson() {
+      const m = location.hash.match(/^#person-([\w-]+)$/);
+      if (!m) return;
+      const card = [...peopleSection.querySelectorAll('[data-person="' + m[1] + '"]')].find(el => el.offsetParent !== null);
+      if (!card) return;
+      card.scrollIntoView({block: 'center'});
+      card.classList.add('is-target');
+      setTimeout(() => card.classList.remove('is-target'), 2400);
+    }
+    window.addEventListener('hashchange', focusPerson);
+    if (document.readyState === 'complete') requestAnimationFrame(focusPerson); else window.addEventListener('load', () => setTimeout(focusPerson, 50));
   }
 })();

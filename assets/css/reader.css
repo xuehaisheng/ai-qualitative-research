@@ -512,3 +512,8 @@ html[lang="en"] .home-page:not(.masthead-static) .site-header .header-shell { ga
 
 /* Underline links in the body of every research note. */
 .post-links-underlined .post-body a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* Names linked to the people section of the AI literacy page. */
+.post-body a.person-ref { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.person-item { scroll-margin-top: 96px; }
+.person-item.is-target { outline: 2px solid #111; outline-offset: 4px; transition: outline-color .4s ease; }
