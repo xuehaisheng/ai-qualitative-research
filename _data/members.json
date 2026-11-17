@@ -63,8 +63,29 @@
     "profile_url": "https://researchmap.jp/toyoda.h"
   },
   {
-    "id": "nochi",
+    "id": "inada",
     "order": 3,
+    "name": {
+      "ja": "稲田 真子",
+      "en": "Mako INADA"
+    },
+    "role": {
+      "ja": "共同研究者",
+      "en": "Co-researcher"
+    },
+    "affiliation": {
+      "ja": "お茶の水女子大学 大学院人間文化創成科学研究科 博士後期課程",
+      "en": "Doctoral Student, Graduate School of Humanities and Sciences, Ochanomizu University"
+    },
+    "bio": {
+      "ja": "",
+      "en": ""
+    },
+    "profile_url": ""
+  },
+  {
+    "id": "nochi",
+    "order": 4,
     "name": {
       "ja": "能智 正博",
       "en": "Masahiro NOCHI"
@@ -85,7 +106,7 @@
   },
   {
     "id": "zhao",
-    "order": 4,
+    "order": 5,
     "name": {
       "ja": "趙 心語",
       "en": "Xinyu ZHAO"
@@ -106,7 +127,7 @@
   },
   {
     "id": "hao",
-    "order": 5,
+    "order": 6,
     "name": {
       "ja": "Tianshi HAO",
       "en": "Tianshi HAO"
@@ -128,7 +149,7 @@
   },
   {
     "id": "kashida",
-    "order": 6,
+    "order": 7,
     "name": {
       "ja": "樫田 美雄",
       "en": "Yoshio KASHIDA"
@@ -149,7 +170,7 @@
   },
   {
     "id": "omi",
-    "order": 7,
+    "order": 8,
     "name": {
       "ja": "尾見 康博",
       "en": "Yasuhiro OMI"
