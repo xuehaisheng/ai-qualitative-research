@@ -74,14 +74,18 @@
       "en": "Co-researcher"
     },
     "affiliation": {
-      "ja": "東京大学 大学院教育学研究科 博士課程",
-      "en": "Doctoral Student, Graduate School of Education, The University of Tokyo"
+      "ja": "お茶の水女子大学 大学院人間文化創成科学研究科 博士後期課程",
+      "en": "Doctoral Student, Graduate School of Humanities and Sciences, Ochanomizu University"
     },
     "bio": {
       "ja": "",
       "en": ""
     },
-    "profile_url": ""
+    "profile_url": "https://sites.google.com/view/keiichiroishimaru/%E3%83%A1%E3%83%B3%E3%83%90%E3%83%BC",
+    "profile_label": {
+      "ja": "研究室のページ",
+      "en": "Lab page"
+    }
   },
   {
     "id": "nochi",
