@@ -298,9 +298,6 @@
     var note = h('p', 'pv-note');
     var list = h('dl', 'pv-details');
     list.setAttribute('aria-live', 'polite');
-    root.appendChild(note);
-    root.appendChild(list);
-    root.appendChild(h('p', 'pv-legend', t.legend));
 
     var controls = h('div', 'pv-controls');
     var companyRow = tabs(t.companyLabel, cfg.companies, company, function (id) { company = id; render(); });
@@ -313,7 +310,11 @@
     function disable(row, test) {
       row.querySelectorAll('.pv-tab').forEach(function (b) { b.disabled = test(b.getAttribute('data-id')); });
     }
+    // Tabs sit right under the diagram so that, on a phone, the diagram stays in view while switching.
     root.appendChild(controls);
+    root.appendChild(note);
+    root.appendChild(list);
+    root.appendChild(h('p', 'pv-legend', t.legend));
     root.appendChild(h('p', 'pv-src', t.src));
 
     function render() {
