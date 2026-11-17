@@ -32,7 +32,7 @@
 .pv-dd { font-size: .84rem; line-height: 1.75; }
 .post-body .pv-widget .pv-legend, .post-body .pv-widget .pv-src, .pv-legend, .pv-src { margin-top: 10px !important; color: var(--reader-muted, #5e5e5e); font-size: .74rem; line-height: 1.7; }
 
-.pv-controls { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; padding-top: 14px; border-top: 2px solid #111; }
+.pv-controls { display: flex; flex-direction: column; gap: 10px; margin: 8px 0 4px; padding: 12px 0; border-top: 2px solid #111; border-bottom: 1px solid var(--reader-line, #e2e2e2); }
 .pv-tabrow { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .pv-tablabel { min-width: 4.5em; font-size: .74rem; color: var(--reader-muted, #5e5e5e); }
 .pv-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
