@@ -7,7 +7,7 @@ author: 薛海升
 key: api-local-models
 order: 10
 wiki: [open-weight, token, llm]
-summary_ja: "AIプライバシー入門の続き。個人向けサービスでのオプトアウト、API、ゼロデータ保持（ZDR）は何が違い、ZDRはどうすれば使えるのか。データを外に出さないローカルモデルには何が必要か。GPUとは何か、なぜGPUのメモリが要るのか、容量・帯域幅・計算力がそれぞれ何を決めるのかを、たとえと図で説明し、いまの価格も載せる。"
+summary_ja: "AIプライバシー入門編の続き。個人向けサービスでのオプトアウト、API、ゼロデータ保持（ZDR）は何が違い、ZDRはどうすれば使えるのか。データを外に出さないローカルモデルには何が必要か。GPUとは何か、なぜGPUのメモリが要るのか、容量・帯域幅・計算力がそれぞれ何を決めるのかを、たとえと図で説明し、いまの価格も載せる。"
 topic: "研究の実践"
 related_notes: ["ai-privacy", "meta-synthesis-with-ai"]
 sort_date: 20261117
