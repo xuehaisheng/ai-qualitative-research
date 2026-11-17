@@ -169,8 +169,29 @@
     "profile_url": "https://researchmap.jp/kashida-yoshio"
   },
   {
-    "id": "omi",
+    "id": "horiuchi",
     "order": 8,
+    "name": {
+      "ja": "堀内 多恵",
+      "en": "Tae HORIUCHI"
+    },
+    "role": {
+      "ja": "コラボレーター",
+      "en": "Collaborator"
+    },
+    "affiliation": {
+      "ja": "東京大学 大学院教育学研究科 特任研究員",
+      "en": "Project Researcher, Graduate School of Education, The University of Tokyo"
+    },
+    "bio": {
+      "ja": "",
+      "en": ""
+    },
+    "profile_url": "https://researchmap.jp/taehoriuchi"
+  },
+  {
+    "id": "omi",
+    "order": 9,
     "name": {
       "ja": "尾見 康博",
       "en": "Yasuhiro OMI"
