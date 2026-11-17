@@ -11,6 +11,7 @@ summary_ja: "AIプライバシー入門の続き。個人向けサービスで�
 topic: "研究の実践"
 related_notes: ["ai-privacy", "meta-synthesis-with-ai"]
 sort_date: 20261117
+underline_links: true
 ---
 
 [前のノート]({{ '/articles/ai-privacy/' | relative_url }})では、ChatGPTやClaudeといった個人向けサービスにおいて、訓練への利用をオフにしても、会話の保存や監視は続くことを確認した。逐語録など、企業に利用されたくないデータを扱う場合には、この設定だけでは十分でないこともあるだろう。そこで、ほかにどのような方法が考えられるかを見ていきたい。
