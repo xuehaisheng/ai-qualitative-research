@@ -494,3 +494,18 @@ html[lang="en"] .home-page:not(.masthead-static) .site-header .header-shell { ga
 .people-sort-btn + .people-sort-btn { border-left: 1px solid #111; }
 .people-sort-btn[aria-pressed="true"] { background: #111; color: #fff; }
 .people-sort-btn:focus-visible { outline: 2px solid #111; outline-offset: 2px; }
+
+/* Compact header controls on phones, the same on every page (moved from the home page). */
+@media (max-width: 600px) {
+  html[lang] .site-header .header-shell { flex-wrap: nowrap; min-height: 56px !important; padding-block: 0 !important; gap: 12px; }
+  html[lang] .site-header .brand { flex-basis: auto; }
+  html[lang] .site-header .brand-copy strong { white-space: nowrap !important; font-weight: 800 !important; letter-spacing: -.03em !important; line-height: 1.2; }
+  html[lang="en"] .site-header .brand-copy strong { font-size: min(1.18rem, 4.3vw) !important; }
+  html[lang][data-large-text] .site-header .brand-copy strong { white-space: normal !important; }
+  .site-header .header-tools { gap: 2px !important; }
+  .site-header .lang-btn { min-width: 24px; padding-inline: 2px !important; }
+  .site-header .display-toggle { width: 28px; }
+  .site-header .menu-toggle { width: 40px; height: 44px; }
+  html[data-large-text] .site-header .header-shell { flex-wrap: wrap; padding-block: 12px !important; }
+  html[data-large-text] .site-header .brand { flex-basis: 100%; }
+}
