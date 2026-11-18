@@ -8,4 +8,5 @@
   <a class="share-btn" data-share-to="x" href="https://x.com/intent/post?url={{ share_url | cgi_escape }}&amp;text={{ share_ja | cgi_escape }}" target="_blank" rel="noopener" aria-label="Xでシェア" data-aria-ja="Xでシェア" data-aria-en="Share on X">{% include icons/x.svg %}</a>
   <a class="share-btn" data-share-to="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ share_url | cgi_escape }}" target="_blank" rel="noopener" aria-label="Facebookでシェア" data-aria-ja="Facebookでシェア" data-aria-en="Share on Facebook">{% include icons/facebook.svg %}</a>
   <button class="share-btn" type="button" data-share-to="instagram" aria-label="Instagramでシェア" data-aria-ja="Instagramでシェア" data-aria-en="Share on Instagram">{% include icons/instagram.svg %}</button>
+  <button class="share-btn share-copy" type="button" data-share-to="copy" aria-label="リンクをコピー" data-aria-ja="リンクをコピー" data-aria-en="Copy link">{% include icons/link.svg %}</button>
 </div>

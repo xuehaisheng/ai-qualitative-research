@@ -246,10 +246,19 @@
       if (navigator.share) { try { await navigator.share({ title: title(), url }); } catch (e) {} return; }
       copy(L('リンクをコピーしました。Instagramのストーリーやプロフィールに貼り付けてください。', 'Link copied. Paste it into an Instagram story or your profile.'));
     });
+    // Copy link: the icon turns into a check mark for a moment; the message is for screen readers only.
+    const copyBtn = row.querySelector('[data-share-to="copy"]');
+    if (copyBtn) copyBtn.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(url); } catch (e) { window.prompt(L('このリンクをコピーしてください', 'Copy this link'), url); return; }
+      copyBtn.classList.add('is-copied');
+      shareNote(row, L('リンクをコピーしました', 'Link copied'), true);
+      clearTimeout(copyBtn._t); copyBtn._t = setTimeout(() => copyBtn.classList.remove('is-copied'), 1800);
+    });
   });
-  function shareNote(row, message) {
+  function shareNote(row, message, quiet) {
     let note = row.querySelector('.share-note');
     if (!note) { note = document.createElement('span'); note.className = 'share-note'; note.setAttribute('role', 'status'); row.appendChild(note); }
+    note.classList.toggle('visually-hidden', !!quiet);
     note.textContent = message;
     clearTimeout(note._t); note._t = setTimeout(() => { note.textContent = ''; }, 4000);
   }
