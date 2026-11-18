@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <script>try{var l=localStorage.getItem("site-lang");if(l!=="ja"&&l!=="en")l=(/bot|crawl|spider|slurp|google|bing|duckduck|baidu|yandex|lighthouse|headless/i.test(navigator.userAgent||"")||(navigator.language||"").toLowerCase().indexOf("ja")===0)?"ja":"en";document.documentElement.lang=l;}catch(e){}</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{%- if page.url == "/" %}
+  <meta name="msvalidate.01" content="B8DF045B27FD3B293CB366C9BB332794" />
+{%- endif %}
 {%- if page.seo_title_ja -%}
   {%- assign title_ja = page.seo_title_ja -%}
 {%- elsif page.collection == "wiki" -%}
