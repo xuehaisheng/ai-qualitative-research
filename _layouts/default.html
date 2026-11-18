@@ -2,10 +2,12 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <script>try{var l=localStorage.getItem("site-lang");if(l!=="ja"&&l!=="en")l=(navigator.language||"").toLowerCase().indexOf("ja")===0?"ja":"en";document.documentElement.lang=l;}catch(e){}</script>
+  <script>try{var l=localStorage.getItem("site-lang");if(l!=="ja"&&l!=="en")l=(/bot|crawl|spider|slurp|googlebot|bingbot|duckduck|baiduspider|yandex|lighthouse/i.test(navigator.userAgent||"")||(navigator.language||"").toLowerCase().indexOf("ja")===0)?"ja":"en";document.documentElement.lang=l;}catch(e){}</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {%- if page.seo_title_ja -%}
   {%- assign title_ja = page.seo_title_ja -%}
+{%- elsif page.collection == "wiki" -%}
+  {%- capture title_ja -%}{{ page.title }}{% if page.en and page.en != page.title %}（{{ page.en }}）{% endif %}とは｜AIリテラシー | {{ site.title }}{%- endcapture -%}
 {%- elsif page.title -%}
   {%- assign title_ja = page.title | append: " | " | append: site.title -%}
 {%- else -%}
@@ -19,7 +21,7 @@
   {%- assign title_en = page.seo_title_en | default: title_ja -%}
 {%- endif -%}
 {%- assign excerpt_text = page.excerpt | strip_html | strip_newlines | strip | truncate: 120 -%}
-{%- assign desc_ja = page.seo_description_ja | default: page.summary_ja | default: excerpt_text | default: site.description -%}
+{%- assign desc_ja = page.seo_description_ja | default: page.summary_ja | default: page.summary | default: excerpt_text | default: site.description -%}
 {%- assign desc_en = page.seo_description_en | default: page.summary_en | default: desc_ja %}
   <meta name="description" content="{{ desc_ja | escape }}">
   <title>{{ title_ja | escape }}</title>
@@ -37,6 +39,14 @@
   <meta property="og:site_name" content="{{ site.title | escape }}">
   <meta property="og:image" content="{{ '/assets/img/brand/apple-touch-icon.png' | absolute_url }}">
   <meta name="twitter:card" content="summary">
+  <meta property="og:locale" content="ja_JP">
+{%- if page.collection == "posts" %}
+  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+  {%- if page.updated %}
+  <meta property="article:modified_time" content="{{ page.updated | date_to_xmlschema }}">
+  {%- endif %}
+{%- endif %}
+{% include seo-jsonld.html title=title_ja description=desc_ja %}
   <script defer src="{{ '/assets/js/reader.js' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}"></script>
   <script src="{{ '/assets/js/display.js' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}"></script>
 {% if site.data.analytics.endpoint != '' and site.data.analytics.endpoint %}
@@ -151,6 +161,11 @@
 
     if (saved === "ja" || saved === "en") {
       return saved;
+    }
+
+    // Search engine crawlers get the Japanese original, which is what the HTML itself contains.
+    if (/bot|crawl|spider|slurp|googlebot|bingbot|duckduck|baiduspider|yandex|lighthouse/i.test(navigator.userAgent || "")) {
+      return "ja";
     }
 
     const browserLang = (navigator.language || "").toLowerCase();
