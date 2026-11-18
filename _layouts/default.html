@@ -7,7 +7,7 @@
 {%- if page.seo_title_ja -%}
   {%- assign title_ja = page.seo_title_ja -%}
 {%- elsif page.collection == "wiki" -%}
-  {%- capture title_ja -%}{{ page.title }}{% if page.en and page.en != page.title %}（{{ page.en }}）{% endif %}とは｜AIリテラシー | {{ site.title }}{%- endcapture -%}
+  {%- capture title_ja -%}{{ page.title }}{% unless page.title contains "（" or page.title contains "(" or page.en == nil or page.en == page.title %}（{{ page.en }}）{% endunless %}とは｜AIリテラシー | {{ site.title }}{%- endcapture -%}
 {%- elsif page.title -%}
   {%- assign title_ja = page.title | append: " | " | append: site.title -%}
 {%- else -%}
