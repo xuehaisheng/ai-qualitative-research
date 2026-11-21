@@ -38,3 +38,13 @@ exclude:
 
 # Newsletter sign-up link shown under the share buttons (except the one at the top of a note).
 newsletter_url: "https://groups.google.com/g/aiandqualitativeresearch"
+# Sign-up page /newsletter/. Fill these from the Google Form's pre-filled link
+# (action = .../formResponse, entries = "entry.123..." for each question).
+# While action is empty, the newsletter button keeps linking to newsletter_url.
+newsletter_form:
+  action: ""
+  email: ""
+  name: ""
+  role: ""
+  lang: ""
+  page: ""
