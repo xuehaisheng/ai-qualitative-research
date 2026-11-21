@@ -35,3 +35,6 @@ exclude:
   - .openai
   - assets/pdf/2026-10-30_ai-literacy-workshop.pdf
   - management
+
+# Newsletter sign-up link shown under the share buttons (except the one at the top of a note).
+newsletter_url: "https://groups.google.com/g/aiandqualitativeresearch"

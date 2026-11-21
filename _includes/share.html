@@ -9,4 +9,8 @@
   <a class="share-btn" data-share-to="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ share_url | cgi_escape }}" target="_blank" rel="noopener" aria-label="Facebookでシェア" data-aria-ja="Facebookでシェア" data-aria-en="Share on Facebook">{% include icons/facebook.svg %}</a>
   <button class="share-btn" type="button" data-share-to="instagram" aria-label="Instagramでシェア" data-aria-ja="Instagramでシェア" data-aria-en="Share on Instagram">{% include icons/instagram.svg %}</button>
   <button class="share-btn share-copy" type="button" data-share-to="copy" aria-label="リンクをコピー" data-aria-ja="リンクをコピー" data-aria-en="Copy link">{% include icons/link.svg %}</button>
+  {%- if site.newsletter_url and include.class != "share-top" %}
+  <span class="newsletter-break" aria-hidden="true"></span>
+  <a class="newsletter-btn" href="{{ site.newsletter_url }}" target="_blank" rel="noopener">{% include icons/mail.svg %}<span data-bilingual data-ja="ニュースレター" data-en="Newsletter">ニュースレター</span></a>
+  {%- endif %}
 </div>
