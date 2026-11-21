@@ -531,3 +531,27 @@ html[lang="en"] .home-page:not(.masthead-static) .site-header .header-shell { ga
 .newsletter-btn:hover, .newsletter-btn:focus-visible, .newsletter-btn:active { background: #111; color: #fff !important; }
 .footer-share .newsletter-btn { height: 30px; padding: 0 12px 0 10px; font-size: .74rem; box-shadow: none; }
 .footer-share .newsletter-btn svg { width: 14px; height: 14px; }
+
+/* Newsletter sign-up page */
+.nl-card { max-width: 560px; }
+.nl-form { display: grid; gap: 22px; }
+.nl-field { display: grid; gap: 8px; margin: 0; padding: 0; border: 0; min-width: 0; }
+.nl-label { display: flex; align-items: baseline; gap: 10px; padding: 0; font-weight: 700; font-size: .92rem; }
+.nl-req, .nl-opt { font-weight: 400; font-size: .74rem; color: var(--reader-muted, #5e5e5e); }
+.nl-req { color: #111; border: 1px solid #111; border-radius: 3px; padding: 0 5px; line-height: 1.5; }
+.nl-field input[type=email], .nl-field input[type=text] { width: 100%; box-sizing: border-box; height: 46px; padding: 0 12px; border: 1px solid #bdbdbd; border-radius: 6px; background: #fff; font: inherit; font-size: 1rem; color: #111; }
+.nl-field input:focus { outline: 2px solid #111; outline-offset: 1px; border-color: #111; }
+.nl-choices { display: flex; flex-wrap: wrap; gap: 8px; }
+.nl-choice { position: relative; }
+.nl-choice input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.nl-choice span { display: inline-block; padding: 8px 14px; border: 1px solid #bdbdbd; border-radius: 999px; background: #fff; font-size: .86rem; line-height: 1.4; transition: background-color .15s, color .15s, border-color .15s; }
+.nl-choice input:checked + span { background: #111; border-color: #111; color: #fff; }
+.nl-choice input:focus-visible + span { outline: 2px solid #111; outline-offset: 2px; }
+.nl-note { margin: 0; font-size: .8rem; line-height: 1.8; color: var(--reader-muted, #5e5e5e); }
+.nl-error { margin: 0; font-size: .84rem; color: #b3261e; }
+.nl-submit { justify-self: start; min-width: 160px; }
+.nl-done-title { font-weight: 700; font-size: 1.05rem; }
+.nl-back { display: inline-block; margin-top: 8px; text-decoration: underline; text-underline-offset: 3px; }
+.nl-card .nl-choice input:checked + span { background: #111 !important; border-color: #111 !important; color: #fff !important; }
+.nl-card p.nl-error { color: #b3261e; }
+.newsletter-page .newsletter-btn, .newsletter-page .newsletter-break { display: none; }

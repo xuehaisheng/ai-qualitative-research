@@ -1,0 +1,76 @@
+---
+layout: default
+title: "ニュースレター"
+seo_title_ja: "ニュースレター | AI × 質的研究"
+seo_title_en: "Newsletter | AI × Qualitative Research"
+body_class: newsletter-page
+permalink: /newsletter/
+---
+{%- assign f = site.newsletter_form -%}
+<main class="page-main"><section class="page-hero"><div class="container"><div class="section-panel page-heading">
+<div class="eyebrow">Newsletter</div><h1 data-bilingual data-ja="ニュースレター" data-en="Newsletter">ニュースレター</h1>
+<p class="page-lead" data-bilingual data-ja="新しい研究ノートやイベントのお知らせを、メールでお届けします。" data-en="Get new research notes and event announcements by email.">新しい研究ノートやイベントのお知らせを、メールでお届けします。</p>
+</div></div></section><section class="page-section"><div class="container">
+<div class="contact-card nl-card">
+{%- if f.action == "" %}
+<p data-bilingual data-ja="登録フォームは準備中です。" data-en="The sign-up form is not ready yet.">登録フォームは準備中です。</p>
+{%- else %}
+<form class="nl-form" id="nl-form" action="{{ f.action }}" method="post" target="nl-sink" novalidate>
+  <label class="nl-field">
+    <span class="nl-label"><span data-bilingual data-ja="メールアドレス" data-en="Email address">メールアドレス</span><span class="nl-req" data-bilingual data-ja="必須" data-en="Required">必須</span></span>
+    <input type="email" name="{{ f.email }}" autocomplete="email" inputmode="email" required>
+  </label>
+  <label class="nl-field">
+    <span class="nl-label"><span data-bilingual data-ja="お名前" data-en="Name">お名前</span><span class="nl-opt" data-bilingual data-ja="任意・ニックネーム可" data-en="Optional; a nickname is fine">任意・ニックネーム可</span></span>
+    <input type="text" name="{{ f.name }}" autocomplete="name">
+  </label>
+  <fieldset class="nl-field">
+    <legend class="nl-label"><span data-bilingual data-ja="立場" data-en="You are">立場</span><span class="nl-opt" data-bilingual data-ja="任意" data-en="Optional">任意</span></legend>
+    <div class="nl-choices">
+      {%- comment %} The values must match the options in the Google Form exactly. {% endcomment %}
+      <label class="nl-choice"><input type="radio" name="{{ f.role }}" value="研究者"><span data-bilingual data-ja="研究者" data-en="Researcher">研究者</span></label>
+      <label class="nl-choice"><input type="radio" name="{{ f.role }}" value="大学院生・学生"><span data-bilingual data-ja="大学院生・学生" data-en="Student">大学院生・学生</span></label>
+      <label class="nl-choice"><input type="radio" name="{{ f.role }}" value="実務家（臨床・教育など）"><span data-bilingual data-ja="実務家（臨床・教育など）" data-en="Practitioner (clinical, education, etc.)">実務家（臨床・教育など）</span></label>
+      <label class="nl-choice"><input type="radio" name="{{ f.role }}" value="その他"><span data-bilingual data-ja="その他" data-en="Other">その他</span></label>
+    </div>
+  </fieldset>
+  <input type="hidden" name="{{ f.lang }}" id="nl-lang">
+  <input type="hidden" name="{{ f.page }}" id="nl-page">
+  <p class="nl-note" data-bilingual data-ja="メールアドレスは、新しい研究ノートやイベントのお知らせにのみ使います。配信はいつでも停止できます。" data-en="We use your email address only to send new research notes and event announcements. You can unsubscribe at any time.">メールアドレスは、新しい研究ノートやイベントのお知らせにのみ使います。配信はいつでも停止できます。</p>
+  <p class="nl-error" id="nl-error" role="alert" hidden></p>
+  <button class="btn btn-primary nl-submit" type="submit"><span data-bilingual data-ja="登録する" data-en="Sign up">登録する</span></button>
+</form>
+<div class="nl-done" id="nl-done" role="status" hidden>
+  <p class="nl-done-title" data-bilingual data-ja="登録しました。ありがとうございます。" data-en="You're signed up. Thank you.">登録しました。ありがとうございます。</p>
+  <p data-bilingual data-ja="次のお知らせから、ご入力のメールアドレスにお届けします。" data-en="You'll receive our next announcement at the address you entered.">次のお知らせから、ご入力のメールアドレスにお届けします。</p>
+  <a class="nl-back" id="nl-back" href="{{ '/' | relative_url }}" data-bilingual data-ja="元のページに戻る" data-en="Back to the page you were reading">元のページに戻る</a>
+</div>
+<iframe name="nl-sink" title="" hidden></iframe>
+<script>
+(function () {
+  var form = document.getElementById('nl-form'); if (!form) return;
+  var en = function () { return document.documentElement.lang === 'en'; };
+  var from = new URLSearchParams(location.search).get('from') || '';
+  // Only accept a path on this site as the page the reader came from.
+  if (!/^\/[^\/]/.test(from)) from = '';
+  document.getElementById('nl-page').value = from;
+  if (from) document.getElementById('nl-back').href = '{{ site.baseurl }}' + from;
+  var err = document.getElementById('nl-error');
+  form.querySelector('input[type=email]').addEventListener('input', function () { err.hidden = true; });
+  form.addEventListener('submit', function (e) {
+    var email = form.querySelector('input[type=email]');
+    if (!email.value.trim() || !email.checkValidity()) {
+      e.preventDefault();
+      err.textContent = en() ? 'Please enter a valid email address.' : 'メールアドレスを正しく入力してください。';
+      err.hidden = false; email.focus(); return;
+    }
+    err.hidden = true;
+    document.getElementById('nl-lang').value = en() ? 'English' : '日本語';
+    // The form posts into the hidden iframe; Google Forms does not let us read the reply, so show the thank-you at once.
+    setTimeout(function () { form.hidden = true; var d = document.getElementById('nl-done'); d.hidden = false; d.focus && d.setAttribute('tabindex', '-1'); d.focus(); }, 300);
+  });
+})();
+</script>
+{%- endif %}
+</div>
+</div></section></main>

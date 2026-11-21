@@ -11,6 +11,6 @@
   <button class="share-btn share-copy" type="button" data-share-to="copy" aria-label="リンクをコピー" data-aria-ja="リンクをコピー" data-aria-en="Copy link">{% include icons/link.svg %}</button>
   {%- if site.newsletter_url and include.class != "share-top" %}
   <span class="newsletter-break" aria-hidden="true"></span>
-  <a class="newsletter-btn" href="{{ site.newsletter_url }}" target="_blank" rel="noopener">{% include icons/mail.svg %}<span data-bilingual data-ja="ニュースレター" data-en="Newsletter">ニュースレター</span></a>
+  {%- if site.newsletter_form.action != "" %}<a class="newsletter-btn" href="{{ '/newsletter/' | relative_url }}?from={{ share_path | cgi_escape }}">{%- else %}<a class="newsletter-btn" href="{{ site.newsletter_url }}" target="_blank" rel="noopener">{%- endif %}{% include icons/mail.svg %}<span data-bilingual data-ja="ニュースレター" data-en="Newsletter">ニュースレター</span></a>
   {%- endif %}
 </div>
