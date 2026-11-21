@@ -42,9 +42,9 @@ newsletter_url: "https://groups.google.com/g/aiandqualitativeresearch"
 # (action = .../formResponse, entries = "entry.123..." for each question).
 # While action is empty, the newsletter button keeps linking to newsletter_url.
 newsletter_form:
-  action: ""
-  email: ""
-  name: ""
-  role: ""
-  lang: ""
-  page: ""
+  action: "https://docs.google.com/forms/d/e/1FAIpQLScGVKAScBzix-h0kTB_rc4WERVxGlWlresUmuHD9Jx05knqoA/formResponse"
+  email: "emailAddress"
+  name: "entry.1758701132"
+  role: "entry.398858603"
+  lang: "entry.45152113"
+  page: "entry.1310874832"
