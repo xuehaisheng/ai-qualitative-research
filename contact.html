@@ -6,14 +6,81 @@ seo_title_en: "Contact | AI × Qualitative Research"
 body_class: contact-page
 permalink: /contact/
 ---
+{%- assign f = site.contact_form -%}
 <main class="page-main"><section class="page-hero"><div class="container"><div class="section-panel page-heading">
 <div class="eyebrow">Contact</div><h1 data-bilingual data-ja="お問い合わせ" data-en="Contact">お問い合わせ</h1>
+<p data-bilingual data-ja="講習会・研修のご依頼、研究についてのご質問、共同研究のご相談、本サイトへのご寄稿、サイトの内容への訂正やご意見をお寄せください。内容を確認のうえ、ご入力のメールアドレスにご連絡します。" data-en="Send us workshop or training requests, questions about our research, proposals for collaboration, contributions to this site, or corrections and comments on its content. We will reply to the email address you enter.">講習会・研修のご依頼、研究についてのご質問、共同研究のご相談、本サイトへのご寄稿、サイトの内容への訂正やご意見をお寄せください。内容を確認のうえ、ご入力のメールアドレスにご連絡します。</p>
 </div></div></section><section class="page-section"><div class="container">
-<div class="contact-card">
-<p data-bilingual="" data-en="For workshop or training requests, questions about our research, collaboration, contributions to this site, or corrections and comments on its content, please use the Google Form. We will reply to the email address you enter." data-ja="講習会・研修のご依頼、研究についてのご質問、共同研究のご相談、本サイトへのご寄稿、サイトの内容への訂正やご意見は、Googleフォームからお寄せください。ご入力いただいたメールアドレスにご連絡します。">講習会・研修のご依頼、研究についてのご質問、共同研究のご相談、本サイトへのご寄稿、サイトの内容への訂正やご意見は、Googleフォームからお寄せください。ご入力いただいたメールアドレスにご連絡します。</p>
-<div class="contact-actions">
-<a class="btn btn-primary contact-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdhIVuPwF8vNkgLbdL26EpNcEVokmeYoXH4ME0bqhOIe6wMoA/viewform" target="_blank" rel="noopener"><span data-bilingual="" data-en="Open the contact form" data-ja="お問い合わせフォームを開く">お問い合わせフォームを開く</span>{% include external.html %}</a>
+<div class="contact-card nl-card">
+<form class="nl-form" id="ct-form" action="{{ f.action }}" method="post" target="ct-sink" novalidate>
+  <label class="nl-field">
+    <span class="nl-label"><span data-bilingual data-ja="お名前" data-en="Name">お名前</span><span class="nl-req" data-bilingual data-ja="必須" data-en="Required">必須</span></span>
+    <input type="text" name="{{ f.name }}" autocomplete="name" required>
+  </label>
+  <label class="nl-field">
+    <span class="nl-label"><span data-bilingual data-ja="メールアドレス" data-en="Email address">メールアドレス</span><span class="nl-req" data-bilingual data-ja="必須" data-en="Required">必須</span></span>
+    <input type="email" name="{{ f.email }}" autocomplete="email" inputmode="email" required>
+  </label>
+  <label class="nl-field">
+    <span class="nl-label"><span data-bilingual data-ja="ご所属" data-en="Affiliation">ご所属</span><span class="nl-opt" data-bilingual data-ja="任意" data-en="Optional">任意</span></span>
+    <input type="text" name="{{ f.affiliation }}" autocomplete="organization">
+  </label>
+  <fieldset class="nl-field">
+    <legend class="nl-label"><span data-bilingual data-ja="お問い合わせの種類" data-en="Type of inquiry">お問い合わせの種類</span><span class="nl-req" data-bilingual data-ja="必須" data-en="Required">必須</span></legend>
+    <div class="nl-choices">
+      {%- comment %} The values must match the options in the Google Form exactly. "その他" uses the form's own "other" option. {% endcomment %}
+      <label class="nl-choice"><input type="radio" name="{{ f.kind }}" value="講習会・研修のご依頼"><span data-bilingual data-ja="講習会・研修のご依頼" data-en="Workshop or training request">講習会・研修のご依頼</span></label>
+      <label class="nl-choice"><input type="radio" name="{{ f.kind }}" value="研究についてのご質問"><span data-bilingual data-ja="研究についてのご質問" data-en="Question about our research">研究についてのご質問</span></label>
+      <label class="nl-choice"><input type="radio" name="{{ f.kind }}" value="共同研究のご相談"><span data-bilingual data-ja="共同研究のご相談" data-en="Collaboration">共同研究のご相談</span></label>
+      <label class="nl-choice"><input type="radio" name="{{ f.kind }}" value="本サイトへのご寄稿"><span data-bilingual data-ja="本サイトへのご寄稿" data-en="Contribution to this site">本サイトへのご寄稿</span></label>
+      <label class="nl-choice"><input type="radio" name="{{ f.kind }}" value="サイトの内容についての訂正・ご意見"><span data-bilingual data-ja="サイトの内容についての訂正・ご意見" data-en="Correction or comment on the site">サイトの内容についての訂正・ご意見</span></label>
+      <label class="nl-choice"><input type="radio" name="{{ f.kind }}" value="__other_option__" id="ct-other"><span data-bilingual data-ja="その他" data-en="Other">その他</span></label>
+    </div>
+    <input class="ct-other-text" type="text" name="{{ f.kind }}.other_option_response" id="ct-other-text" hidden data-ph-ja="内容を一言で" data-ph-en="In a few words" placeholder="内容を一言で">
+  </fieldset>
+  <label class="nl-field">
+    <span class="nl-label"><span data-bilingual data-ja="お問い合わせ内容" data-en="Message">お問い合わせ内容</span><span class="nl-req" data-bilingual data-ja="必須" data-en="Required">必須</span></span>
+    <textarea name="{{ f.message }}" rows="7" required></textarea>
+  </label>
+  <p class="nl-error" id="ct-error" role="alert" hidden></p>
+  <button class="btn btn-primary nl-submit" type="submit"><span data-bilingual data-ja="送信する" data-en="Send">送信する</span></button>
+</form>
+<div class="nl-done" id="ct-done" role="status" hidden>
+  <p class="nl-done-title" data-bilingual data-ja="送信しました。ありがとうございます。" data-en="Your message has been sent. Thank you.">送信しました。ありがとうございます。</p>
+  <p data-bilingual data-ja="内容を確認のうえ、ご入力のメールアドレスにご連絡します。" data-en="We will read it and reply to the email address you entered.">内容を確認のうえ、ご入力のメールアドレスにご連絡します。</p>
+</div>
+<iframe name="ct-sink" title="" hidden></iframe>
+<div class="contact-actions ct-share">
 {% include share.html path="/contact/" title="AI × 質的研究" title_en="AI × Qualitative Research" class="contact-share" %}
 </div>
 </div>
+<script>
+(function () {
+  var form = document.getElementById('ct-form'); if (!form) return;
+  var en = function () { return document.documentElement.lang === 'en'; };
+  var err = document.getElementById('ct-error');
+  var other = document.getElementById('ct-other'), otherText = document.getElementById('ct-other-text');
+  function syncOther() {
+    otherText.hidden = !other.checked;
+    otherText.placeholder = en() ? otherText.dataset.phEn : otherText.dataset.phJa;
+    if (other.checked) otherText.focus();
+  }
+  form.querySelectorAll('input[type=radio]').forEach(function (r) { r.addEventListener('change', syncOther); });
+  form.addEventListener('input', function () { err.hidden = true; });
+  document.addEventListener('site-lang', function () { otherText.placeholder = en() ? otherText.dataset.phEn : otherText.dataset.phJa; });
+  form.addEventListener('submit', function (e) {
+    var name = form.querySelector('input[autocomplete=name]'), email = form.querySelector('input[type=email]');
+    var kind = form.querySelector('input[type=radio]:checked'), msg = form.querySelector('textarea');
+    var problem = null, target = null;
+    if (!name.value.trim()) { problem = en() ? 'Please enter your name.' : 'お名前を入力してください。'; target = name; }
+    else if (!email.value.trim() || !email.checkValidity()) { problem = en() ? 'Please enter a valid email address.' : 'メールアドレスを正しく入力してください。'; target = email; }
+    else if (!kind) { problem = en() ? 'Please choose the type of inquiry.' : 'お問い合わせの種類を選んでください。'; target = form.querySelector('input[type=radio]'); }
+    else if (kind === other && !otherText.value.trim()) { problem = en() ? 'Please describe the type of inquiry in a few words.' : '「その他」の内容を一言で入力してください。'; target = otherText; }
+    else if (!msg.value.trim()) { problem = en() ? 'Please enter your message.' : 'お問い合わせ内容を入力してください。'; target = msg; }
+    if (problem) { e.preventDefault(); err.textContent = problem; err.hidden = false; target.focus(); return; }
+    // The form posts into the hidden iframe; Google Forms does not let us read the reply, so show the thank-you at once.
+    setTimeout(function () { form.hidden = true; var d = document.getElementById('ct-done'); d.hidden = false; d.setAttribute('tabindex', '-1'); d.focus(); }, 300);
+  });
+})();
+</script>
 </div></section></main>

@@ -48,3 +48,12 @@ newsletter_form:
   role: "entry.398858603"
   lang: "entry.45152113"
   page: "entry.1310874832"
+
+# Contact page /contact/: the on-site form posts to this Google Form.
+contact_form:
+  action: "https://docs.google.com/forms/d/e/1FAIpQLSdhIVuPwF8vNkgLbdL26EpNcEVokmeYoXH4ME0bqhOIe6wMoA/formResponse"
+  email: "emailAddress"
+  name: "entry.623456747"
+  affiliation: "entry.860050204"
+  kind: "entry.1038032339"
+  message: "entry.1146196124"

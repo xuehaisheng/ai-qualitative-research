@@ -555,3 +555,8 @@ html[lang="en"] .home-page:not(.masthead-static) .site-header .header-shell { ga
 .nl-card .nl-choice input:checked + span { background: #111 !important; border-color: #111 !important; color: #fff !important; }
 .nl-card p.nl-error { color: #b3261e; }
 .newsletter-page .newsletter-btn, .newsletter-page .newsletter-break { display: none; }
+/* Contact page: same look as the newsletter form. */
+.nl-field textarea { width: 100%; box-sizing: border-box; min-height: 160px; padding: 10px 12px; border: 1px solid #bdbdbd; border-radius: 6px; background: #fff; font: inherit; font-size: 1rem; line-height: 1.7; color: #111; resize: vertical; }
+.nl-field textarea:focus, .ct-other-text:focus { outline: 2px solid #111; outline-offset: 1px; border-color: #111; }
+.ct-other-text { width: 100%; box-sizing: border-box; height: 42px; margin-top: 4px; padding: 0 12px; border: 1px solid #bdbdbd; border-radius: 6px; font: inherit; font-size: .95rem; }
+.ct-share { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--reader-line, #e2e2e2); }
