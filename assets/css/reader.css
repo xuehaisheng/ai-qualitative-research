@@ -523,3 +523,11 @@ html[lang="en"] .home-page:not(.masthead-static) .site-header .header-shell { ga
 .share-copy.is-copied .icon-link { display: none; }
 .share-copy.is-copied .icon-check { display: inline; }
 .share-note.visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* Newsletter sign-up: its own line under the share buttons, so it is not mistaken for "share by email". */
+.share-row .newsletter-break { flex-basis: 100%; height: 0; }
+.newsletter-btn { display: inline-flex; align-items: center; gap: 7px; height: 38px; padding: 0 16px 0 13px; border: 1px solid #111; border-radius: 999px; background: #fff; color: #111 !important; font-size: .82rem; font-weight: 600; line-height: 1; text-decoration: none !important; white-space: nowrap; box-shadow: 0 3px 10px rgba(0,0,0,.08); transition: background-color .15s, color .15s; }
+.newsletter-btn svg { width: 17px; height: 17px; display: block; }
+.newsletter-btn:hover, .newsletter-btn:focus-visible, .newsletter-btn:active { background: #111; color: #fff !important; }
+.footer-share .newsletter-btn { height: 30px; padding: 0 12px 0 10px; font-size: .74rem; box-shadow: none; }
+.footer-share .newsletter-btn svg { width: 14px; height: 14px; }
